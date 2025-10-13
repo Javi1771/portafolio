@@ -123,7 +123,7 @@ export default function Navbar() {
           <div className="max-w-7xl mx-auto px-4 py-6">
             <div className="flex flex-col gap-1">
               {[
-                { href: "/projects", text: "Proyectos", color: "from-violet-400 to-purple-500", icon: "🚀" },
+                { href: "/projects", text: "Proyectos", color: "from-violet-400 to-purple-500", icon: "💼" },
                 { href: "/about", text: "Sobre mí", color: "from-cyan-400 to-blue-500", icon: "👨‍💻" },
                 { href: "/contact", text: "Contacto", color: "from-emerald-400 to-green-500", icon: "📧" }
               ].map((item, index) => (
