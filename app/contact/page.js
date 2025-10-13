@@ -6,10 +6,10 @@ import Section from "@/components/Section";
 import { EMAIL, WHATSAPP, GITHUB_ACCOUNTS } from "@/data/links";
 
 export default function ContactPage() {
-  // Función para crear el enlace de WhatsApp correctamente
+  //* Función para crear el enlace de WhatsApp correctamente
   const createWhatsAppLink = (message) => {
-    // Asegurar que el número tenga el formato correcto
-    const phoneNumber = WHATSAPP.replace(/\D/g, ''); // Remover todo excepto números
+    //* Asegurar que el número tenga el formato correcto
+    const phoneNumber = WHATSAPP.replace(/\D/g, ''); //* Remover todo excepto números
     const formattedNumber = phoneNumber.startsWith('52') ? phoneNumber : `52${phoneNumber}`;
     return `https://wa.me/${formattedNumber}?text=${encodeURIComponent(message)}`;
   };

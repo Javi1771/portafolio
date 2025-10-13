@@ -14,7 +14,7 @@ export default function ProjectDetail() {
   const { id } = useParams();
   const project = PROJECTS.find((p) => p.id === id);
 
-  // Gallery state
+  //* Gallery state
   const [images, setImages] = useState(null);
   const [active, setActive] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -22,7 +22,7 @@ export default function ProjectDetail() {
   const startX = useRef(null);
   const trackRef = useRef(null);
 
-  // Load images
+  //* Load images
   useEffect(() => {
     if (!project) return;
     let cancelled = false;
@@ -58,7 +58,7 @@ export default function ProjectDetail() {
     };
   }, [id]);
 
-  // Navigation functions
+  //* Navigation functions
   const prev = useCallback(() => {
     setActive((i) =>
       images && images.length ? (i - 1 + images.length) % images.length : 0
@@ -69,7 +69,7 @@ export default function ProjectDetail() {
     setActive((i) => (images && images.length ? (i + 1) % images.length : 0));
   }, [images?.length]);
 
-  // Keyboard navigation
+  //* Keyboard navigation
   useEffect(() => {
     const onKey = (e) => {
       if (!images || !images.length) return;
@@ -82,7 +82,7 @@ export default function ProjectDetail() {
     return () => window.removeEventListener("keydown", onKey);
   }, [images?.length, next, prev]);
 
-  // Drag/swipe functionality
+  //* Drag/swipe functionality
   const onPointerDown = (e) => {
     setIsDragging(true);
     startX.current = e.clientX || e.touches?.[0]?.clientX;
@@ -117,7 +117,7 @@ export default function ProjectDetail() {
     if (Math.abs(dx) > 60) dx < 0 ? next() : prev();
   };
 
-  // 404 page
+  //! 404 page
   if (!project) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-white via-gray-50/50 to-rose-50/30 dark:from-gray-900 dark:via-gray-800/50 dark:to-rose-950/20 relative overflow-hidden flex items-center justify-center">

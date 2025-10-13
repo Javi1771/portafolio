@@ -11,17 +11,17 @@ const RINGS = 3;
 export default function ThemeToggle({ className = "" }) {
   const { isDark, toggle } = useTheme();
 
-  // Evita diferencias SSR/cliente
+  //! Evita diferencias SSR/cliente
   const [mounted, setMounted] = useState(false);
 
-  // Datos generados en cliente (random) para partículas y estrellas
+  //* Datos generados en cliente (random) para partículas y estrellas
   const [particles, setParticles] = useState([]);
   const [stars, setStars] = useState([]);
 
   useEffect(() => {
     setMounted(true);
 
-    // Generar partículas del track (no existen en SSR)
+    //* Generar partículas del track (no existen en SSR)
     const genParticles = Array.from({ length: PARTICLES }, (_, i) => ({
       key: `p-${i}`,
       width: (Math.random() * 3 + 1).toFixed(3) + "px",
@@ -32,7 +32,7 @@ export default function ThemeToggle({ className = "" }) {
     }));
     setParticles(genParticles);
 
-    // Generar estrellas del campo (solo en dark y solo en cliente)
+    //* Generar estrellas del campo (solo en dark y solo en cliente)
     const genStars = Array.from({ length: STARS }, (_, i) => ({
       key: `s-${i}`,
       width: (Math.random() * 2 + 0.5).toFixed(3) + "px",
@@ -49,7 +49,7 @@ export default function ThemeToggle({ className = "" }) {
       <input
         type="checkbox"
         className="sr-only peer"
-        checked={mounted ? isDark : false} // en SSR siempre false para no desincronizar
+        checked={mounted ? isDark : false} //! en SSR siempre false para no desincronizar
         onChange={toggle}
         aria-label={isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
       />

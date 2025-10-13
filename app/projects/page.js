@@ -14,7 +14,7 @@ export default function ProjectsPage() {
       ? PROJECTS
       : PROJECTS.filter((p) => p.category === selected);
 
-  // Get statistics for enhanced header
+  //* Estadísticas generales
   const totalProjects = PROJECTS.length;
   const categories = [...new Set(PROJECTS.map((p) => p.category))];
   const currentYear = new Date().getFullYear();
