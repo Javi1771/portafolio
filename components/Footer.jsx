@@ -1,0 +1,9 @@
+export default function Footer() {
+  return (
+    <footer className="border-t border-white/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 text-center text-white/70 text-sm">
+        © {new Date().getFullYear()} Javier. Hecho con Next.js + Tailwind.
+      </div>
+    </footer>
+  );
+}
