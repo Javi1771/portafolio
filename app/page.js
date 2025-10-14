@@ -133,7 +133,7 @@ export default function HomePage() {
         <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             { number: "6+", label: "Proyectos completados", color: "from-violet-500 to-purple-600" },
-            { number: "2025", label: "Año en actividad", color: "from-cyan-500 to-blue-600" },
+            { number: "2024", label: "Año en actividad", color: "from-cyan-500 to-blue-600" },
             { number: "3", label: "Áreas de especialización", color: "from-emerald-500 to-green-600" },
             { number: "100%", label: "Proyectos entregados", color: "from-rose-500 to-pink-600" },
           ].map((stat, index) => (
