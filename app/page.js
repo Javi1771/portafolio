@@ -85,7 +85,7 @@ export default function HomePage() {
             {/* Enhanced CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href={`mailto:${EMAIL}`}
+                href="/contact"
                 className="group relative px-8 py-3 bg-gradient-to-r from-gray-900 to-gray-800 dark:from-white dark:to-gray-100 text-white dark:text-gray-900 font-semibold rounded-lg hover:shadow-xl hover:shadow-gray-900/20 dark:hover:shadow-white/20 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-purple-600 opacity-0 group-hover:opacity-10 transition-opacity" />

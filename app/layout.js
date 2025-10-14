@@ -5,14 +5,14 @@ import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/lib/theme";
 import AntiTranslate from "@/components/AntiTranslate";
 
-// 👇 Métricas gratis de Vercel
+//* Métricas gratis de Vercel
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata = {
   title: "Javier – Portafolio",
   description: "Portafolio de Javier López: web, móvil, IoT.",
-  // 👇 Favicons / PWA / Apple
+  //* Favicons / PWA / Apple
   icons: {
     icon: [
       { url: "/favicon.ico" },
