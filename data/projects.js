@@ -1,5 +1,41 @@
 export const PROJECTS = [
   {
+    id: "assembly",
+    title: "Assembly Management – Módulos y Dashboard (Software Para La Empresa SIAUMEX)",
+    year: 2025,
+    stack: ["Next.js", "React", "Tailwind CSS", "Node.js API Routes", "MS SQL Server"],
+    category: "Freelance",
+    repo: "https://github.com/Javi1771/productos_assembly", 
+    site: "",            
+    summary:
+      "La plataforma Assembly Management agiliza y transparenta el alta y mantenimiento de productos ensamblados: centraliza el registro de Assembly (Item consecutivo automático) y la captura/edición de módulos Hose Cut, Sleeve/Guard, Crimp A, Collar A, Crimp B, Collar B y Packaging, actualizando la columna Adds según reglas por posición.\n" +
+      "Reduce retrabajo y errores: valida campos (numéricos, mayúsculas), sugiere ejemplos desde BD, persiste borradores locales y evita duplicados al editar. La navegación usa un token URL-safe del Item para no exponer IDs en la ruta y permite volver al flujo principal conservando contexto.\n" +
+      "Incluye un Dashboard operativo con totales, promedio de módulos por assembly, porcentaje con al menos un módulo y completitud 7/7, cobertura por módulo, top clientes y recientes con búsqueda, filtros y paginación. Para administración y calidad brinda indicadores en tiempo real; para el equipo de piso, formularios minimalistas con encabezados degradados, validaciones claras y guardado rápido.",
+    image: "/Banners/assembly.png",
+    colors: {
+      primary: "#4F46E5",   
+      secondary: "#aa12ff"  
+    }
+  },
+  {
+    id: "motores-jordan",
+    title: "Motores Jordan – Landing + Catálogos (Página Web Para La Empresa Motores Jordan)",
+    year: 2025,
+    category: "Freelance",
+    stack: ["Next.js", "Tailwind", "WhatsApp", "Envios de Email"],
+    repo: "https://github.com/Javi1771/motoresjordan",
+    site: "https://motoresjordanmx.com/",
+    summary:
+      "La landing de Motores Jordan impacta al captar y convertir mejor la demanda industrial: centraliza marcas y líneas de producto (motores, bombas y reductores), catálogos PDF descargables por proveedor, ubicación de sucursales y contacto directo por WhatsApp, todo en una experiencia rápida, responsiva y clara.\n"+
+      "Esto reduce tiempos de cotización, disminuye llamadas y correos de ida y vuelta, y mejora la certeza del cliente al ofrecer especificaciones y opciones a un clic, con asesoría inmediata desde el canal que ya utiliza (WhatsApp).\n"+
+      "Para la empresa, unifica la captación de prospectos, habilita métricas (Analytics/Ads) y fortalece el SEO local, simplificando además la actualización de catálogos. Para las y los clientes, entrega una experiencia simple, accesible y confiable: encuentran la sucursal más cercana, consultan catálogos oficiales y solicitan asesoría técnica en segundos—sin fricción y sin pagos en línea.",
+    image: "/Banners/motores_jordan.png",
+    colors: {
+      primary: "#b5181f",
+      secondary: "#350609",
+    }
+  },
+  {
     id: "pandora",
     title: "Pandora – Servicio Médico Municipal",
     year: 2025,
@@ -51,24 +87,6 @@ export const PROJECTS = [
     colors: {
       primary: "#680691",
       secondary: "#43035d",
-    }
-  },
-  {
-    id: "motores-jordan",
-    title: "Motores Jordan – Landing + Catálogos (Página Web Para La Empresa Motores Jordan)",
-    year: 2025,
-    category: "Freelance",
-    stack: ["Next.js", "Tailwind", "WhatsApp", "Envios de Email"],
-    repo: "https://github.com/Javi1771/motoresjordan",
-    site: "https://motoresjordanmx.com/",
-    summary:
-      "La landing de Motores Jordan impacta al captar y convertir mejor la demanda industrial: centraliza marcas y líneas de producto (motores, bombas y reductores), catálogos PDF descargables por proveedor, ubicación de sucursales y contacto directo por WhatsApp, todo en una experiencia rápida, responsiva y clara.\n"+
-      "Esto reduce tiempos de cotización, disminuye llamadas y correos de ida y vuelta, y mejora la certeza del cliente al ofrecer especificaciones y opciones a un clic, con asesoría inmediata desde el canal que ya utiliza (WhatsApp).\n"+
-      "Para la empresa, unifica la captación de prospectos, habilita métricas (Analytics/Ads) y fortalece el SEO local, simplificando además la actualización de catálogos. Para las y los clientes, entrega una experiencia simple, accesible y confiable: encuentran la sucursal más cercana, consultan catálogos oficiales y solicitan asesoría técnica en segundos—sin fricción y sin pagos en línea.",
-    image: "/Banners/motores_jordan.png",
-    colors: {
-      primary: "#b5181f",
-      secondary: "#350609",
     }
   },
   {
@@ -125,22 +143,4 @@ export const PROJECTS = [
       secondary: "#3404ef"
     }
   },
-  {
-    id: "assembly",
-    title: "Assembly Management – Módulos y Dashboard (Software Para La Empresa SIAUMEX)",
-    year: 2025,
-    stack: ["Next.js", "React", "Tailwind CSS", "Node.js API Routes", "MS SQL Server"],
-    category: "Freelance",
-    repo: "https://github.com/Javi1771/productos_assembly", 
-    site: "",            
-    summary:
-      "La plataforma Assembly Management agiliza y transparenta el alta y mantenimiento de productos ensamblados: centraliza el registro de Assembly (Item consecutivo automático) y la captura/edición de módulos Hose Cut, Sleeve/Guard, Crimp A, Collar A, Crimp B, Collar B y Packaging, actualizando la columna Adds según reglas por posición.\n" +
-      "Reduce retrabajo y errores: valida campos (numéricos, mayúsculas), sugiere ejemplos desde BD, persiste borradores locales y evita duplicados al editar. La navegación usa un token URL-safe del Item para no exponer IDs en la ruta y permite volver al flujo principal conservando contexto.\n" +
-      "Incluye un Dashboard operativo con totales, promedio de módulos por assembly, porcentaje con al menos un módulo y completitud 7/7, cobertura por módulo, top clientes y recientes con búsqueda, filtros y paginación. Para administración y calidad brinda indicadores en tiempo real; para el equipo de piso, formularios minimalistas con encabezados degradados, validaciones claras y guardado rápido.",
-    image: "/Banners/assembly.png",
-    colors: {
-      primary: "#4F46E5",   
-      secondary: "#aa12ff"  
-    }
-  }
 ];
