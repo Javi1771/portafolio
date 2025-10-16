@@ -201,7 +201,7 @@ export default function AboutPage() {
                 { name: "Frontend", items: ["Next.js", "React", "Tailwind CSS", "TypeScript"], color: "cyan" },
                 { name: "Mobile", items: ["Flutter", "Dart", "Firebase", "Push Notifications"], color: "blue" },
                 { name: "Backend", items: ["Node.js", "SQL Server", "REST APIs", "SOAP"], color: "violet" },
-                { name: "Otros", items: ["IoT (ESP8266)", "Git", "Vercel", "Azure"], color: "emerald" }
+                { name: "Otros", items: ["IoT (ESP8266)", "Git", "Vercel", "Google Cloud Básico"], color: "emerald" }
               ].map((category) => (
                 <div
                   key={category.name}
