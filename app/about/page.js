@@ -198,10 +198,10 @@ export default function AboutPage() {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { name: "Frontend", items: ["Next.js", "React", "Tailwind CSS", "TypeScript"], color: "cyan" },
-                { name: "Mobile", items: ["Flutter", "Dart", "Firebase", "Push Notifications"], color: "blue" },
-                { name: "Backend", items: ["Node.js", "SQL Server", "REST APIs", "SOAP"], color: "violet" },
-                { name: "Otros", items: ["IoT (ESP8266)", "Git", "Vercel", "Google Cloud Básico"], color: "emerald" }
+                { name: "Frontend", items: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Responsive Design"], color: "cyan" },
+                { name: "Mobile", items: ["Flutter", "Dart", "Firebase", "Push Notifications", "Google Maps Plattform"], color: "blue" },
+                { name: "Backend", items: ["Node.js", "SQL Server", "REST APIs", "SOAP", "Express.js"], color: "violet" },
+                { name: "Otros", items: ["IoT (ESP8266)", "Git (GitHub)", "Vercel", "Google Cloud Básico", "CI/CD"], color: "emerald" }
               ].map((category) => (
                 <div
                   key={category.name}
