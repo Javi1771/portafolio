@@ -3,7 +3,7 @@ export const PROJECTS = [
     id: "assembly",
     title: "Assembly Management – Módulos y Dashboard (Software Para La Empresa SIAUMEX)",
     year: 2025,
-    stack: ["Next.js", "React", "Tailwind CSS", "Node.js API Routes", "MS SQL Server"],
+    stack: ["Next.js", "React", "Tailwind CSS", "Node.js API Routes", "MS SQL Server", "Internet Info Services (IIS)"],
     category: "Freelance",
     repo: "https://github.com/Javi1771/productos_assembly", 
     site: "",            
@@ -40,7 +40,7 @@ export const PROJECTS = [
     title: "Pandora – Servicio Médico Municipal",
     year: 2025,
     category: "Municipio",
-    stack: ["Next.js", "SQL Server", "Tailwind", "PDF", "SOAP Web Service", "Escaner Código de Barras", "Escaneo Facial"],
+    stack: ["Next.js", "SQL Server", "Tailwind", "PDF", "SOAP Web Service", "Escaner Código de Barras", "Escaneo Facial", "Firma Digital", "Digitalización de Documentos", "Registro en Tiempo Real", "Exportación a Excel", "Foto Digital", "Credencialización"],
     repo: "https://github.com/Javi1771/Pandora-Pub",
     site: "https://plataformasjr.sytes.net:7011/",
     summary:
@@ -94,7 +94,7 @@ export const PROJECTS = [
     title: "FinMaster – Gestión de Tarjetas",
     year: 2024,
     category: "Personal",
-    stack: ["Flutter", "Firebase", "Push Notifications", "Google Sign-In"],
+    stack: ["Flutter", "Firebase", "Push Notifications", "Google Sign-In", "Charts"],
     repo: "https://github.com/Javi1771/finmaster",
     site: "",
     summary:
@@ -112,7 +112,7 @@ export const PROJECTS = [
     title: "IoT – ESP8266 LED + Firebase + DHT11",
     year: 2023,
     category: "Personal",
-    stack: ["Flutter", "ESP8266", "Firebase", "WS2812B", "DHT11", "Push Notifications"],
+    stack: ["Flutter", "ESP8266", "Firebase", "WS2812B", "DHT11", "Push Notifications", "IoT", "Wi-Fi", "Bluetooth"],
     repo: "https://github.com/JavierUTSJR/smart_led",
     site: "",
     summary:
