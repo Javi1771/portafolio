@@ -42,11 +42,11 @@ export const PROJECTS = [
     title: "Pandora – Servicio Médico Municipal",
     year: 2025,
     category: "Municipio",
-    stack: ["Next.js", "SQL Server", "Tailwind", "PDF", "SOAP Web Service", "Escaner Código de Barras", "Escaneo Facial", "Firma Digital", "Digitalización de Documentos", "Registro en Tiempo Real", "Exportación a Excel", "Foto Digital", "Credencialización"],
+    stack: ["Next.js", "SQL Server", "Tailwind", "Escaner Código de Barras", "Digitalización de Documentos", "SOAP Web Service", "Escaneo Facial", "Crear PDFs", "Firma Digital", "Registro en Tiempo Real", "Exportación a Excel", "Foto Digital", "Credencialización"],
     repo: "https://github.com/Javi1771/Pandora-Pub",
-    site: "https://plataformasjr.sytes.net:7011/",
+    site: "",
     summary:
-      "La plataforma Pandora – Servicio Médico Municipal impacta al agilizar y transparentar la atención de salud del Ayuntamiento: unifica en una sola web el padrón/beneficiarios, expediente clínico, consultas, recetas, órdenes de laboratorio, incapacidades, resurtimientos y credencialización con captura de foto y firma. Todo queda trazable y disponible para el equipo médico, capturistas y Recursos Humanos.\n"+
+      "La plataforma Pandora – Servicio Médico Municipal impacta al agilizar y transparentar la atención de salud del Ayuntamiento: unifica en una sola web el padrón de beneficiarios, expediente clínico, consultas, recetas, órdenes de laboratorio, incapacidades, resurtimientos y credencialización con captura de foto y firma. Todo queda trazable y disponible para el equipo médico, capturistas y Recursos Humanos.\n"+
       "Esto reduce tiempos de espera y filas, elimina papelería duplicada y oficios manuales, y ofrece visibilidad en tiempo real del estado de atenciones, estudios y medicamentos. Pandora mantiene historia clínica única por paciente y soporta la codificación CIE-10/CIE-11 para diagnósticos y notas más precisas, generando además comprobantes y documentos en PDF cuando se requieren.\n"+
       "Para la administración, Pandora centraliza datos, evita errores de captura (con integración al padrón de personal), y produce indicadores operativos para optimizar recursos y rendir cuentas. Para las y los usuarios, brinda una experiencia simple, accesible y confiable, con información clara de su atención y documentos digitalizados, fortaleciendo la calidad del servicio médico municipal.",
     image:
@@ -85,7 +85,7 @@ export const PROJECTS = [
     repo: "https://github.com/Javi1771/atencion-ciudadana-pub",
     site: "",
     summary:
-      "Con esta app se podrán tomar incidencias y solicitudes directamente en colonias mediante un flujo guiado por voz, offline-first con sincronización posterior: registra la persona afectada, descripción y secretaría responsable, generando evidencia trazable y priorizable. \n"+
+      "Con esta app los trabajadores comunitarios del municipio pueden tomar incidencias y solicitudes directamente en colonias mediante un flujo guiado por voz, offline-first con sincronización posterior: registra la persona afectada, descripción y secretaría responsable, generando evidencia trazable y priorizable. \n"+
       "Con ello se acortan tiempos de respuesta, se reduce el papeleo y las visitas a ventanilla, se amplía la cobertura en zonas con conectividad limitada y se habilitan indicadores por colonia, tipo de incidencia y tiempos de resolución, fortaleciendo la planeación operativa, la transparencia y la rendición de cuentas.",
     image: "/Banners/atencion_ciudadana.png",
     colors: {
@@ -96,10 +96,10 @@ export const PROJECTS = [
   },
   {
     id: "finmaster",
-    title: "FinMaster – Gestión de Tarjetas",
+    title: "FinMaster – Gestión de Tarjetas de Crédito",
     year: 2024,
     category: "Personal",
-    stack: ["Flutter", "Firebase", "Push Notifications", "Google Sign-In", "Charts"],
+    stack: ["Flutter", "Firebase", "Push Notifications", "Google Sign-In", "Google Sign-Up", "Charts"],
     repo: "https://github.com/Javi1771/finmaster",
     site: "",
     summary:
@@ -114,8 +114,27 @@ export const PROJECTS = [
     type: "Mobile Application"
   },
   {
+    id: "nimbus",
+    title: "Nimbus - Gestión de Viajes (App Para La Empresa SINE)",
+    year: 2023,
+    stack: ["Flutter", "API", "SOAP", "Geolocalización", "Google Maps", "Google Places", "Push Notifications"],
+    category: "Empresarial Estadias",
+    repo: "https://github.com/JavierUTSJR/sine_nimbus",
+    site: "",
+    summary:
+      "La aplicación Nimbus Móvil impacta al agilizar y transparentar la operación logística de la empresa: conecta con el API de NIMBUS para habilitar el acceso en tiempo real a información clave de depósitos y logística desde Android y iOS.\n"+
+      "Esto reduce tiempos de consulta, disminuye llamadas, correos y visitas presenciales, y mejora la certidumbre operativa al dar visibilidad clara del estado de movimientos, pedidos y tareas, directamente en el dispositivo móvil.\n"+
+      "Para la organización, unifica la consulta de datos, evita duplicidades y genera indicadores operativos para optimizar rutas, inventarios y recursos; para las y los usuarios, ofrece una experiencia simple, accesible y trazable, fortaleciendo la toma de decisiones y la eficiencia del día a día.",
+    image: "/Banners/nimbus.png",
+    colors: {
+      primary: "#b0b0b0",
+      secondary: "#3404ef"
+    },
+    type: "Mobile Application"
+  },
+  {
     id: "smart-led",
-    title: "IoT – ESP8266 LED + Firebase + DHT11",
+    title: "Smart LED – Control y Monitoreo IoT",
     year: 2023,
     category: "Personal",
     stack: ["Flutter", "ESP8266", "Firebase", "WS2812B", "DHT11", "Push Notifications", "IoT", "Wi-Fi", "Bluetooth"],
@@ -129,25 +148,6 @@ export const PROJECTS = [
     colors: {
       primary: "#3b07fa",
       secondary: "#9618ff"
-    },
-    type: "Mobile Application"
-  },
-  {
-    id: "nimbus",
-    title: "Nimbus - Gestión de Viajes (App Para La Empresa SINE)",
-    year: 2023,
-    stack: ["Flutter", "API", "SOAP", "Geolocalización", "Google Maps", "Google Places", "Push Notifications"],
-    category: "Empresarial Estadias",
-    repo: "https://github.com/JavierUTSJR/sine_nimbus",
-    site: "https://play.google.com/store/apps/details?id=com.sine.nimbuscliente&utm_source=latam_Med",
-    summary:
-      "La aplicación Nimbus Móvil impacta al agilizar y transparentar la operación logística de la empresa: conecta con el API de NIMBUS para habilitar el acceso en tiempo real a información clave de depósitos y logística desde Android y iOS.\n"+
-      "Esto reduce tiempos de consulta, disminuye llamadas, correos y visitas presenciales, y mejora la certidumbre operativa al dar visibilidad clara del estado de movimientos, pedidos y tareas, directamente en el dispositivo móvil.\n"+
-      "Para la organización, unifica la consulta de datos, evita duplicidades y genera indicadores operativos para optimizar rutas, inventarios y recursos; para las y los usuarios, ofrece una experiencia simple, accesible y trazable, fortaleciendo la toma de decisiones y la eficiencia del día a día.",
-    image: "/Banners/nimbus.png",
-    colors: {
-      primary: "#b0b0b0",
-      secondary: "#3404ef"
     },
     type: "Mobile Application"
   },

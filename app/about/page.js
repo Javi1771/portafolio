@@ -193,7 +193,7 @@ export default function AboutPage() {
           <div className="space-y-8">
             <div className="flex items-center gap-3">
               <div className="w-1.5 h-8 bg-gradient-to-b from-emerald-500 to-green-600 rounded-full"></div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Stack Tecnológico</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Stack Tecnológico General</h3>
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">

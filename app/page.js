@@ -64,10 +64,10 @@ export default function HomePage() {
             <div className="space-y-4">
               <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
                 <div className="w-2 h-2 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full" />
-                Tecnologías
+                Tecnologías Principales
               </h3>
               <div className="flex flex-wrap gap-3">
-                {["Next.js", "Flutter", "SQL Server", "Firebase", "Firestore", "Tailwind CSS", "Google Maps Plattform", "Visual Studio Code", "Cloude AI", "Chat GPT", "Gemini AI"].map(
+                {["Next.js", "Flutter", "SQL Server", "Firebase", "Firestore", "Tailwind CSS", "Google Maps Plattform", "Visual Studio Code", "Cloude AI", "Chat GPT", "Gemini AI", "SQLite"].map(
                   (tech, index) => (
                     <span
                       key={tech}
@@ -132,8 +132,8 @@ export default function HomePage() {
         {/* Enhanced Professional Stats */}
         <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { number: "6+", label: "Proyectos completados", color: "from-violet-500 to-purple-600" },
-            { number: "2024", label: "Año en actividad", color: "from-cyan-500 to-blue-600" },
+            { number: "7+", label: "Proyectos completados", color: "from-violet-500 to-purple-600" },
+            { number: "2023", label: "Año en actividad", color: "from-cyan-500 to-blue-600" },
             { number: "3", label: "Áreas de especialización", color: "from-emerald-500 to-green-600" },
             { number: "100%", label: "Proyectos entregados", color: "from-rose-500 to-pink-600" },
           ].map((stat, index) => (
