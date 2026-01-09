@@ -8,15 +8,24 @@ import { PROJECTS } from "@/data/projects";
 import { useState } from "react";
 
 export default function ProjectsPage() {
-  const [selected, setSelected] = useState("Todos");
-  const filtered =
-    selected === "Todos"
-      ? PROJECTS
-      : PROJECTS.filter((p) => p.category === selected);
+  const [filters, setFilters] = useState({
+    category: "Todos",
+    type: "Todos los tipos",
+  });
+
+  // Lógica de filtrado dual
+  const filtered = PROJECTS.filter((p) => {
+    const matchCategory =
+      filters.category === "Todos" || p.category === filters.category;
+    const matchType =
+      filters.type === "Todos los tipos" || p.type === filters.type;
+    return matchCategory && matchType;
+  });
 
   //* Estadísticas generales
   const totalProjects = PROJECTS.length;
   const categories = [...new Set(PROJECTS.map((p) => p.category))];
+  const types = [...new Set(PROJECTS.map((p) => p.type))];
   const currentYear = new Date().getFullYear();
   const recentProjects = PROJECTS.filter((p) => p.year === currentYear).length;
 
@@ -27,7 +36,7 @@ export default function ProjectsPage() {
       <div className="absolute top-40 right-20 w-80 h-80 bg-gradient-to-br from-cyan-200/20 to-blue-300/20 dark:from-cyan-500/10 dark:to-blue-600/10 rounded-full blur-3xl animate-pulse delay-1000 motion-reduce:animate-none"></div>
       <div className="absolute bottom-40 left-1/3 w-72 h-72 bg-gradient-to-br from-emerald-200/20 to-green-300/20 dark:from-emerald-500/10 dark:to-green-600/10 rounded-full blur-3xl animate-pulse delay-2000 motion-reduce:animate-none"></div>
 
-      {/* Subtle pattern overlay (Tailwind arbitrary values) */}
+      {/* Subtle pattern overlay */}
       <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] pointer-events-none">
         <div
           className="
@@ -39,7 +48,7 @@ export default function ProjectsPage() {
         />
       </div>
 
-      {/* Enhanced Section with custom styling */}
+      {/* Enhanced Section */}
       <Section
         title={
           <div className="space-y-4">
@@ -53,14 +62,15 @@ export default function ProjectsPage() {
               <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-60 animate-bounce"></div>
               <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-40 animate-bounce"></div>
 
-              {/* Animated underline (requires custom animate-scale-x in tailwind.config) */}
+              {/* Animated underline */}
               <div className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-gradient-to-r from-violet-500 via-purple-500 to-cyan-500 animate-scale-x"></div>
             </div>
 
             {/* Enhanced subtitle with stats */}
             <div className="space-y-2">
               <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                Filtra por categoría o explora los detalles de cada proyecto
+                Filtra por categoría o tipo, o explora los detalles de cada
+                proyecto
               </p>
 
               {/* Statistics bar */}
@@ -82,6 +92,16 @@ export default function ProjectsPage() {
                       {categories.length}
                     </span>{" "}
                     categorías
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-gradient-to-r from-pink-500 to-rose-600 rounded-full animate-pulse"></div>
+                  <span className="text-gray-600 dark:text-gray-400">
+                    <span className="font-semibold text-gray-800 dark:text-gray-200">
+                      {types.length}
+                    </span>{" "}
+                    tipos
                   </span>
                 </div>
 
@@ -113,15 +133,37 @@ export default function ProjectsPage() {
                     Filtrar proyectos
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {selected === "Todos"
+                    {filters.category === "Todos" &&
+                    filters.type === "Todos los tipos"
                       ? "Mostrando todos los proyectos"
-                      : `Mostrando proyectos de ${selected}`}{" "}
+                      : `${
+                          filters.category !== "Todos"
+                            ? filters.category
+                            : "Todas las categorías"
+                        } • ${
+                          filters.type !== "Todos los tipos"
+                            ? filters.type
+                            : "Todos los tipos"
+                        }`}{" "}
                     <span className="ml-2 px-2 py-1 bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 rounded-full text-xs font-medium">
                       {filtered.length}
                     </span>
                   </p>
                 </div>
               </div>
+
+              {/* Reset filters button */}
+              {(filters.category !== "Todos" ||
+                filters.type !== "Todos los tipos") && (
+                <button
+                  onClick={() =>
+                    setFilters({ category: "Todos", type: "Todos los tipos" })
+                  }
+                  className="px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg transition-colors"
+                >
+                  Limpiar filtros
+                </button>
+              )}
             </div>
 
             {/* Enhanced filter wrapper */}
@@ -136,8 +178,8 @@ export default function ProjectsPage() {
               <div className="relative">
                 <CategoryFilter
                   allProjects={PROJECTS}
-                  selected={selected}
-                  onChange={setSelected}
+                  selected={filters}
+                  onChange={setFilters}
                 />
               </div>
             </div>
@@ -155,14 +197,16 @@ export default function ProjectsPage() {
                 <div className="w-2 h-2 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full animate-pulse"></div>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                {selected === "Todos" ? "Todos los proyectos" : `Proyectos de ${selected}`}
+                {filters.category === "Todos" &&
+                filters.type === "Todos los tipos"
+                  ? "Todos los proyectos"
+                  : "Proyectos filtrados"}
               </h3>
             </div>
           </div>
 
-          {/* Projects grid with enhanced wrapper */}
+          {/* Projects grid */}
           <div className="relative">
-            {/* Fade-in animation wrapper (requires custom animate-fade-in in tailwind.config) */}
             <div className="animate-fade-in">
               <ProjectGrid projects={filtered} />
             </div>
@@ -170,21 +214,38 @@ export default function ProjectsPage() {
             {/* Empty state enhancement */}
             {filtered.length === 0 && (
               <div className="text-center py-16">
-                <div className="relative inline-block">
-                  <div className="w-24 h-24 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 rounded-full flex items-center justify-center mb-4">
-                    <svg className="w-12 h-12 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.29 1.009-5.659 2.571M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                <div className="flex flex-col items-center">
+                  {/* Ícono centrado */}
+                  <div className="w-24 h-24 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <svg
+                      className="w-12 h-12 text-gray-400 dark:text-gray-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+                      />
                     </svg>
                   </div>
+
+                  {/* Textos */}
                   <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                    No hay proyectos en esta categoría
+                    No hay proyectos con estos filtros
                   </h3>
-                  <p className="text-gray-500 dark:text-gray-400 mb-4">
-                    Prueba seleccionando otra categoría o explora todos los proyectos
+                  <p className="text-gray-500 dark:text-gray-400 mb-6">
+                    Prueba ajustando los filtros o explora todos los proyectos
                   </p>
+
+                  {/* Botón */}
                   <button
-                    onClick={() => setSelected("Todos")}
-                    className="px-6 py-2 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white rounded-lg font-medium transition-transform hover:scale-105"
+                    onClick={() =>
+                      setFilters({ category: "Todos", type: "Todos los tipos" })
+                    }
+                    className="px-6 py-2 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white rounded-lg font-medium transition-transform hover:scale-105 shadow-lg"
                   >
                     Ver todos los proyectos
                   </button>

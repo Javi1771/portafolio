@@ -3,11 +3,11 @@
 import Link from "next/link";
 
 export default function ProjectCard({ project }) {
-  // Extraer colores del proyecto (hex codes)
+  //* Extraer colores del proyecto (hex codes)
   const primaryColor = project.colors?.primary || "#8b5cf6";
   const secondaryColor = project.colors?.secondary || "#9333ea";
 
-  // Función para convertir hex a rgb
+  //* Función para convertir hex a rgb
   const hexToRgb = (hex) => {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result ? {
@@ -17,7 +17,7 @@ export default function ProjectCard({ project }) {
     } : null;
   };
 
-  // Crear gradientes CSS
+  //* Crear gradientes CSS
   const createGradientStyle = (from, to, opacity = 1) => {
     const fromRgb = hexToRgb(from);
     const toRgb = hexToRgb(to);
@@ -26,7 +26,7 @@ export default function ProjectCard({ project }) {
     };
   };
 
-  // Crear sombras dinámicas
+  //* Crear sombras dinámicas
   const createShadowStyle = (color, opacity = 0.25) => {
     const rgb = hexToRgb(color);
     return {
@@ -34,7 +34,7 @@ export default function ProjectCard({ project }) {
     };
   };
 
-  // Enhanced badge component with gradient effects
+  //* Enhanced badge component with gradient effects
   const badge = (t, index) => (
     <span 
       className="group/badge relative text-[11px] px-3 py-1.5 rounded-lg bg-white/10 dark:bg-gray-800/60 border border-gray-200/30 dark:border-white/10 text-gray-700 dark:text-white/90 hover:border-violet-300/50 dark:hover:border-violet-400/50 hover:bg-white/20 dark:hover:bg-gray-700/60 transition-all duration-300 hover:scale-105 overflow-hidden backdrop-blur-sm"
@@ -92,6 +92,13 @@ export default function ProjectCard({ project }) {
           </span>
         </div>
 
+        {/* Type badge - NUEVO */}
+        <div className="absolute top-4 right-4">
+          <span className="px-3 py-1.5 rounded-full text-xs font-medium text-white/90 bg-black/50 backdrop-blur-md border border-white/20 shadow-lg">
+            {project.type}
+          </span>
+        </div>
+
         {/* Corner decorative elements with dynamic colors */}
         <div 
           className="absolute top-2 right-2 w-3 h-3 rounded-full opacity-60 group-hover:opacity-100 group-hover:scale-125 transition-all duration-300 animate-pulse"
@@ -131,11 +138,16 @@ export default function ProjectCard({ project }) {
           {project.summary}
         </p>
 
-        {/* Enhanced tech stack */}
-        <div className="flex flex-wrap gap-2">
-          {project.stack.map((t, index) => (
+        {/* Enhanced tech stack - Mostrar primeros 5 + indicador de más */}
+        <div className="flex flex-wrap items-center gap-2">
+          {project.stack.slice(0, 6).map((t, index) => (
             <span key={t}>{badge(t, index)}</span>
           ))}
+          {project.stack.length > 6 && (
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-800 text-gray-300 border border-gray-700">
+              +{project.stack.length - 6} más
+            </span>
+          )}
         </div>
 
         {/* Decorative divider with dynamic colors */}
@@ -238,6 +250,14 @@ export default function ProjectCard({ project }) {
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
           </Link>
+        </div>
+
+        {/* Barra de progreso inferior - NUEVO */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-100 dark:bg-gray-800 overflow-hidden rounded-b-2xl">
+          <div 
+            className="h-full w-0 group-hover:w-full transition-all duration-1000 ease-out"
+            style={createGradientStyle(primaryColor, secondaryColor)}
+          ></div>
         </div>
 
         {/* Bottom decorative element with dynamic colors */}

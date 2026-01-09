@@ -3,7 +3,7 @@ export const PROJECTS = [
     id: "assembly",
     title: "Assembly Management – Módulos y Dashboard (Software Para La Empresa SIAUMEX)",
     year: 2025,
-    stack: ["Next.js", "React", "Tailwind CSS", "Node.js API Routes", "MS SQL Server", "Internet Info Services (IIS)", "SmarterASP.NET", "Importación de Excel", "JWT"],
+    stack: ["Next.js", "React", "Tailwind CSS", "Node.js API Routes", "MS SQL Server", "Despliegue en SmarterASP.NET", "Importación de Excel", "JWT", "Dark Mode"],
     category: "Freelance",
     repo: "https://github.com/Javi1771/productos_assembly", 
     site: "",            
@@ -15,14 +15,15 @@ export const PROJECTS = [
     colors: {
       primary: "#4F46E5",   
       secondary: "#aa12ff"  
-    }
+    },
+    type: "Web Application"
   },
   {
     id: "motores-jordan",
     title: "Motores Jordan – Landing + Catálogos (Página Web Para La Empresa Motores Jordan)",
     year: 2025,
     category: "Freelance",
-    stack: ["Next.js", "Tailwind", "WhatsApp", "Envios de Email"],
+    stack: ["Next.js", "Tailwind", "Envios de WhatsApp", "Envios de Email", "Despliegue en Vercel"],
     repo: "https://github.com/Javi1771/motoresjordan",
     site: "https://motoresjordanmx.com/",
     summary:
@@ -33,7 +34,8 @@ export const PROJECTS = [
     colors: {
       primary: "#b5181f",
       secondary: "#350609",
-    }
+    },
+    type: "Website"
   },
   {
     id: "pandora",
@@ -52,7 +54,8 @@ export const PROJECTS = [
     colors: {
       primary: "#1c4ce1",
       secondary: "#3fcfb5",
-    }
+    },
+    type: "Web Application"
   },
   {
     id: "cus-movil",
@@ -70,7 +73,8 @@ export const PROJECTS = [
     colors: {
       primary: "#045ea0",
       secondary: "#39b0f7",
-    }
+    },
+    type: "Mobile Application"
   },
   {
     id: "atencion-ciudadana",
@@ -87,7 +91,8 @@ export const PROJECTS = [
     colors: {
       primary: "#680691",
       secondary: "#43035d",
-    }
+    },
+    type: "Mobile Application"
   },
   {
     id: "finmaster",
@@ -105,7 +110,8 @@ export const PROJECTS = [
     colors: {
       primary: "#191e2a",
       secondary: "#d1d1d1"
-    }
+    },
+    type: "Mobile Application"
   },
   {
     id: "smart-led",
@@ -123,7 +129,8 @@ export const PROJECTS = [
     colors: {
       primary: "#3b07fa",
       secondary: "#9618ff"
-    }
+    },
+    type: "Mobile Application"
   },
   {
     id: "nimbus",
@@ -141,6 +148,7 @@ export const PROJECTS = [
     colors: {
       primary: "#b0b0b0",
       secondary: "#3404ef"
-    }
+    },
+    type: "Mobile Application"
   },
 ];
