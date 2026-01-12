@@ -3,7 +3,7 @@ export const PROJECTS = [
     id: "assembly",
     title: "Assembly Management – Módulos y Dashboard (Software Para La Empresa SIAUMEX)",
     year: 2025,
-    stack: ["Next.js", "React", "Tailwind CSS", "Node.js API Routes", "MS SQL Server", "Despliegue en SmarterASP.NET", "Importación de Excel", "JWT", "Dark Mode"],
+    stack: ["Next.js", "Tailwind CSS", "Node.js API Routes", "MS SQL Server", "Importación de Excel", "JWT", "Despliegue en SmarterASP.NET", "Dark Mode"],
     category: "Freelance",
     repo: "https://github.com/Javi1771/productos_assembly", 
     site: "",            
