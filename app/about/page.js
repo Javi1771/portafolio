@@ -294,33 +294,33 @@ export default function AboutPage() {
                   title: "Creatividad & Diseño",
                   desc: "Enfoque creativo en el diseño de sistemas, siempre buscando inspiración y mejorando la experiencia visual de cada interfaz que desarrollo.",
                   icon: "💡",
-                  gradient: "from-pink-500 to-rose-600",
-                  bubbleColor1: "#ec4899", 
-                  bubbleColor2: "#f472b6"  
+                  gradient: "from-blue-500 to-cyan-600",
+                  bubbleColor1: "#3b82f6", 
+                  bubbleColor2: "#60a5fa" 
                 },
                 {
                   title: "Comunicación Transparente",
                   desc: "Honesto con tiempos de entrega y proactivo al comunicar desafíos durante el desarrollo. Creo en mantener expectativas realistas.",
                   icon: "💬",
-                  gradient: "from-emerald-500 to-green-600",
-                  bubbleColor1: "#10b981", 
-                  bubbleColor2: "#34d399"  
+                  gradient: "from-gray-400 to-gray-600",
+                  bubbleColor1: "#4b5563", 
+                  bubbleColor2: "#6b7280"  
                 },
                 {
                   title: "Resolución de Problemas",
                   desc: "Capacidad para identificar obstáculos técnicos y encontrar soluciones efectivas, adaptándome a los requerimientos de cada proyecto.",
                   icon: "🔧",
-                  gradient: "from-orange-500 to-rose-600",
-                  bubbleColor1: "#f97316", 
-                  bubbleColor2: "#fb923c" 
+                  gradient: "from-amber-500 to-yellow-600",
+                  bubbleColor1: "#f59e0b", 
+                  bubbleColor2: "#fbbf24" 
                 },
                 {
                   title: "Gestión de Proyectos",
                   desc: "Experiencia planificando, ejecutando y entregando proyectos completos, desde la conceptualización hasta el despliegue en producción.",
                   icon: "📋",
-                  gradient: "from-blue-500 to-indigo-600",
-                  bubbleColor1: "#3b82f6", 
-                  bubbleColor2: "#60a5fa"  
+                  gradient: "from-emerald-500 to-teal-600",
+                  bubbleColor1: "#10b981", 
+                  bubbleColor2: "#34d399"   
                 },
                 {
                   title: "Adaptabilidad",
@@ -334,17 +334,17 @@ export default function AboutPage() {
                   title: "Atención al Detalle",
                   desc: "Meticuloso en la revisión de código y diseño, asegurando que cada aspecto del proyecto cumpla con los estándares de calidad más altos.",
                   icon: "🔍",
-                  gradient: "from-amber-500 to-yellow-600",
-                  bubbleColor1: "#f59e0b", 
-                  bubbleColor2: "#fbbf24"  
+                  gradient: "from-pink-500 to-purple-600",
+                  bubbleColor1: "#ec4899", 
+                  bubbleColor2: "#f472b6"  
                 },
                 {
                   title: "Gestión del Tiempo",
                   desc: "Organizado y eficiente, capaz de manejar múltiples tareas y cumplir con los plazos establecidos sin comprometer la calidad del trabajo.",
                   icon: "⏰",
-                  gradient: "from-gray-400 to-gray-600",
-                  bubbleColor1: "#4b5563", 
-                  bubbleColor2: "#6b7280" 
+                  gradient: "from-purple-500 to-pink-600",
+                  bubbleColor1: "#a855f7", 
+                  bubbleColor2: "#c084fc"  
                 }
               ].map((skill) => (
                 <div
