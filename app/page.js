@@ -18,20 +18,20 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden">
-      {/* Subtle Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]">
+      {/* Subtle Background Pattern - More visible in light mode */}
+      <div className="absolute inset-0 opacity-[0.08] dark:opacity-[0.05]">
         <div
           className="absolute inset-0
-                     bg-[radial-gradient(circle_at_2px_2px,theme(colors.indigo.300)_1px,transparent_1px)]
+                     bg-[radial-gradient(circle_at_2px_2px,theme(colors.indigo.400)_1px,transparent_1px)]
                      dark:bg-[radial-gradient(circle_at_2px_2px,theme(colors.indigo.200)_1px,transparent_1px)]
                      bg-[length:40px_40px]"
         />
       </div>
 
-      {/* Floating Orbs - Subtle */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-violet-200/20 to-purple-300/20 rounded-full blur-2xl animate-pulse motion-reduce:animate-none" />
-      <div className="absolute top-96 right-20 w-40 h-40 bg-gradient-to-br from-cyan-200/20 to-blue-300/20 rounded-full blur-2xl animate-pulse motion-reduce:animate-none" />
-      <div className="absolute bottom-40 left-1/4 w-28 h-28 bg-gradient-to-br from-emerald-200/20 to-green-300/20 rounded-full blur-2xl animate-pulse motion-reduce:animate-none" />
+      {/* Floating Orbs - More visible in light mode */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-violet-300/70 to-purple-400/70 dark:from-violet-200/20 dark:to-purple-300/20 rounded-full blur-2xl animate-pulse motion-reduce:animate-none" />
+      <div className="absolute top-96 right-20 w-40 h-40 bg-gradient-to-br from-cyan-300/70 to-blue-400/70 dark:from-cyan-200/20 dark:to-blue-300/20 rounded-full blur-2xl animate-pulse motion-reduce:animate-none" />
+      <div className="absolute bottom-40 left-1/4 w-28 h-28 bg-gradient-to-br from-emerald-300/70 to-green-400/70 dark:from-emerald-200/20 dark:to-green-300/20 rounded-full blur-2xl animate-pulse motion-reduce:animate-none" />
 
       {/* Hero Section - Enhanced */}
       <Section>

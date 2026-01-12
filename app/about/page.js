@@ -198,26 +198,310 @@ export default function AboutPage() {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { name: "Frontend", items: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Responsive Design"], color: "cyan" },
-                { name: "Mobile", items: ["Flutter", "Dart", "Firebase", "Push Notifications", "Google Maps Plattform"], color: "blue" },
-                { name: "Backend", items: ["Node.js", "SQL Server", "REST APIs", "SOAP", "Express.js"], color: "violet" },
-                { name: "Otros", items: ["IoT (ESP8266)", "Git (GitHub)", "Vercel", "Google Cloud Básico", "CI/CD"], color: "emerald" }
+                { 
+                  name: "Frontend", 
+                  items: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Responsive Design"], 
+                  color: "cyan",
+                  hex1: "#06b6d4", // cyan-500
+                  hex2: "#22d3ee"  // cyan-400
+                },
+                { 
+                  name: "Mobile", 
+                  items: ["Flutter", "Dart", "Firebase", "Push Notifications", "Google Maps Plattform"], 
+                  color: "blue",
+                  hex1: "#3b82f6", // blue-500
+                  hex2: "#60a5fa"  // blue-400
+                },
+                { 
+                  name: "Backend", 
+                  items: ["Node.js", "SQL Server", "REST APIs", "SOAP", "Express.js"], 
+                  color: "violet",
+                  hex1: "#8b5cf6", // violet-500
+                  hex2: "#a78bfa"  // violet-400
+                },
+                { 
+                  name: "Otros", 
+                  items: ["Git (GitHub)", "Vercel", "Manejo de IA", "CI/CD", "IoT (ESP8266)"], 
+                  color: "emerald",
+                  hex1: "#10b981", // emerald-500
+                  hex2: "#34d399"  // emerald-400
+                }
               ].map((category) => (
                 <div
                   key={category.name}
-                  className="p-6 rounded-xl bg-white/70 dark:bg-gray-800/70 border border-gray-200/60 dark:border-gray-700/60 shadow hover:shadow-lg transition"
+                  className="relative overflow-hidden p-6 rounded-xl bg-white/70 dark:bg-gray-800/70 border border-gray-200/60 dark:border-gray-700/60 shadow transition"
                 >
-                  <h4 className={`text-lg font-bold mb-4 text-${category.color}-600 dark:text-${category.color}-400`}>
-                    {category.name}
-                  </h4>
-                  <ul className="space-y-2">
-                    {category.items.map((item) => (
-                      <li key={item} className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
-                        <div className={`w-1.5 h-1.5 rounded-full bg-${category.color}-500`}></div>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Burbujas decorativas con estilos inline */}
+                  <div 
+                    className="absolute -top-4 -right-4 w-20 h-20 rounded-full blur-2xl"
+                    style={{ 
+                      backgroundColor: category.hex1,
+                      opacity: 0.25
+                    }}
+                  ></div>
+                  <div 
+                    className="absolute -bottom-4 -left-4 w-16 h-16 rounded-full blur-xl"
+                    style={{ 
+                      backgroundColor: category.hex2,
+                      opacity: 0.25
+                    }}
+                  ></div>
+
+                  <div className="relative z-10">
+                    <h4 className={`text-lg font-bold mb-4 text-${category.color}-600 dark:text-${category.color}-400`}>
+                      {category.name}
+                    </h4>
+                    <ul className="space-y-2">
+                      {category.items.map((item) => (
+                        <li key={item} className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                          <div className={`w-1.5 h-1.5 rounded-full bg-${category.color}-500`}></div>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Habilidades blandas */}
+          <div className="space-y-8">
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-8 bg-gradient-to-b from-violet-500 to-purple-600 rounded-full"></div>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Habilidades Interpersonales</h3>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Liderazgo & Colaboración",
+                  desc: "Experiencia liderando equipos de desarrollo y gestionando practicantes. He trabajado colaborativamente en proyectos municipales coordinando equipos de hasta 3 personas.",
+                  icon: "👥",
+                  gradient: "from-violet-500 to-purple-600",
+                  bubbleColor1: "#8b5cf6", 
+                  bubbleColor2: "#a78bfa"  
+                },
+                {
+                  title: "Aprendizaje Continuo",
+                  desc: "Constantemente integrando nuevas tecnologías a mi stack. Me mantengo actualizado con las últimas tendencias en desarrollo web y móvil.",
+                  icon: "📚",
+                  gradient: "from-rose-500 to-orange-600",
+                  bubbleColor1: "#f43f5e", 
+                  bubbleColor2: "#fb7185" 
+                },
+                {
+                  title: "Creatividad & Diseño",
+                  desc: "Enfoque creativo en el diseño de sistemas, siempre buscando inspiración y mejorando la experiencia visual de cada interfaz que desarrollo.",
+                  icon: "💡",
+                  gradient: "from-pink-500 to-rose-600",
+                  bubbleColor1: "#ec4899", 
+                  bubbleColor2: "#f472b6"  
+                },
+                {
+                  title: "Comunicación Transparente",
+                  desc: "Honesto con tiempos de entrega y proactivo al comunicar desafíos durante el desarrollo. Creo en mantener expectativas realistas.",
+                  icon: "💬",
+                  gradient: "from-emerald-500 to-green-600",
+                  bubbleColor1: "#10b981", 
+                  bubbleColor2: "#34d399"  
+                },
+                {
+                  title: "Resolución de Problemas",
+                  desc: "Capacidad para identificar obstáculos técnicos y encontrar soluciones efectivas, adaptándome a los requerimientos de cada proyecto.",
+                  icon: "🔧",
+                  gradient: "from-orange-500 to-rose-600",
+                  bubbleColor1: "#f97316", 
+                  bubbleColor2: "#fb923c" 
+                },
+                {
+                  title: "Gestión de Proyectos",
+                  desc: "Experiencia planificando, ejecutando y entregando proyectos completos, desde la conceptualización hasta el despliegue en producción.",
+                  icon: "📋",
+                  gradient: "from-blue-500 to-indigo-600",
+                  bubbleColor1: "#3b82f6", 
+                  bubbleColor2: "#60a5fa"  
+                },
+                {
+                  title: "Adaptabilidad",
+                  desc: "Capaz de ajustarme rápidamente a nuevas tecnologías, equipos y metodologías de trabajo, manteniendo la productividad en entornos cambiantes.",
+                  icon: "🌐",
+                  gradient: "from-cyan-500 to-blue-600",
+                  bubbleColor1: "#06b6d4", 
+                  bubbleColor2: "#22d3ee" 
+                },
+                {
+                  title: "Atención al Detalle",
+                  desc: "Meticuloso en la revisión de código y diseño, asegurando que cada aspecto del proyecto cumpla con los estándares de calidad más altos.",
+                  icon: "🔍",
+                  gradient: "from-amber-500 to-yellow-600",
+                  bubbleColor1: "#f59e0b", 
+                  bubbleColor2: "#fbbf24"  
+                },
+                {
+                  title: "Gestión del Tiempo",
+                  desc: "Organizado y eficiente, capaz de manejar múltiples tareas y cumplir con los plazos establecidos sin comprometer la calidad del trabajo.",
+                  icon: "⏰",
+                  gradient: "from-gray-400 to-gray-600",
+                  bubbleColor1: "#4b5563", 
+                  bubbleColor2: "#6b7280" 
+                }
+              ].map((skill) => (
+                <div
+                  key={skill.title}
+                  className="group relative overflow-hidden p-6 rounded-xl bg-white/70 dark:bg-gray-800/70 border border-gray-200/60 dark:border-gray-700/60 shadow hover:shadow-lg hover:scale-105 transition-all duration-300"
+                >
+                  {/* Gradiente animado de fondo */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${skill.gradient} opacity-0 group-hover:opacity-10 dark:group-hover:opacity-10 transition-opacity duration-500`}></div>
+                  
+                  {/* Burbujas decorativas con estilos inline */}
+                  <div 
+                    className="absolute top-0 right-0 w-24 h-24 rounded-full blur-2xl transform translate-x-8 -translate-y-8"
+                    style={{ 
+                      backgroundColor: skill.bubbleColor1,
+                      opacity: 0.3
+                    }}
+                  ></div>
+                  <div 
+                    className="absolute bottom-0 left-0 w-20 h-20 rounded-full blur-xl transform -translate-x-6 translate-y-6"
+                    style={{ 
+                      backgroundColor: skill.bubbleColor2,
+                      opacity: 0.3
+                    }}
+                  ></div>
+
+                  <div className="relative z-10">
+                    <div className={`text-3xl mb-4 bg-gradient-to-r ${skill.gradient} bg-clip-text text-transparent`}>
+                      {skill.icon}
+                    </div>
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+                      {skill.title}
+                    </h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                      {skill.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Más allá del código */}
+          <div className="space-y-8">
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-8 bg-gradient-to-b from-pink-500 to-rose-600 rounded-full"></div>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Más allá del código</h3>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Gaming",
+                  desc: "Jugador casual de Fortnite y Minecraft. Los videojuegos me enseñan estrategia, trabajo en equipo y resolución creativa de problemas.",
+                  icon: "🎮",
+                  gradient: "from-purple-500 to-pink-600",
+                  bubbleColor1: "#a855f7", 
+                  bubbleColor2: "#c084fc"  
+                },
+                {
+                  title: "Cubos Rubik",
+                  desc: "Coleccionista y solucionador de cubos Rubik. Me fascina la lógica espacial y los patrones matemáticos detrás de cada giro.",
+                  icon: "🧩",
+                  gradient: "from-rose-500 to-orange-600",
+                  bubbleColor1: "#f43f5e", 
+                  bubbleColor2: "#fb7185"  
+                },
+                {
+                  title: "Anime & Comics",
+                  desc: "Fan del anime y los comics. Aprecio las narrativas complejas y el arte visual que estas formas de entretenimiento ofrecen.",
+                  icon: "📖",
+                  gradient: "from-blue-500 to-cyan-600",
+                  bubbleColor1: "#3b82f6", 
+                  bubbleColor2: "#60a5fa"  
+                },
+                {
+                  title: "Estilo Personal",
+                  desc: "Me gusta vestir formal, aprecio la elegancia en el día a día. Creo que la presentación personal habla de profesionalismo.",
+                  icon: "👔",
+                  gradient: "from-gray-400 to-gray-600",
+                  bubbleColor1: "#4b5563", 
+                  bubbleColor2: "#6b7280"  
+                },
+                {
+                  title: "Perfumería & Etiqueta",
+                  desc: "Interesado en perfumería y normas de etiqueta. Valoro los detalles y la forma en que nos presentamos ante el mundo.",
+                  icon: "✨",
+                  gradient: "from-amber-500 to-yellow-600",
+                  bubbleColor1: "#f59e0b", 
+                  bubbleColor2: "#fbbf24"  
+                },
+                {
+                  title: "Cocina",
+                  desc: "Disfruto cocinar ocasionalmente. La cocina es como programar: seguir recetas (algoritmos) y experimentar con nuevas combinaciones.",
+                  icon: "🍳",
+                  gradient: "from-emerald-500 to-teal-600",
+                  bubbleColor1: "#10b981", 
+                  bubbleColor2: "#34d399"  
+                },
+                {
+                  title: "Tecnología & Gadgets",
+                  desc: "Apasionado por la tecnología y los gadgets. Me encanta explorar nuevos dispositivos y entender cómo pueden mejorar nuestra vida diaria.",
+                  icon: "📱",
+                  gradient: "from-cyan-500 to-blue-600",
+                  bubbleColor1: "#06b6d4", 
+                  bubbleColor2: "#22d3ee" 
+                },
+                {
+                  title: "Música",
+                  desc: "Amante de la música, me gusta disfrutar de bastantes generos y trato de expandir mi biblioteca constantemente. La música me inspira y me ayuda a concentrarme mientras trabajo.",
+                  icon: "🎵",
+                  gradient: "from-pink-500 to-purple-600",
+                  bubbleColor1: "#ec4899", 
+                  bubbleColor2: "#f472b6"  
+                },
+                {
+                  title: "Limpieza & Organización",
+                  desc: "Me gusta mantener mi espacio limpio y organizado. Un entorno ordenado me ayuda a pensar con claridad y ser más productivo.",
+                  icon: "🧼",
+                  gradient: "from-purple-500 to-pink-600",
+                  bubbleColor1: "#a855f7", 
+                  bubbleColor2: "#c084fc"  
+                }
+              ].map((hobby) => (
+                <div
+                  key={hobby.title}
+                  className="group relative overflow-hidden p-6 rounded-xl bg-white/70 dark:bg-gray-800/70 border border-gray-200/60 dark:border-gray-700/60 shadow hover:shadow-lg hover:scale-105 transition-all duration-300"
+                >
+                  {/* Gradiente animado de fondo */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${hobby.gradient} opacity-0 group-hover:opacity-10 dark:group-hover:opacity-10 transition-opacity duration-500`}></div>
+                  
+                  {/* Burbujas decorativas con estilos inline */}
+                  <div 
+                    className="absolute top-0 right-0 w-24 h-24 rounded-full blur-2xl transform translate-x-8 -translate-y-8"
+                    style={{ 
+                      backgroundColor: hobby.bubbleColor1,
+                      opacity: 0.3
+                    }}
+                  ></div>
+                  <div 
+                    className="absolute bottom-0 left-0 w-20 h-20 rounded-full blur-xl transform -translate-x-6 translate-y-6"
+                    style={{ 
+                      backgroundColor: hobby.bubbleColor2,
+                      opacity: 0.3
+                    }}
+                  ></div>
+
+                  <div className="relative z-10">
+                    <div className={`text-3xl mb-4 bg-gradient-to-r ${hobby.gradient} bg-clip-text text-transparent`}>
+                      {hobby.icon}
+                    </div>
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+                      {hobby.title}
+                    </h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                      {hobby.desc}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
