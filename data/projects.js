@@ -1,7 +1,7 @@
 export const PROJECTS = [
   {
     id: "assembly",
-    title: "Assembly Management – Módulos y Dashboard (Software Para La Empresa SIAUMEX)",
+    title: "Assembly Management (Software Para La Empresa SIAUMEX)",
     year: 2025,
     stack: ["Next.js", "Tailwind CSS", "Node.js API Routes", "MS SQL Server", "Importación de Excel", "JWT", "Despliegue en SmarterASP.NET", "Dark Mode"],
     category: "Freelance",
@@ -20,7 +20,7 @@ export const PROJECTS = [
   },
   {
     id: "motores-jordan",
-    title: "Motores Jordan – Landing + Catálogos (Página Web Para La Empresa Motores Jordan)",
+    title: "Motores Jordan (Página Web Para La Empresa Motores Jordan)",
     year: 2025,
     category: "Freelance",
     stack: ["Next.js", "Tailwind", "Envios de WhatsApp", "Envios de Email", "Despliegue en Vercel"],
@@ -47,7 +47,7 @@ export const PROJECTS = [
     site: "",
     summary:
       "La plataforma Pandora – Servicio Médico Municipal impacta al agilizar y transparentar la atención de salud del Ayuntamiento: unifica en una sola web el padrón de beneficiarios, expediente clínico, consultas, recetas, órdenes de laboratorio, incapacidades, resurtimientos y credencialización con captura de foto y firma. Todo queda trazable y disponible para el equipo médico, capturistas y Recursos Humanos.\n"+
-      "Esto reduce tiempos de espera y filas, elimina papelería duplicada y oficios manuales, y ofrece visibilidad en tiempo real del estado de atenciones, estudios y medicamentos. Pandora mantiene historia clínica única por paciente y soporta la codificación CIE-10/CIE-11 para diagnósticos y notas más precisas, generando además comprobantes y documentos en PDF cuando se requieren.\n"+
+      "Esto reduce tiempos de espera y filas, elimina papelería duplicada y oficios manuales, y ofrece visibilidad en tiempo real del estado de atenciones, estudios y medicamentos. Pandora mantiene diagnósticos y notas más precisas, generando además comprobantes y documentos en PDF cuando se requieren.\n"+
       "Para la administración, Pandora centraliza datos, evita errores de captura (con integración al padrón de personal), y produce indicadores operativos para optimizar recursos y rendir cuentas. Para las y los usuarios, brinda una experiencia simple, accesible y confiable, con información clara de su atención y documentos digitalizados, fortaleciendo la calidad del servicio médico municipal.",
     image:
       "/Banners/pandora.png",
@@ -99,7 +99,7 @@ export const PROJECTS = [
     title: "FinMaster – Gestión de Tarjetas de Crédito",
     year: 2024,
     category: "Personal",
-    stack: ["Flutter", "Firebase", "Push Notifications", "Google Sign-In", "Google Sign-Up", "Charts"],
+    stack: ["Flutter", "Firebase", "Push Notifications", "Google Sign-In", "Google Sign-Up", "Gráficas"],
     repo: "https://github.com/Javi1771/finmaster",
     site: "",
     summary:

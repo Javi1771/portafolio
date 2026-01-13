@@ -618,7 +618,7 @@ export default function ProjectDetail() {
           <div className="space-y-6 md:space-y-10 order-1 lg:order-2">
             <div className="space-y-4 md:space-y-8">
               <div className="relative">
-                <h1 className="text-2xl xs:text-3xl md:text-4xl lg:text-6xl font-black bg-gradient-to-r from-slate-900 via-violet-800 to-slate-900 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent leading-tight">
+                <h1 className="text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-r from-slate-900 via-violet-800 to-slate-900 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent leading-tight">
                   {project.title}
                 </h1>
                 <div className="absolute -top-1 -right-1 md:-top-3 md:-right-3 w-2 h-2 md:w-4 md:h-4 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-70 animate-bounce delay-500"></div>

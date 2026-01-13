@@ -13,7 +13,7 @@ export default function ProjectsPage() {
     type: "Todos los tipos",
   });
 
-  // Lógica de filtrado dual
+  //* Lógica de filtrado dual
   const filtered = PROJECTS.filter((p) => {
     const matchCategory =
       filters.category === "Todos" || p.category === filters.category;
