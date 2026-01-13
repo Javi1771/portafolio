@@ -117,7 +117,7 @@ export const PROJECTS = [
     id: "nimbus",
     title: "Nimbus - Gestión de Viajes (App Para La Empresa SINE)",
     year: 2023,
-    stack: ["Flutter", "API", "SOAP", "Geolocalización", "Google Maps", "Google Places", "Push Notifications"],
+    stack: ["Flutter", "API", "SOAP", "Geolocalización", "Google Maps", "Google Places", "Push Notifications", "Despliegue en Play Store"],
     category: "Empresarial Estadias",
     repo: "https://github.com/JavierUTSJR/sine_nimbus",
     site: "",
