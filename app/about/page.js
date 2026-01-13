@@ -166,7 +166,7 @@ export default function AboutPage() {
                   {
                     title: "Métricas Claras",
                     desc: "Datos concretos que guían decisiones y demuestran resultados medibles",
-                    icon: "📊",
+                    icon: "🛠️",
                     color: "from-cyan-500 to-blue-600"
                   }
                 ].map((item) => (
@@ -317,7 +317,7 @@ export default function AboutPage() {
                 {
                   title: "Gestión de Proyectos",
                   desc: "Experiencia planificando, ejecutando y entregando proyectos completos, desde la conceptualización hasta el despliegue en producción.",
-                  icon: "📋",
+                  icon: "📒",
                   gradient: "from-emerald-500 to-teal-600",
                   bubbleColor1: "#10b981", 
                   bubbleColor2: "#34d399"   
@@ -345,6 +345,30 @@ export default function AboutPage() {
                   gradient: "from-purple-500 to-pink-600",
                   bubbleColor1: "#a855f7", 
                   bubbleColor2: "#c084fc"  
+                },
+                {
+                  title: "Empatía",
+                  desc: "Capacidad para entender las necesidades y perspectivas de los usuarios y compañeros de equipo, fomentando un ambiente de trabajo colaborativo.",
+                  icon: "🤝",
+                  gradient: "from-red-500 to-orange-600", 
+                  bubbleColor1: "#e20b0b", 
+                  bubbleColor2: "#d33434"
+                },
+                { 
+                  title: "Pensamiento Crítico", 
+                  desc: "Analizo problemas complejos y tomo decisiones informadas basadas en datos y evidencia, buscando siempre la mejor solución posible.",
+                  icon: "🧠",
+                  gradient: "from-lime-500 to-emerald-600", 
+                  bubbleColor1: "#3aca38", 
+                  bubbleColor2: "#6ffa60"
+                },
+                {
+                  title: "Excelencia & Presencia",
+                  desc: "Soy una persona con altos estándares de calidad, que valora la excelencia. Me esfuerzo por destacar en lo que hago.",
+                  icon: "🏆",
+                  gradient: "from-indigo-500 to-blue-600",
+                  bubbleColor1: "#6366f1", 
+                  bubbleColor2: "#818cf8"
                 }
               ].map((skill) => (
                 <div
@@ -422,7 +446,7 @@ export default function AboutPage() {
                 {
                   title: "Estilo Personal",
                   desc: "Me gusta vestir formal, aprecio la elegancia en el día a día. Creo que la presentación personal habla de profesionalismo.",
-                  icon: "👔",
+                  icon: "🥼",
                   gradient: "from-gray-400 to-gray-600",
                   bubbleColor1: "#4b5563", 
                   bubbleColor2: "#6b7280"  
@@ -446,7 +470,7 @@ export default function AboutPage() {
                 {
                   title: "Tecnología & Gadgets",
                   desc: "Apasionado por la tecnología y los gadgets. Me encanta explorar nuevos dispositivos y entender cómo pueden mejorar nuestra vida diaria.",
-                  icon: "📱",
+                  icon: "📲",
                   gradient: "from-cyan-500 to-blue-600",
                   bubbleColor1: "#06b6d4", 
                   bubbleColor2: "#22d3ee" 
@@ -462,10 +486,34 @@ export default function AboutPage() {
                 {
                   title: "Limpieza & Organización",
                   desc: "Me gusta mantener mi espacio limpio y organizado. Un entorno ordenado me ayuda a pensar con claridad y ser más productivo.",
-                  icon: "🧼",
+                  icon: "🫧",
                   gradient: "from-purple-500 to-pink-600",
                   bubbleColor1: "#a855f7", 
                   bubbleColor2: "#c084fc"  
+                },
+                { 
+                  title: "Electrónica & Solución", 
+                  desc: "Me gusta reparar o intentar solucionar fallas en dispositivos electrónicos. Disfruto el desafío de entender cómo funcionan las cosas y encontrar soluciones prácticas con lógica y paciencia.", 
+                  icon: "🔧", 
+                  gradient: "from-red-500 to-orange-600", 
+                  bubbleColor1: "#e20b0b", 
+                  bubbleColor2: "#d33434"
+                },
+                { 
+                  title: "Escritura Visual", 
+                  desc: "Valoro una escritura clara y estética, tanto digital como en físico. Uso formatos, colores y estructuras visuales para transmitir ideas con claridad y hacer que los mensajes sean fáciles de entender y atractivos de leer.", 
+                  icon: "✍️", 
+                  gradient: "from-lime-500 to-emerald-600", 
+                  bubbleColor1: "#3aca38", 
+                  bubbleColor2: "#6ffa60"
+                },
+                {
+                  title: "Películas & Series",
+                  desc: "Disfruto ver películas y series en mi tiempo libre. Me gusta analizar las tramas, personajes y la dirección cinematográfica.",
+                  icon: "🎬",
+                  gradient: "from-indigo-500 to-blue-600",
+                  bubbleColor1: "#6366f1", 
+                  bubbleColor2: "#818cf8"
                 }
               ].map((hobby) => (
                 <div
