@@ -23,13 +23,13 @@ export const PROJECTS = [
     title: "Motores Jordan (Página Web Para La Empresa Motores Jordan)",
     year: 2025,
     category: "Freelance",
-    stack: ["Next.js", "Tailwind", "Envios de WhatsApp", "Envios de Email", "Despliegue en Vercel"],
+    stack: ["Next.js", "Tailwind CSS", "Envios de WhatsApp", "Envios de Email", "Despliegue en Vercel"],
     repo: "https://github.com/Javi1771/motoresjordan",
     site: "https://motoresjordanmx.com/",
     summary:
-      "La landing de Motores Jordan impacta al captar y convertir mejor la demanda industrial: centraliza marcas y líneas de producto (motores, bombas y reductores), catálogos PDF descargables por proveedor, ubicación de sucursales y contacto directo por WhatsApp, todo en una experiencia rápida, responsiva y clara.\n"+
-      "Esto reduce tiempos de cotización, disminuye llamadas y correos de ida y vuelta, y mejora la certeza del cliente al ofrecer especificaciones y opciones a un clic, con asesoría inmediata desde el canal que ya utiliza (WhatsApp).\n"+
-      "Para la empresa, unifica la captación de prospectos, habilita métricas (Analytics/Ads) y fortalece el SEO local, simplificando además la actualización de catálogos. Para las y los clientes, entrega una experiencia simple, accesible y confiable: encuentran la sucursal más cercana, consultan catálogos oficiales y solicitan asesoría técnica en segundos—sin fricción y sin pagos en línea.",
+      "La landing de Motores Jordan impacta al captar y convertir mejor la demanda industrial: centraliza marcas y líneas de producto (motores, bombas y reductores), ubicación de sucursales y contacto directo por WhatsApp, todo en una experiencia rápida, responsiva y clara.\n"+
+      "Esto reduce tiempos de cotización, disminuye llamadas y correos de ida y vuelta, y mejora la certeza del cliente al ofrecer especificaciones y opciones a un clic, con asesoría inmediata desde el canal que ya utiliza WhatsApp.\n"+
+      "Para la empresa, unifica la captación de prospectos, habilita métricas (Analytics/Ads) y fortalece el SEO local. Para las y los clientes, entrega una experiencia simple, accesible y confiable: encuentran la sucursal más cercana y solicitan asesoría técnica en segundos sin fricción.",
     image: "/Banners/motores_jordan.png",
     colors: {
       primary: "#b5181f",
@@ -42,7 +42,7 @@ export const PROJECTS = [
     title: "Pandora – Servicio Médico Municipal",
     year: 2025,
     category: "Municipio",
-    stack: ["Next.js", "SQL Server", "Tailwind", "Escaner Código de Barras", "Digitalización de Documentos", "SOAP Web Service", "Escaneo Facial", "Crear PDFs", "Firma Digital", "Registro en Tiempo Real", "Exportación a Excel", "Foto Digital", "Credencialización"],
+    stack: ["Next.js", "SQL Server", "Tailwind CSS", "Escaner Código de Barras", "Digitalización de Documentos", "SOAP Web Service", "Escaneo Facial", "Crear PDFs", "Firma Digital", "Registro en Tiempo Real", "Exportación a Excel", "Foto Digital", "Credencialización", "Node.js API Routes", "Despliegue en IIS"],
     repo: "https://github.com/Javi1771/Pandora-Pub",
     site: "",
     summary:
@@ -137,7 +137,7 @@ export const PROJECTS = [
     title: "Smart LED – Control y Monitoreo IoT",
     year: 2023,
     category: "Personal",
-    stack: ["Flutter", "ESP8266", "Firebase", "WS2812B", "DHT11", "Push Notifications", "IoT", "Wi-Fi", "Bluetooth"],
+    stack: ["Flutter", "Arduino IDE", "Firebase", "WS2812B", "DHT11", "Push Notifications", "IoT", "Wi-Fi", "Bluetooth", "ESP8266"],
     repo: "https://github.com/JavierUTSJR/smart_led",
     site: "",
     summary:
