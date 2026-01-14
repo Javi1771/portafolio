@@ -474,7 +474,7 @@ export default function ProjectDetail() {
                   </span>
                 </div>
 
-                <div className="absolute top-2 md:top-4 right-10 md:right-16">
+                <div className="absolute top-2 md:top-4 right-2 md:right-4">
                   <span className="px-2 py-1 md:px-3 md:py-1.5 bg-gradient-to-r from-black/70 to-black/60 backdrop-blur-md text-white dark:text-slate-200 text-xs font-bold rounded-full border border-slate-200/50 dark:border-slate-600/50 shadow-lg">
                     {project.year}
                   </span>
