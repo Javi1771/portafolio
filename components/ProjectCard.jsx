@@ -104,7 +104,7 @@ const ProjectCard = memo(({ project }) => {
         <div className="flex flex-wrap items-center gap-2">
           {project.stack.slice(0, 6).map((t, index) => badge(t, index))}
           {project.stack.length > 6 && (
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700">
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-400 dark:border-gray-700">
               +{project.stack.length - 6}
             </span>
           )}
