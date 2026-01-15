@@ -3,7 +3,7 @@ export const PROJECTS = [
     id: "assembly",
     title: "Assembly Management (Software Para La Empresa SIAUMEX)",
     year: 2025,
-    stack: ["Next.js", "Tailwind CSS", "Node.js API Routes", "MS SQL Server", "Importación de Excel", "JWT", "Despliegue en SmarterASP.NET", "Dark Mode"],
+    stack: ["Next.js", "Tailwind CSS", "Node.js API Routes", "MS SQL Server", "Importación de Excel", "JWT", "Despliegue en SmarterASP.NET", "Dark Mode", "Cifrado de Contraseñas con bcrypt"],
     category: "Freelance",
     repo: "https://github.com/Javi1771/productos_assembly", 
     site: "",            
@@ -42,11 +42,11 @@ export const PROJECTS = [
     title: "Pandora – Servicio Médico Municipal",
     year: 2025,
     category: "Municipio",
-    stack: ["Next.js", "SQL Server", "Tailwind CSS", "Escaner Código de Barras", "Digitalización de Documentos", "SOAP Web Service", "Escaneo Facial", "Crear PDFs", "Firma Digital", "Registro en Tiempo Real", "Exportación a Excel", "Foto Digital", "Credencialización", "Node.js API Routes", "Despliegue en IIS"],
+    stack: ["Next.js", "SQL Server", "Tailwind CSS", "Escaner Código de Barras", "Digitalización de Documentos", "SOAP Web Service", "Escaneo Facial", "Crear PDFs", "Firma Digital", "Registro en Tiempo Real", "Exportación a Excel", "Foto Digital", "Cifrado de Contraseñas con bcrypt", "Credencialización", "Node.js API Routes", "Despliegue en IIS"],
     repo: "https://github.com/Javi1771/Pandora-Pub",
     site: "",
     summary:
-      "La plataforma Pandora – Servicio Médico Municipal impacta al agilizar y transparentar la atención de salud del Ayuntamiento: unifica en una sola web el padrón de beneficiarios, expediente clínico, consultas, recetas, órdenes de laboratorio, incapacidades, resurtimientos y credencialización con captura de foto y firma. Todo queda trazable y disponible para el equipo médico, capturistas y Recursos Humanos.\n"+
+      "La plataforma Pandora – Servicio Médico Municipal de San Juan del Río impacta al agilizar y transparentar la atención de salud del Ayuntamiento: unifica en una sola web el padrón de beneficiarios, expediente clínico, consultas, recetas, órdenes de laboratorio, incapacidades, resurtimientos y credencialización con captura de foto y firma. Todo queda trazable y disponible para el equipo médico, capturistas y Recursos Humanos.\n"+
       "Esto reduce tiempos de espera y filas, elimina papelería duplicada y oficios manuales, y ofrece visibilidad en tiempo real del estado de atenciones, estudios y medicamentos. Pandora mantiene diagnósticos y notas más precisas, generando además comprobantes y documentos en PDF cuando se requieren.\n"+
       "Para la administración, Pandora centraliza datos, evita errores de captura (con integración al padrón de personal), y produce indicadores operativos para optimizar recursos y rendir cuentas. Para las y los usuarios, brinda una experiencia simple, accesible y confiable, con información clara de su atención y documentos digitalizados, fortaleciendo la calidad del servicio médico municipal.",
     image:
@@ -85,7 +85,7 @@ export const PROJECTS = [
     repo: "https://github.com/Javi1771/atencion-ciudadana-pub",
     site: "",
     summary:
-      "Con esta app los trabajadores comunitarios del municipio pueden tomar incidencias y solicitudes directamente en colonias mediante un flujo guiado por voz, offline-first con sincronización posterior: registra la persona afectada, descripción y secretaría responsable, generando evidencia trazable y priorizable. \n"+
+      "Con esta app los trabajadores comunitarios del municipio de San Juan del Río pueden tomar incidencias y solicitudes directamente en colonias mediante un flujo guiado por voz, offline-first con sincronización posterior: registra la persona afectada, descripción y secretaría responsable, generando evidencia trazable y priorizable. \n"+
       "Con ello se acortan tiempos de respuesta, se reduce el papeleo y las visitas a ventanilla, se amplía la cobertura en zonas con conectividad limitada y se habilitan indicadores por colonia, tipo de incidencia y tiempos de resolución, fortaleciendo la planeación operativa, la transparencia y la rendición de cuentas.",
     image: "/Banners/atencion_ciudadana.png",
     colors: {

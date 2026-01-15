@@ -11,7 +11,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata = {
   title: "Javier – Portafolio",
-  description: "Portafolio de Javier López: web, móvil.",
+  description: "Portafolio de Javier López: Ingeniero Desarrollador Full-Stack y Móvil",
   //* Favicons / PWA / Apple
   icons: {
     icon: [
