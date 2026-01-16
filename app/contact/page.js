@@ -389,6 +389,8 @@ export default function ContactPage() {
                       "Apps Móviles",
                       "APIs",
                       "Consultoría",
+                      "UI/UX",
+                      "Bases de Datos",
                     ].map((specialty, index) => (
                       <span
                         key={specialty}
