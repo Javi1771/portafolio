@@ -110,7 +110,7 @@ export default function ContactPage() {
                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-br from-emerald-400 to-green-500 rounded-full animate-pulse"></div>
               </div>
 
-              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4">
+              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
                 Disponible para proyectos freelance y contrataciones. Desde aplicaciones web hasta soluciones móviles.
               </p>
             </div>
@@ -230,7 +230,7 @@ export default function ContactPage() {
 
               {/* LinkedIn - Nueva sección */}
               <a
-                href={LINKEDIN}
+                href={LINKEDIN.startsWith('http') ? LINKEDIN : `https://${LINKEDIN}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative block p-6 bg-white/80 dark:bg-gray-800/60 border border-gray-300/50 dark:border-gray-600/50 text-gray-700 dark:text-gray-300 font-semibold rounded-2xl hover:border-blue-400/50 dark:hover:border-blue-500/50 hover:bg-blue-50/80 dark:hover:bg-blue-950/20 hover:text-blue-700 dark:hover:text-blue-300 transition-all duration-500 hover:scale-105 hover:-translate-y-2 backdrop-blur-sm shadow-lg hover:shadow-xl overflow-hidden"
@@ -389,8 +389,6 @@ export default function ContactPage() {
                       "Apps Móviles",
                       "APIs",
                       "Consultoría",
-                      "UI/UX",
-                      "Bases de Datos",
                     ].map((specialty, index) => (
                       <span
                         key={specialty}
