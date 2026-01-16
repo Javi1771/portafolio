@@ -3,7 +3,6 @@
 "use client";
 import Section from "@/components/Section";
 import { PROJECTS } from "@/data/projects";
-import { EMAIL, WHATSAPP, GITHUB_ACCOUNTS } from "@/data/links";
 import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
@@ -180,7 +179,7 @@ export default function HomePage() {
               title: "Desarrollo Web",
               description: "Aplicaciones web modernas con Next.js, React y tecnologías de vanguardia.",
               technologies: ["Next.js", "React", "TypeScript"],
-              gradient: "from-violet-500 to-purple-600",
+              gradient: "from-fuchsia-700 to-purple-600",
               icon: "🌐",
             },
             {
