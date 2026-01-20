@@ -6,6 +6,7 @@ import Section from "@/components/Section";
 import SkillCard from "@/components/SkillCard";
 import HobbyCard from "@/components/HobbyCard";
 import { useMemo } from "react";
+import Experience from "@/components/Experience";
 
 export default function AboutPage() {
   //* Memoizar las habilidades interpersonales para evitar recrearlas en cada render
@@ -391,6 +392,8 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+
+          <Experience />
 
           {/* Habilidades técnicas */}
           <div className="space-y-8">

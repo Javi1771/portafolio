@@ -66,7 +66,7 @@ export default function HomePage() {
                 Tecnologías Principales
               </h3>
               <div className="flex flex-wrap gap-3">
-                {["Next.js", "Flutter", "SQL Server", "Firebase", "Firestore", "Tailwind CSS", "Google Maps Plattform", "Cloude AI", "Chat GPT", "SQLite", "GitHub", "Vercel", "Node.js"].map(
+                {["Next.js", "Flutter", "SQL Server", "Firebase", "Firestore", "Tailwind CSS", "Google Maps Plattform", "Cloude AI", "Chat GPT", "SQLite", "GitHub", "Vercel", "Node.js", "PostgreSQL"].map(
                   (tech, index) => (
                     <span
                       key={tech}
@@ -219,7 +219,7 @@ export default function HomePage() {
                 {service.technologies.map((tech, techIndex) => (
                   <span
                     key={tech}
-                    className={`px-3 py-1 bg-gradient-to-r ${service.gradient} bg-opacity-10 text-black dark:text-gray-300 text-xs font-medium rounded-full border border-current border-opacity-20 hover:border-opacity-40 transition-all duration-300`}
+                    className={`px-3 py-1 bg-gradient-to-r ${service.gradient} bg-opacity-10 text-white dark:text-gray-300 text-xs font-medium rounded-full border-opacity-20 hover:border-opacity-40 transition-all duration-300`}
                     style={{ animationDelay: `${index * 200 + techIndex * 100}ms` }}
                   >
                     {tech}
