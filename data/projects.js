@@ -89,8 +89,8 @@ export const PROJECTS = [
       "Con ello se acortan tiempos de respuesta, se reduce el papeleo y las visitas a ventanilla, se amplía la cobertura en zonas con conectividad limitada y se habilitan indicadores por colonia, tipo de incidencia y tiempos de resolución, fortaleciendo la planeación operativa, la transparencia y la rendición de cuentas.",
     image: "/Banners/atencion_ciudadana.png",
     colors: {
-      primary: "#680691",
-      secondary: "#43035d",
+      primary: "#43035d",
+      secondary: "#8008b4",
     },
     type: "Mobile Application"
   },
