@@ -66,7 +66,7 @@ export default function HomePage() {
                 Tecnologías Principales
               </h3>
               <div className="flex flex-wrap gap-3">
-                {["Next.js", "Flutter", "SQL Server", "Firebase", "Firestore", "Tailwind CSS", "Google Maps Plattform", "Cloude AI", "Chat GPT", "SQLite", "GitHub", "Vercel", "Node.js", "PostgreSQL"].map(
+                {["Next.js", "Flutter", "React Native", "SQL Server", "Firebase", "Firestore", "Tailwind CSS", "Google Maps Plattform", "Cloude AI", "Chat GPT", "SQLite", "GitHub", "Vercel", "Node.js", "PostgreSQL"].map(
                   (tech, index) => (
                     <span
                       key={tech}
@@ -178,22 +178,22 @@ export default function HomePage() {
             {
               title: "Desarrollo Web",
               description: "Aplicaciones web modernas con Next.js, React y tecnologías de vanguardia.",
-              technologies: ["Next.js", "React", "TypeScript"],
+              technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
               gradient: "from-fuchsia-700 to-purple-600",
               icon: "🌐",
             },
             {
               title: "Aplicaciones Móviles",
-              description: "Apps nativas multiplataforma con Flutter para iOS y Android.",
-              technologies: ["Flutter", "Dart", "Firebase"],
-              gradient: "from-cyan-500 to-blue-600",
+              description: "Apps nativas multiplataforma con Flutter o React Native para iOS y Android.",
+              technologies: ["Flutter", "Dart", "React Native", "TypeScript"],
+              gradient: "from-cyan-700 to-blue-600",
               icon: "📱",
             },
             {
               title: "Backend & Bases de Datos",
               description: "APIs robustas y sistemas de gestión de datos escalables.",
-              technologies: ["SQL Server", "Firebase", "APIs REST"],
-              gradient: "from-emerald-500 to-green-600",
+              technologies: ["SQL Server", "Firebase", "APIs REST", "Node.js"],
+              gradient: "from-emerald-700 to-green-600",
               icon: "🗄️",
             },
           ].map((service, index) => (
@@ -219,7 +219,7 @@ export default function HomePage() {
                 {service.technologies.map((tech, techIndex) => (
                   <span
                     key={tech}
-                    className={`px-3 py-1 bg-gradient-to-r ${service.gradient} bg-opacity-10 text-white dark:text-gray-300 text-xs font-medium rounded-full border-opacity-20 hover:border-opacity-40 transition-all duration-300`}
+                    className={`px-3 py-1 bg-gradient-to-r ${service.gradient} bg-opacity-10 text-gray-100 dark:text-gray-300 text-xs font-medium rounded-full border-opacity-20 hover:border-opacity-40 transition-all duration-300`}
                     style={{ animationDelay: `${index * 200 + techIndex * 100}ms` }}
                   >
                     {tech}

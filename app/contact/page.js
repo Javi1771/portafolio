@@ -411,7 +411,7 @@ export default function ContactPage() {
             <div className="flex items-center gap-3">
               <div className="w-1 h-8 bg-gradient-to-b from-violet-500 to-purple-600 rounded-full"></div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Perfiles de GitHub
+                Perfil de GitHub
               </h3>
             </div>
 
