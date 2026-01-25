@@ -309,7 +309,7 @@ export default function AboutPage() {
                   </p>
 
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Mi stack principal incluye <span className="font-semibold text-cyan-600 dark:text-cyan-400">Next.js</span> para desarrollo web, <span className="font-semibold text-blue-600 dark:text-blue-400">Flutter</span> para aplicaciones móviles, bases de datos con <span className="font-semibold text-violet-600 dark:text-violet-400">SQL Server</span> y <span className="font-semibold text-emerald-600 dark:text-emerald-400">Firebase</span>, además de experiencia en <span className="font-semibold text-orange-600 dark:text-orange-400">IoT</span>.
+                    Mi stack principal incluye <span className="font-semibold text-black dark:text-white">Next.js</span> para desarrollo web, <span className="font-semibold text-blue-600 dark:text-blue-400">Flutter</span> y <span className="font-semibold text-cyan-600 dark:text-cyan-400">React Native</span> para aplicaciones móviles, bases de datos con <span className="font-semibold text-violet-600 dark:text-violet-400">SQL Server</span> y <span className="font-semibold text-emerald-600 dark:text-emerald-400">Firebase</span>, además de experiencia en <span className="font-semibold text-orange-600 dark:text-orange-400">IoT</span>.
                   </p>
                 </div>
               </div>
