@@ -1,11 +1,11 @@
-// app/projects/page.js
+// app/projects/page.js - VERSIÓN OPTIMIZADA
 
 "use client";
 import Section from "@/components/Section";
 import ProjectGrid from "@/components/ProjectGrid";
 import CategoryFilter from "@/components/CategoryFilter";
 import { PROJECTS } from "@/data/projects";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ProjectsPage() {
   const [filters, setFilters] = useState({
@@ -13,7 +13,18 @@ export default function ProjectsPage() {
     type: "Todos los tipos",
   });
 
-  //* Lógica de filtrado dual
+  // Detectar si es móvil para reducir animaciones
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const filtered = PROJECTS.filter((p) => {
     const matchCategory =
       filters.category === "Todos" || p.category === filters.category;
@@ -22,7 +33,6 @@ export default function ProjectsPage() {
     return matchCategory && matchType;
   });
 
-  //* Estadísticas generales
   const totalProjects = PROJECTS.length;
   const categories = [...new Set(PROJECTS.map((p) => p.category))];
   const types = [...new Set(PROJECTS.map((p) => p.type))];
@@ -31,52 +41,51 @@ export default function ProjectsPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-gray-50/50 to-violet-50/30 dark:from-gray-900 dark:via-gray-800/50 dark:to-violet-950/20 relative overflow-hidden">
-      {/* Floating background orbs */}
-      <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-violet-200/20 to-purple-300/20 dark:from-violet-500/10 dark:to-purple-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none"></div>
-      <div className="absolute top-40 right-20 w-80 h-80 bg-gradient-to-br from-cyan-200/20 to-blue-300/20 dark:from-cyan-500/10 dark:to-blue-600/10 rounded-full blur-3xl animate-pulse delay-1000 motion-reduce:animate-none"></div>
-      <div className="absolute bottom-40 left-1/3 w-72 h-72 bg-gradient-to-br from-emerald-200/20 to-green-300/20 dark:from-emerald-500/10 dark:to-green-600/10 rounded-full blur-3xl animate-pulse delay-2000 motion-reduce:animate-none"></div>
+      {/* OPTIMIZACIÓN: Orbs solo en desktop, sin blur en móvil */}
+      {!isMobile && (
+        <>
+          <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-violet-200/20 to-purple-300/20 dark:from-violet-500/10 dark:to-purple-600/10 rounded-full blur-3xl motion-reduce:animate-none"></div>
+          <div className="absolute top-40 right-20 w-80 h-80 bg-gradient-to-br from-cyan-200/20 to-blue-300/20 dark:from-cyan-500/10 dark:to-blue-600/10 rounded-full blur-3xl motion-reduce:animate-none"></div>
+        </>
+      )}
 
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] pointer-events-none">
-        <div
-          className="
-            absolute inset-0
-            bg-[radial-gradient(circle_at_2px_2px,theme(colors.violet.500)_1px,transparent_1px)]
-            dark:bg-[radial-gradient(circle_at_2px_2px,theme(colors.violet.400)_1px,transparent_1px)]
-            bg-[length:50px_50px]
-          "
-        />
-      </div>
+      {/* OPTIMIZACIÓN: Pattern overlay solo en desktop */}
+      {!isMobile && (
+        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] pointer-events-none">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,theme(colors.violet.500)_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_2px_2px,theme(colors.violet.400)_1px,transparent_1px)] bg-[length:50px_50px]" />
+        </div>
+      )}
 
-      {/* Enhanced Section */}
       <Section
         title={
           <div className="space-y-4">
-            {/* Main title with gradient and effects */}
             <div className="relative inline-block">
               <h1 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-violet-800 to-gray-900 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent leading-tight">
                 Proyectos Destacados
               </h1>
+              <div className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-gradient-to-r from-cyan-500 via-purple-500 to-violet-500 animate-scale-x"></div>
 
-              {/* Decorative elements */}
-              <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-60 animate-bounce"></div>
-              <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-40 animate-bounce"></div>
-
-              {/* Animated underline */}
-              <div className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-gradient-to-r from-violet-500 via-purple-500 to-cyan-500 animate-scale-x"></div>
+              {/* OPTIMIZACIÓN: Decoraciones solo en desktop */}
+              {!isMobile && (
+                <>
+                  <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-60"></div>
+                  <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-40"></div>
+                </>
+              )}
             </div>
 
-            {/* Enhanced subtitle with stats */}
             <div className="space-y-2">
               <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
                 Filtra por categoría o tipo, o explora los detalles de cada
                 proyecto
               </p>
 
-              {/* Statistics bar */}
+              {/* OPTIMIZACIÓN: Estadísticas sin animaciones en móvil */}
               <div className="flex flex-wrap items-center gap-6 text-sm">
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full animate-pulse"></div>
+                  <div
+                    className={`w-2 h-2 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full ${!isMobile && "animate-pulse"}`}
+                  ></div>
                   <span className="text-gray-600 dark:text-gray-400">
                     <span className="font-semibold text-gray-800 dark:text-gray-200">
                       {totalProjects}
@@ -86,7 +95,9 @@ export default function ProjectsPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full animate-pulse"></div>
+                  <div
+                    className={`w-2 h-2 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full ${!isMobile && "animate-pulse"}`}
+                  ></div>
                   <span className="text-gray-600 dark:text-gray-400">
                     <span className="font-semibold text-gray-800 dark:text-gray-200">
                       {categories.length}
@@ -96,7 +107,9 @@ export default function ProjectsPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-gradient-to-r from-pink-500 to-rose-600 rounded-full animate-pulse"></div>
+                  <div
+                    className={`w-2 h-2 bg-gradient-to-r from-pink-500 to-rose-600 rounded-full ${!isMobile && "animate-pulse"}`}
+                  ></div>
                   <span className="text-gray-600 dark:text-gray-400">
                     <span className="font-semibold text-gray-800 dark:text-gray-200">
                       {types.length}
@@ -106,7 +119,9 @@ export default function ProjectsPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full animate-pulse"></div>
+                  <div
+                    className={`w-2 h-2 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full ${!isMobile && "animate-pulse"}`}
+                  ></div>
                   <span className="text-gray-600 dark:text-gray-400">
                     <span className="font-semibold text-gray-800 dark:text-gray-200">
                       {recentProjects}
@@ -121,10 +136,8 @@ export default function ProjectsPage() {
         subtitle=""
         className="relative z-10"
       >
-        {/* Enhanced filter section */}
         <div className="mb-12">
           <div className="relative">
-            {/* Filter header */}
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
                 <div className="w-1 h-8 bg-gradient-to-b from-violet-500 to-purple-600 rounded-full"></div>
@@ -136,15 +149,7 @@ export default function ProjectsPage() {
                     {filters.category === "Todos" &&
                     filters.type === "Todos los tipos"
                       ? "Mostrando todos los proyectos"
-                      : `${
-                          filters.category !== "Todos"
-                            ? filters.category
-                            : "Todas las categorías"
-                        } • ${
-                          filters.type !== "Todos los tipos"
-                            ? filters.type
-                            : "Todos los tipos"
-                        }`}{" "}
+                      : `${filters.category !== "Todos" ? filters.category : "Todas las categorías"} • ${filters.type !== "Todos los tipos" ? filters.type : "Todos los tipos"}`}{" "}
                     <span className="ml-2 px-2 py-1 bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 rounded-full text-xs font-medium">
                       {filtered.length}
                     </span>
@@ -152,7 +157,6 @@ export default function ProjectsPage() {
                 </div>
               </div>
 
-              {/* Reset filters button */}
               {(filters.category !== "Todos" ||
                 filters.type !== "Todos los tipos") && (
                 <button
@@ -166,14 +170,22 @@ export default function ProjectsPage() {
               )}
             </div>
 
-            {/* Enhanced filter wrapper */}
-            <div className="relative p-6 bg-white/60 dark:bg-gray-800/30 backdrop-blur-md rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-xl transition-shadow">
-              {/* Gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-violet-50/50 via-transparent to-cyan-50/50 dark:from-violet-950/20 dark:via-transparent dark:to-cyan-950/20 rounded-2xl"></div>
+            {/* OPTIMIZACIÓN CRÍTICA: Backdrop-blur solo en desktop */}
+            <div
+              className={`relative p-6 bg-white/60 dark:bg-gray-800/30 ${!isMobile && "backdrop-blur-md"} rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-xl transition-shadow`}
+            >
+              {/* OPTIMIZACIÓN: Gradiente de fondo solo en desktop */}
+              {!isMobile && (
+                <div className="absolute inset-0 bg-gradient-to-r from-violet-50/50 via-transparent to-cyan-50/50 dark:from-violet-950/20 dark:via-transparent dark:to-cyan-950/20 rounded-2xl"></div>
+              )}
 
-              {/* Decorative corner elements */}
-              <div className="absolute top-3 right-3 w-3 h-3 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-50 animate-pulse"></div>
-              <div className="absolute bottom-3 left-3 w-2 h-2 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-30 animate-pulse"></div>
+              {/* OPTIMIZACIÓN: Decoraciones solo en desktop */}
+              {!isMobile && (
+                <>
+                  <div className="absolute top-3 right-3 w-3 h-3 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-50"></div>
+                  <div className="absolute bottom-3 left-3 w-2 h-2 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-30"></div>
+                </>
+              )}
 
               <div className="relative">
                 <CategoryFilter
@@ -186,15 +198,20 @@ export default function ProjectsPage() {
           </div>
         </div>
 
-        {/* Enhanced results section */}
         <div className="space-y-8">
-          {/* Results header */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
+              {/* OPTIMIZACIÓN: Puntos sin animación en móvil */}
               <div className="flex gap-1">
-                <div className="w-2 h-2 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full animate-pulse"></div>
-                <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full animate-pulse"></div>
-                <div className="w-2 h-2 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full animate-pulse"></div>
+                <div
+                  className={`w-2 h-2 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full ${!isMobile && "animate-pulse"}`}
+                ></div>
+                <div
+                  className={`w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full ${!isMobile && "animate-pulse"}`}
+                ></div>
+                <div
+                  className={`w-2 h-2 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full ${!isMobile && "animate-pulse"}`}
+                ></div>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                 {filters.category === "Todos" &&
@@ -205,17 +222,12 @@ export default function ProjectsPage() {
             </div>
           </div>
 
-          {/* Projects grid */}
           <div className="relative">
-            <div className="animate-fade-in">
-              <ProjectGrid projects={filtered} />
-            </div>
+            <ProjectGrid projects={filtered} />
 
-            {/* Empty state enhancement */}
             {filtered.length === 0 && (
               <div className="text-center py-16">
                 <div className="flex flex-col items-center">
-                  {/* Ícono centrado */}
                   <div className="w-24 h-24 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 rounded-full flex items-center justify-center mb-6 mx-auto">
                     <svg
                       className="w-12 h-12 text-gray-400 dark:text-gray-500"
@@ -232,7 +244,6 @@ export default function ProjectsPage() {
                     </svg>
                   </div>
 
-                  {/* Textos */}
                   <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
                     No hay proyectos con estos filtros
                   </h3>
@@ -240,7 +251,6 @@ export default function ProjectsPage() {
                     Prueba ajustando los filtros o explora todos los proyectos
                   </p>
 
-                  {/* Botón */}
                   <button
                     onClick={() =>
                       setFilters({ category: "Todos", type: "Todos los tipos" })

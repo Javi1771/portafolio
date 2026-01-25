@@ -1,45 +1,72 @@
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   images: {
-//     remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
-//   },
-// };
-// export default nextConfig;
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    //* Configuración optimizada para imágenes
-    formats: ['image/webp'], // Usar WebP que es más ligero
+    //* CRÍTICO: AVIF + WebP para máxima optimización
+    formats: ['image/avif', 'image/webp'],
+    
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60,
     
-    // Mantener tus remote patterns existentes + agregar más si necesitas
+    //* Cache de 7 días
+    minimumCacheTTL: 60 * 60 * 24 * 7,
+    
+    // Remote patterns
     remotePatterns: [
       { 
         protocol: "https", 
         hostname: "images.unsplash.com" 
       },
-      // Agrega más aquí si usas otros servicios:
-      // { protocol: "https", hostname: "res.cloudinary.com" },
     ],
+    
+    //* Configuración de seguridad para SVG
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   
-  // Optimizaciones adicionales
+  //* Optimizaciones del compilador
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production', // Eliminar console.logs en producción
+    removeConsole: process.env.NODE_ENV === 'production',
   },
   
-  // Habilitar SWC minification (más rápido que Terser)
-  swcMinify: true,
+  //* Habilita compresión
+  compress: true,
   
-  // Optimización de fuentes
-  optimizeFonts: true,
+  //* No generar sourcemaps en producción
+  productionBrowserSourceMaps: false,
   
-  // Experimental: Optimizar CSS
-  experimental: {
-    optimizeCss: true,
+  //* NUEVO EN NEXT.JS 16: Configuración de Turbopack
+  turbopack: {
+    // Silencia el warning y habilita optimizaciones
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
+      },
+    },
+  },
+  
+  //* Headers para cache de imágenes
+  async headers() {
+    return [
+      {
+        source: '/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/:all*(svg|jpg|jpeg|png|webp|avif|gif)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
   },
 };
 
