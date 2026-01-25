@@ -13,7 +13,7 @@ export default function ProjectsPage() {
     type: "Todos los tipos",
   });
 
-  // Detectar si es móvil para reducir animaciones
+  //! Detectar si es móvil para reducir animaciones
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {

@@ -9,7 +9,7 @@ import { useMemo, useState, useEffect } from "react";
 import Experience from "@/components/Experience";
 
 export default function AboutPage() {
-  // Detectar si es móvil
+  //! Detectar si es móvil
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -493,52 +493,28 @@ export default function AboutPage() {
               {[
                 {
                   name: "Frontend",
-                  items: [
-                    "Next.js",
-                    "React",
-                    "Tailwind CSS",
-                    "TypeScript",
-                    "Responsive Design",
-                  ],
+                  items: [ "Next.js", "React", "Tailwind CSS", "TypeScript", "Responsive Design",],
                   color: "cyan",
                   hex1: "#06b6d4",
                   hex2: "#22d3ee",
                 },
                 {
                   name: "Mobile",
-                  items: [
-                    "Flutter",
-                    "Dart",
-                    "Firebase",
-                    "Push Notifications",
-                    "Google Maps Plattform",
-                  ],
+                  items: [ "Flutter", "Dart", "Firebase", "Push Notifications", "Google Maps Plattform",],
                   color: "blue",
                   hex1: "#3b82f6",
                   hex2: "#60a5fa",
                 },
                 {
                   name: "Backend",
-                  items: [
-                    "Node.js",
-                    "SQL Server",
-                    "REST APIs",
-                    "SOAP",
-                    "Express.js",
-                  ],
+                  items: [ "Node.js", "SQL Server", "REST APIs", "SOAP", "Express.js",],
                   color: "violet",
                   hex1: "#8b5cf6",
                   hex2: "#a78bfa",
                 },
                 {
                   name: "Otros",
-                  items: [
-                    "Git (GitHub)",
-                    "Vercel",
-                    "Manejo de IA",
-                    "CI/CD",
-                    "IoT (ESP8266)",
-                  ],
+                  items: [ "Git (GitHub)", "Vercel", "Manejo de IA", "CI/CD", "IoT (ESP8266)",],
                   color: "emerald",
                   hex1: "#10b981",
                   hex2: "#34d399",
