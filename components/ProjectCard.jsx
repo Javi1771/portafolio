@@ -73,7 +73,7 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className={`object-cover transition-all duration-500 ${!isMobile && 'group-hover:scale-105'} ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
           loading="lazy"
-          quality={isMobile ? 60 : 75} // Menor calidad en móvil
+          quality={isMobile ? 60 : 75} //! Menor calidad en móvil
           onLoadingComplete={() => setImageLoaded(true)}
         />
         
@@ -155,10 +155,7 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
                 </svg>
                 Código
               </span>
-              {/* Efecto shine solo en desktop */}
-              {!isMobile && (
-                <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
-              )}
+              <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
             </a>
           )}
           
@@ -185,9 +182,7 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
                 </svg>
                 Demo
               </span>
-              {!isMobile && (
                 <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
-              )}
             </a>
           )}
           
@@ -211,9 +206,7 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
               </svg>
               Detalles
             </span>
-            {!isMobile && (
               <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
-            )}
           </Link>
         </div>
       </div>
