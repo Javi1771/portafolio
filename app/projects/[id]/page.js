@@ -19,8 +19,20 @@ export default function ProjectDetail() {
   const [active, setActive] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState({});
   const startX = useRef(null);
   const trackRef = useRef(null);
+
+  //* Detectar móvil
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   //* Load images
   useEffect(() => {
@@ -39,8 +51,8 @@ export default function ProjectDetail() {
             Array.isArray(data) && data.length
               ? data
               : project.image
-              ? [project.image]
-              : [];
+                ? [project.image]
+                : [];
           setImages(list);
           setActive(0);
         }
@@ -61,7 +73,7 @@ export default function ProjectDetail() {
   //* Navigation functions
   const prev = useCallback(() => {
     setActive((i) =>
-      images && images.length ? (i - 1 + images.length) % images.length : 0
+      images && images.length ? (i - 1 + images.length) % images.length : 0,
     );
   }, [images?.length]);
 
@@ -117,14 +129,18 @@ export default function ProjectDetail() {
     if (Math.abs(dx) > 60) dx < 0 ? next() : prev();
   };
 
-  //! 404 page
+  //! 404 page - CORREGIDO CON Z-INDEX ALTO
   if (!project) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-white via-gray-50/50 to-rose-50/30 dark:from-gray-900 dark:via-gray-800/50 dark:to-rose-950/20 relative overflow-hidden flex items-center justify-center">
-        <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-rose-200/20 to-pink-300/20 dark:from-rose-500/10 dark:to-pink-600/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-br from-violet-200/20 to-purple-300/20 dark:from-violet-500/10 dark:to-purple-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        {/* Orbes en z-index bajo */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-rose-200/20 to-pink-300/20 dark:from-rose-500/10 dark:to-pink-600/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-br from-violet-200/20 to-purple-300/20 dark:from-violet-500/10 dark:to-purple-600/10 rounded-full blur-3xl"></div>
+        </div>
 
-        <Section className="text-center relative z-10 px-4">
+        {/* Contenido con z-index alto */}
+        <Section className="text-center relative z-50 px-4">
           <div className="space-y-6">
             <div className="relative inline-block">
               <div className="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-rose-100 to-pink-100 dark:from-rose-900/30 dark:to-pink-900/30 rounded-full flex items-center justify-center border border-rose-200/50 dark:border-rose-700/50">
@@ -133,17 +149,19 @@ export default function ProjectDetail() {
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.29 1.009-5.659 2.571M15 7a3 3 0 11-6 0 3 3 0 016 0z"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
                   />
                 </svg>
               </div>
-              <div className="absolute -top-1 -right-1 md:-top-2 md:-right-2 w-4 h-4 md:w-6 md:h-6 bg-gradient-to-br from-rose-400 to-pink-500 rounded-full opacity-60 animate-bounce"></div>
+              {!isMobile && (
+                <div className="absolute -top-1 -right-1 md:-top-2 md:-right-2 w-4 h-4 md:w-6 md:h-6 bg-gradient-to-br from-rose-400 to-pink-500 rounded-full opacity-60"></div>
+              )}
             </div>
 
             <div className="space-y-3">
@@ -155,26 +173,33 @@ export default function ProjectDetail() {
               </p>
             </div>
 
-            <Link
-              href="/projects"
-              className="group inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white font-semibold rounded-xl md:rounded-2xl shadow-lg shadow-rose-500/25 hover:shadow-xl hover:shadow-rose-500/40 transition-all duration-300 hover:scale-105 hover:-translate-y-1 text-sm md:text-base"
-            >
-              <svg
-                className="w-4 h-4 md:w-5 md:h-5 group-hover:-translate-x-1 transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
+            {/* CORREGIDO: Z-index alto y pointer-events */}
+            <div className="relative z-50">
+              <Link
+                href="/projects"
+                className={`group inline-flex items-center justify-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white font-semibold rounded-xl md:rounded-2xl shadow-lg shadow-rose-500/25 hover:shadow-xl hover:shadow-rose-500/40 transition-all duration-300 ${!isMobile && "hover:scale-105 hover:-translate-y-1"} text-sm md:text-base cursor-pointer select-none`}
+                style={{ 
+                  WebkitTapHighlightColor: 'transparent',
+                  touchAction: 'manipulation'
+                }}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                />
-              </svg>
-              Volver a proyectos
-            </Link>
+                <svg
+                  className={`w-4 h-4 md:w-5 md:h-5 ${!isMobile && "group-hover:-translate-x-1"} transition-transform duration-300`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                  />
+                </svg>
+                Volver a proyectos
+              </Link>
+            </div>
           </div>
         </Section>
       </div>
@@ -183,20 +208,30 @@ export default function ProjectDetail() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-gray-50/50 to-violet-50/30 dark:from-gray-900 dark:via-gray-800/50 dark:to-violet-950/20 relative overflow-hidden">
-      {/* Enhanced floating orbs - scaled down for mobile */}
-      <div className="absolute top-4 left-4 w-48 h-48 md:top-10 md:left-10 md:w-72 md:h-72 bg-gradient-to-br from-violet-200/30 to-purple-300/25 dark:from-violet-500/15 dark:to-purple-600/12 rounded-full blur-2xl md:blur-3xl opacity-80"></div>
-      <div className="absolute top-8 right-4 w-56 h-56 md:top-20 md:right-10 md:w-80 md:h-80 bg-gradient-to-br from-cyan-200/25 to-blue-300/30 dark:from-cyan-500/12 dark:to-blue-600/15 rounded-full blur-2xl md:blur-3xl opacity-75"></div>
-      <div className="absolute bottom-16 left-1/4 w-40 h-40 md:bottom-20 md:left-1/3 md:w-64 md:h-64 bg-gradient-to-br from-emerald-200/28 to-green-300/22 dark:from-emerald-500/14 dark:to-green-600/11 rounded-full blur-2xl md:blur-3xl opacity-70"></div>
+      {/* Orbes en z-index bajo */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-4 left-4 w-48 h-48 md:top-10 md:left-10 md:w-72 md:h-72 bg-gradient-to-br from-violet-200/30 to-purple-300/25 dark:from-violet-500/15 dark:to-purple-600/12 rounded-full blur-2xl md:blur-3xl opacity-80"></div>
+        <div className="absolute top-8 right-4 w-56 h-56 md:top-20 md:right-10 md:w-80 md:h-80 bg-gradient-to-br from-cyan-200/25 to-blue-300/30 dark:from-cyan-500/12 dark:to-blue-600/15 rounded-full blur-2xl md:blur-3xl opacity-75"></div>
+        <div className="absolute bottom-16 left-1/4 w-40 h-40 md:bottom-20 md:left-1/3 md:w-64 md:h-64 bg-gradient-to-br from-emerald-200/28 to-green-300/22 dark:from-emerald-500/14 dark:to-green-600/11 rounded-full blur-2xl md:blur-3xl opacity-70"></div>
+      </div>
 
-      {/* Enhanced pattern background */}
-      <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.06] bg-[radial-gradient(circle_at_2px_2px,theme(colors.violet.500)_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_2px_2px,theme(colors.violet.400)_1px,transparent_1px)] bg-[length:30px_30px] md:bg-[length:40px_40px]"></div>
+      {/* Pattern overlay en z-index bajo */}
+      {!isMobile && (
+        <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.06] bg-[radial-gradient(circle_at_2px_2px,theme(colors.violet.500)_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_2px_2px,theme(colors.violet.400)_1px,transparent_1px)] bg-[length:30px_30px] md:bg-[length:40px_40px]"></div>
+      )}
 
       {/* Fullscreen Modal */}
       {isFullscreen && images && images.length > 0 && (
-        <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center">
+        <div
+          className={`fixed inset-0 z-50 bg-black/95 ${!isMobile && "backdrop-blur-xl"} flex items-center justify-center`}
+        >
           <button
             onClick={() => setIsFullscreen(false)}
-            className="absolute top-4 right-4 md:top-6 md:right-6 z-50 w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110"
+            className={`absolute top-4 right-4 md:top-6 md:right-6 z-50 w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 ${!isMobile && "hover:scale-110"} cursor-pointer`}
+            style={{ 
+              WebkitTapHighlightColor: 'transparent',
+              touchAction: 'manipulation'
+            }}
           >
             <svg
               className="w-5 h-5 md:w-6 md:h-6"
@@ -220,13 +255,18 @@ export default function ProjectDetail() {
               fill
               className="object-contain"
               priority
+              quality={isMobile ? 75 : 90}
             />
 
             {images.length > 1 && (
               <>
                 <button
                   onClick={prev}
-                  className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-16 md:h-16 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110"
+                  className={`absolute left-2 md:left-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-16 md:h-16 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 ${!isMobile && "hover:scale-110"} cursor-pointer`}
+                  style={{ 
+                    WebkitTapHighlightColor: 'transparent',
+                    touchAction: 'manipulation'
+                  }}
                 >
                   <svg
                     className="w-5 h-5 md:w-8 md:h-8"
@@ -244,7 +284,11 @@ export default function ProjectDetail() {
                 </button>
                 <button
                   onClick={next}
-                  className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-16 md:h-16 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110"
+                  className={`absolute right-2 md:right-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-16 md:h-16 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 ${!isMobile && "hover:scale-110"} cursor-pointer`}
+                  style={{ 
+                    WebkitTapHighlightColor: 'transparent',
+                    touchAction: 'manipulation'
+                  }}
                 >
                   <svg
                     className="w-5 h-5 md:w-8 md:h-8"
@@ -263,9 +307,10 @@ export default function ProjectDetail() {
               </>
             )}
 
-            {/* Contador fullscreen */}
             <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 group">
-              <div className="flex items-center gap-2 md:gap-4 px-3 py-2 md:px-6 md:py-3 bg-black/60 backdrop-blur-xl rounded-xl md:rounded-2xl border border-white/20 shadow-2xl">
+              <div
+                className={`flex items-center gap-2 md:gap-4 px-3 py-2 md:px-6 md:py-3 bg-black/60 ${!isMobile && "backdrop-blur-xl"} rounded-xl md:rounded-2xl border border-white/20 shadow-2xl`}
+              >
                 <div className="flex gap-1 md:gap-1.5">
                   {images.map((_, idx) => (
                     <div
@@ -275,6 +320,10 @@ export default function ProjectDetail() {
                           ? "w-5 h-1.5 md:w-8 md:h-2 bg-white rounded-full"
                           : "w-1.5 h-1.5 md:w-2 md:h-2 bg-white/40 hover:bg-white/60 rounded-full hover:scale-125"
                       }`}
+                      style={{ 
+                        WebkitTapHighlightColor: 'transparent',
+                        touchAction: 'manipulation'
+                      }}
                       onClick={(e) => {
                         e.stopPropagation();
                         setActive(idx);
@@ -292,16 +341,21 @@ export default function ProjectDetail() {
         </div>
       )}
 
+      {/* Contenido principal con z-index alto */}
       <Section className="relative z-10 px-3 sm:px-4 md:px-6 max-w-full overflow-hidden">
-        {/* Breadcrumbs */}
-        <div className="mb-4 sm:mb-6 md:mb-12">
+        {/* Breadcrumbs - CORREGIDO CON Z-INDEX ALTO */}
+        <div className="mb-4 sm:mb-6 md:mb-12 relative z-30">
           <nav className="flex items-center gap-2 md:gap-3 text-xs md:text-sm">
             <Link
               href="/projects"
-              className="group flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 text-slate-500 dark:text-slate-400 hover:text-violet-600 dark:hover:text-violet-400 bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-full border border-slate-200/50 dark:border-slate-700/50 hover:border-violet-300/50 dark:hover:border-violet-500/50 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5"
+              className={`group flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 text-slate-500 dark:text-slate-400 hover:text-violet-600 dark:hover:text-violet-400 bg-white/60 dark:bg-slate-800/60 ${!isMobile && "backdrop-blur-sm"} rounded-full border border-slate-200/50 dark:border-slate-700/50 hover:border-violet-300/50 dark:hover:border-violet-500/50 transition-all duration-300 ${!isMobile && "hover:scale-105 hover:-translate-y-0.5"} cursor-pointer select-none`}
+              style={{ 
+                WebkitTapHighlightColor: 'transparent',
+                touchAction: 'manipulation'
+              }}
             >
               <svg
-                className="w-3 h-3 md:w-4 md:h-4 group-hover:-translate-x-0.5 transition-transform duration-300"
+                className={`w-3 h-3 md:w-4 md:h-4 ${!isMobile && "group-hover:-translate-x-0.5"} transition-transform duration-300`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -315,7 +369,9 @@ export default function ProjectDetail() {
               </svg>
               <span className="hidden xs:inline">Proyectos</span>
             </Link>
-            <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-violet-400/60 rounded-full"></div>
+            <div
+              className={`w-1.5 h-1.5 md:w-2 md:h-2 bg-violet-400/60 rounded-full ${!isMobile && "animate-pulse"}`}
+            ></div>
             <span className="text-slate-700 dark:text-slate-300 font-semibold px-2 py-1 md:px-3 md:py-1 bg-violet-100/80 dark:bg-violet-900/30 rounded-full text-xs md:text-sm truncate max-w-[120px] xs:max-w-[160px] sm:max-w-none">
               {project.title}
             </span>
@@ -327,9 +383,12 @@ export default function ProjectDetail() {
           {/* IMAGE GALLERY */}
           <div className="space-y-4 sm:space-y-6 md:space-y-8 order-2 lg:order-1 min-w-0 max-w-full">
             <div className="group relative rounded-2xl md:rounded-3xl border-2 border-slate-200/60 dark:border-slate-700/50 shadow-2xl overflow-hidden bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl">
-              {/* glows */}
-              <div className="absolute -inset-1 md:-inset-2 bg-gradient-to-r from-violet-500/30 via-purple-500/40 to-cyan-500/30 dark:from-violet-400/20 dark:via-purple-400/25 dark:to-cyan-400/20 rounded-2xl md:rounded-3xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-700"></div>
-              <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-r from-violet-400/20 via-purple-400/25 to-cyan-400/20 dark:from-violet-300/10 dark:via-purple-300/15 dark:to-cyan-300/10 rounded-2xl md:rounded-3xl blur-2xl opacity-40 group-hover:opacity-80 transition-opacity duration-700"></div>
+              {!isMobile && (
+                <>
+                  <div className="absolute -inset-1 md:-inset-2 bg-gradient-to-r from-violet-500/30 via-purple-500/40 to-cyan-500/30 dark:from-violet-400/20 dark:via-purple-400/25 dark:to-cyan-400/20 rounded-2xl md:rounded-3xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-700"></div>
+                  <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-r from-violet-400/20 via-purple-400/25 to-cyan-400/20 dark:from-violet-300/10 dark:via-purple-300/15 dark:to-cyan-300/10 rounded-2xl md:rounded-3xl blur-2xl opacity-40 group-hover:opacity-80 transition-opacity duration-700"></div>
+                </>
+              )}
 
               <div
                 className="relative w-full h-[35vh] xs:h-[40vh] sm:h-[45vh] md:h-[55vh] min-h-[250px] sm:min-h-[300px] md:min-h-[400px] max-h-[400px] sm:max-h-[500px] md:max-h-[700px] overflow-hidden rounded-2xl md:rounded-3xl cursor-pointer"
@@ -344,7 +403,6 @@ export default function ProjectDetail() {
                 onTouchEnd={endDrag}
                 onClick={() => images && setIsFullscreen(true)}
               >
-                {/* Image track */}
                 <div
                   ref={trackRef}
                   className="flex h-full transition-transform duration-700 ease-out"
@@ -358,31 +416,43 @@ export default function ProjectDetail() {
                       {!images ? (
                         <div className="absolute inset-0">
                           <div className="absolute inset-0 bg-gradient-to-br from-slate-200/80 via-slate-300/60 to-slate-200/80 dark:from-slate-700/80 dark:via-slate-600/60 dark:to-slate-700/80 animate-pulse"></div>
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 dark:via-white/10 to-transparent animate-shimmer"></div>
-                          <div className="absolute top-3 md:top-8 left-3 md:left-8 w-14 md:w-24 h-3 md:h-6 bg-slate-300/60 dark:bg-slate-600/60 rounded-full animate-pulse"></div>
-                          <div className="absolute top-3 md:top-8 right-3 md:right-8 w-10 md:w-16 h-3 md:h-6 bg-slate-300/60 dark:bg-slate-600/60 rounded-full animate-pulse delay-200"></div>
-                          <div className="absolute bottom-3 md:bottom-8 left-1/2 -translate-x-1/2 w-14 md:w-20 h-4 md:h-8 bg-slate-300/60 dark:bg-slate-600/60 rounded-full animate-pulse delay-400"></div>
+                          {!isMobile && (
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 dark:via-white/10 to-transparent animate-shimmer"></div>
+                          )}
                         </div>
                       ) : (
                         <>
+                          {!imagesLoaded[idx] && (
+                            <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 animate-pulse" />
+                          )}
+
                           <div className="absolute inset-3 md:inset-6">
                             <Image
                               src={src}
                               alt={`${project.title} - imagen ${idx + 1}`}
                               fill
                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 900px"
-                              className="object-contain transition-all duration-700 group-hover/image:scale-105"
+                              className={`object-contain transition-all duration-700 ${!isMobile && "group-hover/image:scale-105"} ${imagesLoaded[idx] ? "opacity-100" : "opacity-0"}`}
                               priority={idx === active}
+                              quality={isMobile ? 65 : 85}
+                              onLoadingComplete={() =>
+                                setImagesLoaded((prev) => ({
+                                  ...prev,
+                                  [idx]: true,
+                                }))
+                              }
                             />
                           </div>
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500"></div>
+
+                          {!isMobile && (
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500"></div>
+                          )}
                         </>
                       )}
                     </div>
                   ))}
                 </div>
 
-                {/* Navigation arrows - AÑADIR ESTO */}
                 {images && images.length > 1 && (
                   <>
                     <button
@@ -390,7 +460,11 @@ export default function ProjectDetail() {
                         e.stopPropagation();
                         prev();
                       }}
-                      className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-12 md:h-12 bg-black/50 hover:bg-black/70 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 z-10"
+                      className={`absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-12 md:h-12 bg-black/50 hover:bg-black/70 ${!isMobile && "backdrop-blur-sm"} rounded-full flex items-center justify-center text-white transition-all duration-300 ${!isMobile && "hover:scale-110"} z-10 cursor-pointer`}
+                      style={{ 
+                        WebkitTapHighlightColor: 'transparent',
+                        touchAction: 'manipulation'
+                      }}
                     >
                       <svg
                         className="w-4 h-4 md:w-6 md:h-6"
@@ -411,7 +485,11 @@ export default function ProjectDetail() {
                         e.stopPropagation();
                         next();
                       }}
-                      className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-12 md:h-12 bg-black/50 hover:bg-black/70 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 z-10"
+                      className={`absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-12 md:h-12 bg-black/50 hover:bg-black/70 ${!isMobile && "backdrop-blur-sm"} rounded-full flex items-center justify-center text-white transition-all duration-300 ${!isMobile && "hover:scale-110"} z-10 cursor-pointer`}
+                      style={{ 
+                        WebkitTapHighlightColor: 'transparent',
+                        touchAction: 'manipulation'
+                      }}
                     >
                       <svg
                         className="w-4 h-4 md:w-6 md:h-6"
@@ -430,10 +508,11 @@ export default function ProjectDetail() {
                   </>
                 )}
 
-                {/* Dots + counter */}
                 {images && images.length > 1 && (
-                  <div className="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 group">
-                    <div className="flex items-center gap-2 md:gap-4 px-3 py-1.5 md:px-5 md:py-3 bg-gradient-to-r from-black/70 via-black/80 to-black/70 backdrop-blur-xl rounded-lg md:rounded-2xl border border-white/20 shadow-2xl">
+                  <div className="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 group z-20">
+                    <div
+                      className={`flex items-center gap-2 md:gap-4 px-3 py-1.5 md:px-5 md:py-3 bg-gradient-to-r from-black/70 via-black/80 to-black/70 ${!isMobile && "backdrop-blur-xl"} rounded-lg md:rounded-2xl border border-white/20 shadow-2xl`}
+                    >
                       <div className="flex gap-1 md:gap-1.5">
                         {images.map((_, idx) => (
                           <div
@@ -443,6 +522,10 @@ export default function ProjectDetail() {
                                 ? "w-4 h-1.5 md:w-6 md:h-2 bg-gradient-to-r from-violet-400 to-purple-500 rounded-full shadow-lg shadow-violet-500/50"
                                 : "w-1.5 h-1.5 md:w-2 md:h-2 bg-white/40 hover:bg-white/60 rounded-full hover:scale-125 hover:shadow-md"
                             }`}
+                            style={{ 
+                              WebkitTapHighlightColor: 'transparent',
+                              touchAction: 'manipulation'
+                            }}
                             onClick={(e) => {
                               e.stopPropagation();
                               setActive(idx);
@@ -463,26 +546,30 @@ export default function ProjectDetail() {
                         </span>
                       </div>
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 via-purple-500/30 to-violet-500/20 rounded-lg md:rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+                    {!isMobile && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 via-purple-500/30 to-violet-500/20 rounded-lg md:rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+                    )}
                   </div>
                 )}
 
-                {/* corner badges */}
                 <div className="absolute top-2 md:top-4 left-2 md:left-4">
-                  <span className="px-2 py-1 md:px-4 md:py-2 bg-gradient-to-r from-black/70 to-black/60 backdrop-blur-md text-white text-xs md:text-sm font-bold rounded-full border border-white/20 shadow-lg">
+                  <span
+                    className={`px-2 py-1 md:px-4 md:py-2 bg-gradient-to-r from-black/70 to-black/60 ${!isMobile && "backdrop-blur-md"} text-white text-xs md:text-sm font-bold rounded-full border border-white/20 shadow-lg`}
+                  >
                     {project.category}
                   </span>
                 </div>
 
                 <div className="absolute top-2 md:top-4 right-2 md:right-4">
-                  <span className="px-2 py-1 md:px-3 md:py-1.5 bg-gradient-to-r from-black/70 to-black/60 backdrop-blur-md text-white dark:text-slate-200 text-xs font-bold rounded-full border border-slate-200/50 dark:border-slate-600/50 shadow-lg">
+                  <span
+                    className={`px-2 py-1 md:px-3 md:py-1.5 bg-gradient-to-r from-black/70 to-black/60 ${!isMobile && "backdrop-blur-md"} text-white dark:text-slate-200 text-xs font-bold rounded-full border border-slate-200/50 dark:border-slate-600/50 shadow-lg`}
+                  >
                     {project.year}
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* thumbnails */}
             {images && images.length > 1 && (
               <div className="space-y-3 md:space-y-4">
                 <div className="flex items-center gap-2 md:gap-3">
@@ -498,18 +585,23 @@ export default function ProjectDetail() {
                     <button
                       key={src + idx}
                       onClick={() => setActive(idx)}
-                      className={`group relative h-12 w-16 xs:h-14 xs:w-20 md:h-20 md:w-28 rounded-lg md:rounded-2xl overflow-hidden border-2 transition-all duration-300 hover:scale-105 hover:-translate-y-1 ${
+                      className={`group relative h-12 w-16 xs:h-14 xs:w-20 md:h-20 md:w-28 rounded-lg md:rounded-2xl overflow-hidden border-2 transition-all duration-300 ${!isMobile && "hover:scale-105 hover:-translate-y-1"} ${
                         active === idx
                           ? "border-violet-400 ring-2 md:ring-4 ring-violet-200/60 dark:ring-violet-800/60 shadow-lg shadow-violet-500/25"
                           : "border-slate-200/60 dark:border-slate-700/60 hover:border-violet-300/60 dark:hover:border-violet-500/60 shadow-md hover:shadow-lg"
-                      }`}
+                      } cursor-pointer`}
+                      style={{ 
+                        WebkitTapHighlightColor: 'transparent',
+                        touchAction: 'manipulation'
+                      }}
                     >
                       <Image
                         src={src}
                         alt={`${project.title} miniatura ${idx + 1}`}
                         fill
                         sizes="(max-width: 480px) 64px, (max-width: 768px) 80px, 120px"
-                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                        className={`object-cover transition-transform duration-300 ${!isMobile && "group-hover:scale-110"}`}
+                        quality={isMobile ? 50 : 70}
                       />
                       <div
                         className={`absolute inset-0 transition-opacity duration-300 ${
@@ -519,7 +611,9 @@ export default function ProjectDetail() {
                         }`}
                       ></div>
                       {active === idx && (
-                        <div className="absolute bottom-0.5 right-0.5 md:bottom-1 md:right-1 w-1.5 h-1.5 md:w-2 md:h-2 bg-violet-400 rounded-full animate-pulse"></div>
+                        <div
+                          className={`absolute bottom-0.5 right-0.5 md:bottom-1 md:right-1 w-1.5 h-1.5 md:w-2 md:h-2 bg-violet-400 rounded-full ${!isMobile && "animate-pulse"}`}
+                        ></div>
                       )}
                     </button>
                   ))}
@@ -527,7 +621,6 @@ export default function ProjectDetail() {
               </div>
             )}
 
-            {/* links */}
             <div className="space-y-4 md:space-y-6">
               <div className="flex items-center gap-3 md:gap-4">
                 <div className="w-1.5 h-6 md:h-8 bg-gradient-to-b from-emerald-500 to-green-600 rounded-full"></div>
@@ -543,13 +636,21 @@ export default function ProjectDetail() {
                     href={project.repo}
                     target="_blank"
                     rel="noreferrer"
-                    className="group relative px-4 py-3 md:px-6 md:py-4 bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 hover:from-violet-700 hover:via-purple-700 hover:to-indigo-700 text-white font-bold rounded-xl md:rounded-2xl shadow-xl shadow-violet-500/30 hover:shadow-2xl hover:shadow-violet-500/50 transition-all duration-300 hover:scale-105 hover:-translate-y-1 overflow-hidden text-sm md:text-base"
+                    className={`group relative px-4 py-3 md:px-6 md:py-4 bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 hover:from-violet-700 hover:via-purple-700 hover:to-indigo-700 text-white font-bold rounded-xl md:rounded-2xl shadow-xl shadow-violet-500/30 hover:shadow-2xl hover:shadow-violet-500/50 transition-all duration-300 ${!isMobile && "hover:scale-105 hover:-translate-y-1"} overflow-hidden text-sm md:text-base cursor-pointer`}
+                    style={{ 
+                      WebkitTapHighlightColor: 'transparent',
+                      touchAction: 'manipulation'
+                    }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    {!isMobile && (
+                      <>
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                      </>
+                    )}
                     <span className="relative z-10 flex items-center gap-2 md:gap-3">
-                      {/* GitHub icon */}
                       <svg
-                        className="w-4 h-4 md:w-5 md:h-5 group-hover:rotate-12 transition-transform duration-300"
+                        className={`w-4 h-4 md:w-5 md:h-5 ${!isMobile && "group-hover:rotate-12"} transition-transform duration-300`}
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
@@ -557,7 +658,6 @@ export default function ProjectDetail() {
                       </svg>
                       Ver Código
                     </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                   </a>
                 )}
 
@@ -566,11 +666,15 @@ export default function ProjectDetail() {
                     href={project.site}
                     target="_blank"
                     rel="noreferrer"
-                    className="group relative px-4 py-3 md:px-6 md:py-4 bg-white/90 dark:bg-slate-800/80 backdrop-blur-xl border-2 border-cyan-300/60 dark:border-cyan-500/50 text-cyan-700 dark:text-cyan-300 font-bold rounded-xl md:rounded-2xl hover:border-cyan-500/80 dark:hover:border-cyan-400/80 hover:bg-cyan-50/90 dark:hover:bg-cyan-950/30 hover:text-cyan-800 dark:hover:text-cyan-200 transition-all duration-300 hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl hover:shadow-cyan-500/25 overflow-hidden text-sm md:text-base"
+                    className={`group relative px-4 py-3 md:px-6 md:py-4 bg-white/90 dark:bg-slate-800/80 ${!isMobile && "backdrop-blur-xl"} border-2 border-cyan-300/60 dark:border-cyan-500/50 text-cyan-700 dark:text-cyan-300 font-bold rounded-xl md:rounded-2xl hover:border-cyan-500/80 dark:hover:border-cyan-400/80 hover:bg-cyan-50/90 dark:hover:bg-cyan-950/30 hover:text-cyan-800 dark:hover:text-cyan-200 transition-all duration-300 ${!isMobile && "hover:scale-105 hover:-translate-y-1"} shadow-lg hover:shadow-xl hover:shadow-cyan-500/25 overflow-hidden text-sm md:text-base cursor-pointer`}
+                    style={{ 
+                      WebkitTapHighlightColor: 'transparent',
+                      touchAction: 'manipulation'
+                    }}
                   >
                     <span className="relative z-10 flex items-center gap-2 md:gap-3">
                       <svg
-                        className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform duration-300"
+                        className={`w-4 h-4 md:w-5 md:h-5 ${!isMobile && "group-hover:scale-110"} transition-transform duration-300`}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -584,17 +688,23 @@ export default function ProjectDetail() {
                       </svg>
                       Ver Demo
                     </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    {!isMobile && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    )}
                   </a>
                 )}
 
                 <Link
                   href="/projects"
-                  className="group relative px-4 py-3 md:px-6 md:py-4 bg-white/90 dark:bg-slate-800/80 backdrop-blur-xl border-2 border-emerald-300/60 dark:border-emerald-500/50 text-emerald-700 dark:text-emerald-300 font-bold rounded-xl md:rounded-2xl hover:border-emerald-500/80 dark:hover:border-emerald-400/80 hover:bg-emerald-50/90 dark:hover:bg-emerald-950/30 hover:text-emerald-800 dark:hover:text-emerald-200 transition-all duration-300 hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl hover:shadow-emerald-500/25 overflow-hidden text-sm md:text-base"
+                  className={`group relative px-4 py-3 md:px-6 md:py-4 bg-white/90 dark:bg-slate-800/80 ${!isMobile && "backdrop-blur-xl"} border-2 border-emerald-300/60 dark:border-emerald-500/50 text-emerald-700 dark:text-emerald-300 font-bold rounded-xl md:rounded-2xl hover:border-emerald-500/80 dark:hover:border-emerald-400/80 hover:bg-emerald-50/90 dark:hover:bg-emerald-950/30 hover:text-emerald-800 dark:hover:text-emerald-200 transition-all duration-300 ${!isMobile && "hover:scale-105 hover:-translate-y-1"} shadow-lg hover:shadow-xl hover:shadow-emerald-500/25 overflow-hidden text-sm md:text-base cursor-pointer`}
+                  style={{ 
+                    WebkitTapHighlightColor: 'transparent',
+                    touchAction: 'manipulation'
+                  }}
                 >
                   <span className="relative z-10 flex items-center gap-2 md:gap-3">
                     <svg
-                      className="w-4 h-4 md:w-5 md:h-5 group-hover:-translate-x-1 transition-transform duration-300"
+                      className={`w-4 h-4 md:w-5 md:h-5 ${!isMobile && "group-hover:-translate-x-1"} transition-transform duration-300`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -608,22 +718,27 @@ export default function ProjectDetail() {
                     </svg>
                     Todos los Proyectos
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  {!isMobile && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  )}
                 </Link>
               </div>
             </div>
           </div>
 
-          {/* content */}
+          {/* CONTENT */}
           <div className="space-y-6 md:space-y-10 order-1 lg:order-2">
             <div className="space-y-4 md:space-y-8">
               <div className="relative">
                 <h1 className="text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-r from-slate-900 via-violet-800 to-slate-900 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent leading-tight">
                   {project.title}
                 </h1>
-                <div className="absolute -top-1 -right-1 md:-top-3 md:-right-3 w-2 h-2 md:w-4 md:h-4 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-70 animate-bounce delay-500"></div>
-                <div className="absolute bottom-1 left-2 md:bottom-2 md:left-4 w-1.5 h-1.5 md:w-2 md:h-2 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-60 animate-pulse"></div>
-                <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full animate-[scale-x_1.5s_ease-out_0.5s_forwards] origin-left"></div>
+                {!isMobile && (
+                  <>
+                    <div className="absolute -top-1 -right-1 md:-top-3 md:-right-3 w-2 h-2 md:w-4 md:h-4 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-70"></div>
+                    <div className="absolute bottom-1 left-2 md:bottom-2 md:left-4 w-1.5 h-1.5 md:w-2 md:h-2 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-60"></div>
+                  </>
+                )}
               </div>
 
               <div className="text-base md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed font-medium space-y-3 md:space-y-4">
@@ -636,7 +751,6 @@ export default function ProjectDetail() {
               </div>
             </div>
 
-            {/* tech stack */}
             <div className="space-y-4 md:space-y-6">
               <div className="flex items-center gap-3 md:gap-4">
                 <div className="w-1.5 h-6 md:h-8 bg-gradient-to-b from-violet-500 to-purple-600 rounded-full"></div>
@@ -650,19 +764,21 @@ export default function ProjectDetail() {
                 {project.stack.map((tech, index) => (
                   <span
                     key={tech}
-                    className="group relative px-3 py-2 md:px-5 md:py-3 bg-white/80 dark:bg-slate-800/70 backdrop-blur-xl border border-slate-200/60 dark:border-slate-700/50 text-slate-700 dark:text-slate-200 font-semibold rounded-xl md:rounded-2xl hover:border-violet-400/60 dark:hover:border-violet-500/50 hover:bg-white/95 dark:hover:bg-slate-700/80 transition-all duration-300 hover:scale-110 hover:-translate-y-2 shadow-lg hover:shadow-xl hover:shadow-violet-500/25 overflow-hidden cursor-default text-xs md:text-sm"
-                    style={{ animationDelay: `${index * 100}ms` }}
+                    className={`group relative px-3 py-2 md:px-5 md:py-3 bg-white/80 dark:bg-slate-800/70 ${!isMobile && "backdrop-blur-xl"} border border-slate-200/60 dark:border-slate-700/50 text-slate-700 dark:text-slate-200 font-semibold rounded-xl md:rounded-2xl hover:border-violet-400/60 dark:hover:border-violet-500/50 hover:bg-white/95 dark:hover:bg-slate-700/80 transition-all duration-300 ${!isMobile && "hover:scale-110 hover:-translate-y-2"} shadow-lg hover:shadow-xl hover:shadow-violet-500/25 overflow-hidden cursor-default text-xs md:text-sm`}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-violet-500/5 via-purple-500/8 to-violet-500/5 opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    {!isMobile && (
+                      <>
+                        <div className="absolute inset-0 bg-gradient-to-r from-violet-500/5 via-purple-500/8 to-violet-500/5 opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                        <div className="absolute top-0.5 right-0.5 md:top-1 md:right-1 w-1.5 h-1.5 md:w-2 md:h-2 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-0 group-hover:opacity-80 transition-opacity"></div>
+                      </>
+                    )}
                     <span className="relative z-10">{tech}</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                    <div className="absolute top-0.5 right-0.5 md:top-1 md:right-1 w-1.5 h-1.5 md:w-2 md:h-2 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-0 group-hover:opacity-80 group-hover:animate-pulse transition-opacity"></div>
                   </span>
                 ))}
               </div>
             </div>
 
-            {/* description */}
             {project.description && (
               <div className="space-y-4 md:space-y-6">
                 <div className="flex items-center gap-3 md:gap-4">
@@ -673,9 +789,15 @@ export default function ProjectDetail() {
                   <div className="flex-1 h-px bg-gradient-to-r from-cyan-500/20 to-transparent"></div>
                 </div>
 
-                <div className="relative group p-4 md:p-8 bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl rounded-xl md:rounded-3xl border border-slate-200/60 dark:border-slate-700/50 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-blue-500/8 to-cyan-500/5 opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="absolute -top-2 -right-2 md:-top-4 md:-right-4 w-16 h-16 md:w-24 md:h-24 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <div
+                  className={`relative group p-4 md:p-8 bg-white/70 dark:bg-slate-800/70 ${!isMobile && "backdrop-blur-xl"} rounded-xl md:rounded-3xl border border-slate-200/60 dark:border-slate-700/50 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden`}
+                >
+                  {!isMobile && (
+                    <>
+                      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-blue-500/8 to-cyan-500/5 opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="absolute -top-2 -right-2 md:-top-4 md:-right-4 w-16 h-16 md:w-24 md:h-24 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    </>
+                  )}
 
                   <div className="relative z-10 text-slate-700 dark:text-slate-300 leading-relaxed text-base md:text-lg space-y-3 md:space-y-4">
                     {String(project.description)
@@ -692,7 +814,6 @@ export default function ProjectDetail() {
         </div>
       </Section>
 
-      {/* Styled-JSX: NO pisar utilidades de Tailwind */}
       <style jsx>{`
         @keyframes shimmer {
           0% {
@@ -702,24 +823,9 @@ export default function ProjectDetail() {
             transform: translateX(200%);
           }
         }
-        @keyframes scale-x {
-          from {
-            transform: scaleX(0);
-          }
-          to {
-            transform: scaleX(1);
-          }
-        }
         .animate-shimmer {
           animation: shimmer 2s infinite;
         }
-        .group:hover .group-hover\\:animate-bounce {
-          animation: bounce 1s infinite;
-        }
-        .group:hover .group-hover\\:animate-pulse {
-          animation: pulse 2s infinite;
-        }
-        /* ⛔️ Eliminadas las reglas que sobrescribían .transform y .transition-all de Tailwind */
       `}</style>
     </div>
   );
