@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/lib/theme";
 import AntiTranslate from "@/components/AntiTranslate";
+import ToasterProvider from "@/components/ToasterProvider";
 
 //* Métricas gratis de Vercel
 import { Analytics } from "@vercel/analytics/react";
@@ -57,6 +58,9 @@ export default function RootLayout({ children }) {
           <Navbar />
           <main className="pt-16">{children}</main>
           <Footer />
+
+          {/* Toast notifications - Lee el tema del ThemeProvider */}
+          <ToasterProvider />
         </ThemeProvider>
 
         {/* 👇 Métricas de Vercel (gratis) */}
