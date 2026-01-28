@@ -181,20 +181,18 @@ export async function POST(request) {
 
                         <!-- Mensaje -->
                         <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 40px;">
-                          <tr>
-                            <td>
-                              <h2 style="color: #1f2937; font-size: 20px; font-weight: 700; margin: 0 0 20px 0; padding-bottom: 12px; border-bottom: 2px solid #f3f4f6;">
+                        <tr>
+                            <td style="text-align: left;">
+                            <h2 style="color: #1f2937; font-size: 20px; font-weight: 700; margin: 0 0 20px 0; padding-bottom: 12px; border-bottom: 2px solid #f3f4f6; text-align: left;">
                                 <span style="margin-right: 10px;">💬</span>
                                 Mensaje Recibido
-                              </h2>
-                              
-                              <div style="background: #f1f5f9; padding: 25px; border-radius: 12px; border: 1px solid #cbd5e1;">
-                                <div style="color: #334155; font-size: 15px; line-height: 1.6; white-space: pre-wrap; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-                                  ${message}
-                                </div>
-                              </div>
+                            </h2>
+                            
+                            <div style="background: #f1f5f9; padding: 25px; border-radius: 12px; border: 1px solid #cbd5e1; text-align: left;">
+                                <p style="color: #334155; font-size: 15px; line-height: 1.6; white-space: pre-wrap; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; text-align: left;">${message}</p>
+                            </div>
                             </td>
-                          </tr>
+                        </tr>
                         </table>
 
                         <!-- Instrucción para responder -->
