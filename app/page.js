@@ -66,7 +66,7 @@ export default function HomePage() {
                 Tecnologías Principales
               </h3>
               <div className="flex flex-wrap gap-3">
-                {["Next.js", "Flutter", "React Native", "SQL Server", "Firebase", "Firestore", "Tailwind CSS", "Google Maps Plattform", "Cloude AI", "Chat GPT", "SQLite", "GitHub", "Vercel", "Node.js", "PostgreSQL"].map(
+                {["Next.js", "Flutter", "SQL Server", "Firebase", "Tailwind CSS", "Google Maps Plattform", "Cloude AI", "Chat GPT", "SQLite", "GitHub", "Vercel", "Node.js", "PostgreSQL"].map(
                   (tech, index) => (
                     <span
                       key={tech}
@@ -75,6 +75,28 @@ export default function HomePage() {
                     >
                       {tech}
                       <div className="absolute inset-0 bg-gradient-to-r from-violet-500/5 to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </span>
+                  )
+                )}
+              </div>
+            </div>
+
+            {/* Tecnologías en Aprendizaje */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                <div className="w-2 h-2 bg-gradient-to-r from-cyan-500 to-sky-600 rounded-full" />
+                Tecnologías en Aprendizaje
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {["React Native", "Expo", "TestSprite", "Supabase"].map(
+                  (tech, index) => (
+                    <span
+                      key={tech}
+                      className="group relative px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg border border-gray-200/50 dark:border-gray-700/50 hover:border-blue-300/50 dark:hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-0.5"
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      {tech}
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-indigo-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
                     </span>
                   )
                 )}
