@@ -88,7 +88,7 @@ export default function HomePage() {
                 Tecnologías en Aprendizaje
               </h3>
               <div className="flex flex-wrap gap-3">
-                {["React Native", "Expo", "TestSprite", "Supabase"].map(
+                {["React Native", "Expo", "TestSprite", "Supabase", "NestJS"].map(
                   (tech, index) => (
                     <span
                       key={tech}
