@@ -46,7 +46,7 @@ export const PROJECTS = [
     repo: "https://github.com/Javi1771/Pandora-Pub",
     site: "",
     summary:
-      "La plataforma Pandora – Servicio Médico Municipal de San Juan del Río impacta al agilizar y transparentar la atención de salud del Ayuntamiento: unifica en una sola web el padrón de beneficiarios, expediente clínico, consultas, recetas, órdenes de laboratorio, incapacidades, resurtimientos y credencialización con captura de foto y firma. Todo queda trazable y disponible para el equipo médico, capturistas y Recursos Humanos.\n"+
+      "Esta plataforma de San Juan del Río impacta al agilizar y transparentar la atención de salud del Ayuntamiento: unifica en una sola web el padrón de beneficiarios, expediente clínico, consultas, recetas, órdenes de laboratorio, incapacidades, resurtimientos y credencialización con captura de foto y firma. Todo queda trazable y disponible para el equipo médico, capturistas y Recursos Humanos.\n"+
       "Esto reduce tiempos de espera y filas, elimina papelería duplicada y oficios manuales, y ofrece visibilidad en tiempo real del estado de atenciones, estudios y medicamentos. Pandora mantiene diagnósticos y notas más precisas, generando además comprobantes y documentos en PDF cuando se requieren.\n"+
       "Para la administración, Pandora centraliza datos, evita errores de captura (con integración al padrón de personal), y produce indicadores operativos para optimizar recursos y rendir cuentas. Para las y los usuarios, brinda una experiencia simple, accesible y confiable, con información clara de su atención y documentos digitalizados, fortaleciendo la calidad del servicio médico municipal.",
     image:
@@ -66,7 +66,7 @@ export const PROJECTS = [
     repo: "https://github.com/Javi1771/Cus-Movil-Pub",
     site: "",
     summary:
-      "La aplicación móvil CUS Móvil impacta al agilizar y transparentar la relación ciudadanía–Gobierno: habilita el registro digital de usuarios (trabajadores del Ayuntamiento, ciudadanos y empresas) y el seguimiento en tiempo real de sus trámites.\n" + 
+      "Esta aplicación móvil impacta al agilizar y transparentar la relación ciudadanía–Gobierno: habilita el registro digital de usuarios (trabajadores del Ayuntamiento, ciudadanos y empresas) y el seguimiento en tiempo real de sus trámites.\n" + 
       "\n Esto reduce tiempos de atención, disminuye filas, llamadas y visitas presenciales, y mejora la certidumbre al dar visibilidad clara del avance y requisitos pendientes.\n" +
       "\n Para la administración, unifica la captura de datos, evita duplicidades, y genera indicadores operativos para optimizar procesos y rendir cuentas; para las y los usuarios, ofrece una experiencia simple, accesible y trazable, fortaleciendo la confianza en los servicios municipales.",
     image: "/Banners/cus_movil.png",
@@ -103,7 +103,7 @@ export const PROJECTS = [
     repo: "https://github.com/Javi1771/finmaster",
     site: "",
     summary:
-      "La aplicación FinMaster impacta al ordenar y anticipar tus finanzas personales: centraliza las fechas de corte y de pago de cada tarjeta, envía recordatorios inteligentes con días de anticipación y permite iniciar sesión con Google para un acceso rápido y seguro. Además, registra tu gasto mensual por tarjeta para dar visibilidad en tiempo real de próximos compromisos y hábitos de consumo.\n"+
+      "Esta aplicación impacta al ordenar y anticipar tus finanzas personales: centraliza las fechas de corte y de pago de cada tarjeta, envía recordatorios inteligentes con días de anticipación y permite iniciar sesión con Google para un acceso rápido y seguro. Además, registra tu gasto mensual por tarjeta para dar visibilidad en tiempo real de próximos compromisos y hábitos de consumo.\n"+
       "Esto reduce comisiones por pago tardío, elimina hojas de cálculo y notas dispersas, y mejora la certidumbre financiera al mostrar cuánto, cuándo y en qué gastaste, con alertas oportunas para no olvidar pagos y mantener tus finanzas bajo control.\n"+
       "Para las y los usuarios, unifica la información, evita duplicidades y genera indicadores y gráficas por tarjeta y por mes; ofrece una experiencia simple, accesible y trazable para planear mejor, tomar decisiones informadas y pagar a tiempo sin estrés.",
     image: "/Banners/finmaster.png",
@@ -122,7 +122,7 @@ export const PROJECTS = [
     repo: "https://github.com/JavierUTSJR/sine_nimbus",
     site: "",
     summary:
-      "La aplicación Nimbus Móvil impacta al agilizar y transparentar la operación logística de la empresa: conecta con el API de NIMBUS para habilitar el acceso en tiempo real a información clave de depósitos y logística desde Android y iOS.\n"+
+      "La aplicación móvil impacta al agilizar y transparentar la operación logística de la empresa: conecta con el API de NIMBUS (API interna de la empresa) para habilitar el acceso en tiempo real a información clave de depósitos y logística desde Android y iOS.\n"+
       "Esto reduce tiempos de consulta, disminuye llamadas, correos y visitas presenciales, y mejora la certidumbre operativa al dar visibilidad clara del estado de movimientos, pedidos y tareas, directamente en el dispositivo móvil.\n"+
       "Para la organización, unifica la consulta de datos, evita duplicidades y genera indicadores operativos para optimizar rutas, inventarios y recursos; para las y los usuarios, ofrece una experiencia simple, accesible y trazable, fortaleciendo la toma de decisiones y la eficiencia del día a día.",
     image: "/Banners/nimbus.png",
