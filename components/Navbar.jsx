@@ -123,9 +123,9 @@ export default function Navbar() {
           <div className="max-w-7xl mx-auto px-4 py-6">
             <div className="flex flex-col gap-1">
               {[
-                { href: "/projects", text: "Proyectos", color: "from-violet-400 to-purple-500", icon: "💼" },
-                { href: "/about", text: "Sobre mí", color: "from-cyan-400 to-blue-500", icon: "👨‍💻" },
-                { href: "/contact", text: "Contacto", color: "from-emerald-400 to-green-500", icon: "📧" }
+                { href: "/projects", text: "Proyectos", color: "from-violet-400 to-purple-500",  },
+                { href: "/about", text: "Sobre mí", color: "from-cyan-400 to-blue-500",  },
+                { href: "/contact", text: "Contacto", color: "from-emerald-400 to-green-500", }
               ].map((item, index) => (
                 <Link
                   key={item.href}
@@ -139,11 +139,6 @@ export default function Navbar() {
                 >
                   {/* Background gradient on hover */}
                   <div className={`absolute inset-0 bg-gradient-to-r ${item.color} opacity-0 group-hover:opacity-10 rounded-xl transition-opacity duration-300`}></div>
-                  
-                  {/* Icon */}
-                  <span className="text-lg group-hover:scale-110 transition-transform duration-300">
-                    {item.icon}
-                  </span>
                   
                   {/* Text */}
                   <span className="relative font-medium group-hover:translate-x-1 transition-transform duration-300">
