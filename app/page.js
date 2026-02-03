@@ -85,10 +85,10 @@ export default function HomePage() {
             <div className="space-y-4">
               <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
                 <div className="w-2 h-2 bg-gradient-to-r from-cyan-500 to-sky-600 rounded-full" />
-                Tecnologías en Aprendizaje
+                Tecnologías en Aprendizaje o Uso Reciente
               </h3>
               <div className="flex flex-wrap gap-3">
-                {["React Native", "Expo", "TestSprite", "Supabase", "NestJS"].map(
+                {["React Native", "Expo", "TestSprite", "Supabase", "NestJS", "Prisma"].map(
                   (tech, index) => (
                     <span
                       key={tech}
