@@ -1,3 +1,72 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ===================== Sileo Toast — Tema y Orbes ===================== */
+
+/* --- Fondo del toast (SVG pill + body) --- */
+[data-sileo-pill],
+[data-sileo-body] {
+  fill: #f0fdf4 !important;
+  transition: fill 0.3s ease;
+}
+
+.dark [data-sileo-pill],
+.dark [data-sileo-body] {
+  fill: #1a2332 !important;
+}
+
+/* --- Colores de estado más brillantes --- */
+[data-sileo-toast] {
+  --sileo-state-success: oklch(0.78 0.24 150);
+  --sileo-state-error: oklch(0.68 0.28 28);
+  --sileo-state-warning: oklch(0.82 0.2 85);
+  --sileo-state-info: oklch(0.72 0.19 235);
+}
+
+/* --- Texto de la descripción --- */
+[data-sileo-description] {
+  position: relative;
+  color: #374151 !important;
+  transition: color 0.3s ease;
+}
+
+.dark [data-sileo-description] {
+  color: #e5e7eb !important;
+}
+
+/* --- Orbes de fondo --- */
+[data-sileo-description]::before,
+[data-sileo-description]::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-sileo-description]::before {
+  width: 80px;
+  height: 80px;
+  top: 0;
+  right: 10px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.5), transparent 70%);
+  filter: blur(25px);
+}
+
+[data-sileo-description]::after {
+  width: 70px;
+  height: 70px;
+  bottom: 0;
+  left: 10px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.4), transparent 70%);
+  filter: blur(22px);
+}
+
+.dark [data-sileo-description]::before {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.4), transparent 70%);
+}
+
+.dark [data-sileo-description]::after {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.32), transparent 70%);
+}

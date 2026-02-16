@@ -3,7 +3,7 @@
 "use client";
 
 import { useState } from "react";
-import { toast } from "sonner";
+import { sileo } from "sileo";
 import Section from "@/components/Section";
 import { GITHUB_ACCOUNTS, LINKEDIN } from "@/data/links";
 
@@ -40,7 +40,8 @@ export default function ContactPage() {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success('¡Mensaje enviado!', {
+        sileo.success({
+          title: '¡Mensaje enviado!',
           description: 'Te responderé lo antes posible. Gracias por contactarme.',
           duration: 5000,
         });
@@ -53,14 +54,16 @@ export default function ContactPage() {
           message: "",
         });
       } else {
-        toast.error('Error al enviar', {
+        sileo.error({
+          title: 'Error al enviar',
           description: data.error || 'Por favor intenta nuevamente.',
           duration: 5000,
         });
       }
     } catch (error) {
       console.error('Error:', error);
-      toast.error('Error de conexión', {
+      sileo.error({
+        title: 'Error de conexión',
         description: 'Verifica tu conexión a internet e intenta nuevamente.',
         duration: 5000,
       });

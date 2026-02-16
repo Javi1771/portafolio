@@ -111,7 +111,7 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
 
         {/* Descripción */}
         <p className="text-sm text-gray-600 dark:text-white/80 line-clamp-3 leading-relaxed">
-          {project.summary}
+          {project.tagline}
         </p>
 
         {/* Tech stack optimizado */}

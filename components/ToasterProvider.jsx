@@ -1,42 +1,15 @@
-// components/ToasterProvider.jsx                                                                                                                                                                                           
-"use client";                                                                                                                                                                                                               
-                                                                                                                                                                                                                            
-import { Toaster } from "sonner";                                                                                                                                                                                           
-import { useTheme } from "@/lib/theme";                                                                                                                                                                                     
-                                                                                                                                                                                                                            
-export default function ToasterProvider() {                                                                                                                                                                                 
-  const { isDark } = useTheme();                                                                                                                                                                                            
-                                                                                                                                                                                                                            
-  return (                                                                                                                                                                                                                  
-    <Toaster                                                                                                                                                                                                                
-      position="bottom-right"                                                                                                                                                                                               
-      expand={false}                                                                                                                                                                                                        
-      richColors={false}                                                                                                                                                                                                    
-      closeButton                                                                                                                                                                                                           
-      duration={4000}                                                                                                                                                                                                       
-      theme={isDark ? "dark" : "light"}                                                                                                                                                                                     
-      toastOptions={{                                                                                                                                                                                                       
-        unstyled: false,                                                                                                                                                                                                    
-        classNames: {                                                                                                                                                                                                       
-          toast: '!bg-white/80 dark:!bg-gray-800/60 !backdrop-blur-sm !rounded-xl !border !shadow-lg',                                                                                                                      
-          default: '!border-gray-200/50 dark:!border-gray-700/50',                                                                                                                                                          
-          success: '!border-emerald-400 dark:!border-emerald-600',                                                                                                                                                          
-          error: '!border-red-400 dark:!border-red-600',                                                                                                                                                                    
-          warning: '!border-amber-400 dark:!border-amber-600',                                                                                                                                                              
-          info: '!border-blue-400 dark:!border-blue-600',                                                                                                                                                                   
-          title: '!text-gray-900 dark:!text-white !font-semibold !text-sm',                                                                                                                                                 
-          description: '!text-gray-500 dark:!text-gray-400 !text-xs',                                                                                                                                                       
-          actionButton: '!bg-emerald-500 !text-white !rounded-lg',                                                                                                                                                          
-          cancelButton: '!bg-gray-100 dark:!bg-gray-700 !rounded-lg',                                                                                                                                                       
-          closeButton: '!bg-white/80 dark:!bg-gray-800/60 !border !border-gray-200/50 dark:!border-gray-700/50 !text-gray-400 hover:!text-gray-900 dark:hover:!text-white !rounded-full',                                   
-        },                                                                                                                                                                                                                  
-        style: {                                                                                                                                                                                                            
-          padding: '14px 16px',                                                                                                                                                                                             
-          gap: '8px',                                                                                                                                                                                                       
-          fontSize: '14px',                                                                                                                                                                                                 
-          maxWidth: '360px',                                                                                                                                                                                                
-        },                                                                                                                                                                                                                  
-      }}                                                                                                                                                                                                                    
-    />                                                                                                                                                                                                                      
-  );                                                                                                                                                                                                                        
-}        
+// components/ToasterProvider.jsx
+"use client";
+
+import { Toaster } from "sileo";
+
+export default function ToasterProvider() {
+  return (
+    <Toaster
+      position="bottom-right"
+      options={{
+        duration: 4000,
+      }}
+    />
+  );
+}
