@@ -66,7 +66,7 @@ export default function HomePage() {
                 Tecnologías Principales
               </h3>
               <div className="flex flex-wrap gap-3">
-                {["Next.js", "Flutter", "SQL Server", "Firebase", "Tailwind CSS", "Google Maps Plattform", "Cloude AI", "Chat GPT", "SQLite", "GitHub", "Vercel", "Node.js", "PostgreSQL"].map(
+                {["Next.js", "Flutter", "SQL Server", "Firebase", "Tailwind CSS", "Google Maps Plattform", "Claude AI", "Chat GPT", "SQLite", "GitHub", "Vercel", "Node.js", "PostgreSQL"].map(
                   (tech, index) => (
                     <span
                       key={tech}
