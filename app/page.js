@@ -66,8 +66,8 @@ export default function HomePage() {
                 Tecnologías Principales
               </h3>
               <div className="flex flex-wrap gap-3">
-                {["Next.js", "Flutter", "SQL Server", "Firebase", "Tailwind CSS", "Google Maps Plattform", "Claude AI", "Chat GPT", "SQLite", "GitHub", "Vercel", "Node.js", "PostgreSQL"].map(
-                  (tech, index) => (
+                {["Next.js", "Flutter", "SQL Server", "Firebase", "Tailwind CSS", "Google Maps Plattform", "Claude CLI", "Codex CLI", "Gemini CLI", "SQLite", "GitHub", "Vercel", "Node.js", "PostgreSQL"].map(
+                  (tech, index) => 
                     <span
                       key={tech}
                       className="group relative px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg border border-gray-200/50 dark:border-gray-700/50 hover:border-violet-300/50 dark:hover:border-violet-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/10 hover:-translate-y-0.5"
@@ -88,7 +88,7 @@ export default function HomePage() {
                 Tecnologías en Aprendizaje o Uso Reciente
               </h3>
               <div className="flex flex-wrap gap-3">
-                {["React Native", "Expo", "TestSprite", "Supabase", "NestJS", "Prisma", "Claude CLI", "MCP Jira", "Agents Skills"].map(
+                {["React Native", "Expo", "TestSprite", "Supabase", "NestJS", "Prisma", "MCP Jira", "MCP Notion", "Drizzle", "Agents Skills"].map(
                   (tech, index) => (
                     <span
                       key={tech}
