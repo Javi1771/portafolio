@@ -77,7 +77,7 @@ export default function HomePage() {
                       <div className="absolute inset-0 bg-gradient-to-r from-violet-500/5 to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
                     </span>
                   )
-                )}
+                }
               </div>
             </div>
 
