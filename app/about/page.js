@@ -514,7 +514,7 @@ export default function AboutPage() {
                 },
                 {
                   name: "Otros",
-                  items: ["Git & GitHub", "Vercel", "Firebase", "API Design", "System Integration"],
+                  items: ["Git & GitHub", "Vercel", "Nest.js", "Manero de IA", "Principios SOLID"],
                   color: "emerald",
                   hex1: "#10b981",
                   hex2: "#34d399",
