@@ -63,7 +63,15 @@ export async function POST(request) {
                     <!-- Encabezado -->
                     <tr>
                       <td style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); padding: 50px 40px; text-align: center;">
-                        <div style="font-size: 48px; margin-bottom: 20px;">📩</div>
+                        <div style="margin-bottom: 20px;">
+                          <img
+                            src="https://javier-lopez.dev/favicon.ico"
+                            alt="Javier López"
+                            width="80"
+                            height="80"
+                            style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.8); object-fit: cover; display: block; margin: 0 auto;"
+                          />
+                        </div>
                         <h1 style="color: white; font-size: 28px; font-weight: 700; margin: 0 0 10px 0;">Nuevo Mensaje Recibido</h1>
                         <p style="color: rgba(255,255,255,0.9); font-size: 16px; margin: 0;">Formulario de contacto - Javier López</p>
                       </td>
@@ -240,8 +248,14 @@ export async function POST(request) {
                         
                         <!-- Información del portfolio -->
                         <div style="margin-bottom: 30px;">
-                          <div style="width: 60px; height: 60px; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 15px;">
-                            <span style="font-size: 28px;">💻</span>
+                          <div style="margin-bottom: 15px;">
+                            <img
+                              src="https://javier-lopez.dev/favicon.ico"
+                              alt="Javier López"
+                              width="60"
+                              height="60"
+                              style="width: 60px; height: 60px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5); object-fit: cover; display: inline-block;"
+                            />
                           </div>
                           <h3 style="color: white; font-size: 22px; font-weight: 700; margin: 0 0 8px 0;">
                             Javier López
