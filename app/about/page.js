@@ -6,6 +6,13 @@ import Section from "@/components/Section";
 import SkillCard from "@/components/SkillCard";
 import HobbyCard from "@/components/HobbyCard";
 import { useMemo, useState, useEffect } from "react";
+import {
+  UsersRound, GraduationCap, Paintbrush, MessagesSquare, Puzzle, Kanban,
+  RefreshCw, ZoomIn, Hourglass, HeartHandshake, BrainCircuit, Award,
+  Gamepad2, Box, MonitorPlay, Shirt, SprayCan, ChefHat,
+  Headphones, CircuitBoard, Cpu, Clapperboard, PenLine, Bubbles,
+  Rocket, MousePointerClick, TrendingUp,
+} from "lucide-react";
 import Experience from "@/components/Experience";
 
 export default function AboutPage() {
@@ -27,7 +34,7 @@ export default function AboutPage() {
       {
         title: "Liderazgo & Colaboración",
         desc: "Experiencia liderando equipos de desarrollo y gestionando practicantes. He trabajado colaborativamente en proyectos municipales coordinando equipos de hasta 3 personas.",
-        icon: "👥",
+        icon: UsersRound,
         gradient: "from-violet-500 to-purple-600",
         bubbleColor1: "#8b5cf6",
         bubbleColor2: "#a78bfa",
@@ -35,7 +42,7 @@ export default function AboutPage() {
       {
         title: "Aprendizaje Continuo",
         desc: "Constantemente integrando nuevas tecnologías a mi stack. Me mantengo actualizado con las últimas tendencias en desarrollo web y móvil.",
-        icon: "📚",
+        icon: GraduationCap,
         gradient: "from-rose-500 to-orange-600",
         bubbleColor1: "#f43f5e",
         bubbleColor2: "#fb7185",
@@ -43,7 +50,7 @@ export default function AboutPage() {
       {
         title: "Creatividad & Diseño",
         desc: "Enfoque creativo en el diseño de sistemas, siempre buscando inspiración y mejorando la experiencia visual de cada interfaz que desarrollo.",
-        icon: "💡",
+        icon: Paintbrush,
         gradient: "from-blue-500 to-cyan-600",
         bubbleColor1: "#3b82f6",
         bubbleColor2: "#60a5fa",
@@ -51,15 +58,16 @@ export default function AboutPage() {
       {
         title: "Comunicación Transparente",
         desc: "Honesto con tiempos de entrega y proactivo al comunicar desafíos durante el desarrollo. Creo en mantener expectativas realistas.",
-        icon: "💬",
+        icon: MessagesSquare,
         gradient: "from-gray-400 to-gray-600",
         bubbleColor1: "#4b5563",
         bubbleColor2: "#6b7280",
+        iconDarkClass: "dark:brightness-200",
       },
       {
         title: "Resolución de Problemas",
         desc: "Capacidad para identificar obstáculos técnicos y encontrar soluciones efectivas, adaptándome a los requerimientos de cada proyecto.",
-        icon: "🔧",
+        icon: Puzzle,
         gradient: "from-amber-500 to-yellow-600",
         bubbleColor1: "#f59e0b",
         bubbleColor2: "#fbbf24",
@@ -67,7 +75,7 @@ export default function AboutPage() {
       {
         title: "Gestión de Proyectos",
         desc: "Experiencia planificando, ejecutando y entregando proyectos completos, desde la conceptualización hasta el despliegue en producción.",
-        icon: "📒",
+        icon: Kanban,
         gradient: "from-emerald-500 to-teal-600",
         bubbleColor1: "#10b981",
         bubbleColor2: "#34d399",
@@ -75,7 +83,7 @@ export default function AboutPage() {
       {
         title: "Adaptabilidad",
         desc: "Capaz de ajustarme rápidamente a nuevas tecnologías, equipos y metodologías de trabajo, manteniendo la productividad en entornos cambiantes.",
-        icon: "🌐",
+        icon: RefreshCw,
         gradient: "from-cyan-500 to-blue-600",
         bubbleColor1: "#06b6d4",
         bubbleColor2: "#22d3ee",
@@ -83,7 +91,7 @@ export default function AboutPage() {
       {
         title: "Atención al Detalle",
         desc: "Meticuloso en la revisión de código y diseño, asegurando que cada aspecto del proyecto cumpla con los estándares de calidad más altos.",
-        icon: "🔍",
+        icon: ZoomIn,
         gradient: "from-pink-500 to-purple-600",
         bubbleColor1: "#ec4899",
         bubbleColor2: "#f472b6",
@@ -91,7 +99,7 @@ export default function AboutPage() {
       {
         title: "Gestión del Tiempo",
         desc: "Organizado y eficiente, capaz de manejar múltiples tareas y cumplir con los plazos establecidos sin comprometer la calidad del trabajo.",
-        icon: "⏰",
+        icon: Hourglass,
         gradient: "from-purple-500 to-pink-600",
         bubbleColor1: "#a855f7",
         bubbleColor2: "#c084fc",
@@ -99,7 +107,7 @@ export default function AboutPage() {
       {
         title: "Empatía",
         desc: "Capacidad para entender las necesidades y perspectivas de los usuarios y compañeros de equipo, fomentando un ambiente de trabajo colaborativo.",
-        icon: "🤝",
+        icon: HeartHandshake,
         gradient: "from-red-500 to-orange-600",
         bubbleColor1: "#e20b0b",
         bubbleColor2: "#d33434",
@@ -107,7 +115,7 @@ export default function AboutPage() {
       {
         title: "Pensamiento Crítico",
         desc: "Analizo problemas complejos y tomo decisiones informadas basadas en datos y evidencia, buscando siempre la mejor solución posible.",
-        icon: "🧠",
+        icon: BrainCircuit,
         gradient: "from-lime-500 to-emerald-600",
         bubbleColor1: "#3aca38",
         bubbleColor2: "#6ffa60",
@@ -115,7 +123,7 @@ export default function AboutPage() {
       {
         title: "Excelencia & Presencia",
         desc: "Soy una persona con altos estándares de calidad, que valora la excelencia. Me esfuerzo por destacar en lo que hago.",
-        icon: "🏆",
+        icon: Award,
         gradient: "from-indigo-500 to-blue-600",
         bubbleColor1: "#6366f1",
         bubbleColor2: "#818cf8",
@@ -130,7 +138,7 @@ export default function AboutPage() {
       {
         title: "Gaming",
         desc: "Jugador casual de Fortnite y Minecraft. Los videojuegos me enseñan estrategia, trabajo en equipo y resolución creativa de problemas.",
-        icon: "🎮",
+        icon: Gamepad2,
         gradient: "from-purple-500 to-pink-600",
         bubbleColor1: "#a855f7",
         bubbleColor2: "#c084fc",
@@ -138,7 +146,7 @@ export default function AboutPage() {
       {
         title: "Cubos Rubik",
         desc: "Coleccionista y solucionador de cubos Rubik. Me fascina la lógica espacial y los patrones matemáticos detrás de cada giro.",
-        icon: "🧩",
+        icon: Box,
         gradient: "from-rose-500 to-orange-600",
         bubbleColor1: "#f43f5e",
         bubbleColor2: "#fb7185",
@@ -146,7 +154,7 @@ export default function AboutPage() {
       {
         title: "Anime & Comics",
         desc: "Fan del anime y los comics. Aprecio las narrativas complejas y el arte visual que estas formas de entretenimiento ofrecen.",
-        icon: "📖",
+        icon: MonitorPlay,
         gradient: "from-blue-500 to-cyan-600",
         bubbleColor1: "#3b82f6",
         bubbleColor2: "#60a5fa",
@@ -154,15 +162,16 @@ export default function AboutPage() {
       {
         title: "Estilo Personal",
         desc: "Me gusta vestir formal, aprecio la elegancia en el día a día. Creo que la presentación personal habla de profesionalismo.",
-        icon: "🥼",
+        icon: Shirt,
         gradient: "from-gray-400 to-gray-600",
         bubbleColor1: "#4b5563",
         bubbleColor2: "#6b7280",
+        iconDarkClass: "dark:brightness-200",
       },
       {
         title: "Perfumería & Etiqueta",
         desc: "Interesado en perfumería y normas de etiqueta. Valoro los detalles y la forma en que nos presentamos ante el mundo.",
-        icon: "✨",
+        icon: SprayCan,
         gradient: "from-amber-500 to-yellow-600",
         bubbleColor1: "#f59e0b",
         bubbleColor2: "#fbbf24",
@@ -170,7 +179,7 @@ export default function AboutPage() {
       {
         title: "Cocina",
         desc: "Disfruto cocinar ocasionalmente. La cocina es como programar: seguir recetas (algoritmos) y experimentar con nuevas combinaciones.",
-        icon: "🍳",
+        icon: ChefHat,
         gradient: "from-emerald-500 to-teal-600",
         bubbleColor1: "#10b981",
         bubbleColor2: "#34d399",
@@ -178,7 +187,7 @@ export default function AboutPage() {
       {
         title: "Tecnología & Gadgets",
         desc: "Apasionado por la tecnología y los gadgets. Me encanta explorar nuevos dispositivos y entender cómo pueden mejorar nuestra vida diaria.",
-        icon: "📲",
+        icon: CircuitBoard,
         gradient: "from-cyan-500 to-blue-600",
         bubbleColor1: "#06b6d4",
         bubbleColor2: "#22d3ee",
@@ -186,7 +195,7 @@ export default function AboutPage() {
       {
         title: "Música",
         desc: "Amante de la música, me gusta disfrutar de bastantes generos y trato de expandir mi biblioteca constantemente. La música me inspira y me ayuda a concentrarme mientras trabajo.",
-        icon: "🎵",
+        icon: Headphones,
         gradient: "from-pink-500 to-purple-600",
         bubbleColor1: "#ec4899",
         bubbleColor2: "#f472b6",
@@ -194,7 +203,7 @@ export default function AboutPage() {
       {
         title: "Limpieza & Organización",
         desc: "Me gusta mantener mi espacio limpio y organizado. Un entorno ordenado me ayuda a pensar con claridad y ser más productivo.",
-        icon: "🫧",
+        icon: Bubbles,
         gradient: "from-purple-500 to-pink-600",
         bubbleColor1: "#a855f7",
         bubbleColor2: "#c084fc",
@@ -202,7 +211,7 @@ export default function AboutPage() {
       {
         title: "Electrónica & Solución",
         desc: "Me gusta reparar o intentar solucionar fallas en dispositivos electrónicos. Disfruto el desafío de entender cómo funcionan las cosas y encontrar soluciones prácticas con lógica y paciencia.",
-        icon: "🔧",
+        icon: Cpu,
         gradient: "from-red-500 to-orange-600",
         bubbleColor1: "#e20b0b",
         bubbleColor2: "#d33434",
@@ -210,7 +219,7 @@ export default function AboutPage() {
       {
         title: "Escritura Visual",
         desc: "Valoro una escritura clara y estética, tanto digital como en físico. Uso formatos, colores y estructuras visuales para transmitir ideas con claridad y hacer que los mensajes sean fáciles de entender y atractivos de leer.",
-        icon: "✍️",
+        icon: PenLine,
         gradient: "from-lime-500 to-emerald-600",
         bubbleColor1: "#3aca38",
         bubbleColor2: "#6ffa60",
@@ -218,7 +227,7 @@ export default function AboutPage() {
       {
         title: "Películas & Series",
         desc: "Disfruto ver películas y series en mi tiempo libre. Me gusta analizar las tramas, personajes y la dirección cinematográfica.",
-        icon: "🎬",
+        icon: Clapperboard,
         gradient: "from-indigo-500 to-blue-600",
         bubbleColor1: "#6366f1",
         bubbleColor2: "#818cf8",
@@ -441,30 +450,44 @@ export default function AboutPage() {
                   {
                     title: "Rendimiento",
                     desc: "Código optimizado que escala y responde rápido, priorizando la eficiencia en cada línea",
-                    icon: "⚡",
+                    icon: Rocket,
                     color: "from-yellow-500 to-orange-600",
+                    iconColor: "#f59e0b",
                   },
                   {
                     title: "UX Intuitiva",
                     desc: "Interfaces que los usuarios entienden naturalmente, sin necesidad de explicaciones",
-                    icon: "🎨",
+                    icon: MousePointerClick,
                     color: "from-violet-500 to-purple-600",
+                    iconColor: "#8b5cf6",
                   },
                   {
                     title: "Métricas Claras",
                     desc: "Datos concretos que guían decisiones y demuestran resultados medibles",
-                    icon: "🛠️",
+                    icon: TrendingUp,
                     color: "from-cyan-500 to-blue-600",
+                    iconColor: "#06b6d4",
                   },
                 ].map((item) => (
                   <div
                     key={item.title}
                     className={`text-center p-6 bg-white/60 dark:bg-gray-800/30 ${!isMobile && "backdrop-blur-sm"} rounded-xl border border-gray-200/50 dark:border-gray-700/50 ${!isMobile && "hover:scale-105"} transition-all duration-300`}
                   >
-                    <div
-                      className={`text-4xl mb-4 bg-gradient-to-r ${item.color} bg-clip-text text-transparent`}
-                    >
-                      {item.icon}
+                    <div className="mb-4 flex justify-center">
+                      <div
+                        className="w-14 h-14 flex items-center justify-center rounded-xl"
+                        style={{
+                          backgroundColor: `${item.iconColor}28`,
+                          border: `1.5px solid ${item.iconColor}90`,
+                          boxShadow: `0 0 10px ${item.iconColor}45, 0 0 3px ${item.iconColor}30`,
+                        }}
+                      >
+                        <item.icon
+                          size={30}
+                          strokeWidth={2}
+                          color={item.iconColor}
+                        />
+                      </div>
                     </div>
                     <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                       {item.title}
