@@ -1,148 +1,163 @@
 "use client";
-import { useState, useEffect } from "react";
+import {
+  LayoutGrid,
+  Briefcase,
+  Building2,
+  User,
+  Building,
+  Layers,
+  Globe,
+  Monitor,
+  Smartphone,
+  FolderOpen,
+  Tag,
+} from "lucide-react";
+
+/* ─── Paleta compartida por posición ─────────────────────────
+   Misma posición = mismo color en las dos barras
+──────────────────────────────────────────────────────────── */
+const POSITION_TEXT = [
+  "text-slate-700   dark:text-slate-200",
+  "text-violet-600  dark:text-violet-300",
+  "text-cyan-600    dark:text-cyan-300",
+  "text-rose-600    dark:text-rose-300",
+  "text-amber-600   dark:text-amber-300",
+];
+
+// Para el chip "activo" en el header
+const POSITION_CHIP = [
+  "text-slate-700  dark:text-slate-300  bg-slate-100       dark:bg-white/10",
+  "text-violet-600 dark:text-violet-400 bg-violet-50       dark:bg-violet-500/15",
+  "text-cyan-600   dark:text-cyan-400   bg-cyan-50         dark:bg-cyan-500/15",
+  "text-rose-600   dark:text-rose-400   bg-rose-50         dark:bg-rose-500/15",
+  "text-amber-600  dark:text-amber-400  bg-amber-50        dark:bg-amber-500/15",
+];
+
+/* ─── Configs ────────────────────────────────────────────── */
+const CATEGORY_CONFIG = [
+  { key: "Todos",                label: "Todos",       icon: LayoutGrid },
+  { key: "Freelance",            label: "Freelance",   icon: Briefcase  },
+  { key: "Municipio",            label: "Municipio",   icon: Building2  },
+  { key: "Personal",             label: "Personal",    icon: User       },
+  { key: "Empresarial Estadias", label: "Empresarial", icon: Building   },
+];
+
+const TYPE_CONFIG = [
+  { key: "Todos los tipos",    label: "Todos",   icon: Layers     },
+  { key: "Web Application",    label: "Web App", icon: Globe      },
+  { key: "Website",            label: "Website", icon: Monitor    },
+  { key: "Mobile Application", label: "Móvil",   icon: Smartphone },
+];
+
+/* ─── SectionHeader ──────────────────────────────────────── */
+
+function SectionHeader({ headerIcon: HeaderIcon, headerColor, label, options, activeKey, defaultKey }) {
+  const activeIndex  = options.findIndex((o) => o.key === activeKey);
+  const activeOption = options[activeIndex];
+  const isFiltered   = activeKey !== defaultKey;
+  const ActiveIcon   = activeOption?.icon;
+
+  return (
+    <div className="flex items-center justify-between mb-2 min-h-[1.5rem]">
+      {/* Icono + label de la sección */}
+      <p className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">
+        <HeaderIcon className={`w-3.5 h-3.5 shrink-0 ${headerColor}`} strokeWidth={2.5} />
+        {label}
+      </p>
+
+      {/* Chip con el filtro activo (solo cuando no es "Todos") */}
+      <span
+        className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold
+          transition-all duration-200
+          ${isFiltered
+            ? `${POSITION_CHIP[activeIndex]} opacity-100 translate-x-0`
+            : "opacity-0 pointer-events-none"
+          }`}
+      >
+        {ActiveIcon && <ActiveIcon className="w-3 h-3 shrink-0" strokeWidth={2.5} />}
+        {activeOption?.label}
+      </span>
+    </div>
+  );
+}
+
+/* ─── SegmentedBar ───────────────────────────────────────── */
+
+function SegmentedBar({ options, activeKey, labelBreakpoint = "min-[480px]", onSelect }) {
+  return (
+    <div className="flex gap-0.5 p-1 bg-gray-100/80 dark:bg-white/[0.05] rounded-xl">
+      {options.map((opt, i) => {
+        const isActive = activeKey === opt.key;
+        const Icon = opt.icon;
+        return (
+          <button
+            key={opt.key}
+            onClick={() => onSelect(opt.key)}
+            className={`flex-1 inline-flex items-center justify-center gap-1.5 h-8 px-1.5 rounded-[10px]
+              text-xs font-semibold transition-all duration-150
+              ${isActive
+                ? `bg-white dark:bg-white/[0.14] shadow-sm ring-1 ring-gray-200/80 dark:ring-white/[0.10] ${POSITION_TEXT[i]}`
+                : "text-gray-400 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+              }`}
+          >
+            <Icon className="shrink-0 w-3.5 h-3.5" strokeWidth={isActive ? 2.5 : 2} />
+            <span className={`hidden ${labelBreakpoint}:inline truncate`}>{opt.label}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ─── Main ───────────────────────────────────────────────── */
 
 export default function CategoryFilter({ allProjects, selected, onChange }) {
-  const [isMobile, setIsMobile] = useState(false);
+  const visibleCategories = CATEGORY_CONFIG.filter(
+    (c) => c.key === "Todos" || allProjects.some((p) => p.category === c.key)
+  );
+  const visibleTypes = TYPE_CONFIG.filter(
+    (t) => t.key === "Todos los tipos" || allProjects.some((p) => p.type === t.key)
+  );
 
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const categories = [
-    "Todos",
-    ...Array.from(new Set(allProjects.map((p) => p.category))),
-  ];
-
-  const types = [
-    "Todos los tipos",
-    ...Array.from(new Set(allProjects.map((p) => p.type))),
-  ];
-
-  if (isMobile) {
-    return (
-      <div className="space-y-3">
-        {/* Filtro por Categoría - Select Estilizado */}
-        <div>
-          <label
-            htmlFor="category-select"
-            className="text-sm font-medium text-gray-700 dark:text-white/70 mb-2 block"
-          >
-            Categoría
-          </label>
-          <div className="relative">
-            <select
-              id="category-select"
-              value={selected.category}
-              onChange={(e) =>
-                onChange({ ...selected, category: e.target.value })
-              }
-              className="w-full px-4 py-3 pr-10 rounded-xl border-2 border-gray-200/50 dark:border-white/10 bg-white/80 dark:bg-white/5 text-gray-900 dark:text-white font-medium focus:outline-none focus:border-violet-500 dark:focus:border-violet-400 focus:ring-4 focus:ring-violet-500/20 dark:focus:ring-violet-400/20 appearance-none cursor-pointer transition-all duration-200 shadow-sm hover:shadow-md"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23a855f7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "right 0.75rem center",
-                backgroundSize: "1.25rem",
-              }}
-            >
-              {categories.map((c) => (
-                <option key={c} value={c} className="py-2">
-                  {c}
-                </option>
-              ))}
-            </select>
-            {/* Indicador visual de selección */}
-            {selected.category !== "Todos" && (
-              <div className="absolute left-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
-            )}
-          </div>
-        </div>
-
-        {/* Filtro por Tipo - Select Estilizado */}
-        <div>
-          <label
-            htmlFor="type-select"
-            className="text-sm font-medium text-gray-700 dark:text-white/70 mb-2 block"
-          >
-            Tipo de Proyecto
-          </label>
-          <div className="relative">
-            <select
-              id="type-select"
-              value={selected.type}
-              onChange={(e) => onChange({ ...selected, type: e.target.value })}
-              className="w-full px-4 py-3 pr-10 rounded-xl border-2 border-gray-200/50 dark:border-white/10 bg-white/80 dark:bg-white/5 text-gray-900 dark:text-white font-medium focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:ring-4 focus:ring-blue-500/20 dark:focus:ring-blue-400/20 appearance-none cursor-pointer transition-all duration-200 shadow-sm hover:shadow-md"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "right 0.75rem center",
-                backgroundSize: "1.25rem",
-              }}
-            >
-              {types.map((t) => (
-                <option key={t} value={t} className="py-2">
-                  {t}
-                </option>
-              ))}
-            </select>
-            {/* Indicador visual de selección */}
-            {selected.type !== "Todos los tipos" && (
-              <div className="absolute left-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-            )}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Desktop - Botones
   return (
-    <div className="space-y-4">
-      {/* Filtro por Categoría */}
-      <div>
-        <h3 className="text-sm font-medium text-gray-700 dark:text-white/70 mb-2">
-          Categoría
-        </h3>
-        <div className="flex flex-wrap gap-2">
-          {categories.map((c) => (
-            <button
-              key={c}
-              onClick={() => onChange({ ...selected, category: c })}
-              className={`px-4 py-2 rounded-xl border transition-all duration-200 ${
-                selected.category === c
-                  ? "bg-gradient-to-r from-violet-600 to-purple-600 text-white border-violet-600 shadow-lg"
-                  : "bg-white/60 dark:bg-white/5 text-gray-700 dark:text-white/90 border-gray-200/50 dark:border-white/10 hover:bg-white/80 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white hover:border-gray-300 dark:hover:border-white/20"
-              }`}
-            >
-              {c}
-            </button>
-          ))}
-        </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+      {/* ── Categoría ── */}
+      <div className="space-y-2">
+        <SectionHeader
+          headerIcon={FolderOpen}
+          headerColor="text-violet-500 dark:text-violet-400"
+          label="Categoría"
+          options={visibleCategories}
+          activeKey={selected.category}
+          defaultKey="Todos"
+        />
+        <SegmentedBar
+          options={visibleCategories}
+          activeKey={selected.category}
+          labelBreakpoint="min-[540px]"
+          onSelect={(key) => onChange({ ...selected, category: key })}
+        />
       </div>
 
-      {/* Filtro por Tipo */}
-      <div>
-        <h3 className="text-sm font-medium text-gray-700 dark:text-white/70 mb-2">
-          Tipo de Proyecto
-        </h3>
-        <div className="flex flex-wrap gap-2">
-          {types.map((t) => (
-            <button
-              key={t}
-              onClick={() => onChange({ ...selected, type: t })}
-              className={`px-4 py-2 rounded-xl border transition-all duration-200 ${
-                selected.type === t
-                  ? "bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-blue-600 shadow-lg"
-                  : "bg-white/60 dark:bg-white/5 text-gray-700 dark:text-white/90 border-gray-200/50 dark:border-white/10 hover:bg-white/80 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white hover:border-gray-300 dark:hover:border-white/20"
-              }`}
-            >
-              {t}
-            </button>
-          ))}
-        </div>
+      {/* ── Tipo de Proyecto ── */}
+      <div className="space-y-2">
+        <SectionHeader
+          headerIcon={Tag}
+          headerColor="text-cyan-500 dark:text-cyan-400"
+          label="Tipo de Proyecto"
+          options={visibleTypes}
+          activeKey={selected.type}
+          defaultKey="Todos los tipos"
+        />
+        <SegmentedBar
+          options={visibleTypes}
+          activeKey={selected.type}
+          labelBreakpoint="min-[380px]"
+          onSelect={(key) => onChange({ ...selected, type: key })}
+        />
       </div>
+
     </div>
   );
 }
