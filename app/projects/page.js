@@ -139,21 +139,23 @@ export default function ProjectsPage() {
         <div className="mb-12">
           <div className="relative">
             <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <div className="w-1 h-8 bg-gradient-to-b from-violet-500 to-purple-600 rounded-full"></div>
-                <div>
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="w-1 h-8 bg-gradient-to-b from-violet-500 to-purple-600 rounded-full shrink-0"></div>
+                <div className="min-w-0">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                     Filtrar proyectos
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {filters.category === "Todos" &&
-                    filters.type === "Todos los tipos"
-                      ? "Mostrando todos los proyectos"
-                      : `${filters.category !== "Todos" ? filters.category : "Todas las categorías"} • ${filters.type !== "Todos los tipos" ? filters.type : "Todos los tipos"}`}{" "}
-                    <span className="ml-2 px-2 py-1 bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 rounded-full text-xs font-medium">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <p className="text-sm text-gray-600 dark:text-gray-400 truncate">
+                      {filters.category === "Todos" &&
+                      filters.type === "Todos los tipos"
+                        ? "Mostrando todos los proyectos"
+                        : `${filters.category !== "Todos" ? filters.category : "Todas las categorías"} • ${filters.type !== "Todos los tipos" ? filters.type : "Todos los tipos"}`}
+                    </p>
+                    <span className="shrink-0 px-2 py-1 bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 rounded-full text-xs font-medium">
                       {filtered.length}
                     </span>
-                  </p>
+                  </div>
                 </div>
               </div>
 
@@ -163,7 +165,7 @@ export default function ProjectsPage() {
                   onClick={() =>
                     setFilters({ category: "Todos", type: "Todos los tipos" })
                   }
-                  className="px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg transition-colors"
+                  className="shrink-0 ml-2 px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg transition-colors"
                 >
                   Limpiar 
                 </button>

@@ -24,6 +24,15 @@ const POSITION_TEXT = [
   "text-amber-600   dark:text-amber-300",
 ];
 
+// Sombra coloreada para botón activo (solo light mode)
+const POSITION_SHADOW = [
+  "shadow-slate-400/60  dark:shadow-slate-400/30",
+  "shadow-violet-500/55 dark:shadow-violet-500/30",
+  "shadow-cyan-500/55   dark:shadow-cyan-500/30",
+  "shadow-rose-500/55   dark:shadow-rose-500/30",
+  "shadow-amber-500/55  dark:shadow-amber-500/30",
+];
+
 // Para el chip "activo" en el header
 const POSITION_CHIP = [
   "text-slate-700  dark:text-slate-300  bg-slate-100       dark:bg-white/10",
@@ -96,7 +105,7 @@ function SegmentedBar({ options, activeKey, labelBreakpoint = "min-[480px]", onS
             className={`flex-1 inline-flex items-center justify-center gap-1.5 h-8 px-1.5 rounded-[10px]
               text-xs font-semibold transition-all duration-150
               ${isActive
-                ? `bg-white dark:bg-white/[0.14] shadow-sm ring-1 ring-gray-200/80 dark:ring-white/[0.10] ${POSITION_TEXT[i]}`
+                ? `bg-white dark:bg-white/[0.14] shadow-md ${POSITION_SHADOW[i]} ring-1 ring-gray-200/80 dark:ring-white/[0.10] ${POSITION_TEXT[i]}`
                 : "text-gray-400 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
               }`}
           >
