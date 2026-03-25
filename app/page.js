@@ -7,6 +7,30 @@ import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 
+import { Nextjs } from "@/components/icons/Next";
+import { Flutter } from "@/components/icons/Flutter";
+import { MicrosoftSQLServer } from "@/components/icons/SqlServer";
+import { Firebase } from "@/components/icons/Firebase";
+import { TailwindCSS } from "@/components/icons/Tailwind";
+import { GoogleMaps } from "@/components/icons/GoogleMaps";
+import { ClaudeAI } from "@/components/icons/Claude";
+import { OpenAI } from "@/components/icons/Codex";
+import { Gemini } from "@/components/icons/Gemini";
+import { SQLite } from "@/components/icons/SQLite";
+import { GitHub } from "@/components/icons/GitHub";
+import { Vercel } from "@/components/icons/Vercel";
+import { Nodejs } from "@/components/icons/Node";
+import { PostgreSQL } from "@/components/icons/PostgreSQL";
+import { ReactNativeIcon } from "@/components/icons/ReactNative";
+import { Expo } from "@/components/icons/Expo";
+import { TestSprite } from "@/components/icons/TestSprite";
+import { Supabase } from "@/components/icons/Supabase";
+import { NestJS } from "@/components/icons/Nest";
+import { Prisma } from "@/components/icons/Pisma";
+import { Atlassian } from "@/components/icons/Jira";
+import { Notion } from "@/components/icons/Notion";
+import { DrizzleORM } from "@/components/icons/Drizzle";
+
 export default function HomePage() {
   const [selected, setSelected] = useState("Todos");
   const categories = ["Todos", ...new Set(PROJECTS.map((p) => p.category))];
@@ -65,19 +89,33 @@ export default function HomePage() {
                 <div className="w-2 h-2 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full" />
                 Tecnologías Principales
               </h3>
-              <div className="flex flex-wrap gap-3">
-                {["Next.js", "Flutter", "SQL Server", "Firebase", "Tailwind CSS", "Google Maps Plattform", "Claude CLI", "Codex CLI", "Gemini CLI", "SQLite", "GitHub", "Vercel", "Node.js", "PostgreSQL"].map(
-                  (tech, index) => 
-                    <span
-                      key={tech}
-                      className="group relative px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg border border-gray-200/50 dark:border-gray-700/50 hover:border-violet-300/50 dark:hover:border-violet-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/10 hover:-translate-y-0.5"
-                      style={{ animationDelay: `${index * 100}ms` }}
-                    >
-                      {tech}
-                      <div className="absolute inset-0 bg-gradient-to-r from-violet-500/5 to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </span>
-                  )
-                }
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { label: "Next.js",        Icon: Nextjs            },
+                  { label: "Flutter",        Icon: Flutter           },
+                  { label: "SQL Server",     Icon: MicrosoftSQLServer},
+                  { label: "Firebase",       Icon: Firebase          },
+                  { label: "Tailwind CSS",   Icon: TailwindCSS       },
+                  { label: "Google Maps",    Icon: GoogleMaps        },
+                  { label: "Claude CLI",     Icon: ClaudeAI          },
+                  { label: "Codex CLI",      Icon: OpenAI            },
+                  { label: "Gemini CLI",     Icon: Gemini            },
+                  { label: "SQLite",         Icon: SQLite            },
+                  { label: "GitHub",         Icon: GitHub            },
+                  { label: "Vercel",         Icon: Vercel            },
+                  { label: "Node.js",        Icon: Nodejs            },
+                  { label: "PostgreSQL",     Icon: PostgreSQL        },
+                ].map(({ label, Icon }, index) => (
+                  <span
+                    key={label}
+                    className="group relative flex items-center gap-2 px-3 py-1.5 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg border border-gray-200/50 dark:border-gray-700/50 hover:border-violet-300/50 dark:hover:border-violet-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/10 hover:-translate-y-0.5"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <Icon className="w-4 h-4 shrink-0" />
+                    {label}
+                    <div className="absolute inset-0 bg-gradient-to-r from-violet-500/5 to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </span>
+                ))}
               </div>
             </div>
 
@@ -87,19 +125,29 @@ export default function HomePage() {
                 <div className="w-2 h-2 bg-gradient-to-r from-cyan-500 to-sky-600 rounded-full" />
                 Tecnologías en Aprendizaje o Uso Reciente
               </h3>
-              <div className="flex flex-wrap gap-3">
-                {["React Native", "Expo", "TestSprite", "Supabase", "NestJS", "Prisma", "MCP Jira", "MCP Notion", "Drizzle", "Agents Skills"].map(
-                  (tech, index) => (
-                    <span
-                      key={tech}
-                      className="group relative px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg border border-gray-200/50 dark:border-gray-700/50 hover:border-blue-300/50 dark:hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-0.5"
-                      style={{ animationDelay: `${index * 100}ms` }}
-                    >
-                      {tech}
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-indigo-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </span>
-                  )
-                )}
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { label: "React Native",  Icon: ReactNativeIcon },
+                  { label: "Expo",          Icon: Expo            },
+                  { label: "TestSprite",    Icon: TestSprite      },
+                  { label: "Supabase",      Icon: Supabase        },
+                  { label: "NestJS",        Icon: NestJS          },
+                  { label: "Prisma",        Icon: Prisma          },
+                  { label: "MCP Jira",      Icon: Atlassian       },
+                  { label: "MCP Notion",    Icon: Notion          },
+                  { label: "Drizzle",       Icon: DrizzleORM      },
+                  { label: "Agent Skills",  Icon: Vercel          },
+                ].map(({ label, Icon }, index) => (
+                  <span
+                    key={label}
+                    className="group relative flex items-center gap-2 px-3 py-1.5 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg border border-gray-200/50 dark:border-gray-700/50 hover:border-blue-300/50 dark:hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-0.5"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <Icon className="w-4 h-4 shrink-0" />
+                    {label}
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-indigo-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </span>
+                ))}
               </div>
             </div>
 

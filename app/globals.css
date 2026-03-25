@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --drizzle-fill: #4a7200;
+}
+.dark {
+  --drizzle-fill: #C5F74F;
+}
+
 /* ===================== Sileo Toast — Tema y Orbes ===================== */
 
 /* --- Fondo del toast (SVG pill + body) --- */

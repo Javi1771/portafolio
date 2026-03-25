@@ -45,6 +45,10 @@ export default function RootLayout({ children }) {
         />
         <meta name="google" content="notranslate" />
         <meta httpEquiv="Content-Language" content="es" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0"
+        />
       </head>
 
       <body
