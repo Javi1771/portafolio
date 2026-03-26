@@ -2,8 +2,8 @@ const TestSprite = (props) => (
   <svg {...props} viewBox="0 0 100 100" fill="none">
     <defs>
       <linearGradient id="ts_grad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#6366f1" />
-        <stop offset="1" stopColor="#a855f7" />
+        <stop stopColor="#478d54" />
+        <stop offset="1" stopColor="#08c168" />
       </linearGradient>
     </defs>
     {/* Hexagon shape */}

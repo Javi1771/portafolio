@@ -30,6 +30,8 @@ import { Prisma } from "@/components/icons/Pisma";
 import { Atlassian } from "@/components/icons/Jira";
 import { Notion } from "@/components/icons/Notion";
 import { DrizzleORM } from "@/components/icons/Drizzle";
+import { Resend } from "@/components/icons/Resend";
+import { ModelContextProtocol } from "@/components/icons/MCP";
 
 export default function HomePage() {
   const [selected, setSelected] = useState("Todos");
@@ -133,10 +135,12 @@ export default function HomePage() {
                   { label: "Supabase",      Icon: Supabase        },
                   { label: "NestJS",        Icon: NestJS          },
                   { label: "Prisma",        Icon: Prisma          },
-                  { label: "MCP Jira",      Icon: Atlassian       },
-                  { label: "MCP Notion",    Icon: Notion          },
+                  { label: "Jira",          Icon: Atlassian       },
+                  { label: "Notion",        Icon: Notion          },
                   { label: "Drizzle",       Icon: DrizzleORM      },
                   { label: "Agent Skills",  Icon: Vercel          },
+                  { label: "Resend",        Icon: Resend          },
+                  { label: "Varios MCP",    Icon: ModelContextProtocol },
                 ].map(({ label, Icon }, index) => (
                   <span
                     key={label}
