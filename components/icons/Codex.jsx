@@ -1,7 +1,7 @@
 const Codex = (props) => (
   <svg
     {...props}
-    fill="#fff"
+    fill="currentColor"
     fillRule="evenodd"
     style={{ flex: "none", lineHeight: "1" }}
     viewBox="0 0 24 24"
