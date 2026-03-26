@@ -14,7 +14,7 @@ import { Firebase } from "@/components/icons/Firebase";
 import { TailwindCSS } from "@/components/icons/Tailwind";
 import { GoogleMaps } from "@/components/icons/GoogleMaps";
 import { ClaudeAI } from "@/components/icons/Claude";
-import { OpenAI } from "@/components/icons/Codex";
+import { Codex } from "@/components/icons/Codex";
 import { Gemini } from "@/components/icons/Gemini";
 import { SQLite } from "@/components/icons/SQLite";
 import { GitHub } from "@/components/icons/GitHub";
@@ -98,7 +98,7 @@ export default function HomePage() {
                   { label: "Tailwind CSS",   Icon: TailwindCSS       },
                   { label: "Google Maps",    Icon: GoogleMaps        },
                   { label: "Claude CLI",     Icon: ClaudeAI          },
-                  { label: "Codex CLI",      Icon: OpenAI            },
+                  { label: "Codex CLI",      Icon: Codex            },
                   { label: "Gemini CLI",     Icon: Gemini            },
                   { label: "SQLite",         Icon: SQLite            },
                   { label: "GitHub",         Icon: GitHub            },
