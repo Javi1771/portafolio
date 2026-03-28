@@ -4,9 +4,15 @@
 
 :root {
   --drizzle-fill: #4a7200;
+  --mongodb-fill: #111827;
+  --mysql-fill: #00546B;
+  --sqlite-text: #003B57;
 }
 .dark {
   --drizzle-fill: #C5F74F;
+  --mongodb-fill: #00ED64;
+  --mysql-fill: #ffffff;
+  --sqlite-text: #ffffff;
 }
 
 /* ===================== Sileo Toast — Tema y Orbes ===================== */

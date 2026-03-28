@@ -32,6 +32,8 @@ import { Notion } from "@/components/icons/Notion";
 import { DrizzleORM } from "@/components/icons/Drizzle";
 import { Resend } from "@/components/icons/Resend";
 import { ModelContextProtocol } from "@/components/icons/MCP";
+import { MongoDB } from "@/components/icons/Mongo";
+import { MySQL } from "@/components/icons/MySQL";
 
 export default function HomePage() {
   const [selected, setSelected] = useState("Todos");
@@ -100,13 +102,15 @@ export default function HomePage() {
                   { label: "Tailwind CSS",   Icon: TailwindCSS       },
                   { label: "Google Maps",    Icon: GoogleMaps        },
                   { label: "Claude CLI",     Icon: ClaudeAI          },
-                  { label: "Codex CLI",      Icon: Codex            },
+                  { label: "Codex CLI",      Icon: Codex             },
                   { label: "Gemini CLI",     Icon: Gemini            },
                   { label: "SQLite",         Icon: SQLite            },
                   { label: "GitHub",         Icon: GitHub            },
                   { label: "Vercel",         Icon: Vercel            },
                   { label: "Node.js",        Icon: Nodejs            },
                   { label: "PostgreSQL",     Icon: PostgreSQL        },
+                  { label: "MongoDB",        Icon: MongoDB           },
+                  { label: "MySQL",          Icon: MySQL             },
                 ].map(({ label, Icon }, index) => (
                   <span
                     key={label}
