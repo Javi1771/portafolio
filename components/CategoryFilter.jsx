@@ -48,7 +48,7 @@ const CATEGORY_CONFIG = [
   { key: "Freelance",            label: "Freelance",   icon: Briefcase  },
   { key: "Municipio",            label: "Municipio",   icon: Building2  },
   { key: "Personal",             label: "Personal",    icon: User       },
-  { key: "Empresarial Estadias", label: "Empresarial", icon: Building   },
+  { key: "Empresarial Estadias", label: "Estadias",    icon: Building   },
 ];
 
 const TYPE_CONFIG = [
