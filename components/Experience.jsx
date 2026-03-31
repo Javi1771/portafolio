@@ -13,9 +13,39 @@ import {
   Calendar,
   MapPin,
   Users,
+  Landmark,
 } from "lucide-react";
 
 const experiences = [
+  {
+    id: "trinium",
+    company: "Trinium",
+    role: "Co-fundador & Desarrollador Full-Stack",
+    type: "startup",
+    period: "Ene 2026 - Mar 2026",
+    location: "Remoto",
+    description:
+      "Startup fundada junto a 2 socios para desarrollar software a medida para comunidades y pequeñas organizaciones",
+    projects: [
+      {
+        name: "Hydra – Control de Socios del Pozo de Agua",
+        tech: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
+        highlights: [
+          "ERP comunitario con más de 10 módulos para asociaciones de agua",
+          "Lecturas de medidores offline-first con sincronización automática",
+          "Recibos, tickets, caja y corte diario automático",
+          "REST API con JWT para portal ciudadano externo",
+          "Importación masiva desde Excel para migración de datos históricos",
+        ],
+      },
+    ],
+    collaboration: {
+      icon: Users,
+      text: "Proyecto desarrollado en equipo junto a 2 socios dentro de nuestra startup Trinium",
+    },
+    icon: Landmark,
+    gradient: "from-cyan-500 to-blue-600",
+  },
   {
     id: "siaumex",
     company: "SIAUMex",
@@ -163,12 +193,14 @@ const ExperienceCard = ({ experience, isExpanded, onToggle }) => {
     internship: "from-blue-500/20 to-purple-500/20 border-blue-500/30",
     contract: "from-green-500/20 to-emerald-500/20 border-green-500/30",
     freelance: "from-orange-500/20 to-amber-500/20 border-orange-500/30",
+    startup: "from-cyan-500/20 to-blue-500/20 border-cyan-500/30",
   };
 
   const typeLabels = {
     internship: "Estadías",
     contract: "Contrato",
     freelance: "Freelance",
+    startup: "Startup",
   };
 
   return (
@@ -367,7 +399,7 @@ export default function Experience() {
             {/* Title section */}
             <div className="space-y-6">
               <div className="flex items-center gap-3">
-                <div className="w-1.5 h-8 bg-gradient-to-b from-cyan-500 to-blue-600 rounded-full" />
+                <div className="w-1.5 h-8 bg-gradient-to-b from-rose-500 to-rose-600 rounded-full" />
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                   Experiencia Profesional
                 </h3>

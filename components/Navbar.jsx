@@ -47,6 +47,7 @@ export default function Navbar() {
           <nav className="hidden md:flex gap-8 text-sm font-medium">
             {[
               { href: "/projects", text: "Proyectos", color: "from-violet-400 to-purple-500" },
+              { href: "/experience", text: "Experiencia", color: "from-pink-400 to-rose-500" },
               { href: "/about", text: "Sobre mí", color: "from-cyan-400 to-blue-500" },
               { href: "/contact", text: "Contacto", color: "from-emerald-400 to-green-500" }
             ].map((item, index) => (
@@ -123,9 +124,10 @@ export default function Navbar() {
           <div className="max-w-7xl mx-auto px-4 py-6">
             <div className="flex flex-col gap-1">
               {[
-                { href: "/projects", text: "Proyectos", color: "from-violet-400 to-purple-500",  },
-                { href: "/about", text: "Sobre mí", color: "from-cyan-400 to-blue-500",  },
-                { href: "/contact", text: "Contacto", color: "from-emerald-400 to-green-500", }
+                { href: "/projects", text: "Proyectos", color: "from-violet-400 to-purple-500" },
+                { href: "/experience", text: "Experiencia", color: "from-pink-400 to-rose-500" },
+                { href: "/about", text: "Sobre mí", color: "from-cyan-400 to-blue-500" },
+                { href: "/contact", text: "Contacto", color: "from-emerald-400 to-green-500" }
               ].map((item, index) => (
                 <Link
                   key={item.href}

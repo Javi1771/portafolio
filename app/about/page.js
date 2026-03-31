@@ -13,7 +13,6 @@ import {
   Headphones, CircuitBoard, Cpu, Clapperboard, PenLine, Bubbles,
   Rocket, MousePointerClick, TrendingUp,
 } from "lucide-react";
-import Experience from "@/components/Experience";
 
 export default function AboutPage() {
   //! Detectar si es móvil
@@ -434,7 +433,7 @@ export default function AboutPage() {
           </div>
 
           {/* Filosofía de trabajo */}
-          <div className="text-center py-16 bg-gradient-to-r from-cyan-50/50 via-transparent to-violet-50/50 dark:from-cyan-950/20 dark:via-transparent dark:to-violet-950/20 rounded-2xl border border-cyan-200/30 dark:border-cyan-700/30">
+          <div className="text-center py-16 bg-gradient-to-r from-cyan-900/10 via-transparent to-violet-900/10 rounded-2xl border border-cyan-700/20">
             <div className="space-y-8 max-w-4xl mx-auto">
               <div className="relative inline-block">
                 <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
@@ -500,8 +499,6 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-
-          <Experience />
 
           {/* Habilidades técnicas */}
           <div className="space-y-8">

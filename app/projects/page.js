@@ -61,7 +61,7 @@ export default function ProjectsPage() {
           <div className="space-y-4">
             <div className="relative inline-block">
               <h1 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-violet-800 to-gray-900 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent leading-tight">
-                Proyectos Destacados
+                Proyectos destacados
               </h1>
               <div className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 animate-scale-x"></div>
 
