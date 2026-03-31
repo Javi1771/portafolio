@@ -2,7 +2,7 @@ export const PROJECTS = [
   {
     id: "hydra",
     title: "Hydra – Control de Socios del Pozo de Agua",
-    tagline: "ERP comunitario que digitaliza end-to-end la administración del agua: lecturas, recibos, caja y portal ciudadano en una sola plataforma.",
+    tagline: "Centraliza socios, lecturas y recibos de agua en un solo lugar.",
     year: 2026,
     category: "Freelance",
     stack: [ "Next.js 16 (App Router)", "TypeScript 5 Strict", "Tailwind CSS 4", "Supabase (PostgreSQL + Auth + RLS)", "Drizzle ORM", "Zod 4", "Recharts", "pdf-lib (Tickets y Recibos en PDF)", "QR Code (Generación + Escaneo)", "Offline-First con IndexedDB", "Importación de Excel (ExcelJS + XLSX)", "Geolocalización (Google Maps)", "REST API – Portal Ciudadano", "Dark Mode", "Despliegue en Vercel",],
