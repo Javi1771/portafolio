@@ -13,7 +13,7 @@ export const PROJECTS = [
       "Las lecturas pueden operar en modo offline-first con sincronización automática, los recibos aplican precio congelado al momento de emisión y la caja consolida pagos multiforma con corte diario automático.\n\n" +
       "Expone una REST API con autenticación JWT para que socios consulten su cuenta y descarguen recibos desde sistemas externos, con importación masiva desde Excel para migración de datos históricos.",
     image: "/Banners/hydra.png",
-    colors: { primary: "#45dde5", secondary: "#0754b1" },
+    colors: { primary: "#0754b1", secondary: "#45dde5" },
     type: "Web Application",
   },
   {
@@ -47,7 +47,7 @@ export const PROJECTS = [
       "Reduce el tiempo de respuesta a cotizaciones de 48 horas a minutos, elimina hasta un 70% de llamadas de consulta básica y aumenta la tasa de conversión mediante asesoría inmediata por WhatsApp.\n\n" +
       "La arquitectura optimizada mejora el posicionamiento SEO local y habilita métricas de conversión para decisiones de marketing basadas en datos.",
     image: "/Banners/motores_jordan.png",
-    colors: { primary: "#b5181f", secondary: "#350609" },
+    colors: { primary: "#350609", secondary: "#b5181f" },
     type: "Website",
   },
   {

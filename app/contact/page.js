@@ -2,7 +2,8 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { sileo } from "sileo";
 import Section from "@/components/Section";
 import { GITHUB_ACCOUNTS, LINKEDIN } from "@/data/links";
@@ -10,6 +11,15 @@ import { GitHub } from "@/components/icons/GitHub";
 import { LinkedIn } from "@/components/icons/LinkedIn";
 
 export default function ContactPage() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -157,7 +167,13 @@ export default function ContactPage() {
       >
         <div className="max-w-4xl mx-auto space-y-12">
           {/* Call to action section */}
-          <div className="text-center py-12 bg-gradient-to-r from-emerald-50/50 via-transparent to-cyan-50/50 dark:from-emerald-950/20 dark:via-transparent dark:to-cyan-950/20 rounded-2xl border border-emerald-200/30 dark:border-emerald-700/30">
+          <motion.div
+            className="text-center py-12 bg-gradient-to-r from-emerald-50/50 via-transparent to-cyan-50/50 dark:from-emerald-950/20 dark:via-transparent dark:to-cyan-950/20 rounded-2xl border border-emerald-200/30 dark:border-emerald-700/30"
+            initial={!isMobile ? { opacity: 0, y: 30 } : false}
+            whileInView={!isMobile ? { opacity: 1, y: 0 } : false}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="space-y-6">
               <div className="relative inline-block">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
@@ -170,10 +186,16 @@ export default function ContactPage() {
                 Disponible para proyectos freelance y contrataciones. Desde aplicaciones web hasta soluciones móviles.
               </p>
             </div>
-          </div>
+          </motion.div>
 
-{/* Contact methods grid */}
-          <div className="grid lg:grid-cols-2 gap-8 items-start">
+          {/* Contact methods grid */}
+          <motion.div
+            className="grid lg:grid-cols-2 gap-8 items-start"
+            initial={!isMobile ? { opacity: 0, y: 30 } : false}
+            whileInView={!isMobile ? { opacity: 1, y: 0 } : false}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             {/* Contact Form */}
             <div className="space-y-6 h-full flex flex-col">
               <div className="flex items-center gap-3 mb-6">
@@ -536,10 +558,16 @@ export default function ContactPage() {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* GitHub accounts section */}
-          <div className="space-y-6">
+          <motion.div
+            className="space-y-6"
+            initial={!isMobile ? { opacity: 0, y: 30 } : false}
+            whileInView={!isMobile ? { opacity: 1, y: 0 } : false}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             <div className="flex items-center gap-3">
               <div className="w-1 h-8 bg-gradient-to-b from-violet-500 to-purple-600 rounded-full"></div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Perfil de GitHub</h3>
@@ -560,7 +588,7 @@ export default function ContactPage() {
                 </a>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </Section>
     </div>

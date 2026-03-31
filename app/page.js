@@ -5,6 +5,7 @@ import Section from "@/components/Section";
 import { PROJECTS } from "@/data/projects";
 import Link from "next/link";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 import { Nextjs } from "@/components/icons/Next";
@@ -64,7 +65,12 @@ export default function HomePage() {
       <Section>
         <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
           {/* Left Column - Content */}
-          <div className="space-y-8">
+          <motion.div
+            className="space-y-8"
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="space-y-6">
               {/* Animated gradient text */}
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-100 dark:to-white bg-clip-text text-transparent animate-gradient-x bg-[length:300%_300%] relative">
@@ -177,10 +183,15 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-violet-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
               </Link>
             </div>
-          </div>
+          </motion.div>
 
           {/* Enhanced Right Column - Photo */}
-          <div className="flex justify-center lg:justify-end">
+          <motion.div
+            className="flex justify-center lg:justify-end"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
             <div className="relative group">
               {/* Glowing border effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-violet-500 via-purple-500 to-cyan-500 rounded-2xl blur-sm opacity-20 group-hover:opacity-40 transition-opacity duration-500 animate-pulse" />
@@ -203,11 +214,17 @@ export default function HomePage() {
               <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-70 animate-bounce" />
               <div className="absolute top-8 -right-2 w-6 h-6 bg-gradient-to-br from-emerald-400 to-green-500 rounded-full opacity-60 animate-bounce" />
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Enhanced Professional Stats */}
-        <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-6"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
           {[
             { number: "7+", label: "Proyectos completados", color: "from-violet-500 to-purple-600" },
             { number: "2023", label: "Año en actividad", color: "from-cyan-500 to-blue-600" },
@@ -232,7 +249,7 @@ export default function HomePage() {
               <div className={`absolute top-2 right-2 w-2 h-2 bg-gradient-to-br ${stat.color} rounded-full opacity-50 group-hover:opacity-100 transition-opacity`} />
             </div>
           ))}
-        </div>
+        </motion.div>
       </Section>
 
       {/* Enhanced Services Section */}
@@ -241,7 +258,13 @@ export default function HomePage() {
         <div className="absolute top-0 left-1/4 w-72 h-72 bg-gradient-to-br from-violet-200/10 to-purple-300/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-cyan-200/10 to-blue-300/10 rounded-full blur-3xl" />
 
-        <div className="text-center mb-16 relative z-10">
+        <motion.div
+          className="text-center mb-16 relative z-10"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <h2 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 via-violet-900 to-gray-900 dark:from-white dark:via-violet-100 dark:to-white bg-clip-text text-transparent mb-4">
             Servicios
           </h2>
@@ -249,9 +272,15 @@ export default function HomePage() {
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Soluciones tecnológicas integrales para el crecimiento de tu negocio
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 relative z-10">
+        <motion.div
+          className="grid md:grid-cols-3 gap-8 relative z-10"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+        >
           {[
             {
               title: "Desarrollo Web",
@@ -308,7 +337,7 @@ export default function HomePage() {
               <div className={`absolute top-4 right-4 w-3 h-3 bg-gradient-to-br ${service.gradient} rounded-full opacity-30 group-hover:opacity-70 transition-opacity`} />
             </div>
           ))}
-        </div>
+        </motion.div>
       </Section>
     </div>
   );

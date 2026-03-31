@@ -6,6 +6,7 @@ import Section from "@/components/Section";
 import SkillCard from "@/components/SkillCard";
 import HobbyCard from "@/components/HobbyCard";
 import { useMemo, useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   UsersRound, GraduationCap, Paintbrush, MessagesSquare, Puzzle, Kanban,
   RefreshCw, ZoomIn, Hourglass, HeartHandshake, BrainCircuit, Award,
@@ -322,7 +323,13 @@ export default function AboutPage() {
       >
         <div className="max-w-6xl mx-auto space-y-16">
           {/* Presentación principal */}
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <motion.div
+            className="grid lg:grid-cols-2 gap-12 items-start"
+            initial={!isMobile ? { opacity: 0, y: 40 } : false}
+            whileInView={!isMobile ? { opacity: 1, y: 0 } : false}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             {/* Columna izquierda - Quien soy */}
             <div className="space-y-6">
               <div
@@ -430,10 +437,16 @@ export default function AboutPage() {
                 )}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Filosofía de trabajo */}
-          <div className="text-center py-16 bg-gradient-to-r from-cyan-900/10 via-transparent to-violet-900/10 rounded-2xl border border-cyan-700/20">
+          <motion.div
+            className="text-center py-16 bg-gradient-to-r from-cyan-900/10 via-transparent to-violet-900/10 rounded-2xl border border-cyan-700/20"
+            initial={!isMobile ? { opacity: 0, y: 40 } : false}
+            whileInView={!isMobile ? { opacity: 1, y: 0 } : false}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="space-y-8 max-w-4xl mx-auto">
               <div className="relative inline-block">
                 <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
@@ -498,10 +511,16 @@ export default function AboutPage() {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Habilidades técnicas */}
-          <div className="space-y-8">
+          <motion.div
+            className="space-y-8"
+            initial={!isMobile ? { opacity: 0, y: 40 } : false}
+            whileInView={!isMobile ? { opacity: 1, y: 0 } : false}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <div className="flex items-center gap-3">
               <div className="w-1.5 h-8 bg-gradient-to-b from-emerald-500 to-green-600 rounded-full"></div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -587,10 +606,16 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Habilidades blandas - OPTIMIZADO */}
-          <div className="space-y-8">
+          <motion.div
+            className="space-y-8"
+            initial={!isMobile ? { opacity: 0, y: 40 } : false}
+            whileInView={!isMobile ? { opacity: 1, y: 0 } : false}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <div className="flex items-center gap-3">
               <div className="w-1.5 h-8 bg-gradient-to-b from-violet-500 to-purple-600 rounded-full"></div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -607,10 +632,16 @@ export default function AboutPage() {
                 />
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Más allá del código - OPTIMIZADO */}
-          <div className="space-y-8">
+          <motion.div
+            className="space-y-8"
+            initial={!isMobile ? { opacity: 0, y: 40 } : false}
+            whileInView={!isMobile ? { opacity: 1, y: 0 } : false}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <div className="flex items-center gap-3">
               <div className="w-1.5 h-8 bg-gradient-to-b from-pink-500 to-rose-600 rounded-full"></div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -627,7 +658,7 @@ export default function AboutPage() {
                 />
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </Section>
     </div>
