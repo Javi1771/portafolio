@@ -169,8 +169,8 @@ export default function ContactPage() {
           {/* Call to action section */}
           <motion.div
             className="text-center py-12 bg-gradient-to-r from-emerald-50/50 via-transparent to-cyan-50/50 dark:from-emerald-950/20 dark:via-transparent dark:to-cyan-950/20 rounded-2xl border border-emerald-200/30 dark:border-emerald-700/30"
-            initial={!isMobile ? { opacity: 0, y: 30 } : false}
-            whileInView={!isMobile ? { opacity: 1, y: 0 } : false}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
@@ -191,8 +191,8 @@ export default function ContactPage() {
           {/* Contact methods grid */}
           <motion.div
             className="grid lg:grid-cols-2 gap-8 items-start"
-            initial={!isMobile ? { opacity: 0, y: 30 } : false}
-            whileInView={!isMobile ? { opacity: 1, y: 0 } : false}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
@@ -563,8 +563,8 @@ export default function ContactPage() {
           {/* GitHub accounts section */}
           <motion.div
             className="space-y-6"
-            initial={!isMobile ? { opacity: 0, y: 30 } : false}
-            whileInView={!isMobile ? { opacity: 1, y: 0 } : false}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >

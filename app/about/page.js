@@ -325,8 +325,8 @@ export default function AboutPage() {
           {/* Presentación principal */}
           <motion.div
             className="grid lg:grid-cols-2 gap-12 items-start"
-            initial={!isMobile ? { opacity: 0, y: 40 } : false}
-            whileInView={!isMobile ? { opacity: 1, y: 0 } : false}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
@@ -442,8 +442,8 @@ export default function AboutPage() {
           {/* Filosofía de trabajo */}
           <motion.div
             className="text-center py-16 bg-gradient-to-r from-cyan-900/10 via-transparent to-violet-900/10 rounded-2xl border border-cyan-700/20"
-            initial={!isMobile ? { opacity: 0, y: 40 } : false}
-            whileInView={!isMobile ? { opacity: 1, y: 0 } : false}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
@@ -516,8 +516,8 @@ export default function AboutPage() {
           {/* Habilidades técnicas */}
           <motion.div
             className="space-y-8"
-            initial={!isMobile ? { opacity: 0, y: 40 } : false}
-            whileInView={!isMobile ? { opacity: 1, y: 0 } : false}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
@@ -611,8 +611,8 @@ export default function AboutPage() {
           {/* Habilidades blandas - OPTIMIZADO */}
           <motion.div
             className="space-y-8"
-            initial={!isMobile ? { opacity: 0, y: 40 } : false}
-            whileInView={!isMobile ? { opacity: 1, y: 0 } : false}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
@@ -637,8 +637,8 @@ export default function AboutPage() {
           {/* Más allá del código - OPTIMIZADO */}
           <motion.div
             className="space-y-8"
-            initial={!isMobile ? { opacity: 0, y: 40 } : false}
-            whileInView={!isMobile ? { opacity: 1, y: 0 } : false}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
