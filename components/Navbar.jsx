@@ -3,21 +3,29 @@
 "use client";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   return (
     <>
-      {/* Glassmorphism backdrop */}
-      <header className="fixed top-0 inset-x-0 z-50 border-b border-gray-200/50 dark:border-violet-500/20 backdrop-blur-xl bg-white/80 dark:bg-black/20 shadow-lg shadow-gray-900/10 dark:shadow-violet-500/10">
-        {/* Animated gradient line */}
-        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-violet-500/70 dark:via-violet-500/50 to-transparent animate-pulse"></div>
-        
-        {/* Floating orbs background */}
-        <div className="absolute top-0 left-10 w-32 h-16 bg-gradient-to-r from-violet-500/10 to-purple-500/10 rounded-full blur-2xl animate-pulse"></div>
-        <div className="absolute top-0 right-20 w-40 h-16 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
+      {/* Navbar - backdrop-blur solo en desktop */}
+      <header className={`fixed top-0 inset-x-0 z-50 border-b border-gray-200/50 dark:border-violet-500/20 shadow-lg shadow-gray-900/10 dark:shadow-violet-500/10 ${isMobile ? "bg-white/98 dark:bg-gray-900/98" : "backdrop-blur-xl bg-white/80 dark:bg-black/20"}`}>
+        {/* Gradient line - solo desktop */}
+        {!isMobile && <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-violet-500/70 dark:via-violet-500/50 to-transparent animate-pulse"></div>}
+
+        {/* Floating orbs - solo desktop */}
+        {!isMobile && <div className="absolute top-0 left-10 w-32 h-16 bg-gradient-to-r from-violet-500/10 to-purple-500/10 rounded-full blur-2xl animate-pulse"></div>}
+        {!isMobile && <div className="absolute top-0 right-20 w-40 h-16 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full blur-2xl animate-pulse delay-1000"></div>}
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           {/* Enhanced Logo */}
@@ -114,10 +122,10 @@ export default function Navbar() {
           : 'opacity-0 -translate-y-4 pointer-events-none'
       }`}>
         {/* Backdrop */}
-        <div className="absolute inset-0 bg-white/90 dark:bg-black/60 dark:bg-black/80 backdrop-blur-xl"></div>
-        
+        <div className="absolute inset-0 bg-white dark:bg-gray-900"></div>
+
         {/* Menu content */}
-        <div className="relative border-t border-gray-200/50 dark:border-white/20 dark:border-violet-500/20 bg-white/95 dark:bg-white/10 dark:bg-black/30 backdrop-blur-xl shadow-xl">
+        <div className="relative border-t border-gray-200/50 dark:border-violet-500/20 bg-white/98 dark:bg-gray-900/98 shadow-xl">
           {/* Decorative gradient line */}
           <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-violet-500/50 to-transparent"></div>
           

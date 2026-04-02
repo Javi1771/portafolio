@@ -4,7 +4,7 @@
 import Section from "@/components/Section";
 import { PROJECTS } from "@/data/projects";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -38,6 +38,15 @@ import { MySQL } from "@/components/icons/MySQL";
 
 export default function HomePage() {
   const [selected, setSelected] = useState("Todos");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   const categories = ["Todos", ...new Set(PROJECTS.map((p) => p.category))];
   const filtered =
     selected === "Todos"
@@ -46,20 +55,26 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden">
-      {/* Subtle Background Pattern - More visible in light mode */}
-      <div className="absolute inset-0 opacity-[0.08] dark:opacity-[0.05]">
-        <div
-          className="absolute inset-0
-                     bg-[radial-gradient(circle_at_2px_2px,theme(colors.indigo.400)_1px,transparent_1px)]
-                     dark:bg-[radial-gradient(circle_at_2px_2px,theme(colors.indigo.200)_1px,transparent_1px)]
-                     bg-[length:40px_40px]"
-        />
-      </div>
+      {/* Pattern overlay - solo desktop */}
+      {!isMobile && (
+        <div className="absolute inset-0 opacity-[0.08] dark:opacity-[0.05]">
+          <div
+            className="absolute inset-0
+                       bg-[radial-gradient(circle_at_2px_2px,theme(colors.indigo.400)_1px,transparent_1px)]
+                       dark:bg-[radial-gradient(circle_at_2px_2px,theme(colors.indigo.200)_1px,transparent_1px)]
+                       bg-[length:40px_40px]"
+          />
+        </div>
+      )}
 
-      {/* Floating Orbs - More visible in light mode */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-violet-300/70 to-purple-400/70 dark:from-violet-200/20 dark:to-purple-300/20 rounded-full blur-2xl animate-pulse motion-reduce:animate-none" />
-      <div className="absolute top-96 right-20 w-40 h-40 bg-gradient-to-br from-cyan-300/70 to-blue-400/70 dark:from-cyan-200/20 dark:to-blue-300/20 rounded-full blur-2xl animate-pulse motion-reduce:animate-none" />
-      <div className="absolute bottom-40 left-1/4 w-28 h-28 bg-gradient-to-br from-emerald-300/70 to-green-400/70 dark:from-emerald-200/20 dark:to-green-300/20 rounded-full blur-2xl animate-pulse motion-reduce:animate-none" />
+      {/* Floating Orbs - solo desktop */}
+      {!isMobile && (
+        <>
+          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-violet-300/70 to-purple-400/70 dark:from-violet-200/20 dark:to-purple-300/20 rounded-full blur-2xl animate-pulse motion-reduce:animate-none" />
+          <div className="absolute top-96 right-20 w-40 h-40 bg-gradient-to-br from-cyan-300/70 to-blue-400/70 dark:from-cyan-200/20 dark:to-blue-300/20 rounded-full blur-2xl animate-pulse motion-reduce:animate-none" />
+          <div className="absolute bottom-40 left-1/4 w-28 h-28 bg-gradient-to-br from-emerald-300/70 to-green-400/70 dark:from-emerald-200/20 dark:to-green-300/20 rounded-full blur-2xl animate-pulse motion-reduce:animate-none" />
+        </>
+      )}
 
       {/* Hero Section - Enhanced */}
       <Section>
@@ -67,15 +82,14 @@ export default function HomePage() {
           {/* Left Column - Content */}
           <motion.div
             className="space-y-8"
-            initial={{ opacity: 0, x: -40 }}
+            initial={!isMobile ? { opacity: 0, x: -40 } : { opacity: 0 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: isMobile ? 0.3 : 0.6 }}
           >
             <div className="space-y-6">
-              {/* Animated gradient text */}
-              <h1 className="text-4xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-100 dark:to-white bg-clip-text text-transparent animate-gradient-x bg-[length:300%_300%] relative">
+              <h1 className={`text-4xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-100 dark:to-white bg-clip-text text-transparent relative ${!isMobile ? "animate-gradient-x bg-[length:300%_300%]" : ""}`}>
                 Javier López Camacho
-                <div className="absolute -top-2 -left-2 w-4 h-4 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-60 animate-bounce" />
+                {!isMobile && <div className="absolute -top-2 -left-2 w-4 h-4 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-60 animate-bounce" />}
               </h1>
 
               <div className="relative inline-block">
@@ -89,7 +103,7 @@ export default function HomePage() {
                 Especializado en desarrollo de aplicaciones web y móviles con
                 tecnologías modernas. Experiencia comprobada en proyectos para
                 gobierno y sector privado.
-                <div className="absolute -right-4 top-2 w-2 h-2 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-full animate-pulse" />
+                {!isMobile && <div className="absolute -right-4 top-2 w-2 h-2 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-full animate-pulse" />}
               </div>
             </div>
 
@@ -120,7 +134,7 @@ export default function HomePage() {
                 ].map(({ label, Icon }, index) => (
                   <span
                     key={label}
-                    className="group relative flex items-center gap-2 px-3 py-1.5 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg border border-gray-200/50 dark:border-gray-700/50 hover:border-violet-300/50 dark:hover:border-violet-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/10 hover:-translate-y-0.5"
+                    className={`group relative flex items-center gap-2 px-3 py-1.5 bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-200 ${!isMobile ? "backdrop-blur-sm hover:border-violet-300/50 dark:hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 hover:-translate-y-0.5" : ""}`}
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <Icon className="w-4 h-4 shrink-0" />
@@ -154,7 +168,7 @@ export default function HomePage() {
                 ].map(({ label, Icon }, index) => (
                   <span
                     key={label}
-                    className="group relative flex items-center gap-2 px-3 py-1.5 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg border border-gray-200/50 dark:border-gray-700/50 hover:border-blue-300/50 dark:hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-0.5"
+                    className={`group relative flex items-center gap-2 px-3 py-1.5 bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-200 ${!isMobile ? "backdrop-blur-sm hover:border-blue-300/50 dark:hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-0.5" : ""}`}
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <Icon className="w-4 h-4 shrink-0" />
@@ -188,13 +202,13 @@ export default function HomePage() {
           {/* Enhanced Right Column - Photo */}
           <motion.div
             className="flex justify-center lg:justify-end"
-            initial={{ opacity: 0, x: 40 }}
+            initial={!isMobile ? { opacity: 0, x: 40 } : { opacity: 0 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            transition={{ duration: isMobile ? 0.3 : 0.6, delay: isMobile ? 0 : 0.15 }}
           >
             <div className="relative group">
-              {/* Glowing border effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-violet-500 via-purple-500 to-cyan-500 rounded-2xl blur-sm opacity-20 group-hover:opacity-40 transition-opacity duration-500 animate-pulse" />
+              {/* Glowing border - solo desktop */}
+              {!isMobile && <div className="absolute inset-0 bg-gradient-to-r from-violet-500 via-purple-500 to-cyan-500 rounded-2xl blur-sm opacity-20 group-hover:opacity-40 transition-opacity duration-500 animate-pulse" />}
 
               <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-700 shadow-2xl ring-1 ring-gray-200/50 dark:ring-gray-700/50">
                 <Image
@@ -202,17 +216,20 @@ export default function HomePage() {
                   alt="Javier López Camacho"
                   width={400}
                   height={400}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className={`w-full h-full object-cover ${!isMobile ? "transition-transform duration-700 group-hover:scale-105" : ""}`}
                   priority
                 />
-                {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-white/5 dark:to-black/10" />
               </div>
 
-              {/* Enhanced decorative elements */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-violet-100/80 to-purple-200/80 dark:from-violet-900/40 dark:to-purple-800/40 rounded-2xl -z-10 backdrop-blur-sm" />
-              <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-70 animate-bounce" />
-              <div className="absolute top-8 -right-2 w-6 h-6 bg-gradient-to-br from-emerald-400 to-green-500 rounded-full opacity-60 animate-bounce" />
+              {/* Decorativos - solo desktop */}
+              {!isMobile && (
+                <>
+                  <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-violet-100/80 to-purple-200/80 dark:from-violet-900/40 dark:to-purple-800/40 rounded-2xl -z-10 backdrop-blur-sm" />
+                  <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-70 animate-bounce" />
+                  <div className="absolute top-8 -right-2 w-6 h-6 bg-gradient-to-br from-emerald-400 to-green-500 rounded-full opacity-60 animate-bounce" />
+                </>
+              )}
             </div>
           </motion.div>
         </div>

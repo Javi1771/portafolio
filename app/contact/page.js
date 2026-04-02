@@ -86,22 +86,21 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-gray-50/50 to-emerald-50/30 dark:from-gray-900 dark:via-gray-800/50 dark:to-emerald-950/20 relative overflow-hidden">
-      {/* Floating background orbs */}
-      <div className="absolute top-20 left-10 w-80 h-80 bg-gradient-to-br from-emerald-200/20 to-green-300/20 dark:from-emerald-500/10 dark:to-green-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none"></div>
-      <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-violet-200/20 to-purple-300/20 dark:from-violet-500/10 dark:to-purple-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none"></div>
-      <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-gradient-to-br from-cyan-200/20 to-blue-300/20 dark:from-cyan-500/10 dark:to-blue-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none"></div>
+      {/* Floating background orbs - solo desktop */}
+      {!isMobile && (
+        <>
+          <div className="absolute top-20 left-10 w-80 h-80 bg-gradient-to-br from-emerald-200/20 to-green-300/20 dark:from-emerald-500/10 dark:to-green-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none"></div>
+          <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-violet-200/20 to-purple-300/20 dark:from-violet-500/10 dark:to-purple-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none"></div>
+          <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-gradient-to-br from-cyan-200/20 to-blue-300/20 dark:from-cyan-500/10 dark:to-blue-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none"></div>
+        </>
+      )}
 
-      {/* Pattern overlay */}
-      <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] pointer-events-none">
-        <div
-          className="
-            absolute inset-0
-            bg-[radial-gradient(circle_at_2px_2px,theme(colors.emerald.500)_1px,transparent_1px)]
-            dark:bg-[radial-gradient(circle_at_2px_2px,theme(colors.emerald.400)_1px,transparent_1px)]
-            bg-[length:45px_45px]
-          "
-        />
-      </div>
+      {/* Pattern overlay - solo desktop */}
+      {!isMobile && (
+        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] pointer-events-none">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,theme(colors.emerald.500)_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_2px_2px,theme(colors.emerald.400)_1px,transparent_1px)] bg-[length:45px_45px]" />
+        </div>
+      )}
 
       <Section
         title={
@@ -206,7 +205,7 @@ export default function ContactPage() {
               </div>
 
               {/* Card wrapper para el formulario */}
-              <div className="flex-1 p-6 bg-white/60 dark:bg-gray-800/30 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg flex flex-col">
+              <div className={`flex-1 p-6 bg-white/60 dark:bg-gray-800/30 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg flex flex-col ${!isMobile ? "backdrop-blur-sm" : ""}`}>
                 <form onSubmit={handleSubmit} className="space-y-5 flex-1 flex flex-col">
                   {/* Name Field */}
                   <div className="group">
@@ -481,7 +480,7 @@ export default function ContactPage() {
                 </h3>
               </div>
 
-              <div className="flex-1 p-6 bg-white/60 dark:bg-gray-800/30 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg space-y-6 flex flex-col">
+              <div className={`flex-1 p-6 bg-white/60 dark:bg-gray-800/30 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg space-y-6 flex flex-col ${!isMobile ? "backdrop-blur-sm" : ""}`}>
                 <div className="space-y-4 flex-1">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-lg flex items-center justify-center">

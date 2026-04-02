@@ -185,7 +185,7 @@ const experiences = [
   },
 ];
 
-const ExperienceCard = ({ experience, isExpanded, onToggle }) => {
+const ExperienceCard = ({ experience, isExpanded, onToggle, isMobile }) => {
   const Icon = experience.icon;
   const CollabIcon = experience.collaboration?.icon;
 
@@ -206,10 +206,10 @@ const ExperienceCard = ({ experience, isExpanded, onToggle }) => {
   return (
     <motion.div
       layout
-      className={`group relative backdrop-blur-xl bg-white/70 dark:bg-gray-800/70 
-        border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 cursor-pointer 
-        transition-all duration-500 hover:shadow-2xl hover:shadow-violet-500/20 
-        hover:scale-[1.02] hover:border-violet-500/50 dark:hover:border-violet-500/50 overflow-hidden`}
+      className={`group relative bg-white/70 dark:bg-gray-800/70
+        border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 cursor-pointer
+        transition-all duration-300 overflow-hidden
+        ${!isMobile ? "backdrop-blur-xl hover:shadow-2xl hover:shadow-violet-500/20 hover:scale-[1.02] hover:border-violet-500/50 dark:hover:border-violet-500/50 transition-all duration-500" : ""}`}
       onClick={onToggle}
     >
       {/* Gradient overlay on hover */}
@@ -372,20 +372,26 @@ const ExperienceCard = ({ experience, isExpanded, onToggle }) => {
   );
 };
 
-export default function Experience() {
+export default function Experience({ isMobile = false }) {
   const [expandedId, setExpandedId] = useState(null);
 
   return (
     <div className="relative py-20 overflow-hidden">
-      {/* Background decorations matching other pages */}
-      <div className="absolute top-0 left-10 w-80 h-80 bg-gradient-to-br from-violet-200/20 to-purple-300/20 dark:from-violet-500/10 dark:to-purple-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none" />
-      <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-cyan-200/20 to-blue-300/20 dark:from-cyan-500/10 dark:to-blue-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none" />
-      <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-gradient-to-br from-emerald-200/20 to-green-300/20 dark:from-emerald-500/10 dark:to-green-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none" />
+      {/* Background decorations - solo desktop */}
+      {!isMobile && (
+        <>
+          <div className="absolute top-0 left-10 w-80 h-80 bg-gradient-to-br from-violet-200/20 to-purple-300/20 dark:from-violet-500/10 dark:to-purple-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none" />
+          <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-cyan-200/20 to-blue-300/20 dark:from-cyan-500/10 dark:to-blue-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none" />
+          <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-gradient-to-br from-emerald-200/20 to-green-300/20 dark:from-emerald-500/10 dark:to-green-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none" />
+        </>
+      )}
 
-      {/* Pattern overlay */}
-      <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,theme(colors.violet.500)_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_2px_2px,theme(colors.violet.400)_1px,transparent_1px)] bg-[length:48px_48px]" />
-      </div>
+      {/* Pattern overlay - solo desktop */}
+      {!isMobile && (
+        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,theme(colors.violet.500)_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_2px_2px,theme(colors.violet.400)_1px,transparent_1px)] bg-[length:48px_48px]" />
+        </div>
+      )}
 
       <section className="relative z-10 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
@@ -420,10 +426,10 @@ export default function Experience() {
               {experiences.map((exp, index) => (
                 <motion.div
                   key={exp.id}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  initial={{ opacity: 0, x: isMobile ? 0 : (index % 2 === 0 ? -50 : 50) }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: isMobile ? 0 : index * 0.1 }}
                   className={`relative ${
                     index % 2 === 0
                       ? "md:pr-[calc(50%+2rem)]"
@@ -448,6 +454,7 @@ export default function Experience() {
                     onToggle={() =>
                       setExpandedId(expandedId === exp.id ? null : exp.id)
                     }
+                    isMobile={isMobile}
                   />
                 </motion.div>
               ))}
