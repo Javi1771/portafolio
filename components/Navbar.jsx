@@ -19,7 +19,7 @@ export default function Navbar() {
   return (
     <>
       {/* Navbar - backdrop-blur solo en desktop */}
-      <header className={`fixed top-0 inset-x-0 z-50 border-b border-gray-200/50 dark:border-violet-500/20 shadow-lg shadow-gray-900/10 dark:shadow-violet-500/10 ${isMobile ? "bg-white/98 dark:bg-gray-900/98" : "backdrop-blur-xl bg-white/80 dark:bg-black/20"}`}>
+      <header className={`fixed top-0 inset-x-0 z-50 border-b border-gray-200/50 dark:border-violet-500/20 shadow-lg shadow-gray-900/10 dark:shadow-violet-500/10 ${isMobile ? "bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800" : "backdrop-blur-xl bg-white/80 dark:bg-black/20"}`}>
         {/* Gradient line - solo desktop */}
         {!isMobile && <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-violet-500/70 dark:via-violet-500/50 to-transparent animate-pulse"></div>}
 
