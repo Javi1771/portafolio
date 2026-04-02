@@ -6,6 +6,7 @@ import { PROJECTS } from "@/data/projects";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Globe, Smartphone, Database } from "lucide-react";
 import Image from "next/image";
 
 import { Nextjs } from "@/components/icons/Next";
@@ -303,57 +304,97 @@ export default function HomePage() {
               title: "Desarrollo Web",
               description: "Aplicaciones web modernas con Next.js, React y tecnologías de vanguardia.",
               technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-              gradient: "from-red-700 to-fuchsia-600",
-              icon: "🌐",
+              icon: Globe,
+              gradient: "from-rose-500 to-fuchsia-600",
+              bubbleColor1: "#f43f5e",
+              bubbleColor2: "#d946ef",
             },
             {
               title: "Aplicaciones Móviles",
               description: "Apps nativas multiplataforma con Flutter o React Native para iOS y Android.",
               technologies: ["Flutter", "Dart", "React Native", "TypeScript"],
-              gradient: "from-indigo-700 to-teal-600",
-              icon: "📱",
+              icon: Smartphone,
+              gradient: "from-indigo-500 to-cyan-500",
+              bubbleColor1: "#6366f1",
+              bubbleColor2: "#06b6d4",
             },
             {
               title: "Backend & Bases de Datos",
               description: "APIs robustas y sistemas de gestión de datos escalables.",
               technologies: ["SQL Server", "Firebase", "APIs REST", "Node.js"],
-              gradient: "from-green-700 to-lime-600",
-              icon: "🗄️",
+              icon: Database,
+              gradient: "from-emerald-500 to-lime-500",
+              bubbleColor1: "#10b981",
+              bubbleColor2: "#84cc16",
             },
-          ].map((service, index) => (
-            <div
-              key={service.title}
-              className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 hover:border-transparent hover:shadow-2xl hover:-translate-y-3 transition-all duration-500"
-              style={{ animationDelay: `${index * 200}ms` }}
-            >
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
-              <div className={`absolute -inset-1 bg-gradient-to-br ${service.gradient} rounded-xl opacity-0 group-hover:opacity-20 blur-lg transition-opacity duration-500`} />
+          ].map((service) => {
+            const Icon = service.icon;
+            return (
+              <div
+                key={service.title}
+                className="group relative overflow-hidden p-6 rounded-xl bg-white/70 dark:bg-gray-800/70 border border-gray-200/60 dark:border-gray-700/60 shadow hover:shadow-lg hover:scale-105 transition-all duration-300"
+              >
+                {/* Franja superior — única adición vs SkillCard */}
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient}`} />
 
-              <div className={`relative w-14 h-14 bg-gradient-to-br ${service.gradient} rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                <span className="text-2xl" aria-hidden="true">{service.icon}</span>
+                {/* Gradient overlay en hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 dark:group-hover:opacity-10 transition-opacity duration-500`} />
+
+                {/* Blobs — igual que SkillCard */}
+                <div
+                  className="absolute top-0 right-0 w-24 h-24 rounded-full blur-2xl translate-x-8 -translate-y-8"
+                  style={{ backgroundColor: service.bubbleColor1, opacity: 0.35 }}
+                />
+                <div
+                  className="absolute bottom-0 left-0 w-20 h-20 rounded-full blur-xl -translate-x-6 translate-y-6"
+                  style={{ backgroundColor: service.bubbleColor2, opacity: 0.3 }}
+                />
+
+                <div className="relative z-10 mt-2">
+                  {/* Ícono — igual que SkillCard */}
+                  <div className="mb-4">
+                    <div
+                      className="w-12 h-12 flex items-center justify-center rounded-xl"
+                      style={{
+                        backgroundColor: `${service.bubbleColor1}28`,
+                        border: `1.5px solid ${service.bubbleColor1}90`,
+                        boxShadow: `0 0 10px ${service.bubbleColor1}45, 0 0 3px ${service.bubbleColor1}30`,
+                      }}
+                    >
+                      <Icon size={26} strokeWidth={2} color={service.bubbleColor1} />
+                    </div>
+                  </div>
+
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                    {service.description}
+                  </p>
+
+                  {/* Separador */}
+                  <div className={`h-px bg-gradient-to-r ${service.gradient} opacity-20 group-hover:opacity-40 transition-opacity duration-300 mb-4`} />
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {service.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2.5 py-1 text-xs font-medium rounded-full"
+                        style={{
+                          backgroundColor: `${service.bubbleColor1}18`,
+                          border: `1px solid ${service.bubbleColor1}55`,
+                          color: service.bubbleColor1,
+                        }}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-
-              <h3 className={`text-xl font-semibold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent mb-4 relative z-10`}>
-                {service.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed relative z-10">
-                {service.description}
-              </p>
-              <div className="flex flex-wrap gap-2 relative z-10">
-                {service.technologies.map((tech, techIndex) => (
-                  <span
-                    key={tech}
-                    className={`px-3 py-1 bg-gradient-to-r ${service.gradient} bg-opacity-10 text-gray-100 dark:text-white text-xs font-medium rounded-full border-opacity-20 hover:border-opacity-40 transition-all duration-300`}
-                    style={{ animationDelay: `${index * 200 + techIndex * 100}ms` }}
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div className={`absolute top-4 right-4 w-3 h-3 bg-gradient-to-br ${service.gradient} rounded-full opacity-30 group-hover:opacity-70 transition-opacity`} />
-            </div>
-          ))}
+            );
+          })}
         </motion.div>
       </Section>
     </div>
