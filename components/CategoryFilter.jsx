@@ -11,6 +11,7 @@ import {
   Smartphone,
   FolderOpen,
   Tag,
+  Rocket,
 } from "lucide-react";
 
 /* ─── Paleta compartida por posición ─────────────────────────
@@ -22,24 +23,27 @@ const POSITION_TEXT = [
   "text-cyan-600    dark:text-cyan-300",
   "text-rose-600    dark:text-rose-300",
   "text-amber-600   dark:text-amber-300",
+  "text-emerald-600 dark:text-emerald-300",
 ];
 
 // Sombra coloreada para botón activo (solo light mode)
 const POSITION_SHADOW = [
-  "shadow-slate-400/60  dark:shadow-slate-400/30",
-  "shadow-violet-500/55 dark:shadow-violet-500/30",
-  "shadow-cyan-500/55   dark:shadow-cyan-500/30",
-  "shadow-rose-500/55   dark:shadow-rose-500/30",
-  "shadow-amber-500/55  dark:shadow-amber-500/30",
+  "shadow-slate-400/60   dark:shadow-slate-400/30",
+  "shadow-violet-500/55  dark:shadow-violet-500/30",
+  "shadow-cyan-500/55    dark:shadow-cyan-500/30",
+  "shadow-rose-500/55    dark:shadow-rose-500/30",
+  "shadow-amber-500/55   dark:shadow-amber-500/30",
+  "shadow-emerald-500/55 dark:shadow-emerald-500/30",
 ];
 
 // Para el chip "activo" en el header
 const POSITION_CHIP = [
-  "text-slate-700  dark:text-slate-300  bg-slate-100       dark:bg-white/10",
-  "text-violet-600 dark:text-violet-400 bg-violet-50       dark:bg-violet-500/15",
-  "text-cyan-600   dark:text-cyan-400   bg-cyan-50         dark:bg-cyan-500/15",
-  "text-rose-600   dark:text-rose-400   bg-rose-50         dark:bg-rose-500/15",
-  "text-amber-600  dark:text-amber-400  bg-amber-50        dark:bg-amber-500/15",
+  "text-slate-700   dark:text-slate-300  bg-slate-100        dark:bg-white/10",
+  "text-violet-600  dark:text-violet-400 bg-violet-50        dark:bg-violet-500/15",
+  "text-cyan-600    dark:text-cyan-400   bg-cyan-50          dark:bg-cyan-500/15",
+  "text-rose-600    dark:text-rose-400   bg-rose-50          dark:bg-rose-500/15",
+  "text-amber-600   dark:text-amber-400  bg-amber-50         dark:bg-amber-500/15",
+  "text-emerald-600 dark:text-emerald-400 bg-emerald-50      dark:bg-emerald-500/15",
 ];
 
 /* ─── Configs ────────────────────────────────────────────── */
@@ -49,6 +53,7 @@ const CATEGORY_CONFIG = [
   { key: "Municipio",            label: "Municipio",   icon: Building2  },
   { key: "Personal",             label: "Personal",    icon: User       },
   { key: "Empresarial Estadias", label: "Estadias",    icon: Building   },
+  { key: "Startup",              label: "Startup",     icon: Rocket     },
 ];
 
 const TYPE_CONFIG = [

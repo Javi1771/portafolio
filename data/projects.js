@@ -4,13 +4,14 @@ export const PROJECTS = [
     title: "Hydra – Control de Socios del Pozo de Agua",
     tagline: "Centraliza socios, lecturas y recibos de agua en un solo lugar.",
     year: 2026,
-    category: "Freelance",
-    stack: [ "Next.js 16 (App Router)", "TypeScript 5 Strict", "Tailwind CSS 4", "Supabase (PostgreSQL + Auth + RLS)", "Drizzle ORM", "Zod 4", "Recharts", "pdf-lib (Tickets y Recibos en PDF)", "QR Code (Generación + Escaneo)", "Offline-First con IndexedDB", "Importación de Excel (ExcelJS + XLSX)", "Geolocalización (Google Maps)", "REST API – Portal Ciudadano", "Dark Mode", "Despliegue en Vercel",],
+    category: "Startup",
+    stack: [ "Next.js 16 (App Router)", "TypeScript 5 Strict", "Tailwind CSS 4", "Supabase (PostgreSQL + Auth + RLS)", "Drizzle ORM", "Zod 4", "Recharts", "pdf-lib (Tickets y Recibos en PDF)", "QR Code (Generación + Escaneo)", "TestSprite", "Offline-First con IndexedDB", "Importación de Excel (ExcelJS + XLSX)", "Geolocalización (Google Maps)", "REST API – Portal Ciudadano", "Dark Mode", "Despliegue en Vercel",],
     repo: "https://github.com/Javi1771/Hydra-Pub",
     site: "",
     summary:
+      "Producto co-fundado como parte de una startup de software enfocada en digitalizar operaciones comunitarias que aún dependen de procesos manuales y en papel.\n\n" +
       "ERP comunitario con más de 10 módulos que digitaliza la operación completa de una asociación de pozo de agua: padrón de socios, lectura de medidores, facturación, caja, inventario y asambleas, eliminando el papeleo manual.\n\n" +
-      "Las lecturas pueden operar en modo offline-first con sincronización automática, los recibos aplican precio congelado al momento de emisión y la caja consolida pagos multiforma con corte diario automático.\n\n" +
+      "Las lecturas operan en modo offline-first con sincronización automática, los recibos aplican precio congelado al momento de emisión y la caja consolida pagos multiforma con corte diario automático.\n\n" +
       "Expone una REST API con autenticación JWT para que socios consulten su cuenta y descarguen recibos desde sistemas externos, con importación masiva desde Excel para migración de datos históricos.",
     image: "/Banners/hydra.png",
     colors: { primary: "#0754b1", secondary: "#45dde5" },
