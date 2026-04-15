@@ -45,9 +45,13 @@ export default function RootLayout({ children }) {
         />
         <meta name="google" content="notranslate" />
         <meta httpEquiv="Content-Language" content="es" />
+        {/* Preconnect para reducir latencia de Google Fonts */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* display=optional: usa el font si ya está cacheado, si no usa fallback — no bloquea el render */}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&display=optional"
         />
       </head>
 

@@ -238,10 +238,10 @@ export default function HomePage() {
         {/* Enhanced Professional Stats */}
         <motion.div
           className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-6"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: isMobile ? 0 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: isMobile ? 0.15 : 0.5, delay: isMobile ? 0 : 0.1 }}
         >
           {[
             { number: "7+", label: "Proyectos completados", color: "from-violet-500 to-purple-600" },
@@ -251,7 +251,7 @@ export default function HomePage() {
           ].map((stat, index) => (
             <div
               key={stat.label}
-              className="group relative text-center p-6 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-xl hover:border-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
+              className="group relative text-center p-6 bg-white dark:bg-gray-800 md:bg-white/60 md:dark:bg-gray-800/60 md:backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-xl hover:border-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
               style={{ animationDelay: `${index * 150}ms` }}
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
@@ -273,15 +273,15 @@ export default function HomePage() {
       {/* Enhanced Services Section */}
       <Section className="bg-gradient-to-br from-gray-50/80 to-violet-50/30 dark:from-gray-800/50 dark:to-violet-950/10 backdrop-blur-sm relative">
         {/* Section background decoration */}
-        <div className="absolute top-0 left-1/4 w-72 h-72 bg-gradient-to-br from-violet-200/10 to-purple-300/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-cyan-200/10 to-blue-300/10 rounded-full blur-3xl" />
+        <div className="hidden md:block absolute top-0 left-1/4 w-72 h-72 bg-gradient-to-br from-violet-200/10 to-purple-300/10 rounded-full blur-3xl" />
+        <div className="hidden md:block absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-cyan-200/10 to-blue-300/10 rounded-full blur-3xl" />
 
         <motion.div
           className="text-center mb-16 relative z-10"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: isMobile ? 0 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: isMobile ? 0.15 : 0.5 }}
         >
           <h2 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 via-violet-900 to-gray-900 dark:from-white dark:via-violet-100 dark:to-white bg-clip-text text-transparent mb-4">
             Servicios
@@ -294,10 +294,10 @@ export default function HomePage() {
 
         <motion.div
           className="grid md:grid-cols-3 gap-8 relative z-10"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: isMobile ? 0 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15 }}
+          transition={{ duration: isMobile ? 0.15 : 0.5, delay: isMobile ? 0 : 0.15 }}
         >
           {[
             {
