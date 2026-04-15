@@ -1,80 +1,111 @@
 "use client";
-import { Heart, Sparkles } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { Heart, Sparkles, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
+
+function HeartModal({ onClose }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+  if (!mounted) return null;
+
+  return createPortal(
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-6"
+      style={{ backgroundColor: "rgba(0,0,0,0.4)" }}
+      onClick={onClose}
+    >
+      <div
+        className="relative bg-white dark:bg-gray-900 rounded-3xl overflow-hidden w-full max-w-sm"
+        style={{
+          boxShadow: "0 0 0 1.5px rgba(244,63,94,0.27), 0 30px 60px rgba(0,0,0,0.22), 0 8px 30px rgba(244,63,94,0.12)",
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Línea superior rose */}
+        <div className="h-1 w-full bg-gradient-to-r from-rose-500 to-pink-600" />
+
+        {/* Gradiente de fondo sutil */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse at 15% 0%, rgba(244,63,94,0.12), transparent 55%)" }}
+        />
+
+        <div className="relative p-7">
+          {/* Botón cerrar */}
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 w-7 h-7 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors cursor-pointer"
+          >
+            <X size={14} strokeWidth={2.5} />
+          </button>
+
+          {/* Icono */}
+          <div
+            className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
+            style={{
+              background: "linear-gradient(135deg, rgba(244,63,94,0.16), rgba(244,63,94,0.05))",
+              border: "1.5px solid rgba(244,63,94,0.26)",
+              boxShadow: "0 6px 20px rgba(244,63,94,0.21)",
+            }}
+          >
+            <Heart size={28} className="text-rose-500 fill-rose-500" strokeWidth={1.7} />
+          </div>
+
+          {/* Título */}
+          <h3 className="font-bold text-gray-900 dark:text-white text-xl leading-tight mb-2">
+            Mi compromiso
+          </h3>
+
+          {/* Tagline */}
+          <p className="text-sm font-semibold mb-4 text-rose-500">
+            Pienso en todos los detalles — el código es solo el medio.
+          </p>
+
+          {/* Separador */}
+          <div className="h-px bg-gradient-to-r from-rose-500 to-pink-600 mb-4 opacity-30 rounded-full" />
+
+          {/* Descripción */}
+          <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            Pienso en lo que el usuario siente al abrir tu app, no solo en que funcione. La diferencia entre bueno y memorable está en los detalles que otros dan por sentados.
+          </p>
+
+          {/* Footer pill */}
+          <div className="mt-5 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-gray-200 dark:bg-gray-800">
+            <Sparkles className="w-3.5 h-3.5 text-violet-400 dark:text-violet-300 shrink-0" />
+            <span className="text-[12px] text-gray-500 dark:text-gray-300">
+              Fácil, claro e intuitivo desde el primer segundo.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>,
+    document.body
+  );
+}
 
 export default function Footer() {
   const [open, setOpen] = useState(false);
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const handleClick = (e) => {
-      if (containerRef.current && !containerRef.current.contains(e.target)) {
-        setOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, [open]);
 
   return (
     <footer className="border-t border-gray-400 dark:border-white/10 bg-gray-200 dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 text-center text-gray-600 dark:text-white/70 text-sm flex items-center justify-center gap-1.5 flex-wrap">
         <span>{new Date().getFullYear()} Javier. Hecho con</span>
 
-        {/* Corazón clickeable */}
-        <span ref={containerRef} className="relative inline-flex items-center">
-          <button
-            onClick={() => setOpen((v) => !v)}
-            aria-label="Un mensaje sobre mi trabajo"
-            className="relative z-10 transition-transform duration-200 hover:scale-125 active:scale-105 focus:outline-none"
-          >
-            <Heart
-              className={`w-4 h-4 transition-all duration-300 ${
-                open
-                  ? "text-rose-500 fill-rose-500 scale-110"
-                  : "text-rose-400 fill-rose-400/70 hover:fill-rose-500 hover:text-rose-500"
-              }`}
-            />
-          </button>
+        <button
+          onClick={() => setOpen(true)}
+          aria-label="Un mensaje sobre mi trabajo"
+          className="relative z-10 transition-transform duration-200 hover:scale-125 active:scale-105 focus:outline-none"
+        >
+          <Heart
+            className={`w-4 h-4 transition-all duration-300 ${
+              open
+                ? "text-rose-500 fill-rose-500 scale-110"
+                : "text-rose-400 fill-rose-400/70 hover:fill-rose-500 hover:text-rose-500"
+            }`}
+          />
+        </button>
 
-          {/* Tooltip con fondo sólido */}
-          {open && (
-            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-72 max-w-[calc(100vw-2rem)] pointer-events-none z-50 animate-fade-in">
-              {/* Cuerpo */}
-              <span className="block rounded-2xl overflow-hidden shadow-xl shadow-black/10 dark:shadow-black/50 border border-rose-200 dark:border-gray-700">
-                {/* Header */}
-                <span className="relative flex flex-col items-center gap-1.5 px-4 pt-4 pb-3 bg-rose-50 dark:bg-gray-900">
-                  {/* Toque rose en dark mode */}
-                  <span className="hidden dark:block absolute inset-0 bg-gradient-to-br from-rose-500/10 via-transparent to-transparent pointer-events-none" />
-                  <span className="relative w-8 h-8 rounded-full bg-rose-100 dark:bg-rose-500/15 border dark:border-rose-500/25 flex items-center justify-center shrink-0">
-                    <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
-                  </span>
-                  <span className="relative text-[11px] font-bold uppercase tracking-widest text-rose-400 dark:text-rose-400">
-                    Mi compromiso
-                  </span>
-                  <span className="relative text-[13px] text-gray-700 dark:text-gray-100 leading-relaxed text-center">
-                    Pienso en todos los detalles — el código es solo el medio.
-                  </span>
-                </span>
-
-                {/* Separador */}
-                <span className="block h-px bg-rose-200 dark:bg-gray-700" />
-
-                {/* Footer */}
-                <span className="flex items-center justify-center gap-1.5 px-4 py-3 bg-white dark:bg-gray-800">
-                  <Sparkles className="w-3 h-3 text-violet-400 dark:text-violet-300 shrink-0" />
-                  <span className="text-[12px] text-gray-500 dark:text-gray-300">
-                    Fácil, claro e intuitivo desde el primer segundo.
-                  </span>
-                </span>
-              </span>
-
-              {/* Flecha */}
-              <span className="block w-0 h-0 mx-auto border-l-[7px] border-r-[7px] border-t-[7px] border-l-transparent border-r-transparent border-t-white dark:border-t-gray-800" />
-            </span>
-          )}
-        </span>
+        {open && <HeartModal onClose={() => setOpen(false)} />}
 
         <span>y Next.js + Tailwind.</span>
       </div>

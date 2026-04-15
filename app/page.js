@@ -5,6 +5,7 @@ import Section from "@/components/Section";
 import { PROJECTS } from "@/data/projects";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { Heart, TrendingUp, Sparkles, Target, X } from "lucide-react";
 import Image from "next/image";
@@ -36,6 +37,63 @@ import { Resend } from "@/components/icons/Resend";
 import { ModelContextProtocol } from "@/components/icons/MCP";
 import { MongoDB } from "@/components/icons/Mongo";
 import { MySQL } from "@/components/icons/MySQL";
+
+function PhilosophyModal({ card, onClose }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+  if (!card || !mounted) return null;
+  const Icon = card.icon;
+  return createPortal(
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-6"
+      style={{ backgroundColor: "rgba(0,0,0,0.4)" }}
+      onClick={onClose}
+    >
+      <div
+        className="relative bg-white dark:bg-gray-900 rounded-3xl overflow-hidden w-full max-w-sm"
+        style={{
+          boxShadow: `0 0 0 1.5px ${card.accentColor}45, 0 30px 60px rgba(0,0,0,0.22), 0 8px 30px ${card.accentColor}20`,
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className={`h-1 w-full bg-gradient-to-r ${card.color}`} />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: `radial-gradient(ellipse at 15% 0%, ${card.accentColor}20, transparent 55%)` }}
+        />
+        <div className="relative p-7">
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 w-7 h-7 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors cursor-pointer"
+          >
+            <X size={14} strokeWidth={2.5} />
+          </button>
+          <div
+            className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
+            style={{
+              background: `linear-gradient(135deg, ${card.accentColor}28, ${card.accentColor}0c)`,
+              border: `1.5px solid ${card.accentColor}42`,
+              boxShadow: `0 6px 20px ${card.accentColor}35`,
+            }}
+          >
+            <Icon size={28} color={card.accentColor} strokeWidth={1.7} />
+          </div>
+          <h3 className="font-bold text-gray-900 dark:text-white text-xl leading-tight mb-2">
+            {card.title}
+          </h3>
+          <p className="text-sm font-semibold mb-4" style={{ color: card.accentColor }}>
+            {card.tagline}
+          </p>
+          <div className={`h-px bg-gradient-to-r ${card.color} mb-4 opacity-30 rounded-full`} />
+          <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            {card.desc}
+          </p>
+        </div>
+      </div>
+    </div>,
+    document.body
+  );
+}
 
 export default function HomePage() {
   const [selected, setSelected] = useState("Todos");
@@ -87,6 +145,7 @@ export default function HomePage() {
   ];
 
   return (
+    <>
     <div className="min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden">
       {/* Pattern overlay - solo desktop */}
       {!isMobile && (
@@ -429,61 +488,12 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ── Mini modal ── */}
-      {activeCard !== null && (() => {
-        const card = philosophyCards.find((c) => c.id === activeCard);
-        if (!card) return null;
-        const Icon = card.icon;
-        return (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-6 animate-fade-in"
-            onClick={() => setActiveCard(null)}
-          >
-            <div className="absolute inset-0 bg-black/30 dark:bg-black/50" />
-            <div
-              className="relative bg-white dark:bg-gray-900 rounded-3xl overflow-hidden max-w-sm w-full"
-              style={{
-                boxShadow: `0 0 0 1.5px ${card.accentColor}45, 0 30px 60px rgba(0,0,0,0.22), 0 8px 30px ${card.accentColor}20`,
-              }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className={`h-1 w-full bg-gradient-to-r ${card.color}`} />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{ background: `radial-gradient(ellipse at 15% 0%, ${card.accentColor}20, transparent 55%)` }}
-              />
-              <div className="relative p-7">
-                <button
-                  onClick={() => setActiveCard(null)}
-                  className="absolute top-4 right-4 w-7 h-7 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors cursor-pointer"
-                >
-                  <X size={14} strokeWidth={2.5} />
-                </button>
-                <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
-                  style={{
-                    background: `linear-gradient(135deg, ${card.accentColor}28, ${card.accentColor}0c)`,
-                    border: `1.5px solid ${card.accentColor}42`,
-                    boxShadow: `0 6px 20px ${card.accentColor}35`,
-                  }}
-                >
-                  <Icon size={28} color={card.accentColor} strokeWidth={1.7} />
-                </div>
-                <h3 className="font-bold text-gray-900 dark:text-white text-xl leading-tight mb-2">
-                  {card.title}
-                </h3>
-                <p className="text-sm font-semibold mb-4" style={{ color: card.accentColor }}>
-                  {card.tagline}
-                </p>
-                <div className={`h-px bg-gradient-to-r ${card.color} mb-4 opacity-30 rounded-full`} />
-                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {card.desc}
-                </p>
-              </div>
-            </div>
-          </div>
-        );
-      })()}
     </div>
+
+    <PhilosophyModal
+      card={philosophyCards.find((c) => c.id === activeCard) ?? null}
+      onClose={() => setActiveCard(null)}
+    />
+  </>
   );
 }
