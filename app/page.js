@@ -6,7 +6,7 @@ import { PROJECTS } from "@/data/projects";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Globe, Smartphone, Database } from "lucide-react";
+import { Heart, TrendingUp, Sparkles, Target, X } from "lucide-react";
 import Image from "next/image";
 
 import { Nextjs } from "@/components/icons/Next";
@@ -40,6 +40,7 @@ import { MySQL } from "@/components/icons/MySQL";
 export default function HomePage() {
   const [selected, setSelected] = useState("Todos");
   const [isMobile, setIsMobile] = useState(false);
+  const [activeCard, setActiveCard] = useState(null);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -53,6 +54,37 @@ export default function HomePage() {
     selected === "Todos"
       ? PROJECTS
       : PROJECTS.filter((p) => p.category === selected);
+
+  const philosophyCards = [
+    {
+      id: 1, icon: Heart,
+      color: "from-rose-500 to-pink-600", accentColor: "#f43f5e",
+      title: "Software con corazón",
+      tagline: "Cada detalle que el usuario siente fue una decisión consciente.",
+      desc: "Pienso en lo que el usuario siente al abrir tu app, no solo en que funcione. Porque la diferencia entre bueno y memorable está en los detalles que otros dan por sentados.",
+    },
+    {
+      id: 2, icon: TrendingUp,
+      color: "from-emerald-500 to-teal-600", accentColor: "#10b981",
+      title: "Crezco contigo",
+      tagline: "No entrego el proyecto y desaparezco.",
+      desc: "Muchos desarrolladores terminan y se van. Yo quiero estar ahí cuando tu negocio evolucione, cuando necesites escalar o cuando algo deje de encajar.",
+    },
+    {
+      id: 3, icon: Sparkles,
+      color: "from-violet-500 to-purple-600", accentColor: "#8b5cf6",
+      title: "Simple e intuitivo",
+      tagline: "El mejor software es el que no se nota.",
+      desc: "Si el usuario necesita un tutorial, algo falló en el diseño. Construyo flujos que se explican solos, porque la mejor UX es la que parece que siempre estuvo ahí.",
+    },
+    {
+      id: 4, icon: Target,
+      color: "from-cyan-500 to-blue-600", accentColor: "#0891b2",
+      title: "Hecho a tu medida",
+      tagline: "Tu problema tiene una solución específica.",
+      desc: "No vendo plantillas ni soluciones genéricas. Primero entiendo tu negocio, luego construyo exactamente lo que necesitas — sin relleno ni atajos.",
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden">
@@ -270,133 +302,188 @@ export default function HomePage() {
         </motion.div>
       </Section>
 
-      {/* Enhanced Services Section */}
-      <Section className="bg-gradient-to-br from-gray-50/80 to-violet-50/30 dark:from-gray-800/50 dark:to-violet-950/10 backdrop-blur-sm relative">
-        {/* Section background decoration */}
-        <div className="hidden md:block absolute top-0 left-1/4 w-72 h-72 bg-gradient-to-br from-violet-200/10 to-purple-300/10 rounded-full blur-3xl" />
-        <div className="hidden md:block absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-cyan-200/10 to-blue-300/10 rounded-full blur-3xl" />
-
+      {/* Value Props Section */}
+      <Section>
         <motion.div
-          className="text-center mb-16 relative z-10"
-          initial={{ opacity: 0, y: isMobile ? 0 : 30 }}
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: isMobile ? 0 : 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: isMobile ? 0.15 : 0.5 }}
         >
           <h2 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 via-violet-900 to-gray-900 dark:from-white dark:via-violet-100 dark:to-white bg-clip-text text-transparent mb-4">
-            Servicios
+            Lo que me define
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full mx-auto mb-6" />
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Soluciones tecnológicas integrales para el crecimiento de tu negocio
+          <p className="text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
+            No solo escribo código — construyo soluciones pensando en quien las usa.
           </p>
         </motion.div>
 
-        <motion.div
-          className="grid md:grid-cols-3 gap-8 relative z-10"
-          initial={{ opacity: 0, y: isMobile ? 0 : 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: isMobile ? 0.15 : 0.5, delay: isMobile ? 0 : 0.15 }}
-        >
-          {[
-            {
-              title: "Desarrollo Web",
-              description: "Aplicaciones web modernas con Next.js, React y tecnologías de vanguardia.",
-              technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-              icon: Globe,
-              gradient: "from-rose-500 to-fuchsia-600",
-              bubbleColor1: "#f43f5e",
-              bubbleColor2: "#d946ef",
-            },
-            {
-              title: "Aplicaciones Móviles",
-              description: "Apps nativas multiplataforma con Flutter o React Native para iOS y Android.",
-              technologies: ["Flutter", "Dart", "React Native", "TypeScript"],
-              icon: Smartphone,
-              gradient: "from-indigo-500 to-cyan-500",
-              bubbleColor1: "#6366f1",
-              bubbleColor2: "#06b6d4",
-            },
-            {
-              title: "Backend & Bases de Datos",
-              description: "APIs robustas y sistemas de gestión de datos escalables.",
-              technologies: ["SQL Server", "Firebase", "APIs REST", "Node.js"],
-              icon: Database,
-              gradient: "from-emerald-500 to-lime-500",
-              bubbleColor1: "#10b981",
-              bubbleColor2: "#84cc16",
-            },
-          ].map((service) => {
-            const Icon = service.icon;
-            return (
-              <div
-                key={service.title}
-                className="group relative overflow-hidden p-6 rounded-xl bg-white/70 dark:bg-gray-800/70 border border-gray-200/60 dark:border-gray-700/60 shadow hover:shadow-lg hover:scale-105 transition-all duration-300"
-              >
-                {/* Franja superior — única adición vs SkillCard */}
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient}`} />
-
-                {/* Gradient overlay en hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 dark:group-hover:opacity-10 transition-opacity duration-500`} />
-
-                {/* Blobs — igual que SkillCard */}
-                <div
-                  className="absolute top-0 right-0 w-24 h-24 rounded-full blur-2xl translate-x-8 -translate-y-8"
-                  style={{ backgroundColor: service.bubbleColor1, opacity: 0.35 }}
-                />
-                <div
-                  className="absolute bottom-0 left-0 w-20 h-20 rounded-full blur-xl -translate-x-6 translate-y-6"
-                  style={{ backgroundColor: service.bubbleColor2, opacity: 0.3 }}
-                />
-
-                <div className="relative z-10 mt-2">
-                  {/* Ícono — igual que SkillCard */}
-                  <div className="mb-4">
+        {/* Cards — picos alternados siguiendo la curva */}
+        <div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+            {philosophyCards.map((card, i) => {
+              const Icon = card.icon;
+              const isPeak = i % 2 === 0; // 0,2 → pico alto; 1,3 → valle bajo
+              return (
+                <div key={card.id} className="relative h-full">
+                  {/* Card */}
+                  <div
+                    className="relative rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer h-full"
+                    style={{ boxShadow: "0 0 0 1px rgba(0,0,0,0.07), 0 2px 8px rgba(0,0,0,0.04)" }}
+                    onClick={() => setActiveCard(card.id)}
+                  >
+                    <div className="absolute inset-0 bg-white dark:bg-gray-900 rounded-3xl" />
                     <div
-                      className="w-12 h-12 flex items-center justify-center rounded-xl"
-                      style={{
-                        backgroundColor: `${service.bubbleColor1}28`,
-                        border: `1.5px solid ${service.bubbleColor1}90`,
-                        boxShadow: `0 0 10px ${service.bubbleColor1}45, 0 0 3px ${service.bubbleColor1}30`,
-                      }}
-                    >
-                      <Icon size={26} strokeWidth={2} color={service.bubbleColor1} />
+                      className="absolute inset-0 rounded-3xl"
+                      style={{ background: `radial-gradient(ellipse at 20% 0%, ${card.accentColor}28, transparent 60%)` }}
+                    />
+                    <div
+                      className={`absolute top-0 left-0 right-0 h-[3px] rounded-t-3xl bg-gradient-to-r ${card.color}`}
+                      style={{ opacity: 0.55 }}
+                    />
+
+                    <div className="relative p-5 md:p-6">
+                      <div
+                        className="w-[52px] h-[52px] rounded-2xl flex items-center justify-center mb-4"
+                        style={{
+                          background: `linear-gradient(135deg, ${card.accentColor}28, ${card.accentColor}0c)`,
+                          border: `1.5px solid ${card.accentColor}42`,
+                        }}
+                      >
+                        <Icon size={26} color={card.accentColor} strokeWidth={1.7} />
+                      </div>
+                      <h3 className="font-bold text-gray-900 dark:text-white text-[15px] leading-snug mb-2">
+                        {card.title}
+                      </h3>
+                      <p className="text-[12.5px] text-gray-500 dark:text-gray-400 leading-snug mb-3">
+                        {card.tagline}
+                      </p>
+                      <div
+                        className={`h-px bg-gradient-to-r ${card.color} rounded-full`}
+                        style={{ opacity: 0.22, width: "40%" }}
+                      />
                     </div>
                   </div>
 
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                    {service.description}
-                  </p>
-
-                  {/* Separador */}
-                  <div className={`h-px bg-gradient-to-r ${service.gradient} opacity-20 group-hover:opacity-40 transition-opacity duration-300 mb-4`} />
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {service.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2.5 py-1 text-xs font-medium rounded-full"
-                        style={{
-                          backgroundColor: `${service.bubbleColor1}18`,
-                          border: `1px solid ${service.bubbleColor1}55`,
-                          color: service.bubbleColor1,
-                        }}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                  {/* Conector: corto si es pico, largo si es valle */}
+                  <div
+                    className="hidden md:block absolute bottom-0 left-1/2 -translate-x-1/2 w-[2px] rounded-b-full"
+                    style={{
+                      height: isPeak ? "12px" : "52px",
+                      background: `linear-gradient(to bottom, ${card.accentColor}80, ${card.accentColor}00)`,
+                    }}
+                  />
                 </div>
-              </div>
-            );
-          })}
-        </motion.div>
+              );
+            })}
+          </div>
+
+          {/* ── Onda: picos en cards 1 y 3, valles en cards 2 y 4 ── */}
+          <div className="hidden md:block" aria-hidden="true">
+            <svg className="w-full block" height="64" viewBox="0 0 1000 64" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="waveGrad" x1="0" y1="0" x2="100%" y2="0">
+                  <stop offset="0%"   stopColor="#f43f5e" stopOpacity="0"   />
+                  <stop offset="12%"  stopColor="#f43f5e" stopOpacity="0.9" />
+                  <stop offset="37%"  stopColor="#10b981" stopOpacity="0.9" />
+                  <stop offset="63%"  stopColor="#8b5cf6" stopOpacity="0.9" />
+                  <stop offset="88%"  stopColor="#0891b2" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="#0891b2" stopOpacity="0"   />
+                </linearGradient>
+                <filter id="waveGlow" x="-5%" y="-120%" width="110%" height="340%">
+                  <feGaussianBlur stdDeviation="4.5" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+
+              {/* Halo */}
+              <path
+                d="M 0,32 C 50,32 80,12 118,12 C 156,12 216,52 373,52 C 530,52 590,12 627,12 C 664,12 724,52 882,52 C 932,52 970,32 1000,32"
+                fill="none" stroke="url(#waveGrad)" strokeWidth="10" opacity="0.18" filter="url(#waveGlow)"
+              />
+              {/* Línea */}
+              <path
+                d="M 0,32 C 50,32 80,12 118,12 C 156,12 216,52 373,52 C 530,52 590,12 627,12 C 664,12 724,52 882,52 C 932,52 970,32 1000,32"
+                fill="none" stroke="url(#waveGrad)" strokeWidth="2.5"
+              />
+
+              {/* Pico 1 — rose */}
+              <circle cx="118" cy="12" r="12" fill="#f43f5e" opacity="0.15" />
+              <circle cx="118" cy="12" r="5.5" fill="#f43f5e" />
+              {/* Valle 2 — emerald */}
+              <circle cx="373" cy="52" r="12" fill="#10b981" opacity="0.15" />
+              <circle cx="373" cy="52" r="5.5" fill="#10b981" />
+              {/* Pico 3 — violet */}
+              <circle cx="627" cy="12" r="12" fill="#8b5cf6" opacity="0.15" />
+              <circle cx="627" cy="12" r="5.5" fill="#8b5cf6" />
+              {/* Valle 4 — cyan */}
+              <circle cx="882" cy="52" r="12" fill="#0891b2" opacity="0.15" />
+              <circle cx="882" cy="52" r="5.5" fill="#0891b2" />
+            </svg>
+          </div>
+        </div>
       </Section>
+
+      {/* ── Mini modal ── */}
+      {activeCard !== null && (() => {
+        const card = philosophyCards.find((c) => c.id === activeCard);
+        if (!card) return null;
+        const Icon = card.icon;
+        return (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-6 animate-fade-in"
+            onClick={() => setActiveCard(null)}
+          >
+            <div className="absolute inset-0 bg-black/30 dark:bg-black/50" />
+            <div
+              className="relative bg-white dark:bg-gray-900 rounded-3xl overflow-hidden max-w-sm w-full"
+              style={{
+                boxShadow: `0 0 0 1.5px ${card.accentColor}45, 0 30px 60px rgba(0,0,0,0.22), 0 8px 30px ${card.accentColor}20`,
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className={`h-1 w-full bg-gradient-to-r ${card.color}`} />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{ background: `radial-gradient(ellipse at 15% 0%, ${card.accentColor}20, transparent 55%)` }}
+              />
+              <div className="relative p-7">
+                <button
+                  onClick={() => setActiveCard(null)}
+                  className="absolute top-4 right-4 w-7 h-7 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors cursor-pointer"
+                >
+                  <X size={14} strokeWidth={2.5} />
+                </button>
+                <div
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
+                  style={{
+                    background: `linear-gradient(135deg, ${card.accentColor}28, ${card.accentColor}0c)`,
+                    border: `1.5px solid ${card.accentColor}42`,
+                    boxShadow: `0 6px 20px ${card.accentColor}35`,
+                  }}
+                >
+                  <Icon size={28} color={card.accentColor} strokeWidth={1.7} />
+                </div>
+                <h3 className="font-bold text-gray-900 dark:text-white text-xl leading-tight mb-2">
+                  {card.title}
+                </h3>
+                <p className="text-sm font-semibold mb-4" style={{ color: card.accentColor }}>
+                  {card.tagline}
+                </p>
+                <div className={`h-px bg-gradient-to-r ${card.color} mb-4 opacity-30 rounded-full`} />
+                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                  {card.desc}
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 }
