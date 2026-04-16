@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { memo, useMemo, useState } from "react";
 import { GitHub } from "@/components/icons/GitHub";
+import { Info, ExternalLink } from "lucide-react";
 
 const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -176,7 +177,7 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
               } : undefined}
             >
               <span className="relative z-10 flex items-center justify-center gap-1.5 whitespace-nowrap">
-                <span className="material-symbols-outlined shrink-0" style={{ fontSize: '16px', lineHeight: 1 }}>open_in_new</span>
+                <ExternalLink size={15} className="shrink-0" />
                 Demo
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
@@ -198,7 +199,7 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
             } : undefined}
           >
             <span className="relative z-10 flex items-center justify-center gap-1.5 whitespace-nowrap">
-              <span className="material-symbols-outlined shrink-0" style={{ fontSize: '16px', lineHeight: 1 }}>info</span>
+              <Info size={15} className="shrink-0" />
               Detalles
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>

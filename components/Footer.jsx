@@ -58,7 +58,7 @@ function HeartModal({ onClose }) {
 
           {/* Tagline */}
           <p className="text-sm font-semibold mb-4 text-rose-500">
-            Pienso en todos los detalles — el código es solo el medio.
+            Así soy: cada detalle cuenta — el código es solo el medio.
           </p>
 
           {/* Separador */}
@@ -66,14 +66,14 @@ function HeartModal({ onClose }) {
 
           {/* Descripción */}
           <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-            Pienso en lo que el usuario siente al abrir tu app, no solo en que funcione. La diferencia entre bueno y memorable está en los detalles que otros dan por sentados.
+            Sé que siempre esperas que cada elemento sea funcional, que te sorprenda, que tenga un propósito. Por eso pienso en lo que el usuario siente al abrir tu app, no solo en que funcione.
           </p>
 
           {/* Footer pill */}
           <div className="mt-5 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-gray-200 dark:bg-gray-800">
             <Sparkles className="w-3.5 h-3.5 text-violet-400 dark:text-violet-300 shrink-0" />
             <span className="text-[12px] text-gray-500 dark:text-gray-300">
-              Fácil, claro e intuitivo desde el primer segundo.
+              Tecnología con corazón, siempre.
             </span>
           </div>
         </div>
@@ -83,8 +83,30 @@ function HeartModal({ onClose }) {
   );
 }
 
+const HEART_COLORS = [
+  "#3b82f6", // blue
+  "#06b6d4", // cyan
+  "#8b5cf6", // violet
+  "#a855f7", // purple
+  "#ec4899", // pink
+  "#f43f5e", // rose
+  "#ef4444", // red
+  "#d946ef", // fuchsia
+];
+
 export default function Footer() {
   const [open, setOpen] = useState(false);
+  const [colorIndex, setColorIndex] = useState(0);
+
+  useEffect(() => {
+    if (open) return;
+    const interval = setInterval(() => {
+      setColorIndex((i) => (i + 1) % HEART_COLORS.length);
+    }, 700);
+    return () => clearInterval(interval);
+  }, [open]);
+
+  const heartColor = open ? "#f43f5e" : HEART_COLORS[colorIndex];
 
   return (
     <footer className="border-t border-gray-400 dark:border-white/10 bg-gray-200 dark:bg-black">
@@ -97,11 +119,12 @@ export default function Footer() {
           className="relative z-10 transition-transform duration-200 hover:scale-125 active:scale-105 focus:outline-none"
         >
           <Heart
-            className={`w-4 h-4 transition-all duration-300 ${
-              open
-                ? "text-rose-500 fill-rose-500 scale-110"
-                : "text-rose-400 fill-rose-400/70 hover:fill-rose-500 hover:text-rose-500"
-            }`}
+            className="w-4 h-4"
+            style={{
+              color: heartColor,
+              fill: heartColor,
+              transition: "color 0.5s ease, fill 0.5s ease",
+            }}
           />
         </button>
 
