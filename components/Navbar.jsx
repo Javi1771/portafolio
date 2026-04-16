@@ -115,6 +115,14 @@ export default function Navbar() {
         </div>
       </header>
 
+      {/* Overlay para cerrar menú al pulsar fuera */}
+      {open && (
+        <div
+          className="fixed inset-0 z-30 md:hidden"
+          onClick={() => setOpen(false)}
+        />
+      )}
+
       {/* Enhanced Mobile Menu */}
       <div className={`fixed top-[73px] inset-x-0 z-40 md:hidden transition-all duration-500 ${
         open 
