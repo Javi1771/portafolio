@@ -126,7 +126,7 @@ export const PROJECTS = [
     year: 2023,
     stack: [ "Flutter", "API", "SOAP", "Geolocalización", "Google Maps", "Google Places", "Push Notifications", "Despliegue en Play Store", ],
     category: "Empresarial Estadias",
-    repo: "https://github.com/JavierUTSJR/sine_nimbus",
+    repo: "https://github.com/Javi1771/sine",
     site: "",
     summary:
       "Aplicación empresarial móvil que digitaliza la operación logística mediante integración nativa con el sistema NIMBUS corporativo.\n\n" +
