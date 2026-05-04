@@ -335,7 +335,7 @@ export default function HomePage() {
           transition={{ duration: isMobile ? 0.15 : 0.5, delay: isMobile ? 0 : 0.1 }}
         >
           {[
-            { number: "7+", label: "Proyectos completados", color: "from-violet-500 to-purple-600" },
+            { number: "8+", label: "Proyectos completados", color: "from-violet-500 to-purple-600" },
             { number: "2023", label: "Año en actividad", color: "from-cyan-500 to-blue-600" },
             { number: "3", label: "Áreas de especialización", color: "from-emerald-500 to-green-600" },
             { number: "100%", label: "Proyectos entregados", color: "from-rose-500 to-pink-600" },
