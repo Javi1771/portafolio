@@ -15,6 +15,7 @@ import {
   Rocket, MousePointerClick, TrendingUp,
 } from "lucide-react";
 
+
 export default function AboutPage() {
   //! Detectar si es móvil
   const [isMobile, setIsMobile] = useState(false);
@@ -309,7 +310,7 @@ export default function AboutPage() {
                   22 años
                 </span>
                 <span className="px-3 py-1.5 rounded-full bg-white/70 dark:bg-gray-800/60 border border-gray-200/60 dark:border-gray-700/60 text-gray-700 dark:text-gray-300">
-                  San Juan del Río, Querétaro
+                  San Juan del Río, Querétaro, México
                 </span>
                 <span className="px-3 py-1.5 rounded-full bg-white/70 dark:bg-gray-800/60 border border-gray-200/60 dark:border-gray-700/60 text-gray-700 dark:text-gray-300">
                   Ingeniero en Software
@@ -344,9 +345,10 @@ export default function AboutPage() {
                   </div>
 
                   <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Soy <strong>Javier López</strong>, un desarrollador de 22
-                    años apasionado por la tecnología y la creación de
-                    soluciones digitales que realmente impactan.
+                    Soy <strong>Javier López</strong>, desarrollador enfocado en
+                    crear productos digitales completos — desde la interfaz
+                    hasta el backend — con atención a cada detalle que el
+                    usuario siente.
                   </p>
 
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -354,37 +356,33 @@ export default function AboutPage() {
                     <strong>
                       Ingeniero en Desarrollo y Gestión de Software
                     </strong>{" "}
-                    por la Universidad Tecnológica de San Juan del Río, donde
-                    desarrollé una sólida base en programación, arquitectura de
-                    software y gestión de proyectos.
+                    por la Universidad Tecnológica de San Juan del Río. Desde
+                    entonces he trabajado en proyectos reales para gobierno y
+                    sector privado, construyendo soluciones que siguen en
+                    producción.
                   </p>
 
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Mi stack principal incluye{" "}
-                    <span className="font-semibold text-black dark:text-white">
-                      Next.js
-                    </span>{" "}
-                    para desarrollo web,{" "}
-                    <span className="font-semibold text-blue-600 dark:text-blue-400">
-                      Flutter
-                    </span>{" "}
-                    y{" "}
-                    <span className="font-semibold text-cyan-600 dark:text-cyan-400">
-                      React Native
-                    </span>{" "}
-                    para aplicaciones móviles, bases de datos con{" "}
-                    <span className="font-semibold text-violet-600 dark:text-violet-400">
-                      SQL Server
-                    </span>{" "}
-                    y{" "}
-                    <span className="font-semibold text-emerald-600 dark:text-emerald-400">
-                      Firebase
-                    </span>
-                    , además de experiencia en{" "}
-                    <span className="font-semibold text-orange-600 dark:text-orange-400">
-                      IoT
-                    </span>
-                    .
+                    Mi stack gira en torno a{" "}
+                    <span className="font-semibold text-indigo-600 dark:text-indigo-400">Next.js</span>{" "}
+                    para web full-stack con JavaScript y TypeScript,{" "}
+                    <span className="font-semibold text-cyan-500 dark:text-cyan-400">Flutter + Dart</span>{" "}
+                    para apps móviles nativas, y{" "}
+                    <span className="font-semibold text-emerald-600 dark:text-emerald-400">Supabase</span>{" "}
+                    con{" "}
+                    <span className="font-semibold text-amber-500 dark:text-amber-400">Firebase</span>{" "}
+                    como backends. Son las herramientas con las que he
+                    construido mis proyectos más completos y en las que confío
+                    para entregar resultados sólidos.
+                  </p>
+
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Lo que me diferencia no es solo el stack — es la actitud.
+                    Creo en la tecnología hecha con corazón: pienso en quien
+                    va a abrir esa app, en los flujos que tiene que entender sin
+                    un tutorial, en los detalles que otros dan por sentados.
+                    El código es el medio; el impacto en las personas es el
+                    objetivo.
                   </p>
                 </div>
               </div>

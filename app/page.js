@@ -29,7 +29,7 @@ import { Expo } from "@/components/icons/Expo";
 import { TestSprite } from "@/components/icons/TestSprite";
 import { Supabase } from "@/components/icons/Supabase";
 import { NestJS } from "@/components/icons/Nest";
-import { Prisma } from "@/components/icons/Pisma";
+import { Prisma } from "@/components/icons/Prisma";
 import { Atlassian } from "@/components/icons/Jira";
 import { Notion } from "@/components/icons/Notion";
 import { DrizzleORM } from "@/components/icons/Drizzle";
@@ -37,6 +37,9 @@ import { Resend } from "@/components/icons/Resend";
 import { ModelContextProtocol } from "@/components/icons/MCP";
 import { MongoDB } from "@/components/icons/Mongo";
 import { MySQL } from "@/components/icons/MySQL";
+import { Dart } from "@/components/icons/Dart";
+import { JavaScript } from "@/components/icons/JavaScript";
+import { TypeScript } from "@/components/icons/TypeScript";
 
 function PhilosophyModal({ card, onClose }) {
   const [mounted, setMounted] = useState(false);
@@ -192,37 +195,33 @@ export default function HomePage() {
               </div>
 
               <div className="text-lg text-gray-500 dark:text-gray-400 leading-relaxed max-w-xl relative">
-                Especializado en desarrollo de aplicaciones web y móviles con
-                tecnologías modernas. Experiencia comprobada en proyectos para
-                gobierno y sector privado.
+                Construyo aplicaciones web y móviles completas — desde la
+                interfaz hasta el backend — con un stack moderno y enfocado.
+                He entregado proyectos reales para gobierno y sector privado
+                que siguen en producción.
                 {!isMobile && <div className="absolute -right-4 top-2 w-2 h-2 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-full animate-pulse" />}
               </div>
             </div>
 
-            {/* Enhanced Tech Stack */}
+            {/* Mis Fortalezas */}
             <div className="space-y-4">
               <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
                 <div className="w-2 h-2 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full" />
-                Tecnologías Principales
+                Mis Fortalezas
               </h3>
               <div className="flex flex-wrap gap-2">
                 {[
-                  { label: "Next.js",        Icon: Nextjs            },
-                  { label: "Flutter",        Icon: Flutter           },
-                  { label: "SQL Server",     Icon: MicrosoftSQLServer},
-                  { label: "Firebase",       Icon: Firebase          },
-                  { label: "Tailwind CSS",   Icon: TailwindCSS       },
-                  { label: "Google Maps",    Icon: GoogleMaps        },
-                  { label: "Claude CLI",     Icon: ClaudeAI          },
-                  { label: "Codex CLI",      Icon: Codex             },
-                  { label: "Gemini CLI",     Icon: Gemini            },
-                  { label: "SQLite",         Icon: SQLite            },
-                  { label: "GitHub",         Icon: GitHub            },
-                  { label: "Vercel",         Icon: Vercel            },
-                  { label: "Node.js",        Icon: Nodejs            },
-                  { label: "PostgreSQL",     Icon: PostgreSQL        },
-                  { label: "MongoDB",        Icon: MongoDB           },
-                  { label: "MySQL",          Icon: MySQL             },
+                  { label: "Next.js",       Icon: Nextjs             },
+                  { label: "JavaScript",    Icon: JavaScript         },
+                  { label: "TypeScript",    Icon: TypeScript         },
+                  { label: "Flutter",       Icon: Flutter            },
+                  { label: "Dart",          Icon: Dart               },
+                  { label: "Supabase",      Icon: Supabase           },
+                  { label: "Firebase",      Icon: Firebase           },
+                  { label: "Node.js",       Icon: Nodejs             },
+                  { label: "SQL Server",    Icon: MicrosoftSQLServer },
+                  { label: "PostgreSQL",    Icon: PostgreSQL         },
+                  { label: "SQLite",        Icon: SQLite             },
                 ].map(({ label, Icon }, index) => (
                   <span
                     key={label}
@@ -237,37 +236,68 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Tecnologías en Aprendizaje */}
+            {/* Complementos */}
             <div className="space-y-4">
               <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
                 <div className="w-2 h-2 bg-gradient-to-r from-cyan-500 to-sky-600 rounded-full" />
-                Tecnologías en Aprendizaje o Uso Reciente
+                Complementos
               </h3>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  { label: "React Native",  Icon: ReactNativeIcon },
-                  { label: "Expo",          Icon: Expo            },
-                  { label: "TestSprite",    Icon: TestSprite      },
-                  { label: "Supabase",      Icon: Supabase        },
-                  { label: "NestJS",        Icon: NestJS          },
-                  { label: "Prisma",        Icon: Prisma          },
-                  { label: "Jira",          Icon: Atlassian       },
-                  { label: "Notion",        Icon: Notion          },
-                  { label: "Drizzle",       Icon: DrizzleORM      },
-                  { label: "Agent Skills",  Icon: Vercel          },
-                  { label: "Resend",        Icon: Resend          },
-                  { label: "Varios MCP",    Icon: ModelContextProtocol },
-                ].map(({ label, Icon }, index) => (
-                  <span
-                    key={label}
-                    className={`group relative flex items-center gap-2 px-3 py-1.5 bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-200 ${!isMobile ? "backdrop-blur-sm hover:border-blue-300/50 dark:hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-0.5" : ""}`}
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <Icon className="w-4 h-4 shrink-0" />
-                    {label}
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-indigo-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </span>
-                ))}
+
+              {/* Uso frecuente */}
+              <div className="space-y-2">
+                <p className="text-[10px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest">Uso frecuente</p>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { label: "Tailwind CSS", Icon: TailwindCSS },
+                    { label: "Vercel",       Icon: Vercel      },
+                    { label: "GitHub",       Icon: GitHub      },
+                    { label: "MongoDB",      Icon: MongoDB     },
+                    { label: "MySQL",        Icon: MySQL       },
+                    { label: "Google Maps",  Icon: GoogleMaps  },
+                    { label: "Claude AI",    Icon: ClaudeAI    },
+                    { label: "Codex CLI",    Icon: Codex       },
+                    { label: "Gemini CLI",   Icon: Gemini      },
+                  ].map(({ label, Icon }, index) => (
+                    <span
+                      key={label}
+                      className={`group relative flex items-center gap-2 px-3 py-1.5 bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-200 ${!isMobile ? "backdrop-blur-sm hover:border-blue-300/50 dark:hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-0.5" : ""}`}
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      <Icon className="w-4 h-4 shrink-0" />
+                      {label}
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-indigo-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Aprendizaje / uso reciente */}
+              <div className="space-y-2">
+                <p className="text-[10px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest">Aprendizaje / Uso reciente</p>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { label: "React Native",  Icon: ReactNativeIcon      },
+                    { label: "Expo",          Icon: Expo                 },
+                    { label: "NestJS",        Icon: NestJS               },
+                    { label: "Prisma",        Icon: Prisma               },
+                    { label: "Drizzle",       Icon: DrizzleORM           },
+                    { label: "Resend",        Icon: Resend               },
+                    { label: "Varios MCP",    Icon: ModelContextProtocol },
+                    { label: "Jira",          Icon: Atlassian            },
+                    { label: "Notion",        Icon: Notion               },
+                    { label: "TestSprite",    Icon: TestSprite           },
+                  ].map(({ label, Icon }, index) => (
+                    <span
+                      key={label}
+                      className={`group relative flex items-center gap-2 px-3 py-1.5 bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-200 ${!isMobile ? "backdrop-blur-sm hover:border-blue-300/50 dark:hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-0.5" : ""}`}
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      <Icon className="w-4 h-4 shrink-0" />
+                      {label}
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-indigo-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
 
