@@ -41,6 +41,7 @@ import { Dart } from "@/components/icons/Dart";
 import { JavaScript } from "@/components/icons/JavaScript";
 import { TypeScript } from "@/components/icons/TypeScript";
 import { Pnpm } from "@/components/icons/Pnpm";
+import { Lovable } from "@/components/icons/Lovable";
 
 function PhilosophyModal({ card, onClose }) {
   const [mounted, setMounted] = useState(false);
@@ -288,6 +289,7 @@ export default function HomePage() {
                     { label: "Jira",          Icon: Atlassian            },
                     { label: "Notion",        Icon: Notion               },
                     { label: "TestSprite",    Icon: TestSprite           },
+                    { label: "Lovable",        Icon: Lovable             },
                   ].map(({ label, Icon }, index) => (
                     <span
                       key={label}
