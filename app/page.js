@@ -40,6 +40,7 @@ import { MySQL } from "@/components/icons/MySQL";
 import { Dart } from "@/components/icons/Dart";
 import { JavaScript } from "@/components/icons/JavaScript";
 import { TypeScript } from "@/components/icons/TypeScript";
+import { Pnpm } from "@/components/icons/Pnpm";
 
 function PhilosophyModal({ card, onClose }) {
   const [mounted, setMounted] = useState(false);
@@ -222,6 +223,7 @@ export default function HomePage() {
                   { label: "SQL Server",    Icon: MicrosoftSQLServer },
                   { label: "PostgreSQL",    Icon: PostgreSQL         },
                   { label: "SQLite",        Icon: SQLite             },
+                  { label: "Pnpm",          Icon: Pnpm               },
                 ].map(({ label, Icon }, index) => (
                   <span
                     key={label}
