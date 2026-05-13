@@ -224,7 +224,6 @@ export default function HomePage() {
                   { label: "SQL Server",    Icon: MicrosoftSQLServer },
                   { label: "PostgreSQL",    Icon: PostgreSQL         },
                   { label: "SQLite",        Icon: SQLite             },
-                  { label: "Pnpm",          Icon: Pnpm               },
                 ].map(({ label, Icon }, index) => (
                   <span
                     key={label}
@@ -260,6 +259,7 @@ export default function HomePage() {
                     { label: "Claude AI",    Icon: ClaudeAI    },
                     { label: "Codex CLI",    Icon: Codex       },
                     { label: "Gemini CLI",   Icon: Gemini      },
+                    { label: "Pnpm",         Icon: Pnpm        },
                   ].map(({ label, Icon }, index) => (
                     <span
                       key={label}
