@@ -9,6 +9,7 @@ import { PROJECTS } from "@/data/projects";
 import Section from "@/components/Section";
 import Link from "next/link";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function ProjectDetail() {
   const { id } = useParams();
@@ -249,27 +250,38 @@ export default function ProjectDetail() {
           </button>
 
           <div className="relative w-full h-full max-w-7xl mx-auto p-4 md:p-8 flex items-center justify-center">
-            <Image
-              src={images[active]}
-              alt={`${project.title} - imagen completa`}
-              fill
-              className="object-contain"
-              priority
-              quality={isMobile ? 75 : 90}
-            />
+            <AnimatePresence mode="sync">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.08, ease: "easeOut" }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={images[active]}
+                  alt={`${project.title} - imagen completa`}
+                  fill
+                  className="object-contain"
+                  priority
+                  quality={isMobile ? 75 : 90}
+                />
+              </motion.div>
+            </AnimatePresence>
 
             {images.length > 1 && (
               <>
                 <button
                   onClick={prev}
-                  className={`absolute left-2 md:left-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-16 md:h-16 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 ${!isMobile && "hover:scale-110"} cursor-pointer`}
-                  style={{ 
+                  className={`absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-14 md:h-14 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center text-white ring-1 ring-white/30 shadow-xl shadow-black/60 transition-all duration-200 ${!isMobile && "hover:scale-110 hover:ring-white/60"} cursor-pointer`}
+                  style={{
                     WebkitTapHighlightColor: 'transparent',
                     touchAction: 'manipulation'
                   }}
                 >
                   <svg
-                    className="w-5 h-5 md:w-8 md:h-8"
+                    className="w-5 h-5 md:w-6 md:h-6"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -277,21 +289,21 @@ export default function ProjectDetail() {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth={2}
+                      strokeWidth={2.5}
                       d="M15 19l-7-7 7-7"
                     />
                   </svg>
                 </button>
                 <button
                   onClick={next}
-                  className={`absolute right-2 md:right-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-16 md:h-16 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 ${!isMobile && "hover:scale-110"} cursor-pointer`}
-                  style={{ 
+                  className={`absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-14 md:h-14 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center text-white ring-1 ring-white/30 shadow-xl shadow-black/60 transition-all duration-200 ${!isMobile && "hover:scale-110 hover:ring-white/60"} cursor-pointer`}
+                  style={{
                     WebkitTapHighlightColor: 'transparent',
                     touchAction: 'manipulation'
                   }}
                 >
                   <svg
-                    className="w-5 h-5 md:w-8 md:h-8"
+                    className="w-5 h-5 md:w-6 md:h-6"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -299,7 +311,7 @@ export default function ProjectDetail() {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth={2}
+                      strokeWidth={2.5}
                       d="M9 5l7 7-7 7"
                     />
                   </svg>
