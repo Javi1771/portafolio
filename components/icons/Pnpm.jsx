@@ -52,16 +52,16 @@ const Pnpm = (props) => (
         <use xlinkHref="#pnpm_dark__dqv5133G8" fill="#f9ad00" />
       </g>
       <g>
-        <use xlinkHref="#pnpm_dark__b1Lv79ypvm" fill="#ffffff" />
+        <use xlinkHref="#pnpm_dark__b1Lv79ypvm" fill="currentColor" />
       </g>
       <g>
-        <use xlinkHref="#pnpm_dark__hy1IZWwLX" fill="#ffffff" />
+        <use xlinkHref="#pnpm_dark__hy1IZWwLX" fill="currentColor" />
       </g>
       <g>
-        <use xlinkHref="#pnpm_dark__akQfjxQes" fill="#ffffff" />
+        <use xlinkHref="#pnpm_dark__akQfjxQes" fill="currentColor" />
       </g>
       <g>
-        <use xlinkHref="#pnpm_dark__bdSrwE5pk" fill="#ffffff" />
+        <use xlinkHref="#pnpm_dark__bdSrwE5pk" fill="currentColor" />
       </g>
     </g>
   </svg>
