@@ -44,6 +44,7 @@ import { Pnpm } from "@/components/icons/Pnpm";
 import { Lovable } from "@/components/icons/Lovable";
 import { ShadcnUI } from "@/components/icons/Shadcn";
 import { GoogleAntigravity } from "@/components/icons/Antigravity";
+import { OpenAI } from "@/components/icons/ChatGPT";
 
 function PhilosophyModal({ card, onClose }) {
   const [mounted, setMounted] = useState(false);
@@ -260,8 +261,9 @@ export default function HomePage() {
                     { label: "MySQL",           Icon: MySQL             },
                     { label: "Google Maps",     Icon: GoogleMaps        },
                     { label: "Claude Code",     Icon: ClaudeAI          },
-                    { label: "Antigravity CLI", Icon: GoogleAntigravity },
                     { label: "Gemini",          Icon: Gemini            },
+                    { label: "ChatGPT",         Icon: OpenAI            },
+                    { label: "Antigravity CLI", Icon: GoogleAntigravity },
                     { label: "Codex CLI",       Icon: Codex             },
                   ].map(({ label, Icon }, index) => (
                     <span
