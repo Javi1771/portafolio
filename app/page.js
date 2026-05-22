@@ -42,6 +42,8 @@ import { JavaScript } from "@/components/icons/JavaScript";
 import { TypeScript } from "@/components/icons/TypeScript";
 import { Pnpm } from "@/components/icons/Pnpm";
 import { Lovable } from "@/components/icons/Lovable";
+import { ShadcnUI } from "@/components/icons/Shadcn";
+import { GoogleAntigravity } from "@/components/icons/Antigravity";
 
 function PhilosophyModal({ card, onClose }) {
   const [mounted, setMounted] = useState(false);
@@ -121,28 +123,28 @@ export default function HomePage() {
   const philosophyCards = [
     {
       id: 1, icon: Heart,
-      color: "from-rose-500 to-pink-600", accentColor: "#f43f5e",
+      color: "from-blue-500 to-blue-600", accentColor: "#3b82f6",
       title: "Software con corazón",
       tagline: "Cada detalle que el usuario siente fue una decisión consciente.",
       desc: "Pienso en lo que el usuario siente al abrir tu app, no solo en que funcione. Porque la diferencia entre bueno y memorable está en los detalles que otros dan por sentados.",
     },
     {
       id: 2, icon: TrendingUp,
-      color: "from-emerald-500 to-teal-600", accentColor: "#10b981",
+      color: "from-cyan-500 to-cyan-600", accentColor: "#06b6d4",
       title: "Crezco contigo",
       tagline: "No entrego el proyecto y desaparezco.",
       desc: "Muchos desarrolladores terminan y se van. Yo quiero estar ahí cuando tu negocio evolucione, cuando necesites escalar o cuando algo deje de encajar.",
     },
     {
       id: 3, icon: Sparkles,
-      color: "from-violet-500 to-purple-600", accentColor: "#8b5cf6",
+      color: "from-teal-500 to-teal-600", accentColor: "#14b8a6",
       title: "Simple e intuitivo",
       tagline: "El mejor software es el que no se nota.",
       desc: "Si el usuario necesita un tutorial, algo falló en el diseño. Construyo flujos que se explican solos, porque la mejor UX es la que parece que siempre estuvo ahí.",
     },
     {
       id: 4, icon: Target,
-      color: "from-cyan-500 to-blue-600", accentColor: "#0891b2",
+      color: "from-cyan-400 to-sky-500", accentColor: "#22d3ee",
       title: "Hecho a tu medida",
       tagline: "Tu problema tiene una solución específica.",
       desc: "No vendo plantillas ni soluciones genéricas. Primero entiendo tu negocio, luego construyo exactamente lo que necesitas — sin relleno ni atajos.",
@@ -214,15 +216,15 @@ export default function HomePage() {
               <div className="flex flex-wrap gap-2">
                 {[
                   { label: "Next.js",       Icon: Nextjs             },
-                  { label: "JavaScript",    Icon: JavaScript         },
                   { label: "TypeScript",    Icon: TypeScript         },
+                  { label: "JavaScript",    Icon: JavaScript         },
                   { label: "Flutter",       Icon: Flutter            },
                   { label: "Dart",          Icon: Dart               },
+                  { label: "Node.js",       Icon: Nodejs             },
                   { label: "Supabase",      Icon: Supabase           },
                   { label: "Firebase",      Icon: Firebase           },
-                  { label: "Node.js",       Icon: Nodejs             },
-                  { label: "SQL Server",    Icon: MicrosoftSQLServer },
                   { label: "PostgreSQL",    Icon: PostgreSQL         },
+                  { label: "SQL Server",    Icon: MicrosoftSQLServer },
                   { label: "SQLite",        Icon: SQLite             },
                 ].map(({ label, Icon }, index) => (
                   <span
@@ -250,16 +252,17 @@ export default function HomePage() {
                 <p className="text-[10px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest">Uso frecuente</p>
                 <div className="flex flex-wrap gap-2">
                   {[
-                    { label: "Tailwind CSS", Icon: TailwindCSS },
-                    { label: "Vercel",       Icon: Vercel      },
-                    { label: "GitHub",       Icon: GitHub      },
-                    { label: "MongoDB",      Icon: MongoDB     },
-                    { label: "MySQL",        Icon: MySQL       },
-                    { label: "Google Maps",  Icon: GoogleMaps  },
-                    { label: "Claude AI",    Icon: ClaudeAI    },
-                    { label: "Codex CLI",    Icon: Codex       },
-                    { label: "Gemini CLI",   Icon: Gemini      },
-                    { label: "Pnpm",         Icon: Pnpm        },
+                    { label: "Tailwind CSS",    Icon: TailwindCSS       },
+                    { label: "GitHub",          Icon: GitHub            },
+                    { label: "Pnpm",            Icon: Pnpm              },
+                    { label: "Vercel",          Icon: Vercel            },
+                    { label: "MongoDB",         Icon: MongoDB           },
+                    { label: "MySQL",           Icon: MySQL             },
+                    { label: "Google Maps",     Icon: GoogleMaps        },
+                    { label: "Claude Code",     Icon: ClaudeAI          },
+                    { label: "Antigravity CLI", Icon: GoogleAntigravity },
+                    { label: "Gemini",          Icon: Gemini            },
+                    { label: "Codex CLI",       Icon: Codex             },
                   ].map(({ label, Icon }, index) => (
                     <span
                       key={label}
@@ -281,15 +284,16 @@ export default function HomePage() {
                   {[
                     { label: "React Native",  Icon: ReactNativeIcon      },
                     { label: "Expo",          Icon: Expo                 },
+                    { label: "Shadcn UI",     Icon: ShadcnUI             },
                     { label: "NestJS",        Icon: NestJS               },
                     { label: "Prisma",        Icon: Prisma               },
                     { label: "Drizzle",       Icon: DrizzleORM           },
                     { label: "Resend",        Icon: Resend               },
                     { label: "Varios MCP",    Icon: ModelContextProtocol },
-                    { label: "Jira",          Icon: Atlassian            },
-                    { label: "Notion",        Icon: Notion               },
+                    { label: "Lovable",       Icon: Lovable              },
                     { label: "TestSprite",    Icon: TestSprite           },
-                    { label: "Lovable",        Icon: Lovable             },
+                    { label: "Notion",        Icon: Notion               },
+                    { label: "Jira",          Icon: Atlassian            },
                   ].map(({ label, Icon }, index) => (
                     <span
                       key={label}
@@ -423,18 +427,24 @@ export default function HomePage() {
                 <div key={card.id} className="relative h-full">
                   {/* Card */}
                   <div
-                    className="relative rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer h-full"
-                    style={{ boxShadow: "0 0 0 1px rgba(0,0,0,0.07), 0 2px 8px rgba(0,0,0,0.04)" }}
+                    className="relative rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer h-full
+                               shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_4px_16px_rgba(0,0,0,0.07)]
+                               dark:shadow-[0_0_0_1px_rgba(255,255,255,0.07),0_4px_20px_rgba(0,0,0,0.5)]"
                     onClick={() => setActiveCard(card.id)}
                   >
-                    <div className="absolute inset-0 bg-white dark:bg-gray-900 rounded-3xl" />
+                    <div className="absolute inset-0 bg-white dark:bg-gray-800 rounded-3xl" />
+                    {/* Acento light */}
                     <div
-                      className="absolute inset-0 rounded-3xl"
-                      style={{ background: `radial-gradient(ellipse at 20% 0%, ${card.accentColor}28, transparent 60%)` }}
+                      className="absolute inset-0 rounded-3xl dark:hidden"
+                      style={{ background: `radial-gradient(ellipse at 20% 0%, ${card.accentColor}38, transparent 60%)` }}
+                    />
+                    {/* Acento dark */}
+                    <div
+                      className="absolute inset-0 rounded-3xl hidden dark:block"
+                      style={{ background: `radial-gradient(ellipse at 20% 0%, ${card.accentColor}45, transparent 55%)` }}
                     />
                     <div
-                      className={`absolute top-0 left-0 right-0 h-[3px] rounded-t-3xl bg-gradient-to-r ${card.color}`}
-                      style={{ opacity: 0.55 }}
+                      className={`absolute top-0 left-0 right-0 h-[3px] rounded-t-3xl bg-gradient-to-r ${card.color} opacity-[0.75] dark:opacity-90`}
                     />
 
                     <div className="relative p-5 md:p-6">
@@ -442,7 +452,7 @@ export default function HomePage() {
                         className="w-[52px] h-[52px] rounded-2xl flex items-center justify-center mb-4"
                         style={{
                           background: `linear-gradient(135deg, ${card.accentColor}28, ${card.accentColor}0c)`,
-                          border: `1.5px solid ${card.accentColor}42`,
+                          border: `1.5px solid ${card.accentColor}55`,
                         }}
                       >
                         <Icon size={26} color={card.accentColor} strokeWidth={1.7} />
@@ -450,12 +460,12 @@ export default function HomePage() {
                       <h3 className="font-bold text-gray-900 dark:text-white text-[15px] leading-snug mb-2">
                         {card.title}
                       </h3>
-                      <p className="text-[12.5px] text-gray-500 dark:text-gray-400 leading-snug mb-3">
+                      <p className="text-[12.5px] text-gray-500 dark:text-gray-300 leading-snug mb-3">
                         {card.tagline}
                       </p>
                       <div
-                        className={`h-px bg-gradient-to-r ${card.color} rounded-full`}
-                        style={{ opacity: 0.22, width: "40%" }}
+                        className={`h-px bg-gradient-to-r ${card.color} rounded-full opacity-[0.35] dark:opacity-[0.45]`}
+                        style={{ width: "40%" }}
                       />
                     </div>
                   </div>
@@ -478,12 +488,12 @@ export default function HomePage() {
             <svg className="w-full block" height="64" viewBox="0 0 1000 64" preserveAspectRatio="none">
               <defs>
                 <linearGradient id="waveGrad" x1="0" y1="0" x2="100%" y2="0">
-                  <stop offset="0%"   stopColor="#f43f5e" stopOpacity="0"   />
-                  <stop offset="12%"  stopColor="#f43f5e" stopOpacity="0.9" />
-                  <stop offset="37%"  stopColor="#10b981" stopOpacity="0.9" />
-                  <stop offset="63%"  stopColor="#8b5cf6" stopOpacity="0.9" />
-                  <stop offset="88%"  stopColor="#0891b2" stopOpacity="0.9" />
-                  <stop offset="100%" stopColor="#0891b2" stopOpacity="0"   />
+                  <stop offset="0%"   stopColor="#3b82f6" stopOpacity="0"   />
+                  <stop offset="12%"  stopColor="#3b82f6" stopOpacity="0.9" />
+                  <stop offset="37%"  stopColor="#06b6d4" stopOpacity="0.9" />
+                  <stop offset="63%"  stopColor="#14b8a6" stopOpacity="0.9" />
+                  <stop offset="88%"  stopColor="#22d3ee" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="#22d3ee" stopOpacity="0"   />
                 </linearGradient>
                 <filter id="waveGlow" x="-5%" y="-120%" width="110%" height="340%">
                   <feGaussianBlur stdDeviation="4.5" result="blur" />
@@ -505,18 +515,18 @@ export default function HomePage() {
                 fill="none" stroke="url(#waveGrad)" strokeWidth="2.5"
               />
 
-              {/* Pico 1 — rose */}
-              <circle cx="118" cy="12" r="12" fill="#f43f5e" opacity="0.15" />
-              <circle cx="118" cy="12" r="5.5" fill="#f43f5e" />
-              {/* Valle 2 — emerald */}
-              <circle cx="373" cy="52" r="12" fill="#10b981" opacity="0.15" />
-              <circle cx="373" cy="52" r="5.5" fill="#10b981" />
-              {/* Pico 3 — violet */}
-              <circle cx="627" cy="12" r="12" fill="#8b5cf6" opacity="0.15" />
-              <circle cx="627" cy="12" r="5.5" fill="#8b5cf6" />
-              {/* Valle 4 — cyan */}
-              <circle cx="882" cy="52" r="12" fill="#0891b2" opacity="0.15" />
-              <circle cx="882" cy="52" r="5.5" fill="#0891b2" />
+              {/* Pico 1 — blue */}
+              <circle cx="118" cy="12" r="12" fill="#3b82f6" opacity="0.15" />
+              <circle cx="118" cy="12" r="5.5" fill="#3b82f6" />
+              {/* Valle 2 — cyan */}
+              <circle cx="373" cy="52" r="12" fill="#06b6d4" opacity="0.15" />
+              <circle cx="373" cy="52" r="5.5" fill="#06b6d4" />
+              {/* Pico 3 — teal */}
+              <circle cx="627" cy="12" r="12" fill="#14b8a6" opacity="0.15" />
+              <circle cx="627" cy="12" r="5.5" fill="#14b8a6" />
+              {/* Valle 4 — cyan light */}
+              <circle cx="882" cy="52" r="12" fill="#22d3ee" opacity="0.15" />
+              <circle cx="882" cy="52" r="5.5" fill="#22d3ee" />
             </svg>
           </div>
         </div>

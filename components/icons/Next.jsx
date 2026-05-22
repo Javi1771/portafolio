@@ -1,5 +1,9 @@
 const Nextjs = (props) => (
-  <svg {...props} viewBox="0 0 180 180">
+  <svg
+    viewBox="0 0 180 180"
+    {...props}
+    className={`text-white dark:text-black ${props.className || ""}`}
+  >
     <mask
       height="180"
       id="nextjs_icon_dark__:r8:mask0_408_134"
@@ -12,7 +16,7 @@ const Nextjs = (props) => (
       <circle cx="90" cy="90" fill="black" r="90" />
     </mask>
     <g mask="url(#nextjs_icon_dark__:r8:mask0_408_134)">
-      <circle cx="90" cy="90" data-circle="true" fill="black" r="90" />
+      <circle cx="90" cy="90" data-circle="true" className="fill-black dark:fill-white" r="90" />
       <path
         d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z"
         fill="url(#nextjs_icon_dark__:r8:paint0_linear_408_134)"
@@ -34,8 +38,8 @@ const Nextjs = (props) => (
         y1="116.5"
         y2="160.5"
       >
-        <stop stopColor="white" />
-        <stop offset="1" stopColor="white" stopOpacity="0" />
+        <stop stopColor="currentColor" />
+        <stop offset="1" stopColor="currentColor" stopOpacity="0" />
       </linearGradient>
       <linearGradient
         gradientUnits="userSpaceOnUse"
@@ -45,8 +49,8 @@ const Nextjs = (props) => (
         y1="54"
         y2="106.875"
       >
-        <stop stopColor="white" />
-        <stop offset="1" stopColor="white" stopOpacity="0" />
+        <stop stopColor="currentColor" />
+        <stop offset="1" stopColor="currentColor" stopOpacity="0" />
       </linearGradient>
     </defs>
   </svg>

@@ -238,7 +238,7 @@ export default function ContactPage() {
                         required
                         disabled={isSubmitting}
                         className="w-full pl-11 pr-4 py-3 bg-white/80 dark:bg-gray-800/60 border-2 border-gray-300/50 dark:border-gray-600/50 rounded-xl focus:ring-2 focus:ring-emerald-500 dark:focus:ring-emerald-400 focus:border-emerald-500 dark:focus:border-emerald-400 transition-all duration-300 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 disabled:opacity-50 disabled:cursor-not-allowed group-hover:border-gray-400 dark:group-hover:border-gray-500"
-                        placeholder="Juan Pérez"
+                        placeholder="Escribe tu nombre completo"
                       />
                       <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
                         <svg 
@@ -289,7 +289,7 @@ export default function ContactPage() {
                         required
                         disabled={isSubmitting}
                         className="w-full pl-11 pr-4 py-3 bg-white/80 dark:bg-gray-800/60 border-2 border-gray-300/50 dark:border-gray-600/50 rounded-xl focus:ring-2 focus:ring-emerald-500 dark:focus:ring-emerald-400 focus:border-emerald-500 dark:focus:border-emerald-400 transition-all duration-300 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 disabled:opacity-50 disabled:cursor-not-allowed group-hover:border-gray-400 dark:group-hover:border-gray-500"
-                        placeholder="tu@email.com"
+                        placeholder="Escribe tu correo electrónico"
                       />
                       <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
                         <svg 
@@ -340,7 +340,7 @@ export default function ContactPage() {
                         required
                         disabled={isSubmitting}
                         className="w-full pl-11 pr-4 py-3 bg-white/80 dark:bg-gray-800/60 border-2 border-gray-300/50 dark:border-gray-600/50 rounded-xl focus:ring-2 focus:ring-emerald-500 dark:focus:ring-emerald-400 focus:border-emerald-500 dark:focus:border-emerald-400 transition-all duration-300 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 disabled:opacity-50 disabled:cursor-not-allowed group-hover:border-gray-400 dark:group-hover:border-gray-500"
-                        placeholder="Consulta sobre proyecto"
+                        placeholder="Escribe el asunto de tu mensaje"
                       />
                       <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
                         <svg 

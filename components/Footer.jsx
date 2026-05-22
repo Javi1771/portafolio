@@ -3,7 +3,7 @@ import { Heart, Sparkles, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 
-function HeartModal({ onClose }) {
+function HeartModal({ onClose, color = "#3b82f6" }) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => { setMounted(true); }, []);
   if (!mounted) return null;
@@ -17,17 +17,17 @@ function HeartModal({ onClose }) {
       <div
         className="relative bg-white dark:bg-gray-900 rounded-3xl overflow-hidden w-full max-w-sm"
         style={{
-          boxShadow: "0 0 0 1.5px rgba(244,63,94,0.27), 0 30px 60px rgba(0,0,0,0.22), 0 8px 30px rgba(244,63,94,0.12)",
+          boxShadow: `0 0 0 1.5px ${color}45, 0 30px 60px rgba(0,0,0,0.22), 0 8px 30px ${color}20`,
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Línea superior rose */}
-        <div className="h-1 w-full bg-gradient-to-r from-rose-500 to-pink-600" />
+        {/* Línea superior */}
+        <div className="h-1 w-full" style={{ background: `linear-gradient(to right, ${color}, ${color}bb)` }} />
 
         {/* Gradiente de fondo sutil */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at 15% 0%, rgba(244,63,94,0.12), transparent 55%)" }}
+          style={{ background: `radial-gradient(ellipse at 15% 0%, ${color}1e, transparent 55%)` }}
         />
 
         <div className="relative p-7">
@@ -43,12 +43,12 @@ function HeartModal({ onClose }) {
           <div
             className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
             style={{
-              background: "linear-gradient(135deg, rgba(244,63,94,0.16), rgba(244,63,94,0.05))",
-              border: "1.5px solid rgba(244,63,94,0.26)",
-              boxShadow: "0 6px 20px rgba(244,63,94,0.21)",
+              background: `linear-gradient(135deg, ${color}29, ${color}0d)`,
+              border: `1.5px solid ${color}42`,
+              boxShadow: `0 6px 20px ${color}35`,
             }}
           >
-            <Heart size={28} className="text-rose-500 fill-rose-500" strokeWidth={1.7} />
+            <Heart size={28} style={{ color, fill: color }} strokeWidth={1.7} />
           </div>
 
           {/* Título */}
@@ -57,12 +57,12 @@ function HeartModal({ onClose }) {
           </h3>
 
           {/* Tagline */}
-          <p className="text-sm font-semibold mb-4 text-rose-500">
+          <p className="text-sm font-semibold mb-4" style={{ color }}>
             Así soy: cada detalle cuenta — el código es solo el medio.
           </p>
 
           {/* Separador */}
-          <div className="h-px bg-gradient-to-r from-rose-500 to-pink-600 mb-4 opacity-30 rounded-full" />
+          <div className="h-px mb-4 opacity-30 rounded-full" style={{ background: `linear-gradient(to right, ${color}, ${color}88)` }} />
 
           {/* Descripción */}
           <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -71,7 +71,7 @@ function HeartModal({ onClose }) {
 
           {/* Footer pill */}
           <div className="mt-5 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-gray-200 dark:bg-gray-800">
-            <Sparkles className="w-3.5 h-3.5 text-violet-400 dark:text-violet-300 shrink-0" />
+            <Sparkles className="w-3.5 h-3.5 shrink-0" style={{ color }} />
             <span className="text-[12px] text-gray-500 dark:text-gray-300">
               Tecnología con corazón, siempre.
             </span>
@@ -86,12 +86,12 @@ function HeartModal({ onClose }) {
 const HEART_COLORS = [
   "#3b82f6", // blue
   "#06b6d4", // cyan
-  "#8b5cf6", // violet
-  "#a855f7", // purple
-  "#ec4899", // pink
-  "#f43f5e", // rose
-  "#ef4444", // red
-  "#d946ef", // fuchsia
+  "#14b8a6", // teal
+  "#22d3ee", // cyan-light
+  "#0ea5e9", // sky
+  "#14b8a6", // teal
+  "#06b6d4", // cyan
+  "#3b82f6", // blue
 ];
 
 export default function Footer() {
@@ -106,7 +106,7 @@ export default function Footer() {
     return () => clearInterval(interval);
   }, [open]);
 
-  const heartColor = open ? "#f43f5e" : HEART_COLORS[colorIndex];
+  const heartColor = HEART_COLORS[colorIndex];
 
   return (
     <footer className="border-t border-gray-400 dark:border-white/10 bg-gray-200 dark:bg-black">
@@ -128,7 +128,7 @@ export default function Footer() {
           />
         </button>
 
-        {open && <HeartModal onClose={() => setOpen(false)} />}
+        {open && <HeartModal onClose={() => setOpen(false)} color={heartColor} />}
 
         <span>y Next.js + Tailwind.</span>
       </div>
