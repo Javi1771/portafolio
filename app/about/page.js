@@ -342,8 +342,8 @@ export default function AboutPage() {
 
                   <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                     Soy <strong>Javier López</strong>, desarrollador enfocado en
-                    crear productos digitales completos — desde la interfaz
-                    hasta el backend — con atención a cada detalle que el
+                    crear productos digitales completos, desde la interfaz
+                    hasta el backend, con atención a cada detalle que el
                     usuario siente.
                   </p>
 
