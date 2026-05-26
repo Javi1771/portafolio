@@ -1,6 +1,7 @@
 "use client";
 import { motion, useReducedMotion } from "framer-motion";
 import { useMemo, useEffect, useState } from "react";
+import { useTheme } from "@/lib/theme";
 
 function pr(seed) {
   const x = Math.sin(seed + 1) * 10000;
@@ -10,25 +11,25 @@ function pr(seed) {
 const defaultOrbs = [
   {
     className: "top-20 left-10 w-80 h-80",
-    gradient: "from-cyan-200/25 to-blue-300/25 dark:from-cyan-500/25 dark:to-blue-600/25",
+    gradient: "from-cyan-400/35 to-blue-500/35 dark:from-cyan-500/25 dark:to-blue-600/25",
     animate: { x: [0, 20, 0], y: [0, -22, 0] },
     duration: 9,
   },
   {
     className: "top-40 right-20 w-96 h-96",
-    gradient: "from-violet-200/25 to-purple-300/25 dark:from-violet-500/25 dark:to-purple-600/25",
+    gradient: "from-violet-400/35 to-purple-500/35 dark:from-violet-500/25 dark:to-purple-600/25",
     animate: { x: [0, -16, 0], y: [0, 20, 0] },
     duration: 12,
   },
   {
     className: "bottom-20 left-1/3 w-72 h-72",
-    gradient: "from-emerald-200/25 to-green-300/25 dark:from-emerald-500/25 dark:to-green-600/25",
+    gradient: "from-emerald-400/30 to-green-500/30 dark:from-emerald-500/25 dark:to-green-600/25",
     animate: { x: [0, 14, 0], y: [0, -16, 0] },
     duration: 10,
   },
   {
     className: "bottom-32 right-16 w-60 h-60",
-    gradient: "from-rose-200/20 to-pink-300/20 dark:from-rose-500/20 dark:to-pink-600/20",
+    gradient: "from-rose-400/28 to-pink-500/28 dark:from-rose-500/20 dark:to-pink-600/20",
     animate: { x: [0, -18, 0], y: [0, -14, 0] },
     duration: 13,
   },
@@ -39,6 +40,7 @@ const STAR_COUNT = 30;
 export default function BackgroundOrbs({ orbs = defaultOrbs }) {
   const shouldReduceMotion = useReducedMotion();
   const [mounted, setMounted] = useState(false);
+  const { isDark } = useTheme();
 
   useEffect(() => setMounted(true), []);
 
@@ -67,7 +69,7 @@ export default function BackgroundOrbs({ orbs = defaultOrbs }) {
         <rect width="100%" height="100%" filter="url(#bg-noise)" />
       </svg>
 
-      {/* Orbes de color — framer-motion solo para los 4 orbes grandes */}
+      {/* Orbes de color */}
       {orbs.map((orb, i) => (
         <motion.div
           key={i}
@@ -82,11 +84,11 @@ export default function BackgroundOrbs({ orbs = defaultOrbs }) {
         />
       ))}
 
-      {/* Estrellas — solo cliente, CSS animation (sin JS por frame) */}
-      {mounted && !shouldReduceMotion && stars.map((star, i) => (
+      {/* Estrellas — solo modo oscuro, CSS animation */}
+      {mounted && isDark && !shouldReduceMotion && stars.map((star, i) => (
         <div
           key={`star-${i}`}
-          className="absolute rounded-full bg-gray-400 dark:bg-white"
+          className="absolute rounded-full bg-black dark:bg-white"
           style={{
             top: star.top,
             left: star.left,

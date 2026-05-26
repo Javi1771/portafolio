@@ -13,7 +13,7 @@ import {
   RefreshCw, ZoomIn, Hourglass, HeartHandshake, BrainCircuit, Award,
   Gamepad2, Box, MonitorPlay, Shirt, SprayCan, ChefHat,
   Headphones, CircuitBoard, Cpu, Clapperboard, PenLine, Bubbles,
-  Rocket, MousePointerClick, TrendingUp,
+  Rocket, MousePointerClick, TrendingUp, Download,
 } from "lucide-react";
 
 
@@ -253,45 +253,42 @@ export default function AboutPage() {
 
       <Section
         title={
-          <div className="space-y-6 relative">
-            {/* Botón CV */}
-            <div className="absolute top-0 right-0 z-10">
+          <div className="space-y-6">
+            {/* Fila: título + botón CV */}
+            <div className="flex items-start justify-between gap-4 flex-wrap">
+              {/* Título principal */}
+              <div className="relative inline-block">
+                <h1 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-cyan-800 to-gray-900 dark:from-white dark:via-cyan-200 dark:to-white bg-clip-text text-transparent leading-tight">
+                  Sobre mí
+                </h1>
+                <div className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-500 animate-scale-x"></div>
+
+                {!isMobile && (
+                  <>
+                    <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-60"></div>
+                    <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-40"></div>
+                  </>
+                )}
+              </div>
+
+              {/* Botón CV */}
               <a
+                className={`group/btn relative shrink-0 ${isMobile ? 'px-2.5 py-2 text-xs' : 'px-4 py-2.5 text-sm'} rounded-xl text-white font-semibold text-center transition-all duration-300 ${!isMobile && 'hover:scale-105 hover:-translate-y-0.5'} overflow-hidden`}
                 href="/JavierLopezCV.pdf"
                 download
-                className={`group flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ${!isMobile && "hover:scale-105"} ${!isMobile && "backdrop-blur-sm"} border border-white/20`}
+                style={{
+                  background: 'linear-gradient(to right, #0891b2, #2563eb)',
+                  boxShadow: isMobile ? '0 2px 8px rgba(8, 145, 178, 0.3)' : '0 4px 14px 0 rgba(8, 145, 178, 0.39)'
+                }}
+                onMouseEnter={!isMobile ? (e) => { e.currentTarget.style.boxShadow = '0 6px 20px rgba(8, 145, 178, 0.6)'; } : undefined}
+                onMouseLeave={!isMobile ? (e) => { e.currentTarget.style.boxShadow = '0 4px 14px 0 rgba(8, 145, 178, 0.39)'; } : undefined}
               >
-                <svg
-                  className={`w-5 h-5 ${!isMobile && "group-hover:animate-bounce"}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  />
-                </svg>
-                <span className="text-sm">Descargar CV</span>
+                <span className="relative z-10 flex items-center justify-center gap-1.5 whitespace-nowrap">
+                  <Download className="w-3.5 h-3.5 shrink-0" />
+                  Descargar CV
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
               </a>
-            </div>
-
-            {/* Título principal */}
-            <div className="relative inline-block">
-              <h1 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-cyan-800 to-gray-900 dark:from-white dark:via-cyan-200 dark:to-white bg-clip-text text-transparent leading-tight">
-                Sobre mí
-              </h1>
-              <div className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-500 animate-scale-x"></div>
-
-              {/* OPTIMIZACIÓN: Decoraciones solo en desktop */}
-              {!isMobile && (
-                <>
-                  <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-60"></div>
-                  <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-40"></div>
-                </>
-              )}
             </div>
 
             {/* Subtítulo + datos rápidos */}

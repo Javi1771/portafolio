@@ -58,7 +58,7 @@ function HeartModal({ onClose, color = "#3b82f6" }) {
 
           {/* Tagline */}
           <p className="text-sm font-semibold mb-4" style={{ color }}>
-            Así soy: cada detalle cuenta — el código es solo el medio.
+            Cada detalle tiene un propósito — el código es solo el medio.
           </p>
 
           {/* Separador */}
@@ -66,7 +66,7 @@ function HeartModal({ onClose, color = "#3b82f6" }) {
 
           {/* Descripción */}
           <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-            Sé que siempre esperas que cada elemento sea funcional, que te sorprenda, que tenga un propósito. Por eso pienso en lo que el usuario siente al abrir tu app, no solo en que funcione.
+            Más allá de que funcione, lo que importa es cómo se siente abrirlo: que cada elemento sea intencional, que tenga un propósito, que deje algo.
           </p>
 
           {/* Footer pill */}
