@@ -76,7 +76,7 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
           className={`object-cover transition-all duration-500 ${!isMobile && 'group-hover:scale-105'} ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
           loading="lazy"
           quality={isMobile ? 60 : 75} //! Menor calidad en móvil
-          onLoadingComplete={() => setImageLoaded(true)}
+          onLoad={() => setImageLoaded(true)}
         />
         
         {/* Overlay simplificado - Solo en desktop */}

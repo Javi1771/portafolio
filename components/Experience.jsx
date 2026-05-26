@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import BackgroundOrbs from "@/components/BackgroundOrbs";
 import {
   Briefcase,
   GraduationCap,
@@ -377,14 +378,7 @@ export default function Experience({ isMobile = false }) {
 
   return (
     <div className="relative py-20 overflow-hidden">
-      {/* Background decorations - solo desktop */}
-      {!isMobile && (
-        <>
-          <div className="absolute top-0 left-10 w-80 h-80 bg-gradient-to-br from-violet-200/20 to-purple-300/20 dark:from-violet-500/10 dark:to-purple-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none" />
-          <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-cyan-200/20 to-blue-300/20 dark:from-cyan-500/10 dark:to-blue-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none" />
-          <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-gradient-to-br from-emerald-200/20 to-green-300/20 dark:from-emerald-500/10 dark:to-green-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none" />
-        </>
-      )}
+      {!isMobile && <BackgroundOrbs />}
 
       {/* Pattern overlay - solo desktop */}
       {!isMobile && (

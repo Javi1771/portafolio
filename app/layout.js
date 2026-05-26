@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/lib/theme";
 import AntiTranslate from "@/components/AntiTranslate";
 import ToasterProvider from "@/components/ToasterProvider";
+import BackgroundOrbs from "@/components/BackgroundOrbs";
 
 //* Métricas gratis de Vercel
 import { Analytics } from "@vercel/analytics/react";
@@ -61,6 +62,11 @@ export default function RootLayout({ children }) {
       >
         {/* Bloqueo en runtime por si Chrome inyecta traducción después del render */}
         <AntiTranslate />
+
+        {/* Fondo global fijo */}
+        <div className="fixed inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          <BackgroundOrbs />
+        </div>
 
         <ThemeProvider>
           <Navbar />

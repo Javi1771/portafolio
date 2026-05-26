@@ -3,6 +3,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import BackgroundOrbs from "@/components/BackgroundOrbs";
 import { motion } from "framer-motion";
 import { sileo } from "sileo";
 import Section from "@/components/Section";
@@ -86,14 +87,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-gray-50/50 to-emerald-50/30 dark:from-gray-900 dark:via-gray-800/50 dark:to-emerald-950/20 relative overflow-hidden">
-      {/* Floating background orbs - solo desktop */}
-      {!isMobile && (
-        <>
-          <div className="absolute top-20 left-10 w-80 h-80 bg-gradient-to-br from-emerald-200/20 to-green-300/20 dark:from-emerald-500/10 dark:to-green-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none"></div>
-          <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-violet-200/20 to-purple-300/20 dark:from-violet-500/10 dark:to-purple-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none"></div>
-          <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-gradient-to-br from-cyan-200/20 to-blue-300/20 dark:from-cyan-500/10 dark:to-blue-600/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none"></div>
-        </>
-      )}
+      {!isMobile && <BackgroundOrbs />}
 
       {/* Pattern overlay - solo desktop */}
       {!isMobile && (

@@ -447,7 +447,7 @@ export default function ProjectDetail() {
                               className={`object-contain transition-all duration-700 ${!isMobile && "group-hover/image:scale-105"} ${imagesLoaded[idx] ? "opacity-100" : "opacity-0"}`}
                               priority={idx === active}
                               quality={isMobile ? 65 : 85}
-                              onLoadingComplete={() =>
+                              onLoad={() =>
                                 setImagesLoaded((prev) => ({
                                   ...prev,
                                   [idx]: true,

@@ -5,6 +5,7 @@
 import Section from "@/components/Section";
 import SkillCard from "@/components/SkillCard";
 import HobbyCard from "@/components/HobbyCard";
+import BackgroundOrbs from "@/components/BackgroundOrbs";
 import { useMemo, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -241,14 +242,7 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-gray-50/50 to-cyan-50/30 dark:from-gray-900 dark:via-gray-800/50 dark:to-cyan-950/20 relative overflow-hidden">
-      {/* OPTIMIZACIÓN: Orbes solo en desktop */}
-      {!isMobile && (
-        <>
-          <div className="absolute top-20 left-10 w-80 h-80 bg-gradient-to-br from-cyan-200/20 to-blue-300/20 dark:from-cyan-500/10 dark:to-blue-600/10 rounded-full blur-3xl motion-reduce:animate-none"></div>
-          <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-violet-200/20 to-purple-300/20 dark:from-violet-500/10 dark:to-purple-600/10 rounded-full blur-3xl motion-reduce:animate-none"></div>
-          <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-gradient-to-br from-emerald-200/20 to-green-300/20 dark:from-emerald-500/10 dark:to-green-600/10 rounded-full blur-3xl motion-reduce:animate-none"></div>
-        </>
-      )}
+      {!isMobile && <BackgroundOrbs />}
 
       {/* OPTIMIZACIÓN: Pattern overlay solo en desktop */}
       {!isMobile && (
@@ -309,7 +303,7 @@ export default function AboutPage() {
 
               <div className="flex flex-wrap items-center gap-4 text-sm">
                 <span className="px-3 py-1.5 rounded-full bg-white/70 dark:bg-gray-800/60 border border-gray-200/60 dark:border-gray-700/60 text-gray-700 dark:text-gray-300">
-                  22 años
+                  23 años
                 </span>
                 <span className="px-3 py-1.5 rounded-full bg-white/70 dark:bg-gray-800/60 border border-gray-200/60 dark:border-gray-700/60 text-gray-700 dark:text-gray-300">
                   San Juan del Río, Querétaro, México
@@ -327,7 +321,7 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto space-y-16">
           {/* Presentación principal */}
           <motion.div
-            className="grid lg:grid-cols-2 gap-12 items-start"
+            className="grid lg:grid-cols-[3fr_2fr] gap-12 items-center"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -366,7 +360,7 @@ export default function AboutPage() {
 
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                     Mi stack gira en torno a{" "}
-                    <span className="font-semibold text-indigo-600 dark:text-indigo-400">Next.js</span>{" "}
+                    <span className="font-semibold text-black dark:text-white">Next.js</span>{" "}
                     para web full-stack con JavaScript y TypeScript,{" "}
                     <span className="font-semibold text-cyan-500 dark:text-cyan-400">Flutter + Dart</span>{" "}
                     para apps móviles nativas, y{" "}
@@ -410,7 +404,7 @@ export default function AboutPage() {
                         {'name: "Javier López",'}
                       </div>
                       <div className="ml-4 text-gray-600 dark:text-gray-400">
-                        {"age: 22,"}
+                        {"age: 23,"}
                       </div>
                       <div className="ml-4 text-gray-600 dark:text-gray-400">
                         {'role: "Full-Stack Dev",'}

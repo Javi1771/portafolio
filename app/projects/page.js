@@ -6,6 +6,7 @@ import ProjectGrid from "@/components/ProjectGrid";
 import CategoryFilter from "@/components/CategoryFilter";
 import { PROJECTS } from "@/data/projects";
 import { useState, useEffect } from "react";
+import BackgroundOrbs from "@/components/BackgroundOrbs";
 
 export default function ProjectsPage() {
   const [filters, setFilters] = useState({
@@ -41,13 +42,7 @@ export default function ProjectsPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-gray-50/50 to-violet-50/30 dark:from-gray-900 dark:via-gray-800/50 dark:to-violet-950/20 relative overflow-hidden">
-      {/* OPTIMIZACIÓN: Orbs solo en desktop, sin blur en móvil */}
-      {!isMobile && (
-        <>
-          <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-violet-200/20 to-purple-300/20 dark:from-violet-500/10 dark:to-purple-600/10 rounded-full blur-3xl motion-reduce:animate-none"></div>
-          <div className="absolute top-40 right-20 w-80 h-80 bg-gradient-to-br from-cyan-200/20 to-blue-300/20 dark:from-cyan-500/10 dark:to-blue-600/10 rounded-full blur-3xl motion-reduce:animate-none"></div>
-        </>
-      )}
+      {!isMobile && <BackgroundOrbs />}
 
       {/* OPTIMIZACIÓN: Pattern overlay solo en desktop */}
       {!isMobile && (

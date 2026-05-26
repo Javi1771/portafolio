@@ -45,6 +45,7 @@ import { Lovable } from "@/components/icons/Lovable";
 import { ShadcnUI } from "@/components/icons/Shadcn";
 import { GoogleAntigravity } from "@/components/icons/Antigravity";
 import { OpenAI } from "@/components/icons/ChatGPT";
+import { Expressjs } from "@/components/icons/Express";
 
 function PhilosophyModal({ card, onClose }) {
   const [mounted, setMounted] = useState(false);
@@ -200,10 +201,10 @@ export default function HomePage() {
               </div>
 
               <div className="text-lg text-gray-500 dark:text-gray-400 leading-relaxed max-w-xl relative">
-                Construyo aplicaciones web y móviles completas — desde la
-                interfaz hasta el backend — con un stack moderno y enfocado.
-                He entregado proyectos reales para gobierno y sector privado
-                que siguen en producción.
+                Desarrollo aplicaciones web y móviles completas, del frontend
+                al backend, con un stack moderno y enfocado. He trabajado en
+                proyectos reales para gobierno y sector privado que siguen en
+                producción.
                 {!isMobile && <div className="absolute -right-4 top-2 w-2 h-2 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-full animate-pulse" />}
               </div>
             </div>
@@ -222,6 +223,7 @@ export default function HomePage() {
                   { label: "Flutter",       Icon: Flutter            },
                   { label: "Dart",          Icon: Dart               },
                   { label: "Node.js",       Icon: Nodejs             },
+                  { label: "Express.js",    Icon: Expressjs          },
                   { label: "Supabase",      Icon: Supabase           },
                   { label: "Firebase",      Icon: Firebase           },
                   { label: "PostgreSQL",    Icon: PostgreSQL         },
