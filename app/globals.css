@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0; }
+  50% { opacity: var(--star-max-op, 0.5); }
+}
+
 :root {
   --drizzle-fill: #4a7200;
   --mongodb-fill: #111827;

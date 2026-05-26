@@ -20,14 +20,6 @@ export default function ExperiencePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-gray-50/50 to-violet-50/30 dark:from-gray-900 dark:via-gray-800/50 dark:to-violet-950/20 relative overflow-hidden">
       {!isMobile && <BackgroundOrbs />}
-
-      {/* Pattern overlay - solo desktop */}
-      {!isMobile && (
-        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,theme(colors.violet.500)_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_2px_2px,theme(colors.violet.400)_1px,transparent_1px)] bg-[length:48px_48px]" />
-        </div>
-      )}
-
       <Section
         title={
           <div className="space-y-6 relative">

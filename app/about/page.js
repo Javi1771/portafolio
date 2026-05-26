@@ -373,7 +373,7 @@ export default function AboutPage() {
                   </p>
 
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Lo que me diferencia no es solo el stack — es la actitud.
+                    Lo que me diferencia no es solo el stack, es la actitud.
                     Creo en la tecnología hecha con corazón: pienso en quien
                     va a abrir esa app, en los flujos que tiene que entender sin
                     un tutorial, en los detalles que otros dan por sentados.

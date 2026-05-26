@@ -2,6 +2,7 @@
 
 "use client";
 import Section from "@/components/Section";
+import BackgroundOrbs from "@/components/BackgroundOrbs";
 import { PROJECTS } from "@/data/projects";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -168,14 +169,7 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* Floating Orbs - solo desktop */}
-      {!isMobile && (
-        <>
-          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-violet-300/70 to-purple-400/70 dark:from-violet-200/20 dark:to-purple-300/20 rounded-full blur-2xl animate-pulse motion-reduce:animate-none" />
-          <div className="absolute top-96 right-20 w-40 h-40 bg-gradient-to-br from-cyan-300/70 to-blue-400/70 dark:from-cyan-200/20 dark:to-blue-300/20 rounded-full blur-2xl animate-pulse motion-reduce:animate-none" />
-          <div className="absolute bottom-40 left-1/4 w-28 h-28 bg-gradient-to-br from-emerald-300/70 to-green-400/70 dark:from-emerald-200/20 dark:to-green-300/20 rounded-full blur-2xl animate-pulse motion-reduce:animate-none" />
-        </>
-      )}
+      {!isMobile && <BackgroundOrbs />}
 
       {/* Hero Section - Enhanced */}
       <Section>

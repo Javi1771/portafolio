@@ -1,8 +1,7 @@
 "use client";
 import { motion, useReducedMotion } from "framer-motion";
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 
-// Pseudo-random determinista para evitar diferencias entre renders
 function pr(seed) {
   const x = Math.sin(seed + 1) * 10000;
   return x - Math.floor(x);
@@ -35,19 +34,22 @@ const defaultOrbs = [
   },
 ];
 
-const STAR_COUNT = 55;
+const STAR_COUNT = 30;
 
 export default function BackgroundOrbs({ orbs = defaultOrbs }) {
   const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   const stars = useMemo(() =>
     Array.from({ length: STAR_COUNT }, (_, i) => ({
-      top:      `${pr(i * 1.7) * 100}%`,
-      left:     `${pr(i * 2.3) * 100}%`,
-      size:      pr(i * 3.1) * 1.5 + 0.8,        // 0.8px – 2.3px
-      delay:     pr(i * 4.3) * 7,                 // 0s – 7s
-      duration:  pr(i * 5.7) * 3.5 + 2.5,         // 2.5s – 6s
-      maxOpacity: pr(i * 6.1) * 0.45 + 0.2,       // 0.2 – 0.65
+      top:        `${(pr(i * 1.7) * 100).toFixed(4)}%`,
+      left:       `${(pr(i * 2.3) * 100).toFixed(4)}%`,
+      size:       (pr(i * 3.1) * 1.5 + 0.8).toFixed(3),
+      delay:      (pr(i * 4.3) * 7).toFixed(2),
+      duration:   (pr(i * 5.7) * 3.5 + 2.5).toFixed(2),
+      maxOpacity: (pr(i * 6.1) * 0.45 + 0.2).toFixed(3),
     })),
   []);
 
@@ -65,7 +67,7 @@ export default function BackgroundOrbs({ orbs = defaultOrbs }) {
         <rect width="100%" height="100%" filter="url(#bg-noise)" />
       </svg>
 
-      {/* Orbes de color */}
+      {/* Orbes de color — framer-motion solo para los 4 orbes grandes */}
       {orbs.map((orb, i) => (
         <motion.div
           key={i}
@@ -80,9 +82,9 @@ export default function BackgroundOrbs({ orbs = defaultOrbs }) {
         />
       ))}
 
-      {/* Estrellas que parpadean */}
-      {!shouldReduceMotion && stars.map((star, i) => (
-        <motion.div
+      {/* Estrellas — solo cliente, CSS animation (sin JS por frame) */}
+      {mounted && !shouldReduceMotion && stars.map((star, i) => (
+        <div
           key={`star-${i}`}
           className="absolute rounded-full bg-gray-400 dark:bg-white"
           style={{
@@ -90,13 +92,12 @@ export default function BackgroundOrbs({ orbs = defaultOrbs }) {
             left: star.left,
             width: `${star.size}px`,
             height: `${star.size}px`,
-          }}
-          animate={{ opacity: [0, star.maxOpacity, 0] }}
-          transition={{
-            duration: star.duration,
-            delay: star.delay,
-            repeat: Infinity,
-            ease: "easeInOut",
+            "--star-max-op": star.maxOpacity,
+            animationName: "star-twinkle",
+            animationDuration: `${star.duration}s`,
+            animationDelay: `${star.delay}s`,
+            animationTimingFunction: "ease-in-out",
+            animationIterationCount: "infinite",
           }}
         />
       ))}

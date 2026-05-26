@@ -3,7 +3,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import BackgroundOrbs from "@/components/BackgroundOrbs";
 import {
   Briefcase,
   GraduationCap,
@@ -208,7 +207,7 @@ const ExperienceCard = ({ experience, isExpanded, onToggle, isMobile }) => {
     <motion.div
       layout
       className={`group relative bg-white/70 dark:bg-gray-800/70
-        border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 cursor-pointer
+        rounded-2xl p-6 cursor-pointer
         transition-all duration-300 overflow-hidden
         ${!isMobile ? "backdrop-blur-xl hover:shadow-2xl hover:shadow-violet-500/20 hover:scale-[1.02] hover:border-violet-500/50 dark:hover:border-violet-500/50 transition-all duration-500" : ""}`}
       onClick={onToggle}
@@ -378,8 +377,6 @@ export default function Experience({ isMobile = false }) {
 
   return (
     <div className="relative py-20 overflow-hidden">
-      {!isMobile && <BackgroundOrbs />}
-
       {/* Pattern overlay - solo desktop */}
       {!isMobile && (
         <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]">
