@@ -6,7 +6,7 @@ import Section from "@/components/Section";
 import SkillCard from "@/components/SkillCard";
 import HobbyCard from "@/components/HobbyCard";
 import { useMemo, useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   UsersRound, GraduationCap, Paintbrush, MessagesSquare, Puzzle, Kanban,
   RefreshCw, ZoomIn, Hourglass, HeartHandshake, BrainCircuit, Award,
@@ -19,6 +19,8 @@ import {
 export default function AboutPage() {
   //! Detectar si es móvil
   const [isMobile, setIsMobile] = useState(false);
+  const [showAllSkills, setShowAllSkills] = useState(false);
+  const [showAllHobbies, setShowAllHobbies] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -527,13 +529,43 @@ export default function AboutPage() {
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {interpersonalSkills.map((skill) => (
-                <SkillCard
-                  key={skill.title}
-                  skill={skill}
-                  isMobile={isMobile}
-                />
+              {interpersonalSkills.slice(0, 6).map((skill) => (
+                <SkillCard key={skill.title} skill={skill} isMobile={isMobile} />
               ))}
+              <AnimatePresence>
+                {showAllSkills &&
+                  interpersonalSkills.slice(6).map((skill, i) => (
+                    <motion.div
+                      key={skill.title}
+                      className="h-full"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 20 }}
+                      transition={{ duration: 0.3, delay: i * 0.05 }}
+                    >
+                      <SkillCard skill={skill} isMobile={isMobile} />
+                    </motion.div>
+                  ))}
+              </AnimatePresence>
+            </div>
+            <div className="flex justify-center mt-6">
+              <button
+                onClick={() => setShowAllSkills((v) => !v)}
+                className="group flex items-center gap-3 px-6 py-3 rounded-full bg-white/70 dark:bg-gray-800/50 backdrop-blur-sm border border-violet-200/70 dark:border-violet-700/50 text-violet-700 dark:text-violet-300 font-semibold text-sm shadow-sm shadow-violet-100/40 dark:shadow-violet-900/10 hover:bg-violet-50/80 dark:hover:bg-violet-900/20 hover:border-violet-300 dark:hover:border-violet-600/60 hover:shadow-md hover:shadow-violet-200/50 dark:hover:shadow-violet-800/30 transition-all duration-300"
+              >
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-400 text-xs font-bold ring-1 ring-violet-200/80 dark:ring-violet-700/60">
+                  {showAllSkills ? "−" : interpersonalSkills.length - 6}
+                </span>
+                <span>{showAllSkills ? "Ver menos" : "Ver más"}</span>
+                <motion.svg
+                  animate={{ rotate: showAllSkills ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  width="16" height="16" viewBox="0 0 16 16" fill="none"
+                  className="text-violet-500 dark:text-violet-400"
+                >
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </motion.svg>
+              </button>
             </div>
           </motion.div>
 
@@ -553,13 +585,43 @@ export default function AboutPage() {
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {hobbies.map((hobby) => (
-                <HobbyCard
-                  key={hobby.title}
-                  hobby={hobby}
-                  isMobile={isMobile}
-                />
+              {hobbies.slice(0, 6).map((hobby) => (
+                <HobbyCard key={hobby.title} hobby={hobby} isMobile={isMobile} />
               ))}
+              <AnimatePresence>
+                {showAllHobbies &&
+                  hobbies.slice(6).map((hobby, i) => (
+                    <motion.div
+                      key={hobby.title}
+                      className="h-full"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 20 }}
+                      transition={{ duration: 0.3, delay: i * 0.05 }}
+                    >
+                      <HobbyCard hobby={hobby} isMobile={isMobile} />
+                    </motion.div>
+                  ))}
+              </AnimatePresence>
+            </div>
+            <div className="flex justify-center mt-6">
+              <button
+                onClick={() => setShowAllHobbies((v) => !v)}
+                className="group flex items-center gap-3 px-6 py-3 rounded-full bg-white/70 dark:bg-gray-800/50 backdrop-blur-sm border border-pink-200/70 dark:border-pink-700/50 text-pink-700 dark:text-pink-300 font-semibold text-sm shadow-sm shadow-pink-100/40 dark:shadow-pink-900/10 hover:bg-pink-50/80 dark:hover:bg-pink-900/20 hover:border-pink-300 dark:hover:border-pink-600/60 hover:shadow-md hover:shadow-pink-200/50 dark:hover:shadow-pink-800/30 transition-all duration-300"
+              >
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-pink-100 dark:bg-pink-900/50 text-pink-600 dark:text-pink-400 text-xs font-bold ring-1 ring-pink-200/80 dark:ring-pink-700/60">
+                  {showAllHobbies ? "−" : hobbies.length - 6}
+                </span>
+                <span>{showAllHobbies ? "Ver menos" : "Ver más"}</span>
+                <motion.svg
+                  animate={{ rotate: showAllHobbies ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  width="16" height="16" viewBox="0 0 16 16" fill="none"
+                  className="text-pink-500 dark:text-pink-400"
+                >
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </motion.svg>
+              </button>
             </div>
           </motion.div>
         </div>

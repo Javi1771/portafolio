@@ -6,7 +6,7 @@ import { memo } from "react";
 const SkillCard = memo(({ skill }) => {
   const IconComponent = skill.icon;
   return (
-    <div className="group relative overflow-hidden p-6 rounded-xl bg-white/70 dark:bg-gray-800/70 border border-gray-200/60 dark:border-gray-700/60 shadow hover:shadow-lg hover:scale-105 transition-all duration-300">
+    <div className="group relative overflow-hidden h-full p-6 rounded-xl bg-white/70 dark:bg-gray-800/70 border border-gray-200/60 dark:border-gray-700/60 shadow hover:shadow-lg hover:scale-105 transition-all duration-300">
       {/* Gradiente animado de fondo */}
       <div
         className={`absolute inset-0 bg-gradient-to-br ${skill.gradient} opacity-0 group-hover:opacity-10 dark:group-hover:opacity-10 transition-opacity duration-500`}
