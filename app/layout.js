@@ -13,8 +13,34 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata = {
-  title: "Javier – Portafolio",
-  description: "Ingeniero Full Stack Developer | Next.js, React Native, Flutter | Web & Mobile Apps",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000")
+  ),
+  title: "Javier López | Full Stack Developer – Web & Mobile",
+  description: "Ingeniero Full Stack Developer especializado en Next.js, React Native y Flutter. Proyectos reales de web y mobile.",
+  openGraph: {
+    title: "Javier López | Full Stack Developer – Web & Mobile",
+    description: "Ingeniero Full Stack Developer especializado en Next.js, React Native y Flutter. Proyectos reales de web y mobile.",
+    url: "/",
+    siteName: "Javier López – Portafolio",
+    images: [
+      {
+        url: "/foto_perfil.jpg",
+        width: 800,
+        height: 800,
+        alt: "Javier López – Full Stack Developer",
+      },
+    ],
+    locale: "es_MX",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Javier López | Full Stack Developer – Web & Mobile",
+    description: "Ingeniero Full Stack Developer especializado en Next.js, React Native y Flutter.",
+    images: ["/foto_perfil.jpg"],
+  },
   //* Favicons / PWA / Apple
   icons: {
     icon: [
