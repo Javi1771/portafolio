@@ -5,77 +5,123 @@
 import Section from "@/components/Section";
 import BackgroundOrbs from "@/components/BackgroundOrbs";
 import { Anthropic } from "@/components/icons/Anthropic";
+import { Vercel } from "@/components/icons/Vercel";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, ShieldCheck, Calendar, Hash } from "lucide-react";
 
-const certifications = [
+const certificationSections = [
   {
-    num: "01",
-    title: "Claude Code in Action",
+    id: "anthropic",
     issuer: "Anthropic",
-    date: "jun. 2026",
-    credentialId: "i83skgcg8gat",
-    verifyUrl: "https://verify.skilljar.com/c/i83skgcg8gat",
-    gradient: "from-amber-400 to-amber-600",
-    glowColor: "#f59e0b",  // amber-500
-    darkGlow: "#fbbf24",   // amber-400
+    url: "skilljar.com",
+    desc: "Programas de certificación oficial en IA y productos Claude",
+    icon: Anthropic,
+    colorClass: "amber",
+    borderClass: "border-amber-300/70 dark:border-amber-500/65",
+    bgClass: "bg-white/70 dark:bg-gray-900/60",
+    bannerShadow: "shadow-[0_16px_40px_rgba(245,158,11,0.25)] dark:shadow-[0_16px_40px_rgba(251,191,36,0.18)]",
+    cardShadow: "shadow-[0_8px_30px_rgba(245,158,11,0.15)] dark:shadow-[0_8px_30px_rgba(251,191,36,0.1)]",
+    iconBgClass: "from-amber-50 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30 border-amber-200/60 dark:border-amber-700/40",
+    iconColorClass: "text-amber-700 dark:text-amber-400",
+    dotColorClass: "bg-amber-500",
+    items: [
+      {
+        num: "01",
+        title: "Claude Code in Action",
+        issuer: "Anthropic",
+        date: "jun. 2026",
+        credentialId: "i83skgcg8gat",
+        verifyUrl: "https://verify.skilljar.com/c/i83skgcg8gat",
+        gradient: "from-amber-400 to-amber-600",
+        glowColor: "#f59e0b",  // amber-500
+        darkGlow: "#fbbf24",   // amber-400
+      },
+      {
+        num: "02",
+        title: "Certificate of completion: Claude 101",
+        issuer: "Anthropic",
+        date: "jun. 2026",
+        credentialId: "6gceeqvh49pk",
+        verifyUrl: "https://verify.skilljar.com/c/6gceeqvh49pk",
+        gradient: "from-orange-400 to-orange-600",
+        glowColor: "#f97316",  // orange-500
+        darkGlow: "#fb923c",   // orange-400
+      },
+      {
+        num: "03",
+        title: "Certificate of Completion: AI Fluency Framework & Foundations",
+        issuer: "Anthropic",
+        date: "jun. 2026",
+        credentialId: "35iq46657333",
+        verifyUrl: "https://verify.skilljar.com/c/35iq46657333",
+        gradient: "from-red-400 to-red-600",
+        glowColor: "#ef4444",  // red-500
+        darkGlow: "#f87171",   // red-400
+      },
+      {
+        num: "04",
+        title: "Certificate of completion: Introduction to Subagents",
+        issuer: "Anthropic",
+        date: "jun. 2026",
+        credentialId: "jh29oeenjenq",
+        verifyUrl: "https://verify.skilljar.com/c/jh29oeenjenq",
+        gradient: "from-amber-500 to-orange-600",
+        glowColor: "#d97706",  // amber-600
+        darkGlow: "#f59e0b",   // amber-505 -> amber-500
+      },
+      {
+        num: "05",
+        title: "Certificate of completion: AI Capabilities and Limitations",
+        issuer: "Anthropic",
+        date: "jun. 2026",
+        credentialId: "7xgb386y38p3",
+        verifyUrl: "https://verify.skilljar.com/c/7xgb386y38p3",
+        gradient: "from-orange-500 to-red-600",
+        glowColor: "#ea580c",  // orange-600
+        darkGlow: "#f97316",   // orange-500
+      },
+      {
+        num: "06",
+        title: "Certificate of Completion: AI Fluency for Small Businesses",
+        issuer: "Anthropic",
+        date: "jun. 2026",
+        credentialId: "bgb5brspyao7",
+        verifyUrl: "https://verify.skilljar.com/c/bgb5brspyao7",
+        gradient: "from-red-500 to-red-700",
+        glowColor: "#dc2626",  // red-600
+        darkGlow: "#ef4444",   // red-500
+      },
+    ]
   },
   {
-    num: "02",
-    title: "Certificate of completion: Claude 101",
-    issuer: "Anthropic",
-    date: "jun. 2026",
-    credentialId: "6gceeqvh49pk",
-    verifyUrl: "https://verify.skilljar.com/c/6gceeqvh49pk",
-    gradient: "from-orange-400 to-orange-600",
-    glowColor: "#f97316",  // orange-500
-    darkGlow: "#fb923c",   // orange-400
-  },
-  {
-    num: "03",
-    title: "Certificate of Completion: AI Fluency Framework & Foundations",
-    issuer: "Anthropic",
-    date: "jun. 2026",
-    credentialId: "35iq46657333",
-    verifyUrl: "https://verify.skilljar.com/c/35iq46657333",
-    gradient: "from-red-400 to-red-600",
-    glowColor: "#ef4444",  // red-500
-    darkGlow: "#f87171",   // red-400
-  },
-  {
-    num: "04",
-    title: "Certificate of completion: Introduction to Subagents",
-    issuer: "Anthropic",
-    date: "jun. 2026",
-    credentialId: "jh29oeenjenq",
-    verifyUrl: "https://verify.skilljar.com/c/jh29oeenjenq",
-    gradient: "from-amber-500 to-orange-600",
-    glowColor: "#d97706",  // amber-600
-    darkGlow: "#f59e0b",   // amber-500
-  },
-  {
-    num: "05",
-    title: "Certificate of completion: AI Capabilities and Limitations",
-    issuer: "Anthropic",
-    date: "jun. 2026",
-    credentialId: "7xgb386y38p3",
-    verifyUrl: "https://verify.skilljar.com/c/7xgb386y38p3",
-    gradient: "from-orange-500 to-red-600",
-    glowColor: "#ea580c",  // orange-600
-    darkGlow: "#f97316",   // orange-500
-  },
-  {
-    num: "06",
-    title: "Certificate of Completion: AI Fluency for Small Businesses",
-    issuer: "Anthropic",
-    date: "jun. 2026",
-    credentialId: "bgb5brspyao7",
-    verifyUrl: "https://verify.skilljar.com/c/bgb5brspyao7",
-    gradient: "from-red-500 to-red-700",
-    glowColor: "#dc2626",  // red-600
-    darkGlow: "#ef4444",   // red-500
-  },
+    id: "vercel",
+    issuer: "Vercel",
+    url: "nextjs.org",
+    desc: "Certificaciones oficiales de Next.js y el ecosistema de Vercel",
+    icon: Vercel,
+    colorClass: "zinc",
+    borderClass: "border-zinc-300/70 dark:border-zinc-400/65",
+    bgClass: "bg-white/70 dark:bg-gray-900/60",
+    bannerShadow: "shadow-[0_16px_40px_rgba(0,0,0,0.18)] dark:shadow-[0_16px_40px_rgba(255,255,255,0.12)]",
+    cardShadow: "shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgba(255,255,255,0.06)]",
+    iconBgClass: "from-zinc-50 to-neutral-200 dark:from-zinc-900/30 dark:to-neutral-900/30 border-zinc-200/60 dark:border-zinc-700/40",
+    iconColorClass: "text-zinc-800 dark:text-zinc-200",
+    dotColorClass: "bg-zinc-600 dark:bg-zinc-300",
+    items: [
+      {
+        num: "01",
+        title: "Next.js App Router Fundamentals",
+        issuer: "Vercel",
+        date: "jun. 2026",
+        credentialId: "dashboard-app",
+        verifyUrl: "https://nextjs.org/learn/certificate?course=dashboard-app&user=164089&certId=dashboard-app-164089-1781221086452",
+        gradient: "from-zinc-800 via-neutral-900 to-black dark:from-zinc-200 dark:via-neutral-100 dark:to-white",
+        glowColor: "#000000",
+        darkGlow: "#ffffff",
+      }
+    ]
+  }
 ];
 
 export default function CertificationsPage() {
@@ -99,6 +145,10 @@ export default function CertificationsPage() {
   }, []);
 
   const activeGlow = (cert) => isDark ? cert.darkGlow : cert.glowColor;
+
+  const anthropicCertsCount = certificationSections.find(s => s.id === "anthropic")?.items.length || 0;
+  const vercelCertsCount = certificationSections.find(s => s.id === "vercel")?.items.length || 0;
+  const totalCerts = anthropicCertsCount + vercelCertsCount;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-amber-50/20 to-orange-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-amber-950/30 relative overflow-hidden">
@@ -137,14 +187,14 @@ export default function CertificationsPage() {
 
             <div className="space-y-4">
               <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
-                Credenciales verificables obtenidas a través de programas oficiales de Anthropic.
+                Credenciales verificables obtenidas a través de programas oficiales de Anthropic y Vercel.
               </p>
 
               {/* Stats pills */}
               <div className="flex flex-wrap items-center gap-3 text-sm">
                 <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 dark:bg-amber-900/25 border border-amber-200/70 dark:border-amber-700/40 text-amber-700 dark:text-amber-300 font-medium">
                   <ShieldCheck className="w-3.5 h-3.5" />
-                  {certifications.length} certificados
+                  {totalCerts} certificados
                 </span>
                 <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-50 dark:bg-orange-900/25 border border-orange-200/70 dark:border-orange-700/40 text-orange-700 dark:text-orange-300 font-medium">
                   <Calendar className="w-3.5 h-3.5" />
@@ -152,7 +202,11 @@ export default function CertificationsPage() {
                 </span>
                 <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-50 dark:bg-red-900/25 border border-red-200/70 dark:border-red-700/40 text-red-700 dark:text-red-300 font-medium">
                   <Anthropic className="w-3.5 h-3.5" />
-                  Anthropic
+                  Anthropic ({anthropicCertsCount})
+                </span>
+                <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-zinc-50 dark:bg-zinc-900/25 border border-zinc-200/70 dark:border-zinc-700/40 text-zinc-700 dark:text-zinc-300 font-medium">
+                  <Vercel className="w-3.5 h-3.5" />
+                  Vercel ({vercelCertsCount})
                 </span>
               </div>
             </div>
@@ -161,205 +215,216 @@ export default function CertificationsPage() {
         subtitle=""
         className="relative z-10"
       >
-        <div className="max-w-6xl mx-auto space-y-12">
-
-          {/* Header de sección Anthropic */}
-          <motion.div
-            className="flex items-center gap-4 p-5 rounded-2xl bg-white/70 dark:bg-gray-900/60 border border-amber-200/50 dark:border-amber-800/30 shadow-sm shadow-amber-100/40 dark:shadow-amber-900/20"
-            style={!isMobile ? { backdropFilter: "blur(8px)" } : {}}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            {/* Logo container */}
-            <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-amber-50 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30 border border-amber-200/60 dark:border-amber-700/40 shadow-inner">
-              <Anthropic className="w-6 h-6 text-amber-700 dark:text-amber-400" />
-            </div>
-
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-0.5">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white">Anthropic</h3>
-                <span className="w-1.5 h-1.5 bg-amber-500 rounded-full" />
-                <span className="text-xs text-gray-400 dark:text-gray-500">skilljar.com</span>
-              </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400 truncate">
-                Programas de certificación oficial en IA y productos Claude
-              </p>
-            </div>
-
-            {/* Color swatches */}
-            {!isMobile && (
-              <div className="flex items-center gap-1.5 flex-shrink-0">
-                {certifications.map((c) => (
-                  <div
-                    key={c.credentialId}
-                    className={`w-3 h-3 rounded-full bg-gradient-to-br ${c.gradient}`}
-                    title={c.num}
-                  />
-                ))}
-              </div>
-            )}
-          </motion.div>
-
-          {/* Grid de cards */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {certifications.map((cert, i) => (
-              <motion.div
-                key={cert.credentialId}
-                className="h-full"
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.07 }}
-              >
-                <a
-                  href={cert.verifyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`group relative flex flex-col h-full rounded-2xl overflow-hidden border transition-all duration-300 cursor-pointer
-                    bg-white dark:bg-gray-900/70
-                    border-amber-100 dark:border-gray-700/60
-                    shadow-[0_2px_12px_rgba(0,0,0,0.06)] dark:shadow-[0_2px_20px_rgba(0,0,0,0.35)]
-                    ${!isMobile ? "hover:-translate-y-2" : ""}`}
-                  onMouseEnter={
-                    !isMobile
-                      ? (e) => {
-                          const g = activeGlow(cert);
-                          e.currentTarget.style.boxShadow = `0 12px 40px ${g}30, 0 4px 16px ${g}18`;
-                          e.currentTarget.style.borderColor = `${g}55`;
-                        }
-                      : undefined
-                  }
-                  onMouseLeave={
-                    !isMobile
-                      ? (e) => {
-                          e.currentTarget.style.boxShadow = "";
-                          e.currentTarget.style.borderColor = "";
-                        }
-                      : undefined
-                  }
+        <div className="max-w-6xl mx-auto space-y-16">
+          {certificationSections.map((section) => {
+            const SectionIcon = section.icon;
+            return (
+              <div key={section.id} className="space-y-6">
+                {/* Header de sección */}
+                <motion.div
+                  className={`flex items-center gap-4 p-5 rounded-2xl bg-white/70 dark:bg-gray-900/60 border ${section.borderClass} ${section.bgClass} ${section.bannerShadow}`}
+                  style={!isMobile ? { backdropFilter: "blur(8px)" } : {}}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
                 >
-                  {/* Top gradient bar */}
-                  <div className={`h-[3px] w-full bg-gradient-to-r ${cert.gradient} flex-shrink-0`} />
-
-                  {/* Inner bg glow - light mode */}
-                  <div
-                    className="absolute inset-0 pointer-events-none dark:hidden"
-                    style={{
-                      background: `radial-gradient(ellipse at 60% 0%, ${cert.glowColor}0e, transparent 60%)`,
-                    }}
-                  />
-                  {/* Inner bg glow - dark mode */}
-                  <div
-                    className="absolute inset-0 pointer-events-none hidden dark:block"
-                    style={{
-                      background: `radial-gradient(ellipse at 60% 0%, ${cert.darkGlow}22, transparent 60%)`,
-                    }}
-                  />
-
-                  {/* Shine sweep on hover */}
-                  {!isMobile && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none" />
-                  )}
-
-                  <div className="relative flex flex-col flex-1 p-5 gap-4">
-                    {/* Row: número + badge */}
-                    <div className="flex items-center justify-between">
-                      <span
-                        className="text-[11px] font-black tracking-widest tabular-nums"
-                        style={{ color: activeGlow(cert) }}
-                      >
-                        {cert.num}
-                      </span>
-                      <span
-                        className="flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide"
-                        style={{
-                          backgroundColor: `${cert.glowColor}14`,
-                          color: cert.glowColor,
-                          border: `1px solid ${cert.glowColor}38`,
-                        }}
-                      >
-                        <ShieldCheck className="w-2.5 h-2.5" />
-                        Verificado
-                      </span>
-                    </div>
-
-                    {/* Icono con glow */}
-                    <div className="flex justify-center py-1">
-                      <div className="relative">
-                        {/* Glow halo detrás del icono */}
-                        <div
-                          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"
-                          style={{ backgroundColor: activeGlow(cert) }}
-                        />
-                        <div
-                          className="relative w-14 h-14 flex items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110"
-                          style={{
-                            backgroundColor: `${cert.glowColor}18`,
-                            border: `2px solid ${cert.glowColor}45`,
-                            boxShadow: `0 0 0 4px ${cert.glowColor}10, 0 4px 16px ${cert.glowColor}25`,
-                          }}
-                        >
-                          <Anthropic
-                            className="w-7 h-7"
-                            style={{ color: activeGlow(cert) }}
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Texto */}
-                    <div className="text-center space-y-1">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-gray-400 dark:text-gray-500">
-                        {cert.issuer}
-                      </p>
-                      <h4 className="text-[14px] font-bold text-gray-900 dark:text-white leading-snug transition-colors duration-300">
-                        {cert.title}
-                      </h4>
-                    </div>
-
-                    {/* Separador */}
-                    <div
-                      className={`h-px bg-gradient-to-r ${cert.gradient} opacity-25 rounded-full mx-2`}
-                    />
-
-                    {/* Meta */}
-                    <div className="space-y-1.5 px-1">
-                      <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-                        <Calendar
-                          className="w-3.5 h-3.5 flex-shrink-0"
-                          style={{ color: cert.glowColor }}
-                        />
-                        <span>Expedición: <span className="font-medium text-gray-700 dark:text-gray-300">{cert.date}</span></span>
-                      </div>
-                      <div className="flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
-                        <Hash
-                          className="w-3.5 h-3.5 flex-shrink-0"
-                          style={{ color: cert.glowColor }}
-                        />
-                        <span className="font-mono">{cert.credentialId}</span>
-                      </div>
-                    </div>
-
-                    {/* CTA button */}
-                    <div className="mt-auto pt-1">
-                      <div
-                        className="w-full py-2.5 rounded-xl text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-opacity duration-200 group-hover:opacity-95"
-                        style={{
-                          background: `linear-gradient(to right, ${cert.glowColor}, ${cert.darkGlow})`,
-                          boxShadow: `0 4px 14px ${cert.glowColor}35`,
-                        }}
-                      >
-                        Ver credencial
-                        <ExternalLink className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-                      </div>
-                    </div>
+                  {/* Logo container */}
+                  <div className={`flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br border shadow-inner ${section.iconBgClass}`}>
+                    <SectionIcon className={`w-6 h-6 ${section.iconColorClass}`} />
                   </div>
-                </a>
-              </motion.div>
-            ))}
-          </div>
+
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <h3 className="text-lg font-bold text-gray-900 dark:text-white">{section.issuer}</h3>
+                      <span className={`w-1.5 h-1.5 rounded-full ${section.dotColorClass}`} />
+                      <span className="text-xs text-gray-400 dark:text-gray-500">{section.url}</span>
+                    </div>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 truncate">
+                      {section.desc}
+                    </p>
+                  </div>
+
+                  {/* Color swatches */}
+                  {!isMobile && (
+                    <div className="flex items-center gap-1.5 flex-shrink-0">
+                      {section.items.map((c) => (
+                        <div
+                          key={c.credentialId}
+                          className={`w-3 h-3 rounded-full bg-gradient-to-br ${c.gradient}`}
+                          title={c.num}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
+
+                {/* Grid de cards */}
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {section.items.map((cert, i) => (
+                    <motion.div
+                      key={cert.credentialId}
+                      className="h-full"
+                      initial={{ opacity: 0, y: 28 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.45, delay: i * 0.07 }}
+                    >
+                      <a
+                        href={cert.verifyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`group relative flex flex-col h-full rounded-2xl overflow-hidden border transition-all duration-300 cursor-pointer
+                          bg-white dark:bg-gray-900/70
+                          border-gray-200/50 dark:border-gray-800/60
+                          ${section.cardShadow}
+                          ${!isMobile ? "hover:-translate-y-2" : ""}`}
+                        onMouseEnter={
+                          !isMobile
+                            ? (e) => {
+                                const g = activeGlow(cert);
+                                e.currentTarget.style.boxShadow = `0 12px 40px ${g}30, 0 4px 16px ${g}18`;
+                                e.currentTarget.style.borderColor = `${g}55`;
+                              }
+                            : undefined
+                        }
+                        onMouseLeave={
+                          !isMobile
+                            ? (e) => {
+                                e.currentTarget.style.boxShadow = "";
+                                e.currentTarget.style.borderColor = "";
+                              }
+                            : undefined
+                        }
+                      >
+                        {/* Top gradient bar */}
+                        <div className={`h-[3px] w-full bg-gradient-to-r ${cert.gradient} flex-shrink-0`} />
+
+                        {/* Inner bg glow - light mode */}
+                        <div
+                          className="absolute inset-0 pointer-events-none dark:hidden"
+                          style={{
+                            background: `radial-gradient(ellipse at 60% 0%, ${cert.glowColor}0e, transparent 60%)`,
+                          }}
+                        />
+                        {/* Inner bg glow - dark mode */}
+                        <div
+                          className="absolute inset-0 pointer-events-none hidden dark:block"
+                          style={{
+                            background: `radial-gradient(ellipse at 60% 0%, ${cert.darkGlow}22, transparent 60%)`,
+                          }}
+                        />
+
+                        {/* Shine sweep on hover */}
+                        {!isMobile && (
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none" />
+                        )}
+
+                        <div className="relative flex flex-col flex-1 p-5 gap-4">
+                          {/* Row: número + badge */}
+                          <div className="flex items-center justify-between">
+                            <span
+                              className="text-[11px] font-black tracking-widest tabular-nums"
+                              style={{ color: activeGlow(cert) }}
+                            >
+                              {cert.num}
+                            </span>
+                            <span
+                              className="flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide"
+                              style={{
+                                backgroundColor: `${activeGlow(cert)}14`,
+                                color: activeGlow(cert),
+                                border: `1px solid ${activeGlow(cert)}38`,
+                              }}
+                            >
+                              <ShieldCheck className="w-2.5 h-2.5" />
+                              Verificado
+                            </span>
+                          </div>
+
+                          {/* Icono con glow */}
+                          <div className="flex justify-center py-1">
+                            <div className="relative">
+                              {/* Glow halo detrás del icono */}
+                              <div
+                                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"
+                                style={{ backgroundColor: activeGlow(cert) }}
+                              />
+                              <div
+                                className="relative w-14 h-14 flex items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110"
+                                style={{
+                                  backgroundColor: `${activeGlow(cert)}18`,
+                                  border: `2px solid ${activeGlow(cert)}45`,
+                                  boxShadow: `0 0 0 4px ${activeGlow(cert)}10, 0 4px 16px ${activeGlow(cert)}25`,
+                                }}
+                              >
+                                <SectionIcon
+                                  className="w-7 h-7"
+                                  style={{ color: activeGlow(cert) }}
+                                />
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Texto */}
+                          <div className="text-center space-y-1">
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-gray-400 dark:text-gray-500">
+                              {cert.issuer}
+                            </p>
+                            <h4 className="text-[14px] font-bold text-gray-900 dark:text-white leading-snug transition-colors duration-300">
+                              {cert.title}
+                            </h4>
+                          </div>
+
+                          {/* Separador */}
+                          <div
+                            className={`h-px bg-gradient-to-r ${cert.gradient} opacity-25 rounded-full mx-2`}
+                          />
+
+                          {/* Meta */}
+                          <div className="space-y-1.5 px-1">
+                            <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+                              <Calendar
+                                className="w-3.5 h-3.5 flex-shrink-0"
+                                style={{ color: activeGlow(cert) }}
+                              />
+                              <span>Expedición: <span className="font-medium text-gray-700 dark:text-gray-300">{cert.date}</span></span>
+                            </div>
+                            <div className="flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
+                              <Hash
+                                className="w-3.5 h-3.5 flex-shrink-0"
+                                style={{ color: activeGlow(cert) }}
+                              />
+                              <span className="font-mono">{cert.credentialId}</span>
+                            </div>
+                          </div>
+
+                          {/* CTA button */}
+                          <div className="mt-auto pt-1">
+                            <div
+                              className="w-full py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all duration-200 group-hover:opacity-95"
+                              style={{
+                                background: cert.issuer.toLowerCase() === "vercel"
+                                  ? (isDark ? "#ffffff" : "#000000")
+                                  : `linear-gradient(to right, ${cert.glowColor}, ${cert.darkGlow})`,
+                                color: cert.issuer.toLowerCase() === "vercel"
+                                  ? (isDark ? "#000000" : "#ffffff")
+                                  : "#ffffff",
+                                boxShadow: `0 4px 14px ${activeGlow(cert)}35`,
+                              }}
+                            >
+                              Ver credencial
+                              <ExternalLink className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
 
           {/* Más por venir */}
           <motion.div
@@ -381,3 +446,4 @@ export default function CertificationsPage() {
     </div>
   );
 }
+
