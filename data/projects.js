@@ -1,5 +1,22 @@
 export const PROJECTS = [
   {
+    id: "trinium",
+    title: "Trinium (Sitio Corporativo Para La Startup Trinium)",
+    tagline: "Landing moderna que convierte visitantes en clientes para una empresa de software a la medida.",
+    year: 2026,
+    category: "Startup",
+    stack: [ "React 18", "TypeScript", "Vite 5", "Tailwind CSS", "Shadcn/ui", "next-themes", "Lucide React", "React Router", "Despliegue en Vercel",],
+    repo: "",
+    site: "https://trinium.com.mx/",
+    summary:
+      "Sitio corporativo que posiciona a TRINIUM como referente en desarrollo de software a la medida, automatización de procesos e infraestructura IT para empresas mexicanas, con un diseño moderno y experiencia visual de alto impacto.\n\n" +
+      "Presenta el portafolio de productos propios mediante carruseles interactivos con capturas reales de proyectos, modales informativos por servicio y modo claro/oscuro con cambio dinámico de assets, reduciendo la fricción para que cada visitante entienda el valor de la empresa en menos de 30 segundos.\n\n" +
+      "La arquitectura SPA optimizada con SEO completo (meta tags, JSON-LD, HTML semántico), animaciones scroll-reveal y CTA dual — contacto directo vía WhatsApp + formulario con mailto — maximiza la tasa de conversión hacia contacto inmediato.",
+    image: "/Banners/trinium.png",
+    colors: { primary: "#0ba7d0", secondary: "#2385de" },
+    type: "Website",
+  },
+  {
     id: "hydra",
     title: "Hydra – Control de Socios del Pozo de Agua",
     tagline: "Centraliza socios, lecturas y recibos de agua en un solo lugar.",

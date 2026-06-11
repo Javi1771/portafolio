@@ -26,7 +26,7 @@ export const metadata = {
     siteName: "Javier López – Portafolio",
     images: [
       {
-        url: "/foto_perfil.jpg",
+        url: "/favicon.ico",
         width: 800,
         height: 800,
         alt: "Javier López – Full Stack Developer",
@@ -39,7 +39,7 @@ export const metadata = {
     card: "summary",
     title: "Javier López | Full Stack Developer – Web & Mobile",
     description: "Ingeniero Full Stack Developer especializado en Next.js, React Native y Flutter.",
-    images: ["/foto_perfil.jpg"],
+    images: ["/favicon.ico"],
   },
   //* Favicons / PWA / Apple
   icons: {

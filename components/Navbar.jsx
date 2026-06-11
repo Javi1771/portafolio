@@ -36,7 +36,7 @@ export default function Navbar() {
               
               {/* Logo text with enhanced effects */}
               <span className="relative bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 bg-clip-text text-transparent group-hover:from-cyan-200 group-hover:to-cyan-400 transition-all duration-500 drop-shadow-sm">
-                Javier
+                Javi
               </span>
               <span className="relative bg-gradient-to-r from-pink-300 via-pink-400 to-pink-500 bg-clip-text text-transparent group-hover:from-pink-200 group-hover:to-pink-400 transition-all duration-500 drop-shadow-sm">
                 Dev
@@ -57,6 +57,7 @@ export default function Navbar() {
               { href: "/about", text: "Sobre mí", color: "from-cyan-400 to-blue-500" },
               { href: "/experience", text: "Experiencia", color: "from-pink-400 to-rose-500" },
               { href: "/projects", text: "Proyectos", color: "from-violet-400 to-purple-500" },
+              { href: "/certifications", text: "Certificaciones", color: "from-amber-400 to-orange-500" },
               { href: "/contact", text: "Contacto", color: "from-emerald-400 to-green-500" }
             ].map((item, index) => (
               <Link
@@ -143,6 +144,7 @@ export default function Navbar() {
                 { href: "/about", text: "Sobre mí", color: "from-cyan-400 to-blue-500" },
                 { href: "/experience", text: "Experiencia", color: "from-pink-400 to-rose-500" },
                 { href: "/projects", text: "Proyectos", color: "from-violet-400 to-purple-500" },
+                { href: "/certifications", text: "Certificaciones", color: "from-amber-400 to-orange-500" },
                 { href: "/contact", text: "Contacto", color: "from-emerald-400 to-green-500" }
               ].map((item, index) => (
                 <Link
@@ -150,9 +152,8 @@ export default function Navbar() {
                   href={item.href}
                   onClick={() => setOpen(false)}
                   className="group relative flex items-center gap-4 px-6 py-4 text-gray-700 dark:text-white/90 hover:text-gray-900 dark:hover:text-white transition-all duration-300 rounded-xl hover:bg-gray-100/60 dark:hover:bg-white/10 dark:hover:bg-gray-800/30"
-                  style={{ 
-                    animationDelay: `${index * 100}ms`,
-                    animation: open ? 'slideInLeft 0.5s ease-out forwards' : 'none'
+                  style={{
+                    animation: open ? `slideInLeft 0.5s ease-out ${index * 100}ms forwards` : 'none'
                   }}
                 >
                   {/* Background gradient on hover */}

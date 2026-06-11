@@ -265,8 +265,8 @@ export default function AboutPage() {
 
                 {!isMobile && (
                   <>
-                    <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-60"></div>
-                    <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-40"></div>
+                    <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-60 animate-bounce"></div>
+                    <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-40 animate-bounce"></div>
                   </>
                 )}
               </div>
