@@ -14,6 +14,7 @@ import {
   MapPin,
   Users,
   Landmark,
+  ExternalLink,
 } from "lucide-react";
 
 const experiences = [
@@ -36,6 +37,18 @@ const experiences = [
           "Recibos, tickets, caja y corte diario automático",
           "REST API con JWT para portal ciudadano externo",
           "Importación masiva desde Excel para migración de datos históricos",
+        ],
+      },
+      {
+        name: "Trinium – Sitio Corporativo",
+        site: "https://trinium.com.mx/",
+        tech: ["React 18", "TypeScript", "Vite 5", "Tailwind CSS", "Shadcn/ui"],
+        highlights: [
+          "Landing moderna que posiciona a Trinium como referente en software a la medida",
+          "Carruseles interactivos con capturas reales de proyectos propios",
+          "Modo claro/oscuro con cambio dinámico de assets",
+          "SEO completo: meta tags, JSON-LD y HTML semántico",
+          "CTA dual: contacto directo por WhatsApp y formulario mailto",
         ],
       },
     ],
@@ -299,12 +312,28 @@ const ExperienceCard = ({ experience, isExpanded, onToggle, isMobile }) => {
                 {/* Projects */}
                 {experience.projects.map((project, idx) => (
                   <div key={idx} className="space-y-3">
-                    <h4 className="font-semibold text-lg text-gray-900 dark:text-white flex items-center gap-2">
-                      <div
-                        className={`w-2 h-2 rounded-full bg-gradient-to-r ${experience.gradient}`}
-                      />
-                      {project.name}
-                    </h4>
+                    <div className="flex items-center justify-between gap-2">
+                      <h4 className="font-semibold text-lg text-gray-900 dark:text-white flex items-center gap-2">
+                        <div
+                          className={`w-2 h-2 rounded-full bg-gradient-to-r ${experience.gradient}`}
+                        />
+                        {project.name}
+                      </h4>
+                      {project.site && (
+                        <a
+                          href={project.site}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold
+                            bg-gradient-to-r ${experience.gradient} text-white shadow-md
+                            hover:opacity-90 transition-opacity flex-shrink-0`}
+                        >
+                          Ver sitio
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      )}
+                    </div>
 
                     {/* Tech Stack */}
                     {project.tech && (
