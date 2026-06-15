@@ -92,6 +92,28 @@ const certificationSections = [
         glowColor: "#dc2626",  // red-600
         darkGlow: "#ef4444",   // red-500
       },
+      {
+        num: "07",
+        title: "Certificate of completion: Claude Platform 101",
+        issuer: "Anthropic",
+        date: "jun. 2026",
+        credentialId: "fa7q5ttq4zqe",
+        verifyUrl: "https://verify.skilljar.com/c/fa7q5ttq4zqe",
+        gradient: "from-amber-400 via-orange-400 to-orange-600",
+        glowColor: "#f97316",  // orange-500
+        darkGlow: "#fb923c",   // orange-400
+      },
+      {
+        num: "08",
+        title: "Certificate of completion: Claude code 101",
+        issuer: "Anthropic",
+        date: "jun. 2026",
+        credentialId: "6gbhxootpzve",
+        verifyUrl: "https://verify.skilljar.com/c/6gbhxootpzve",
+        gradient: "from-orange-500 via-red-500 to-red-700",
+        glowColor: "#ef4444",  // red-500
+        darkGlow: "#f87171",   // red-400
+      },
     ]
   },
   {
