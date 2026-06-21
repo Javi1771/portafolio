@@ -22,7 +22,7 @@ export const PROJECTS = [
     tagline: "Centraliza socios, lecturas y recibos de agua en un solo lugar.",
     year: 2026,
     category: "Startup",
-    stack: [ "Next.js 16 (App Router)", "TypeScript 5 Strict", "Tailwind CSS 4", "Supabase (PostgreSQL + Auth + RLS)", "Drizzle ORM", "Zod 4", "Recharts", "pdf-lib (Tickets y Recibos en PDF)", "QR Code (Generación + Escaneo)", "TestSprite", "Offline-First con IndexedDB", "Importación de Excel (ExcelJS + XLSX)", "Geolocalización (Google Maps)", "REST API – Portal Ciudadano", "Dark Mode", "Despliegue en Vercel",],
+    stack: [ "Next.js 16 (App Router)", "TypeScript 5 Strict", "Tailwind CSS 4", "Supabase (PostgreSQL + Auth + RLS)", "Node.js", "Drizzle ORM", "Zod 4", "Recharts", "pdf-lib (Tickets y Recibos en PDF)", "QR Code (Generación + Escaneo)", "TestSprite", "Offline-First con IndexedDB", "Importación de Excel (ExcelJS + XLSX)", "Geolocalización (Google Maps)", "REST API – Portal Ciudadano", "Dark Mode", "Despliegue en Vercel",],
     repo: "https://github.com/Javi1771/Hydra-Pub",
     site: "",
     summary:
@@ -39,7 +39,7 @@ export const PROJECTS = [
     title: "Assembly Management (Software Para La Empresa SIAUMEX)",
     tagline: "Sistema que elimina errores operativos y acelera la gestión de ensamblajes industriales.",
     year: 2025,
-    stack: [ "Next.js", "Tailwind CSS", "Node.js API Routes", "MS SQL Server", "Importación de Excel", "JWT", "Despliegue en SmarterASP.NET", "Dark Mode", "Cifrado de Contraseñas con bcrypt", ],
+    stack: [ "Next.js", "Tailwind CSS", "TypeScript", "Node.js API Routes", "MS SQL Server", "Importación de Excel", "JWT", "Despliegue en SmarterASP.NET", "Dark Mode", "Cifrado de Contraseñas con bcrypt", ],
     category: "Freelance",
     repo: "https://github.com/Javi1771/productos_assembly",
     site: "",
@@ -74,7 +74,7 @@ export const PROJECTS = [
     tagline: "Digitaliza completamente la gestión médica y elimina el papeleo.",
     year: 2025,
     category: "Municipio",
-    stack: [ "Next.js", "SQL Server", "Tailwind CSS", "Escaner Código de Barras", "Digitalización de Documentos", "SOAP Web Service", "Escaneo Facial", "Crear PDFs", "Firma Digital", "Registro en Tiempo Real", "Exportación a Excel", "Foto Digital", "Cifrado de Contraseñas con bcrypt", "Credencialización", "Node.js API Routes", "Despliegue en IIS", ],
+    stack: [ "Next.js", "SQL Server", "Tailwind CSS", "Node.js", "Escaner Código de Barras", "Digitalización de Documentos", "SOAP Web Service", "Escaneo Facial", "Crear PDFs", "Firma Digital", "Registro en Tiempo Real", "Exportación a Excel", "Foto Digital", "Cifrado de Contraseñas con bcrypt", "Credencialización", "Node.js API Routes", "Despliegue en IIS", ],
     repo: "https://github.com/Javi1771/Pandora-Pub",
     site: "",
     summary:

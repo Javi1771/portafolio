@@ -46,3 +46,12 @@ next-env.d.ts
 # claude
 .claude
 .agents
+.antigravitycli
+
+/graphify-out
+tarea-cv.md
+cv-master.md
+cv-master.docx
+market-positioning.md
+recruiter-review.md
+skills-analysis.md
