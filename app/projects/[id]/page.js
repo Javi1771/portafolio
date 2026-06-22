@@ -22,6 +22,12 @@ export default function ProjectDetail() {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState({});
+
+  //* Stack expand state
+  const [stackExpanded, setStackExpanded] = useState(false);
+  const [detectedExpanded, setDetectedExpanded] = useState(false);
+  const STACK_LIMIT = 5;
+  const DETECTED_LIMIT = 5;
   const startX = useRef(null);
   const trackRef = useRef(null);
 
@@ -757,33 +763,106 @@ export default function ProjectDetail() {
               </div>
             </div>
 
-            <div className="space-y-4 md:space-y-6">
+            {/* Stack Tecnológico */}
+            <div className="space-y-4 md:space-y-5">
               <div className="flex items-center gap-3 md:gap-4">
-                <div className="w-1.5 h-6 md:h-8 bg-gradient-to-b from-violet-500 to-purple-600 rounded-full"></div>
+                <div className="w-1.5 h-6 md:h-8 bg-gradient-to-b from-violet-500 to-purple-600 rounded-full shrink-0"></div>
                 <h3 className="text-lg md:text-xl font-bold bg-gradient-to-r from-slate-800 to-slate-700 dark:from-slate-200 dark:to-slate-100 bg-clip-text text-transparent">
                   Stack Tecnológico
                 </h3>
+                <span className="shrink-0 px-2 py-0.5 bg-violet-100 dark:bg-violet-900/40 text-violet-600 dark:text-violet-300 text-xs font-bold rounded-full">
+                  {project.stack.length}
+                </span>
                 <div className="flex-1 h-px bg-gradient-to-r from-violet-500/20 to-transparent"></div>
               </div>
 
-              <div className="flex flex-wrap gap-2 md:gap-4">
-                {project.stack.map((tech, index) => (
+              <div className="flex flex-wrap gap-2">
+                {(stackExpanded ? project.stack : project.stack.slice(0, STACK_LIMIT)).map((tech) => (
                   <span
                     key={tech}
-                    className={`group relative px-3 py-2 md:px-5 md:py-3 bg-white/80 dark:bg-slate-800/70 ${!isMobile && "backdrop-blur-xl"} border border-slate-200/60 dark:border-slate-700/50 text-slate-700 dark:text-slate-200 font-semibold rounded-xl md:rounded-2xl hover:border-violet-400/60 dark:hover:border-violet-500/50 hover:bg-white/95 dark:hover:bg-slate-700/80 transition-all duration-300 ${!isMobile && "hover:scale-110 hover:-translate-y-2"} shadow-lg hover:shadow-xl hover:shadow-violet-500/25 overflow-hidden cursor-default text-xs md:text-sm`}
+                    className={`group relative px-3 py-1.5 md:px-4 md:py-2 bg-white/80 dark:bg-slate-800/70 ${!isMobile && "backdrop-blur-xl"} border border-slate-200/60 dark:border-slate-700/50 text-slate-700 dark:text-slate-200 font-semibold rounded-lg md:rounded-xl hover:border-violet-400/60 dark:hover:border-violet-500/50 hover:bg-white/95 dark:hover:bg-slate-700/80 transition-all duration-300 ${!isMobile && "hover:scale-105 hover:-translate-y-1"} shadow-md hover:shadow-lg hover:shadow-violet-500/20 overflow-hidden cursor-default text-xs md:text-sm`}
                   >
                     {!isMobile && (
                       <>
                         <div className="absolute inset-0 bg-gradient-to-r from-violet-500/5 via-purple-500/8 to-violet-500/5 opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                        <div className="absolute top-0.5 right-0.5 md:top-1 md:right-1 w-1.5 h-1.5 md:w-2 md:h-2 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-0 group-hover:opacity-80 transition-opacity"></div>
+                        <div className="absolute top-0.5 right-0.5 w-1.5 h-1.5 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-0 group-hover:opacity-80 transition-opacity"></div>
                       </>
                     )}
                     <span className="relative z-10">{tech}</span>
                   </span>
                 ))}
+
+                {project.stack.length > STACK_LIMIT && (
+                  <button
+                    onClick={() => setStackExpanded(!stackExpanded)}
+                    className={`px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold rounded-lg md:rounded-xl border transition-all duration-300 cursor-pointer ${
+                      stackExpanded
+                        ? "bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300 border-violet-300 dark:border-violet-600/60 hover:bg-violet-200 dark:hover:bg-violet-800/50"
+                        : "bg-white/60 dark:bg-slate-800/50 text-violet-600 dark:text-violet-400 border-violet-200/70 dark:border-violet-700/50 hover:bg-violet-50 dark:hover:bg-violet-900/30 hover:border-violet-300 dark:hover:border-violet-600"
+                    }`}
+                    style={{ WebkitTapHighlightColor: "transparent" }}
+                  >
+                    {stackExpanded
+                      ? "↑ Ver menos"
+                      : `+${project.stack.length - STACK_LIMIT} más`}
+                  </button>
+                )}
               </div>
             </div>
+
+            {/* Herramientas Detectadas */}
+            {project.detectedTools && project.detectedTools.length > 0 && (
+              <div className="space-y-4 md:space-y-5">
+                <div className="flex items-center gap-3 md:gap-4">
+                  <div className="w-1.5 h-6 md:h-8 bg-gradient-to-b from-cyan-500 to-teal-600 rounded-full shrink-0"></div>
+                  <h3 className="text-base md:text-lg font-bold bg-gradient-to-r from-slate-800 to-slate-700 dark:from-slate-200 dark:to-slate-100 bg-clip-text text-transparent">
+                    Herramientas Detectadas en Repositorio
+                  </h3>
+                  <span className="shrink-0 px-2 py-0.5 bg-cyan-100 dark:bg-cyan-900/40 text-cyan-600 dark:text-cyan-300 text-xs font-bold rounded-full">
+                    {project.detectedTools.length}
+                  </span>
+                  <div className="flex-1 h-px bg-gradient-to-r from-cyan-500/20 to-transparent"></div>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {(detectedExpanded
+                    ? project.detectedTools
+                    : project.detectedTools.slice(0, DETECTED_LIMIT)
+                  ).map((tool) => (
+                    <span
+                      key={tool}
+                      className={`group relative px-3 py-1.5 md:px-4 md:py-2 bg-white/80 dark:bg-slate-800/70 ${!isMobile && "backdrop-blur-xl"} border border-slate-200/60 dark:border-slate-700/50 text-slate-700 dark:text-slate-200 font-semibold rounded-lg md:rounded-xl hover:border-cyan-400/60 dark:hover:border-cyan-500/50 hover:bg-white/95 dark:hover:bg-slate-700/80 transition-all duration-300 ${!isMobile && "hover:scale-105 hover:-translate-y-1"} shadow-md hover:shadow-lg hover:shadow-cyan-500/20 overflow-hidden cursor-default text-xs md:text-sm`}
+                    >
+                      {!isMobile && (
+                        <>
+                          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-teal-500/8 to-cyan-500/5 opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                          <div className="absolute top-0.5 right-0.5 w-1.5 h-1.5 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-full opacity-0 group-hover:opacity-80 transition-opacity"></div>
+                        </>
+                      )}
+                      <span className="relative z-10">{tool}</span>
+                    </span>
+                  ))}
+
+                  {project.detectedTools.length > DETECTED_LIMIT && (
+                    <button
+                      onClick={() => setDetectedExpanded(!detectedExpanded)}
+                      className={`px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold rounded-lg md:rounded-xl border transition-all duration-300 cursor-pointer ${
+                        detectedExpanded
+                          ? "bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300 border-cyan-300 dark:border-cyan-600/60 hover:bg-cyan-200 dark:hover:bg-cyan-800/50"
+                          : "bg-white/60 dark:bg-slate-800/50 text-cyan-600 dark:text-cyan-400 border-cyan-200/70 dark:border-cyan-700/50 hover:bg-cyan-50 dark:hover:bg-cyan-900/30 hover:border-cyan-300 dark:hover:border-cyan-600"
+                      }`}
+                      style={{ WebkitTapHighlightColor: "transparent" }}
+                    >
+                      {detectedExpanded
+                        ? "↑ Ver menos"
+                        : `+${project.detectedTools.length - DETECTED_LIMIT} más`}
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
 
             {project.description && (
               <div className="space-y-4 md:space-y-6">

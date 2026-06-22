@@ -119,11 +119,17 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
         {/* Tech stack optimizado */}
         <div className="flex flex-wrap items-center gap-2">
           {project.stack.slice(0, isMobile ? 4 : 6).map((t, index) => badge(t, index))}
-          {project.stack.length > (isMobile ? 4 : 6) && (
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-400 dark:border-gray-700">
-              +{project.stack.length - (isMobile ? 4 : 6)}
-            </span>
-          )}
+          {(() => {
+            const limit = isMobile ? 4 : 6;
+            const stackExtra = Math.max(0, project.stack.length - limit);
+            const detectedCount = project.detectedTools?.length ?? 0;
+            const total = stackExtra + detectedCount;
+            return total > 0 ? (
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-400 dark:border-gray-700">
+                +{total}
+              </span>
+            ) : null;
+          })()}
         </div>
 
         {/* Divider simplificado */}
