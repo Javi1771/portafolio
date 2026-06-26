@@ -6,114 +6,42 @@ import Section from "@/components/Section";
 import BackgroundOrbs from "@/components/BackgroundOrbs";
 import { Anthropic } from "@/components/icons/Anthropic";
 import { Vercel } from "@/components/icons/Vercel";
+import { BigSchool } from "@/components/icons/BigSchool";
+import { MoureDev } from "@/components/icons/MoureDev";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, ShieldCheck, Calendar, Hash } from "lucide-react";
+import { ExternalLink, ShieldCheck, Calendar, Hash, Eye } from "lucide-react";
 
 const certificationSections = [
   {
-    id: "anthropic",
-    issuer: "Anthropic",
-    url: "skilljar.com",
-    desc: "Programas de certificación oficial en IA y productos Claude",
-    icon: Anthropic,
-    colorClass: "amber",
-    borderClass: "border-amber-300/70 dark:border-amber-500/65",
+    id: "bigschool",
+    issuer: "BIG school",
+    url: "thebigschool.com",
+    desc: "Programas de formación en desarrollo con Inteligencia Artificial, Marketing y Negocios",
+    icon: BigSchool,
+    colorClass: "blue",
+    borderClass: "border-blue-300/70 dark:border-blue-500/65",
     bgClass: "bg-white/70 dark:bg-gray-900/60",
-    bannerShadow: "shadow-[0_16px_40px_rgba(245,158,11,0.25)] dark:shadow-[0_16px_40px_rgba(251,191,36,0.18)]",
-    cardShadow: "shadow-[0_8px_30px_rgba(245,158,11,0.15)] dark:shadow-[0_8px_30px_rgba(251,191,36,0.1)]",
-    iconBgClass: "from-amber-50 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30 border-amber-200/60 dark:border-amber-700/40",
-    iconColorClass: "text-amber-700 dark:text-amber-400",
-    dotColorClass: "bg-amber-500",
+    bannerShadow: "shadow-[0_16px_40px_rgba(0,26,255,0.25)] dark:shadow-[0_16px_40px_rgba(59,130,246,0.18)]",
+    cardShadow: "shadow-[0_8px_30px_rgba(0,26,255,0.15)] dark:shadow-[0_8px_30px_rgba(59,130,246,0.1)]",
+    iconBgClass: "from-blue-50 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 border-blue-200/60 dark:border-blue-700/40",
+    iconColorClass: "text-blue-700 dark:text-blue-400",
+    dotColorClass: "bg-blue-500",
     items: [
       {
         num: "01",
-        title: "Claude Code in Action",
-        issuer: "Anthropic",
+        title: "CERTIFICADO DE INICIACIÓN AL DESARROLLO CON IA",
+        issuer: "BIG school",
+        instructor: "Brais Moure",
+        instructorIcon: MoureDev,
         date: "jun. 2026",
-        credentialId: "i83skgcg8gat",
-        verifyUrl: "https://verify.skilljar.com/c/i83skgcg8gat",
-        gradient: "from-amber-400 to-amber-600",
-        glowColor: "#f59e0b",  // amber-500
-        darkGlow: "#fbbf24",   // amber-400
-      },
-      {
-        num: "02",
-        title: "Certificate of completion: Claude 101",
-        issuer: "Anthropic",
-        date: "jun. 2026",
-        credentialId: "6gceeqvh49pk",
-        verifyUrl: "https://verify.skilljar.com/c/6gceeqvh49pk",
-        gradient: "from-orange-400 to-orange-600",
-        glowColor: "#f97316",  // orange-500
-        darkGlow: "#fb923c",   // orange-400
-      },
-      {
-        num: "03",
-        title: "Certificate of Completion: AI Fluency Framework & Foundations",
-        issuer: "Anthropic",
-        date: "jun. 2026",
-        credentialId: "35iq46657333",
-        verifyUrl: "https://verify.skilljar.com/c/35iq46657333",
-        gradient: "from-red-400 to-red-600",
-        glowColor: "#ef4444",  // red-500
-        darkGlow: "#f87171",   // red-400
-      },
-      {
-        num: "04",
-        title: "Certificate of completion: Introduction to Subagents",
-        issuer: "Anthropic",
-        date: "jun. 2026",
-        credentialId: "jh29oeenjenq",
-        verifyUrl: "https://verify.skilljar.com/c/jh29oeenjenq",
-        gradient: "from-amber-500 to-orange-600",
-        glowColor: "#d97706",  // amber-600
-        darkGlow: "#f59e0b",   // amber-505 -> amber-500
-      },
-      {
-        num: "05",
-        title: "Certificate of completion: AI Capabilities and Limitations",
-        issuer: "Anthropic",
-        date: "jun. 2026",
-        credentialId: "7xgb386y38p3",
-        verifyUrl: "https://verify.skilljar.com/c/7xgb386y38p3",
-        gradient: "from-orange-500 to-red-600",
-        glowColor: "#ea580c",  // orange-600
-        darkGlow: "#f97316",   // orange-500
-      },
-      {
-        num: "06",
-        title: "Certificate of Completion: AI Fluency for Small Businesses",
-        issuer: "Anthropic",
-        date: "jun. 2026",
-        credentialId: "bgb5brspyao7",
-        verifyUrl: "https://verify.skilljar.com/c/bgb5brspyao7",
-        gradient: "from-red-500 to-red-700",
-        glowColor: "#dc2626",  // red-600
-        darkGlow: "#ef4444",   // red-500
-      },
-      {
-        num: "07",
-        title: "Certificate of completion: Claude Platform 101",
-        issuer: "Anthropic",
-        date: "jun. 2026",
-        credentialId: "fa7q5ttq4zqe",
-        verifyUrl: "https://verify.skilljar.com/c/fa7q5ttq4zqe",
-        gradient: "from-amber-400 via-orange-400 to-orange-600",
-        glowColor: "#f97316",  // orange-500
-        darkGlow: "#fb923c",   // orange-400
-      },
-      {
-        num: "08",
-        title: "Certificate of completion: Claude code 101",
-        issuer: "Anthropic",
-        date: "jun. 2026",
-        credentialId: "6gbhxootpzve",
-        verifyUrl: "https://verify.skilljar.com/c/6gbhxootpzve",
-        gradient: "from-orange-500 via-red-500 to-red-700",
-        glowColor: "#ef4444",  // red-500
-        darkGlow: "#f87171",   // red-400
-      },
+        credentialId: "cxjz3593",
+        verifyUrl: "https://certificados.thebigschool.com/wp-content/uploads/certs/MDEV3/Certificado-Javier-Lopez-Camacho-cxjz3593.pdf",
+        pdfUrl: "/certs/Certificado-Javier-Lopez-Camacho-cxjz3593.pdf",
+        gradient: "from-blue-500 to-indigo-600",
+        glowColor: "#001AFF",
+        darkGlow: "#3b82f6",
+      }
     ]
   },
   {
@@ -138,10 +66,124 @@ const certificationSections = [
         date: "jun. 2026",
         credentialId: "dashboard-app",
         verifyUrl: "https://nextjs.org/learn/certificate?course=dashboard-app&user=164089&certId=dashboard-app-164089-1781221086452",
+        pdfUrl: "/certs/learn-certificate-og.pdf",
         gradient: "from-zinc-800 via-neutral-900 to-black dark:from-zinc-200 dark:via-neutral-100 dark:to-white",
         glowColor: "#000000",
         darkGlow: "#ffffff",
       }
+    ]
+  },
+  {
+    id: "anthropic",
+    issuer: "Anthropic",
+    url: "skilljar.com",
+    desc: "Programas de certificación oficial en IA y productos Claude",
+    icon: Anthropic,
+    colorClass: "amber",
+    borderClass: "border-amber-300/70 dark:border-amber-500/65",
+    bgClass: "bg-white/70 dark:bg-gray-900/60",
+    bannerShadow: "shadow-[0_16px_40px_rgba(245,158,11,0.25)] dark:shadow-[0_16px_40px_rgba(251,191,36,0.18)]",
+    cardShadow: "shadow-[0_8px_30px_rgba(245,158,11,0.15)] dark:shadow-[0_8px_30px_rgba(251,191,36,0.1)]",
+    iconBgClass: "from-amber-50 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30 border-amber-200/60 dark:border-amber-700/40",
+    iconColorClass: "text-amber-700 dark:text-amber-400",
+    dotColorClass: "bg-amber-500",
+    items: [
+      {
+        num: "01",
+        title: "Claude Code in Action",
+        issuer: "Anthropic",
+        date: "jun. 2026",
+        credentialId: "i83skgcg8gat",
+        verifyUrl: "https://verify.skilljar.com/c/i83skgcg8gat",
+        pdfUrl: "/certs/certificate-i83skgcg8gat-1781206527.pdf",
+        gradient: "from-amber-400 to-amber-600",
+        glowColor: "#f59e0b",  // amber-500
+        darkGlow: "#fbbf24",   // amber-400
+      },
+      {
+        num: "02",
+        title: "Certificate of completion: Claude 101",
+        issuer: "Anthropic",
+        date: "jun. 2026",
+        credentialId: "6gceeqvh49pk",
+        verifyUrl: "https://verify.skilljar.com/c/6gceeqvh49pk",
+        pdfUrl: "/certs/certificate-6gceeqvh49pk-1781206525.pdf",
+        gradient: "from-orange-400 to-orange-600",
+        glowColor: "#f97316",  // orange-500
+        darkGlow: "#fb923c",   // orange-400
+      },
+      {
+        num: "03",
+        title: "Certificate of Completion: AI Fluency Framework & Foundations",
+        issuer: "Anthropic",
+        date: "jun. 2026",
+        credentialId: "35iq46657333",
+        verifyUrl: "https://verify.skilljar.com/c/35iq46657333",
+        pdfUrl: "/certs/certificate-35iq46657333-1781207007.pdf",
+        gradient: "from-red-400 to-red-600",
+        glowColor: "#ef4444",  // red-500
+        darkGlow: "#f87171",   // red-400
+      },
+      {
+        num: "04",
+        title: "Certificate of completion: Introduction to Subagents",
+        issuer: "Anthropic",
+        date: "jun. 2026",
+        credentialId: "jh29oeenjenq",
+        verifyUrl: "https://verify.skilljar.com/c/jh29oeenjenq",
+        pdfUrl: "/certs/certificate-jh29oeenjenq-1781207650.pdf",
+        gradient: "from-amber-500 to-orange-600",
+        glowColor: "#d97706",  // amber-600
+        darkGlow: "#f59e0b",   // amber-500
+      },
+      {
+        num: "05",
+        title: "Certificate of completion: AI Capabilities and Limitations",
+        issuer: "Anthropic",
+        date: "jun. 2026",
+        credentialId: "7xgb386y38p3",
+        verifyUrl: "https://verify.skilljar.com/c/7xgb386y38p3",
+        pdfUrl: "/certs/certificate-7xgb386y38p3-1781208859.pdf",
+        gradient: "from-orange-500 to-red-600",
+        glowColor: "#ea580c",  // orange-600
+        darkGlow: "#f97316",   // orange-500
+      },
+      {
+        num: "06",
+        title: "Certificate of Completion: AI Fluency for Small Businesses",
+        issuer: "Anthropic",
+        date: "jun. 2026",
+        credentialId: "bgb5brspyao7",
+        verifyUrl: "https://verify.skilljar.com/c/bgb5brspyao7",
+        pdfUrl: "/certs/certificate-bgb5brspyao7-1781210934.pdf",
+        gradient: "from-red-500 to-red-700",
+        glowColor: "#dc2626",  // red-600
+        darkGlow: "#ef4444",   // red-500
+      },
+      {
+        num: "07",
+        title: "Certificate of completion: Claude Platform 101",
+        issuer: "Anthropic",
+        date: "jun. 2026",
+        credentialId: "fa7q5ttq4zqe",
+        verifyUrl: "https://verify.skilljar.com/c/fa7q5ttq4zqe",
+        pdfUrl: "/certs/certificate-fa7q5ttq4zqe-1781561677.pdf",
+        gradient: "from-amber-400 via-orange-400 to-orange-600",
+        glowColor: "#f97316",  // orange-500
+        darkGlow: "#fb923c",   // orange-400
+      },
+      {
+        num: "08",
+        title: "Certificate of completion: Claude code 101",
+        issuer: "Anthropic",
+        date: "jun. 2026",
+        credentialId: "6gbhxootpzve",
+        verifyUrl: "https://verify.skilljar.com/c/6gbhxootpzve",
+        pdfUrl: "/certs/certificate-6gbhxootpzve-1781562133.pdf",
+        gradient: "from-orange-500 via-red-500 to-red-700",
+        glowColor: "#ef4444",  // red-500
+        darkGlow: "#f87171",   // red-400
+      },
     ]
   }
 ];
@@ -149,6 +191,10 @@ const certificationSections = [
 export default function CertificationsPage() {
   const [isMobile, setIsMobile] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [previewUrl, setPreviewUrl] = useState(null);
+  const [activeFilter, setActiveFilter] = useState(null);
+
+  const toggleFilter = (id) => setActiveFilter((prev) => (prev === id ? null : id));
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -168,12 +214,45 @@ export default function CertificationsPage() {
 
   const activeGlow = (cert) => isDark ? cert.darkGlow : cert.glowColor;
 
+  const closePdfModal = () => setPreviewUrl(null);
+
   const anthropicCertsCount = certificationSections.find(s => s.id === "anthropic")?.items.length || 0;
   const vercelCertsCount = certificationSections.find(s => s.id === "vercel")?.items.length || 0;
-  const totalCerts = anthropicCertsCount + vercelCertsCount;
+  const bigschoolCertsCount = certificationSections.find(s => s.id === "bigschool")?.items.length || 0;
+  const totalCerts = anthropicCertsCount + vercelCertsCount + bigschoolCertsCount;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-amber-50/20 to-orange-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-amber-950/30 relative overflow-hidden">
+      {/* PDF Preview Modal */}
+      {previewUrl && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+          onClick={closePdfModal}
+        >
+          <div
+            className="relative w-full max-w-4xl h-[85vh] bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+              <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Vista previa del certificado</span>
+              <button
+                onClick={closePdfModal}
+                className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                aria-label="Cerrar"
+              >
+                ✕
+              </button>
+            </div>
+            <embed
+              src={previewUrl}
+              type="application/pdf"
+              className="flex-1 w-full"
+              style={{ height: '100%' }}
+            />
+          </div>
+        </div>
+      )}
+
       {!isMobile && <BackgroundOrbs />}
 
       {/* Dot pattern */}
@@ -209,11 +288,11 @@ export default function CertificationsPage() {
 
             <div className="space-y-4">
               <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
-                Credenciales verificables obtenidas a través de programas oficiales de Anthropic y Vercel.
+                Credenciales verificables obtenidas a través de programas oficiales de Anthropic, Vercel y BIG school.
               </p>
 
-              {/* Stats pills */}
-              <div className="flex flex-wrap items-center gap-3 text-sm">
+              {/* Info pills */}
+              <div className="flex flex-wrap items-center gap-2.5 text-sm">
                 <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 dark:bg-amber-900/25 border border-amber-200/70 dark:border-amber-700/40 text-amber-700 dark:text-amber-300 font-medium">
                   <ShieldCheck className="w-3.5 h-3.5" />
                   {totalCerts} certificados
@@ -222,14 +301,74 @@ export default function CertificationsPage() {
                   <Calendar className="w-3.5 h-3.5" />
                   jun. 2026
                 </span>
-                <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-50 dark:bg-red-900/25 border border-red-200/70 dark:border-red-700/40 text-red-700 dark:text-red-300 font-medium">
-                  <Anthropic className="w-3.5 h-3.5" />
-                  Anthropic ({anthropicCertsCount})
-                </span>
-                <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-zinc-50 dark:bg-zinc-900/25 border border-zinc-200/70 dark:border-zinc-700/40 text-zinc-700 dark:text-zinc-300 font-medium">
-                  <Vercel className="w-3.5 h-3.5" />
-                  Vercel ({vercelCertsCount})
-                </span>
+              </div>
+
+              {/* Filter bar */}
+              <div className="space-y-2">
+                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-gray-400 dark:text-gray-500 select-none">
+                  Filtrar por
+                </p>
+                <div className="flex flex-wrap items-center gap-2">
+                  {/* Todos / Clear */}
+                  <button
+                    onClick={() => setActiveFilter(null)}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-semibold transition-all duration-200 active:scale-95 ${
+                      activeFilter === null
+                        ? "bg-gray-900 dark:bg-white border-gray-900 dark:border-white text-white dark:text-gray-900 shadow-lg"
+                        : "border-gray-200 dark:border-gray-700 text-gray-400 dark:text-gray-500 hover:border-gray-400 dark:hover:border-gray-500 hover:text-gray-600 dark:hover:text-gray-200"
+                    }`}
+                  >
+                    Todos
+                    <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[11px] tabular-nums font-bold transition-colors ${
+                      activeFilter === null ? "bg-white/20 dark:bg-black/20" : "bg-gray-100 dark:bg-gray-800"
+                    }`}>
+                      {totalCerts}
+                    </span>
+                  </button>
+
+                  <div className="w-px h-6 bg-gray-200 dark:bg-gray-700 mx-0.5" />
+
+                  {certificationSections.map((section) => {
+                    const FilterIcon = section.icon;
+                    const isActive = activeFilter === section.id;
+                    const color = isDark ? section.items[0].darkGlow : section.items[0].glowColor;
+                    return (
+                      <button
+                        key={section.id}
+                        onClick={() => toggleFilter(section.id)}
+                        className={`flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-semibold transition-all duration-200 active:scale-95 ${
+                          isActive ? "scale-105" : "hover:scale-[1.03]"
+                        }`}
+                        style={isActive ? {
+                          background: `${color}14`,
+                          borderColor: `${color}65`,
+                          color: color,
+                          boxShadow: `0 4px 20px ${color}28`,
+                        } : {
+                          borderColor: "rgba(209,213,219,0.5)",
+                          color: "rgb(156,163,175)",
+                        }}
+                      >
+                        <FilterIcon className="w-3.5 h-3.5" />
+                        <span>{section.issuer}</span>
+                        <span
+                          className="w-5 h-5 rounded-full flex items-center justify-center text-[11px] tabular-nums font-bold"
+                          style={{ background: isActive ? `${color}22` : "rgba(156,163,175,0.12)" }}
+                        >
+                          {section.items.length}
+                        </span>
+                        {isActive && (
+                          <span
+                            className="w-4 h-4 rounded-full flex items-center justify-center text-[10px] leading-none"
+                            style={{ background: `${color}22` }}
+                          >
+                            ✕
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
@@ -238,7 +377,7 @@ export default function CertificationsPage() {
         className="relative z-10"
       >
         <div className="max-w-6xl mx-auto space-y-16">
-          {certificationSections.map((section) => {
+          {certificationSections.filter(s => !activeFilter || s.id === activeFilter).map((section) => {
             const SectionIcon = section.icon;
             return (
               <div key={section.id} className="space-y-6">
@@ -292,15 +431,13 @@ export default function CertificationsPage() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.45, delay: i * 0.07 }}
                     >
-                      <a
-                        href={cert.verifyUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`group relative flex flex-col h-full rounded-2xl overflow-hidden border transition-all duration-300 cursor-pointer
+                      <div
+                        className={`group relative flex flex-col h-full rounded-2xl overflow-hidden border transition-all duration-300
                           bg-white dark:bg-gray-900/70
                           border-gray-200/50 dark:border-gray-800/60
                           ${section.cardShadow}
                           ${!isMobile ? "hover:-translate-y-2" : ""}`}
+                        style={{ transition: "all 300ms ease" }}
                         onMouseEnter={
                           !isMobile
                             ? (e) => {
@@ -396,11 +533,23 @@ export default function CertificationsPage() {
                             <h4 className="text-[14px] font-bold text-gray-900 dark:text-white leading-snug transition-colors duration-300">
                               {cert.title}
                             </h4>
+                            {cert.instructor && (
+                              <div className="flex items-center justify-center gap-1.5 mt-1 text-[11px] text-gray-500 dark:text-gray-400 font-medium">
+                                <span>Impartido por {cert.instructor}</span>
+                                {cert.instructorIcon && (
+                                  <cert.instructorIcon className="w-3.5 h-3.5 text-gray-600 dark:text-gray-300" />
+                                )}
+                              </div>
+                            )}
                           </div>
 
                           {/* Separador */}
                           <div
-                            className={`h-px bg-gradient-to-r ${cert.gradient} opacity-25 rounded-full mx-2`}
+                            className="rounded-full mx-2 flex-shrink-0"
+                            style={{
+                              height: '2px',
+                              background: `linear-gradient(to right, ${activeGlow(cert)}99, ${activeGlow(cert)}33)`,
+                            }}
                           />
 
                           {/* Meta */}
@@ -421,13 +570,18 @@ export default function CertificationsPage() {
                             </div>
                           </div>
 
-                          {/* CTA button */}
-                          <div className="mt-auto pt-1">
-                            <div
-                              className="w-full py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all duration-200 group-hover:opacity-95"
+                          {/* CTA buttons */}
+                          <div className="mt-auto pt-1 flex gap-2">
+                            <a
+                              href={cert.verifyUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex-1 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all duration-200 hover:opacity-90 active:scale-95 text-center"
                               style={{
                                 background: cert.issuer.toLowerCase() === "vercel"
                                   ? (isDark ? "#ffffff" : "#000000")
+                                  : cert.issuer.toLowerCase() === "big school"
+                                  ? "#001AFF"
                                   : `linear-gradient(to right, ${cert.glowColor}, ${cert.darkGlow})`,
                                 color: cert.issuer.toLowerCase() === "vercel"
                                   ? (isDark ? "#000000" : "#ffffff")
@@ -435,12 +589,26 @@ export default function CertificationsPage() {
                                 boxShadow: `0 4px 14px ${activeGlow(cert)}35`,
                               }}
                             >
-                              Ver credencial
-                              <ExternalLink className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-                            </div>
+                              Verificar
+                              <ExternalLink className="w-3 h-3" />
+                            </a>
+                            {cert.pdfUrl && (
+                              <button
+                                onClick={() => setPreviewUrl(cert.pdfUrl)}
+                                className="px-3 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 border border-gray-200 dark:border-gray-700 active:scale-95"
+                                style={{
+                                  color: activeGlow(cert),
+                                  borderColor: `${activeGlow(cert)}30`,
+                                }}
+                                title="Vista previa del PDF"
+                              >
+                                <Eye className="w-3.5 h-3.5" />
+                                <span>Vista previa</span>
+                              </button>
+                            )}
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </motion.div>
                   ))}
                 </div>
@@ -468,4 +636,3 @@ export default function CertificationsPage() {
     </div>
   );
 }
-
