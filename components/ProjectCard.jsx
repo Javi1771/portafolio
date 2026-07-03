@@ -4,12 +4,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { memo, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { GitHub } from "@/components/icons/GitHub";
-import { Info, ExternalLink } from "lucide-react";
+import { Info, ExternalLink, X } from "lucide-react";
 
 const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
-  
+  const [showBannerModal, setShowBannerModal] = useState(false);
+
   //* Memoizar colores para evitar recalcular en cada render
   const colors = useMemo(() => ({
     primary: project.colors?.primary || "#8b5cf6",
@@ -56,15 +58,80 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
   );
 
   return (
-    <article 
+    <>
+    {showBannerModal && typeof document !== "undefined" && createPortal(
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+        onClick={() => setShowBannerModal(false)}
+      >
+        <div
+          className="relative w-full max-w-3xl lg:max-w-5xl bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-2xl"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            type="button"
+            onClick={() => setShowBannerModal(false)}
+            aria-label="Cerrar"
+            className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-lg text-white bg-black/50 hover:bg-black/70 transition-colors"
+          >
+            <X size={16} />
+          </button>
+
+          <Link
+            href={`/projects/${project.id}`}
+            className="group/modal relative block aspect-video bg-gray-100 dark:bg-gray-800"
+          >
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 768px, 1024px"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/0 group-hover/modal:bg-black/20 transition-colors duration-300" />
+          </Link>
+
+          <div className="p-5 flex items-center justify-between gap-4">
+            <div className="min-w-0">
+              <h3 className="font-bold text-lg text-gray-900 dark:text-white truncate">{project.title}</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 truncate">{project.tagline}</p>
+            </div>
+            <Link
+              className="group/btn relative shrink-0 px-4 py-2.5 rounded-xl text-white text-sm font-semibold text-center transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 overflow-hidden"
+              href={`/projects/${project.id}`}
+              style={{
+                background: 'linear-gradient(to right, #0d9488, #0f766e)',
+                boxShadow: '0 4px 14px 0 rgba(13, 148, 136, 0.39)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(13, 148, 136, 0.6)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = '0 4px 14px 0 rgba(13, 148, 136, 0.39)';
+              }}
+            >
+              <span className="relative z-10 flex items-center justify-center gap-1.5 whitespace-nowrap">
+                <Info size={15} className="shrink-0" />
+                Ver detalles
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
+            </Link>
+          </div>
+        </div>
+      </div>,
+      document.body
+    )}
+    <article
       className={`group relative rounded-2xl overflow-hidden bg-white/80 dark:bg-white/5 border border-gray-200/50 dark:border-white/10 shadow-lg hover:shadow-2xl transition-all duration-300 ${!isMobile && 'hover:-translate-y-1'} ${!isMobile && 'backdrop-blur-sm'} will-change-transform flex flex-col ${className}`}
       style={style}
     >
-      
-      {/* Imagen optimizada con Next.js Image */}
-      <Link
-        href={`/projects/${project.id}`}
-        className="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-800 block"
+
+      {/* Imagen optimizada con Next.js Image - clic para ampliar en modal */}
+      <button
+        type="button"
+        onClick={() => setShowBannerModal(true)}
+        aria-label={`Ampliar banner de ${project.title}`}
+        className="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-800 block w-full text-left cursor-zoom-in"
       >
         {/* Placeholder mientras carga */}
         {!imageLoaded && (
@@ -77,7 +144,7 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className={`object-cover transition-all duration-500 ${!isMobile && 'group-hover:scale-105'} ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-          loading="lazy"
+          loading="eager"
           quality={isMobile ? 60 : 75} //! Menor calidad en móvil
           onLoad={() => setImageLoaded(true)}
         />
@@ -86,20 +153,6 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
         {!isMobile && (
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         )}
-
-        {/* Botón "Ver detalles" centrado - hover en desktop, siempre visible en móvil */}
-        <div
-          className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
-            isMobile ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-          }`}
-        >
-          <span
-            className={`inline-flex items-center gap-1.5 rounded-xl text-white font-semibold bg-black/60 border border-white/30 ${!isMobile && 'backdrop-blur-md'} ${isMobile ? 'px-3 py-1.5 text-xs' : 'px-4 py-2 text-sm'}`}
-          >
-            <Info size={15} className="shrink-0" />
-            Ver detalles
-          </span>
-        </div>
 
         {/* Badges superiores - SIN backdrop-blur en móvil */}
         <div className="absolute top-4 left-4 flex gap-2">
@@ -117,7 +170,7 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
             {project.type}
           </span>
         </div>
-      </Link>
+      </button>
 
       {/* Contenido - con flex-grow para empujar botones abajo */}
       <div className="relative p-6 space-y-4 flex-grow flex flex-col">
@@ -240,6 +293,7 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
         </div>
       )}
     </article>
+    </>
   );
 });
 
