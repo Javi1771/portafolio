@@ -38,7 +38,9 @@ export default function ProjectsPage() {
   const categories = [...new Set(PROJECTS.map((p) => p.category))];
   const types = [...new Set(PROJECTS.map((p) => p.type))];
   const currentYear = new Date().getFullYear();
-  const recentProjects = PROJECTS.filter((p) => p.year === currentYear).length;
+  const recentProjects = PROJECTS.filter(
+    (p) => p.year === currentYear || p.updatedYear === currentYear
+  ).length;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-gray-50/50 to-violet-50/30 dark:from-gray-900 dark:via-gray-800/50 dark:to-violet-950/20 relative overflow-hidden">

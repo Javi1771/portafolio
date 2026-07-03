@@ -90,7 +90,7 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
             {project.category}
           </span>
           <span className={`px-3 py-1.5 rounded-full text-xs font-medium text-white/90 bg-black/50 ${!isMobile && 'backdrop-blur-md'} border border-white/10`}>
-            {project.year}
+            {project.updatedYear ? `${project.year} · ${project.updatedYear}` : project.year}
           </span>
         </div>
 

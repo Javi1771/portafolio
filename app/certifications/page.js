@@ -10,7 +10,7 @@ import { BigSchool } from "@/components/icons/BigSchool";
 import { MoureDev } from "@/components/icons/MoureDev";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, ShieldCheck, Calendar, Hash, Eye } from "lucide-react";
+import { ExternalLink, ShieldCheck, Calendar, Hash, Eye, ChevronDown, ChevronUp } from "lucide-react";
 
 const certificationSections = [
   {
@@ -184,17 +184,39 @@ const certificationSections = [
         glowColor: "#ef4444",  // red-500
         darkGlow: "#f87171",   // red-400
       },
+      {
+        num: "09",
+        title: "Certificate of completion: Introduction to Claude Cowork",
+        issuer: "Anthropic",
+        date: "jul. 2026",
+        credentialId: "3ukksxbku3mw",
+        verifyUrl: "https://verify.skilljar.com/c/3ukksxbku3mw",
+        pdfUrl: "/certs/certificate-3ukksxbku3mw-1783026568.pdf",
+        gradient: "from-amber-500 via-orange-500 to-red-500",
+        glowColor: "#f59e0b",  // amber-500
+        darkGlow: "#fbbf24",   // amber-400
+      },
     ]
   }
 ];
+
+const VISIBLE_LIMIT = 4;
 
 export default function CertificationsPage() {
   const [isMobile, setIsMobile] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [activeFilter, setActiveFilter] = useState(null);
+  const [expandedSections, setExpandedSections] = useState(() => new Set());
 
   const toggleFilter = (id) => setActiveFilter((prev) => (prev === id ? null : id));
+
+  const toggleExpanded = (id) =>
+    setExpandedSections((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -299,7 +321,7 @@ export default function CertificationsPage() {
                 </span>
                 <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-50 dark:bg-orange-900/25 border border-orange-200/70 dark:border-orange-700/40 text-orange-700 dark:text-orange-300 font-medium">
                   <Calendar className="w-3.5 h-3.5" />
-                  jun. 2026
+                  jul. 2026
                 </span>
               </div>
 
@@ -379,6 +401,7 @@ export default function CertificationsPage() {
         <div className="max-w-6xl mx-auto space-y-16">
           {certificationSections.filter(s => !activeFilter || s.id === activeFilter).map((section) => {
             const SectionIcon = section.icon;
+            const accent = isDark ? section.items[0].darkGlow : section.items[0].glowColor;
             return (
               <div key={section.id} className="space-y-6">
                 {/* Header de sección */}
@@ -422,7 +445,10 @@ export default function CertificationsPage() {
 
                 {/* Grid de cards */}
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {section.items.map((cert, i) => (
+                  {(expandedSections.has(section.id)
+                    ? section.items
+                    : section.items.slice(0, VISIBLE_LIMIT)
+                  ).map((cert, i) => (
                     <motion.div
                       key={cert.credentialId}
                       className="h-full"
@@ -612,6 +638,33 @@ export default function CertificationsPage() {
                     </motion.div>
                   ))}
                 </div>
+
+                {/* Ver más / Ver menos */}
+                {section.items.length > VISIBLE_LIMIT && (
+                  <div className="flex justify-center">
+                    <button
+                      onClick={() => toggleExpanded(section.id)}
+                      className="group flex items-center gap-1.5 pl-4 pr-3 py-2 rounded-full text-xs font-bold tracking-wide border transition-all duration-200 active:scale-95 hover:scale-105"
+                      style={{
+                        color: accent,
+                        borderColor: `${accent}40`,
+                        background: `${accent}10`,
+                      }}
+                    >
+                      {expandedSections.has(section.id) ? (
+                        <>
+                          Ver menos
+                          <ChevronUp className="w-3.5 h-3.5" />
+                        </>
+                      ) : (
+                        <>
+                          Ver {section.items.length - VISIBLE_LIMIT}+
+                          <ChevronDown className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-y-0.5" />
+                        </>
+                      )}
+                    </button>
+                  </div>
+                )}
               </div>
             );
           })}

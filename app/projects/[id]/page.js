@@ -582,7 +582,7 @@ export default function ProjectDetail() {
                   <span
                     className={`px-2 py-1 md:px-3 md:py-1.5 bg-gradient-to-r from-black/70 to-black/60 ${!isMobile && "backdrop-blur-md"} text-white dark:text-slate-200 text-xs font-bold rounded-full border border-slate-200/50 dark:border-slate-600/50 shadow-lg`}
                   >
-                    {project.year}
+                    {project.updatedYear ? `${project.year} · ${project.updatedYear}` : project.year}
                   </span>
                 </div>
               </div>

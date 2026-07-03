@@ -19,6 +19,31 @@ import {
 
 const experiences = [
   {
+    id: "jordan-redesign",
+    company: "Motores Jordan",
+    role: "Desarrollador Full-Stack Freelance",
+    type: "freelance",
+    period: "Jun 2026 - Jul 2026",
+    location: "Remoto",
+    description:
+      "Rediseño completo del sitio y desarrollo de un panel de administración con base de datos propia",
+    projects: [
+      {
+        name: "Rediseño Completo & Panel de Administración",
+        site: "https://motoresjordanmx.com/",
+        tech: ["Next.js 15", "Prisma", "Neon (PostgreSQL)", "Cloudinary", "JWT"],
+        highlights: [
+          "Rediseño completo del sitio con tema claro/oscuro y secciones dinámicas",
+          "Panel de administración con CRUD sobre catálogo, promociones, galería, artículos y reseñas",
+          "Persistencia en Neon (PostgreSQL) vía Prisma y almacenamiento de imágenes en Cloudinary",
+          "Autenticación JWT + cookie httpOnly con rate limiting en el login",
+        ],
+      },
+    ],
+    icon: Code,
+    gradient: "from-red-600 to-red-800",
+  },
+  {
     id: "trinium",
     company: "Trinium",
     role: "Co-fundador & Desarrollador Full-Stack",
@@ -103,7 +128,7 @@ const experiences = [
       },
     ],
     icon: Building2,
-    gradient: "from-amber-500 to-yellow-600",
+    gradient: "from-amber-600 to-red-600",
   },
   {
     id: "municipio-contract",

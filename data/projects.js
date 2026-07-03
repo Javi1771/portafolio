@@ -129,33 +129,41 @@ export const PROJECTS = [
   {
     id: "motores-jordan",
     title: "Motores Jordan (Página Web Para La Empresa Motores Jordan)",
-    tagline: "Convierte visitantes en clientes mediante contacto directo e inmediato.",
+    tagline: "Convierte visitantes en clientes y se administra sin tocar código.",
     year: 2025,
+    updatedYear: 2026,
     category: "Freelance",
     stack: [
       "Next.js 15.3",
       "React 19",
       "TypeScript 5",
       "Tailwind CSS 4",
-      "Framer Motion",
-      "Lucide React",
+      "Neon (PostgreSQL Serverless) + Prisma ORM",
+      "Panel de Administración (CRUD)",
+      "Autenticación JWT + Cookie HttpOnly",
+      "Cloudinary (gestión de imágenes)",
       "Envios de WhatsApp",
       "Envios de Email",
+      "Modo Claro/Oscuro",
       "Despliegue en Vercel",
     ],
     detectedTools: [
       "react-icons",
-      "tsParticles (efectos de partículas)",
+      "jose (JWT)",
+      "bcryptjs (hash de contraseñas)",
+      "Resend (envío de emails)",
+      "Rate limiting en login",
+      "Google Tag Manager",
       "Vercel Analytics",
     ],
     repo: "https://github.com/Javi1771/motoresjordan",
     site: "https://motoresjordanmx.com/",
     summary:
-      "Plataforma digital que transforma la captación y conversión de leads industriales mediante un hub centralizado de productos, especificaciones técnicas y canales de contacto directo.\n\n" +
-      "Reduce el tiempo de respuesta a cotizaciones de 48 horas a minutos, elimina hasta un 70% de llamadas de consulta básica y aumenta la tasa de conversión mediante asesoría inmediata por WhatsApp.\n\n" +
-      "La arquitectura optimizada mejora el posicionamiento SEO local y habilita métricas de conversión para decisiones de marketing basadas en datos.",
+      "Plataforma digital que evolucionó de sitio informativo estático a un CMS completo: panel de administración protegido con JWT y cookie httpOnly desde el que la empresa gestiona catálogo, promociones, galería, artículos y testimonios sin depender de un desarrollador.\n\n" +
+      "El contenido persiste en Neon (PostgreSQL serverless) vía Prisma y las imágenes se almacenan en Cloudinary, habilitando actualizaciones de banners, precios y promociones en minutos en lugar de días.\n\n" +
+      "El hardening de seguridad incorpora rate limiting en el login y protección por middleware sobre la administración, alojada en un dominio aparte del sitio público pero conectada a la misma base de datos; el nuevo tema claro/oscuro, las secciones dinámicas y el flujo de moderación de reseñas elevan la experiencia del visitante sin perder la conversión directa por WhatsApp y correo.",
     image: "/Banners/motores_jordan.png",
-    colors: { primary: "#350609", secondary: "#b5181f" },
+    colors: { primary: "#8b1014", secondary: "#e02330" },
     type: "Website",
   },
   {
