@@ -62,12 +62,15 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
     >
       
       {/* Imagen optimizada con Next.js Image */}
-      <div className="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-800">
+      <Link
+        href={`/projects/${project.id}`}
+        className="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-800 block"
+      >
         {/* Placeholder mientras carga */}
         {!imageLoaded && (
           <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 animate-pulse" />
         )}
-        
+
         <Image
           src={project.image}
           alt={project.title}
@@ -78,12 +81,26 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
           quality={isMobile ? 60 : 75} //! Menor calidad en móvil
           onLoad={() => setImageLoaded(true)}
         />
-        
+
         {/* Overlay simplificado - Solo en desktop */}
         {!isMobile && (
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         )}
-        
+
+        {/* Botón "Ver detalles" centrado - hover en desktop, siempre visible en móvil */}
+        <div
+          className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
+            isMobile ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+          }`}
+        >
+          <span
+            className={`inline-flex items-center gap-1.5 rounded-xl text-white font-semibold bg-black/60 border border-white/30 ${!isMobile && 'backdrop-blur-md'} ${isMobile ? 'px-3 py-1.5 text-xs' : 'px-4 py-2 text-sm'}`}
+          >
+            <Info size={15} className="shrink-0" />
+            Ver detalles
+          </span>
+        </div>
+
         {/* Badges superiores - SIN backdrop-blur en móvil */}
         <div className="absolute top-4 left-4 flex gap-2">
           <span className={`px-3 py-1.5 rounded-full text-xs font-semibold text-white bg-black/60 ${!isMobile && 'backdrop-blur-md'} border border-white/20`}>
@@ -100,7 +117,7 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
             {project.type}
           </span>
         </div>
-      </div>
+      </Link>
 
       {/* Contenido - con flex-grow para empujar botones abajo */}
       <div className="relative p-6 space-y-4 flex-grow flex flex-col">

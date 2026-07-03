@@ -109,12 +109,18 @@ export default function HomePage() {
   const [selected, setSelected] = useState("Todos");
   const [isMobile, setIsMobile] = useState(false);
   const [activeCard, setActiveCard] = useState(null);
+  const [profilePhoto, setProfilePhoto] = useState("/foto_perfil.jpg");
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
+  }, []);
+
+  //* Foto de perfil aleatoria en cada carga (se decide en cliente para evitar mismatch de hidratación)
+  useEffect(() => {
+    setProfilePhoto(Math.random() < 0.5 ? "/foto_perfil.jpg" : "/foto_perfil2.png");
   }, []);
 
   const categories = ["Todos", ...new Set(PROJECTS.map((p) => p.category))];
@@ -340,7 +346,7 @@ export default function HomePage() {
 
               <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-700 shadow-2xl ring-1 ring-gray-200/50 dark:ring-gray-700/50">
                 <Image
-                  src="/foto_perfil.jpg"
+                  src={profilePhoto}
                   alt="Javier López Camacho"
                   width={400}
                   height={400}
