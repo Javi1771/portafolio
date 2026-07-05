@@ -88,7 +88,6 @@ const ProjectCard = memo(({ project, isMobile = false, style, className }) => {
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 768px, 1024px"
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-black/0 group-hover/modal:bg-black/20 transition-colors duration-300" />
           </Link>
 
           <div className="p-5 flex items-center justify-between gap-4">
