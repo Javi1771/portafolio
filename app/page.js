@@ -134,31 +134,33 @@ export default function HomePage() {
       id: 1, icon: Heart,
       color: "from-blue-500 to-blue-600", accentColor: "#3b82f6",
       title: "Software con corazón",
-      tagline: "Cada detalle que el usuario siente fue una decisión consciente.",
-      desc: "Pienso en lo que el usuario siente al abrir tu app, no solo en que funcione. Porque la diferencia entre bueno y memorable está en los detalles que otros dan por sentados.",
+      tagline: "Cada detalle que sientes al usarlo fue una decisión consciente.",
+      desc: "Pienso en lo que sientes al abrir tu app, no solo en que funcione. Porque la diferencia entre bueno y memorable está en los detalles que otros dan por sentados.",
     },
     {
       id: 2, icon: TrendingUp,
       color: "from-cyan-500 to-cyan-600", accentColor: "#06b6d4",
       title: "Crezco contigo",
       tagline: "No entrego el proyecto y desaparezco.",
-      desc: "Muchos desarrolladores terminan y se van. Yo quiero estar ahí cuando tu negocio evolucione, cuando necesites escalar o cuando algo deje de encajar.",
+      desc: "Muchos desarrolladores terminan y se van. Yo me quedo cuando tu negocio evoluciona, cuando necesitas escalar o cuando algo deja de encajar.",
     },
     {
       id: 3, icon: Sparkles,
       color: "from-teal-500 to-teal-600", accentColor: "#14b8a6",
       title: "Simple e intuitivo",
       tagline: "El mejor software es el que no se nota.",
-      desc: "Si el usuario necesita un tutorial, algo falló en el diseño. Construyo flujos que se explican solos, porque la mejor UX es la que parece que siempre estuvo ahí.",
+      desc: "Si necesitas un tutorial para usarlo, algo falló en el diseño. Construyo flujos que se explican solos, porque la mejor experiencia es la que parece que siempre estuvo ahí.",
     },
     {
       id: 4, icon: Target,
       color: "from-cyan-400 to-sky-500", accentColor: "#22d3ee",
       title: "Hecho a tu medida",
-      tagline: "Tu problema tiene una solución específica.",
-      desc: "No vendo plantillas ni soluciones genéricas. Primero entiendo tu negocio, luego construyo exactamente lo que necesitas — sin relleno ni atajos.",
+      tagline: "Antes de construir, te escucho.",
+      desc: "No te vendo \"un sistema más\". Primero quiero entender qué te preocupa, qué proceso te quita tiempo, qué parte de tu negocio necesita orden o claridad — y a partir de ahí construyo contigo algo que funcione de verdad. Sin plantillas, sin relleno.",
     },
   ];
+
+  const [card1, card2, card3, card4] = philosophyCards;
 
   return (
     <>
@@ -406,134 +408,150 @@ export default function HomePage() {
       {/* Value Props Section */}
       <Section>
         <motion.div
-          className="text-center mb-14"
+          className="mb-14"
           initial={{ opacity: 0, y: isMobile ? 0 : 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: isMobile ? 0.15 : 0.5 }}
         >
-          <h2 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 via-violet-900 to-gray-900 dark:from-white dark:via-violet-100 dark:to-white bg-clip-text text-transparent mb-4">
-            Lo que me define
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full mx-auto mb-6" />
-          <p className="text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
-            No solo escribo código — construyo soluciones pensando en quien las usa.
-          </p>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <div>
+              <span className="block text-xs font-semibold uppercase tracking-[0.2em] text-violet-600 dark:text-violet-400 mb-3">
+                Lo que me define
+              </span>
+              <div className="relative inline-block">
+                <h2 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 via-violet-800 to-gray-900 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent leading-tight">
+                  No solo escribo código
+                </h2>
+                <div className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-gradient-to-r from-violet-500 via-purple-500 to-cyan-500 animate-scale-x"></div>
+
+                {!isMobile && (
+                  <>
+                    <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-60 animate-bounce"></div>
+                    <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-40 animate-bounce"></div>
+                  </>
+                )}
+              </div>
+            </div>
+            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-xs md:text-right">
+              Construyo soluciones pensando en quien las usa.
+            </p>
+          </div>
         </motion.div>
 
-        {/* Cards — picos alternados siguiendo la curva */}
-        <div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
-            {philosophyCards.map((card, i) => {
-              const Icon = card.icon;
-              const isPeak = i % 2 === 0; // 0,2 → pico alto; 1,3 → valle bajo
-              return (
-                <div key={card.id} className="relative h-full">
-                  {/* Card */}
-                  <div
-                    className="relative rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer h-full
-                               shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_4px_16px_rgba(0,0,0,0.07)]
-                               dark:shadow-[0_0_0_1px_rgba(255,255,255,0.07),0_4px_20px_rgba(0,0,0,0.5)]"
-                    onClick={() => setActiveCard(card.id)}
-                  >
-                    <div className="absolute inset-0 bg-white dark:bg-gray-800 rounded-3xl" />
-                    {/* Acento light */}
-                    <div
-                      className="absolute inset-0 rounded-3xl dark:hidden"
-                      style={{ background: `radial-gradient(ellipse at 20% 0%, ${card.accentColor}38, transparent 60%)` }}
-                    />
-                    {/* Acento dark */}
-                    <div
-                      className="absolute inset-0 rounded-3xl hidden dark:block"
-                      style={{ background: `radial-gradient(ellipse at 20% 0%, ${card.accentColor}45, transparent 55%)` }}
-                    />
-                    <div
-                      className={`absolute top-0 left-0 right-0 h-[3px] rounded-t-3xl bg-gradient-to-r ${card.color} opacity-[0.75] dark:opacity-90`}
-                    />
-
-                    <div className="relative p-5 md:p-6">
-                      <div
-                        className="w-[52px] h-[52px] rounded-2xl flex items-center justify-center mb-4"
-                        style={{
-                          background: `linear-gradient(135deg, ${card.accentColor}28, ${card.accentColor}0c)`,
-                          border: `1.5px solid ${card.accentColor}55`,
-                        }}
-                      >
-                        <Icon size={26} color={card.accentColor} strokeWidth={1.7} />
-                      </div>
-                      <h3 className="font-bold text-gray-900 dark:text-white text-[15px] leading-snug mb-2">
-                        {card.title}
-                      </h3>
-                      <p className="text-[12.5px] text-gray-500 dark:text-gray-300 leading-snug mb-3">
-                        {card.tagline}
-                      </p>
-                      <div
-                        className={`h-px bg-gradient-to-r ${card.color} rounded-full opacity-[0.35] dark:opacity-[0.45]`}
-                        style={{ width: "40%" }}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Conector: corto si es pico, largo si es valle */}
-                  <div
-                    className="hidden md:block absolute bottom-0 left-1/2 -translate-x-1/2 w-[2px] rounded-b-full"
-                    style={{
-                      height: isPeak ? "12px" : "52px",
-                      background: `linear-gradient(to bottom, ${card.accentColor}80, ${card.accentColor}00)`,
-                    }}
-                  />
-                </div>
-              );
-            })}
+        {/* Bento asimétrico */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr] md:grid-rows-2 gap-5"
+          initial={{ opacity: 0, y: isMobile ? 0 : 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: isMobile ? 0.15 : 0.5, delay: 0.1 }}
+        >
+          {/* 01 — Software con corazón (protagonista) */}
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={() => setActiveCard(card1.id)}
+            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActiveCard(card1.id); } }}
+            className="group relative md:row-span-2 rounded-[22px] overflow-hidden p-8 md:p-10 flex flex-col justify-center text-white bg-gradient-to-br from-violet-600 via-violet-600 to-purple-700 shadow-[0_16px_40px_rgba(124,58,237,0.35)] hover:shadow-[0_24px_56px_rgba(124,58,237,0.5)] hover:-translate-y-2 transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-violet-600"
+          >
+            <span className="absolute top-6 right-7 text-7xl font-black text-white/10 leading-none select-none pointer-events-none">
+              01
+            </span>
+            <div className="relative z-10">
+              <div className="w-14 h-14 rounded-[14px] flex items-center justify-center mb-6 bg-white/15 shadow-[0_8px_20px_rgba(0,0,0,0.15)]">
+                <card1.icon size={26} color="#fff" strokeWidth={1.7} />
+              </div>
+              <h3 className="text-[26px] font-bold leading-snug mb-3">
+                {card1.title}
+              </h3>
+              <p className="text-white/80 leading-relaxed text-[15px]">
+                {card1.desc}
+              </p>
+            </div>
           </div>
 
-          {/* ── Onda: picos en cards 1 y 3, valles en cards 2 y 4 ── */}
-          <div className="hidden md:block" aria-hidden="true">
-            <svg className="w-full block" height="64" viewBox="0 0 1000 64" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="waveGrad" x1="0" y1="0" x2="100%" y2="0">
-                  <stop offset="0%"   stopColor="#3b82f6" stopOpacity="0"   />
-                  <stop offset="12%"  stopColor="#3b82f6" stopOpacity="0.9" />
-                  <stop offset="37%"  stopColor="#06b6d4" stopOpacity="0.9" />
-                  <stop offset="63%"  stopColor="#14b8a6" stopOpacity="0.9" />
-                  <stop offset="88%"  stopColor="#22d3ee" stopOpacity="0.9" />
-                  <stop offset="100%" stopColor="#22d3ee" stopOpacity="0"   />
-                </linearGradient>
-                <filter id="waveGlow" x="-5%" y="-120%" width="110%" height="340%">
-                  <feGaussianBlur stdDeviation="4.5" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-
-              {/* Halo */}
-              <path
-                d="M 0,32 C 50,32 80,12 118,12 C 156,12 216,52 373,52 C 530,52 590,12 627,12 C 664,12 724,52 882,52 C 932,52 970,32 1000,32"
-                fill="none" stroke="url(#waveGrad)" strokeWidth="10" opacity="0.18" filter="url(#waveGlow)"
-              />
-              {/* Línea */}
-              <path
-                d="M 0,32 C 50,32 80,12 118,12 C 156,12 216,52 373,52 C 530,52 590,12 627,12 C 664,12 724,52 882,52 C 932,52 970,32 1000,32"
-                fill="none" stroke="url(#waveGrad)" strokeWidth="2.5"
-              />
-
-              {/* Pico 1 — blue */}
-              <circle cx="118" cy="12" r="12" fill="#3b82f6" opacity="0.15" />
-              <circle cx="118" cy="12" r="5.5" fill="#3b82f6" />
-              {/* Valle 2 — cyan */}
-              <circle cx="373" cy="52" r="12" fill="#06b6d4" opacity="0.15" />
-              <circle cx="373" cy="52" r="5.5" fill="#06b6d4" />
-              {/* Pico 3 — teal */}
-              <circle cx="627" cy="12" r="12" fill="#14b8a6" opacity="0.15" />
-              <circle cx="627" cy="12" r="5.5" fill="#14b8a6" />
-              {/* Valle 4 — cyan light */}
-              <circle cx="882" cy="52" r="12" fill="#22d3ee" opacity="0.15" />
-              <circle cx="882" cy="52" r="5.5" fill="#22d3ee" />
-            </svg>
+          {/* 02 — Crezco contigo */}
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={() => setActiveCard(card2.id)}
+            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActiveCard(card2.id); } }}
+            className="group relative rounded-[22px] overflow-hidden p-6 md:p-7 bg-white/60 dark:bg-gray-800/60 backdrop-blur-md border border-gray-200/50 dark:border-gray-700/50 shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_16px_36px_rgba(0,0,0,0.55)] hover:-translate-y-2 transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900"
+          >
+            <span className="absolute top-4 right-5 text-6xl font-black text-violet-500/10 dark:text-violet-300/10 leading-none select-none pointer-events-none">
+              02
+            </span>
+            <div className="relative z-10">
+              <div
+                className={`w-[52px] h-[52px] rounded-[14px] flex items-center justify-center mb-5 bg-gradient-to-br ${card2.color}`}
+                style={{ boxShadow: `0 8px 20px ${card2.accentColor}55` }}
+              >
+                <card2.icon size={24} color="#fff" strokeWidth={1.7} />
+              </div>
+              <h3 className="font-bold text-gray-900 dark:text-white text-[17px] leading-snug mb-2">
+                {card2.title}
+              </h3>
+              <p className="text-[13.5px] text-gray-600 dark:text-gray-300 leading-relaxed">
+                {card2.tagline}
+              </p>
+            </div>
           </div>
-        </div>
+
+          {/* 03 — Simple e intuitivo */}
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={() => setActiveCard(card3.id)}
+            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActiveCard(card3.id); } }}
+            className="group relative rounded-[22px] overflow-hidden p-6 md:p-7 bg-white/60 dark:bg-gray-800/60 backdrop-blur-md border border-gray-200/50 dark:border-gray-700/50 shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_16px_36px_rgba(0,0,0,0.55)] hover:-translate-y-2 transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900"
+          >
+            <span className="absolute top-4 right-5 text-6xl font-black text-violet-500/10 dark:text-violet-300/10 leading-none select-none pointer-events-none">
+              03
+            </span>
+            <div className="relative z-10">
+              <div
+                className={`w-[52px] h-[52px] rounded-[14px] flex items-center justify-center mb-5 bg-gradient-to-br ${card3.color}`}
+                style={{ boxShadow: `0 8px 20px ${card3.accentColor}55` }}
+              >
+                <card3.icon size={24} color="#fff" strokeWidth={1.7} />
+              </div>
+              <h3 className="font-bold text-gray-900 dark:text-white text-[17px] leading-snug mb-2">
+                {card3.title}
+              </h3>
+              <p className="text-[13.5px] text-gray-600 dark:text-gray-300 leading-relaxed">
+                {card3.tagline}
+              </p>
+            </div>
+          </div>
+
+          {/* 04 — Hecho a tu medida (ancha, layout horizontal) */}
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={() => setActiveCard(card4.id)}
+            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActiveCard(card4.id); } }}
+            className="group relative md:col-span-2 rounded-[22px] overflow-hidden p-6 md:p-7 flex items-center gap-5 bg-white/60 dark:bg-gray-800/60 backdrop-blur-md border border-gray-200/50 dark:border-gray-700/50 shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_16px_36px_rgba(0,0,0,0.55)] hover:-translate-y-2 transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900"
+          >
+            <span className="absolute top-4 right-5 text-6xl font-black text-violet-500/10 dark:text-violet-300/10 leading-none select-none pointer-events-none">
+              04
+            </span>
+            <div
+              className={`relative z-10 w-[52px] h-[52px] shrink-0 rounded-[14px] flex items-center justify-center bg-gradient-to-br ${card4.color}`}
+              style={{ boxShadow: `0 8px 20px ${card4.accentColor}55` }}
+            >
+              <card4.icon size={24} color="#fff" strokeWidth={1.7} />
+            </div>
+            <div className="relative z-10">
+              <h3 className="font-bold text-gray-900 dark:text-white text-[17px] leading-snug mb-1.5">
+                {card4.title}
+              </h3>
+              <p className="text-[13.5px] text-gray-600 dark:text-gray-300 leading-relaxed">
+                {card4.tagline}
+              </p>
+            </div>
+          </div>
+        </motion.div>
       </Section>
 
     </div>
