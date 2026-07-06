@@ -18,10 +18,10 @@ export const metadata = {
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000")
   ),
   title: "Javier López | Full Stack Developer – Web & Mobile",
-  description: "Ingeniero Full Stack Developer especializado en Next.js, React Native y Flutter. Proyectos reales de web y mobile.",
+  description: "Ingeniero Full Stack Developer especializado en Next.js y Flutter. Proyectos reales de web y mobile.",
   openGraph: {
     title: "Javier López | Full Stack Developer – Web & Mobile",
-    description: "Ingeniero Full Stack Developer especializado en Next.js, React Native y Flutter. Proyectos reales de web y mobile.",
+    description: "Ingeniero Full Stack Developer especializado en Next.js y Flutter. Proyectos reales de web y mobile.",
     url: "/",
     siteName: "Javier López – Portafolio",
     images: [
@@ -38,7 +38,7 @@ export const metadata = {
   twitter: {
     card: "summary",
     title: "Javier López | Full Stack Developer – Web & Mobile",
-    description: "Ingeniero Full Stack Developer especializado en Next.js, React Native y Flutter.",
+    description: "Ingeniero Full Stack Developer especializado en Next.js y Flutter.",
     images: ["/favicon.ico"],
   },
   //* Favicons / PWA / Apple
