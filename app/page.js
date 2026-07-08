@@ -466,7 +466,7 @@ export default function HomePage() {
                 {card1.title}
               </h3>
               <p className="text-white/80 leading-relaxed text-[15px]">
-                {card1.desc}
+                {card1.tagline}
               </p>
             </div>
           </div>

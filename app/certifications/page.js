@@ -615,7 +615,7 @@ export default function CertificationsPage() {
                                 boxShadow: `0 4px 14px ${activeGlow(cert)}35`,
                               }}
                             >
-                              Verificar
+                              Ver en línea
                               <ExternalLink className="w-3 h-3" />
                             </a>
                             {cert.pdfUrl && (
@@ -629,7 +629,7 @@ export default function CertificationsPage() {
                                 title="Vista previa del PDF"
                               >
                                 <Eye className="w-3.5 h-3.5" />
-                                <span>Vista previa</span>
+                                <span>Ver PDF</span>
                               </button>
                             )}
                           </div>
