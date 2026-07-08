@@ -8,6 +8,7 @@ import { Anthropic } from "@/components/icons/Anthropic";
 import { Vercel } from "@/components/icons/Vercel";
 import { BigSchool } from "@/components/icons/BigSchool";
 import { MoureDev } from "@/components/icons/MoureDev";
+import { OpenAI } from "@/components/icons/ChatGPT";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, ShieldCheck, Calendar, Hash, Eye, ChevronDown, ChevronUp } from "lucide-react";
@@ -70,6 +71,35 @@ const certificationSections = [
         gradient: "from-zinc-800 via-neutral-900 to-black dark:from-zinc-200 dark:via-neutral-100 dark:to-white",
         glowColor: "#000000",
         darkGlow: "#ffffff",
+      }
+    ]
+  },
+  {
+    id: "openai",
+    issuer: "OpenAI",
+    url: "academy.openai.com",
+    desc: "Certificaciones oficiales de OpenAI Academy en fundamentos de IA",
+    icon: OpenAI,
+    colorClass: "emerald",
+    borderClass: "border-emerald-300/70 dark:border-emerald-500/65",
+    bgClass: "bg-white/70 dark:bg-gray-900/60",
+    bannerShadow: "shadow-[0_16px_40px_rgba(16,163,127,0.25)] dark:shadow-[0_16px_40px_rgba(52,211,153,0.18)]",
+    cardShadow: "shadow-[0_8px_30px_rgba(16,163,127,0.15)] dark:shadow-[0_8px_30px_rgba(52,211,153,0.1)]",
+    iconBgClass: "from-emerald-50 to-teal-100 dark:from-emerald-900/30 dark:to-teal-900/30 border-emerald-200/60 dark:border-emerald-700/40",
+    iconColorClass: "text-emerald-700 dark:text-emerald-400",
+    dotColorClass: "bg-emerald-500",
+    items: [
+      {
+        num: "01",
+        title: "AI Foundations",
+        issuer: "OpenAI",
+        date: "jul. 2026",
+        credentialId: "lc5l92f1rq",
+        verifyUrl: "https://academy.openai.com/home/certificate/lc5l92f1rq",
+        pdfUrl: "/certs/certificate-lc5l92f1rq.pdf",
+        gradient: "from-emerald-500 to-teal-600",
+        glowColor: "#10a37f",
+        darkGlow: "#34d399",
       }
     ]
   },
@@ -241,7 +271,8 @@ export default function CertificationsPage() {
   const anthropicCertsCount = certificationSections.find(s => s.id === "anthropic")?.items.length || 0;
   const vercelCertsCount = certificationSections.find(s => s.id === "vercel")?.items.length || 0;
   const bigschoolCertsCount = certificationSections.find(s => s.id === "bigschool")?.items.length || 0;
-  const totalCerts = anthropicCertsCount + vercelCertsCount + bigschoolCertsCount;
+  const openaiCertsCount = certificationSections.find(s => s.id === "openai")?.items.length || 0;
+  const totalCerts = anthropicCertsCount + vercelCertsCount + bigschoolCertsCount + openaiCertsCount;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-amber-50/20 to-orange-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-amber-950/30 relative overflow-hidden">
@@ -310,7 +341,7 @@ export default function CertificationsPage() {
 
             <div className="space-y-4">
               <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
-                Credenciales verificables obtenidas a través de programas oficiales de Anthropic, Vercel y BIG school.
+                Credenciales verificables obtenidas a través de programas oficiales de Anthropic, Vercel, BIG school y OpenAI.
               </p>
 
               {/* Info pills */}
