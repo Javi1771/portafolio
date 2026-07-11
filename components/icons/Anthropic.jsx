@@ -1,9 +1,9 @@
-const Anthropic = (props) => (
+const Anthropic = ({ style, ...props }) => (
   <svg
     {...props}
     fill="currentColor"
     fillRule="evenodd"
-    style={{ flex: "none", lineHeight: "1" }}
+    style={{ flex: "none", lineHeight: "1", ...style }}
     viewBox="0 0 24 24"
   >
     <title>Anthropic</title>

@@ -11,7 +11,8 @@ import { MoureDev } from "@/components/icons/MoureDev";
 import { OpenAI } from "@/components/icons/ChatGPT";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, ShieldCheck, Calendar, Hash, Eye, ChevronDown, ChevronUp } from "lucide-react";
+import { ShieldCheck, Calendar, Hash, Eye, ChevronDown, ChevronUp } from "lucide-react";
+import { TalentLand } from "@/components/icons/TalentLand";
 
 const certificationSections = [
   {
@@ -227,10 +228,38 @@ const certificationSections = [
         darkGlow: "#fbbf24",   // amber-400
       },
     ]
+  },
+  {
+    id: "talentland",
+    issuer: "Talent Land",
+    url: "talent-land.mx",
+    desc: "Certificado de participación en Talent Land, el mayor festival de talento e innovación de Latinoamérica",
+    icon: TalentLand,
+    colorClass: "green",
+    borderClass: "border-[#3bba49]/40 dark:border-[#3bba49]/50",
+    bgClass: "bg-white/70 dark:bg-gray-900/60",
+    bannerShadow: "shadow-[0_16px_40px_rgba(59,186,73,0.25)] dark:shadow-[0_16px_40px_rgba(74,222,128,0.18)]",
+    cardShadow: "shadow-[0_8px_30px_rgba(59,186,73,0.15)] dark:shadow-[0_8px_30px_rgba(74,222,128,0.1)]",
+    iconBgClass: "from-[#3bba49]/10 to-emerald-100 dark:from-[#3bba49]/20 dark:to-emerald-900/30 border-[#3bba49]/30 dark:border-[#3bba49]/40",
+    iconColorClass: "text-[#3bba49] dark:text-[#4ade80]",
+    dotColorClass: "bg-[#3bba49]",
+    items: [
+      {
+        num: "01",
+        title: "Certificado Talent Land México 2026",
+        issuer: "Talent Land",
+        date: "abr. 2026",
+        credentialId: "talent-land-2026",
+        pdfUrl: "/certs/Certificado-Talent-Land-2026-Javier-López-Camacho.pdf",
+        gradient: "from-[#3bba49] to-[#2f9a3d]",
+        glowColor: "#3bba49",
+        darkGlow: "#4ade80",
+      }
+    ]
   }
 ];
 
-const VISIBLE_LIMIT = 4;
+const VISIBLE_LIMIT = 3;
 
 export default function CertificationsPage() {
   const [isMobile, setIsMobile] = useState(false);
@@ -268,11 +297,7 @@ export default function CertificationsPage() {
 
   const closePdfModal = () => setPreviewUrl(null);
 
-  const anthropicCertsCount = certificationSections.find(s => s.id === "anthropic")?.items.length || 0;
-  const vercelCertsCount = certificationSections.find(s => s.id === "vercel")?.items.length || 0;
-  const bigschoolCertsCount = certificationSections.find(s => s.id === "bigschool")?.items.length || 0;
-  const openaiCertsCount = certificationSections.find(s => s.id === "openai")?.items.length || 0;
-  const totalCerts = anthropicCertsCount + vercelCertsCount + bigschoolCertsCount + openaiCertsCount;
+  const totalCerts = certificationSections.reduce((sum, s) => sum + s.items.length, 0);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-amber-50/20 to-orange-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-amber-950/30 relative overflow-hidden">
@@ -341,7 +366,7 @@ export default function CertificationsPage() {
 
             <div className="space-y-4">
               <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
-                Credenciales verificables obtenidas a través de programas oficiales de Anthropic, Vercel, BIG school y OpenAI.
+                Credenciales verificables obtenidas a través de programas oficiales de Anthropic, Vercel, BIG school, OpenAI y Talent Land.
               </p>
 
               {/* Info pills */}
@@ -564,7 +589,7 @@ export default function CertificationsPage() {
                               {/* Glow halo detrás del icono */}
                               <div
                                 className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"
-                                style={{ backgroundColor: activeGlow(cert) }}
+                                style={{ backgroundColor: `${activeGlow(cert)}45` }}
                               />
                               <div
                                 className="relative w-14 h-14 flex items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110"
@@ -627,13 +652,11 @@ export default function CertificationsPage() {
                             </div>
                           </div>
 
-                          {/* CTA buttons */}
-                          <div className="mt-auto pt-1 flex gap-2">
-                            <a
-                              href={cert.verifyUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex-1 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all duration-200 hover:opacity-90 active:scale-95 text-center"
+                          {/* CTA button */}
+                          <div className="mt-auto pt-1">
+                            <button
+                              onClick={() => setPreviewUrl(cert.pdfUrl)}
+                              className="w-full py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all duration-200 hover:opacity-90 active:scale-95"
                               style={{
                                 background: cert.issuer.toLowerCase() === "vercel"
                                   ? (isDark ? "#ffffff" : "#000000")
@@ -646,23 +669,9 @@ export default function CertificationsPage() {
                                 boxShadow: `0 4px 14px ${activeGlow(cert)}35`,
                               }}
                             >
-                              Ver en línea
-                              <ExternalLink className="w-3 h-3" />
-                            </a>
-                            {cert.pdfUrl && (
-                              <button
-                                onClick={() => setPreviewUrl(cert.pdfUrl)}
-                                className="px-3 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 border border-gray-200 dark:border-gray-700 active:scale-95"
-                                style={{
-                                  color: activeGlow(cert),
-                                  borderColor: `${activeGlow(cert)}30`,
-                                }}
-                                title="Vista previa del PDF"
-                              >
-                                <Eye className="w-3.5 h-3.5" />
-                                <span>Ver PDF</span>
-                              </button>
-                            )}
+                              Ver certificado
+                              <Eye className="w-3.5 h-3.5" />
+                            </button>
                           </div>
                         </div>
                       </div>
