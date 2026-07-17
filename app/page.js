@@ -47,6 +47,8 @@ import { ShadcnUI } from "@/components/icons/Shadcn";
 import { GoogleAntigravity } from "@/components/icons/Antigravity";
 import { OpenAI } from "@/components/icons/ChatGPT";
 import { Expressjs } from "@/components/icons/Express";
+import { Neon } from "@/components/icons/Neon";
+import { Zod } from "@/components/icons/Zod";
 
 function PhilosophyModal({ card, onClose }) {
   const [mounted, setMounted] = useState(false);
@@ -263,6 +265,8 @@ export default function HomePage() {
                     { label: "Vercel",          Icon: Vercel            },
                     { label: "MongoDB",         Icon: MongoDB           },
                     { label: "MySQL",           Icon: MySQL             },
+                    { label: "Neon",            Icon: Neon              },
+                    { label: "Zod",             Icon: Zod               },
                     { label: "Google Maps",     Icon: GoogleMaps        },
                     { label: "Claude Code",     Icon: ClaudeAI          },
                     { label: "Gemini",          Icon: Gemini            },
