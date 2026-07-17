@@ -1,5 +1,49 @@
 export const PROJECTS = [
   {
+    id: "nebula",
+    title: "Nébula – Tienda de Compra y Renta de Películas y Series",
+    tagline:
+      "Entrega de una prueba técnica de periodo de prueba: wireframe a código con CRUD, roles, JWT y base de datos normalizada sobre un catálogo real de TMDB.",
+    year: 2026,
+    category: "Personal",
+    stack: [
+      "Next.js 16 (App Router)",
+      "React 19",
+      "TypeScript 5",
+      "Tailwind CSS 4",
+      "PostgreSQL (Neon) sin ORM",
+      "Autenticación JWT (jose) + Cookie HttpOnly",
+      "Cifrado de Contraseñas con bcrypt",
+      "Validación con Zod 4",
+      "TMDB API (catálogo, tendencias, reparto, tráilers, reseñas)",
+      "API REST propia documentada",
+      "Pasarela de Pago Simulada",
+      "Modo Claro/Oscuro",
+      "Despliegue en Vercel",
+    ],
+    detectedTools: [
+      "postgres (SQL parametrizado, sin ORM)",
+      "Sonner (notificaciones)",
+      "Vercel Analytics",
+      "Geist Sans (next/font/google)",
+      "next/og (favicon, apple-icon y og-image por código)",
+      "tsx (scripts de migración/seed/expand)",
+      "proxy.ts (Next.js 16, reemplazo de middleware.ts)",
+      "withAuth / withAdmin (middleware de API por capas)",
+      "pnpm 9",
+    ],
+    repo: "https://github.com/Javi1771/nebula",
+    site: "https://nebula-javi1771s-projects.vercel.app",
+    summary:
+      "Entrega de un periodo de prueba de Desarrollo de Software: a partir de un wireframe dado, había que construir una página con frontend a elección, un apartado alimentado por una API externa de tema libre, un backend propio con CRUD completo (GET/POST/PUT/DELETE), login con dos roles (admin/user) y una base de datos con mínimo 3 tablas normalizadas a 3FN, documentando todo en el README.\n\n" +
+      "TMDB se eligió como la API de tema libre a consumir, y sobre ese catálogo se construyó una tienda de compra y renta de películas y series con más de 250 títulos reales (populares, mejor calificados, tendencias del día/semana, reparto, tráilers, reseñas y recomendaciones), autenticación de dos roles y una pantalla de búsqueda dedicada con filtros completos.\n\n" +
+      "El backend cubre de sobra lo pedido: base de datos normalizada a 3FN con SQL parametrizado (sin ORM), autorización por rol en el middleware de API (no solo en el frontend), sesiones JWT firmadas en cookie httpOnly, contraseñas con bcrypt, validación de cada endpoint con Zod y una API REST propia completamente documentada para catálogo, compras/rentas, favoritos y administración.\n\n" +
+      "Como plus sobre lo mínimo pedido: sistema de diseño 'océano profundo' propio (degradado esmeralda-cian como única firma viva) con hero rotativo de tendencias, grilla bento, sidebar flotante contraíble, favoritos con corazón optimista, perfil con foto recortada/comprimida a base64, y un checkout simulado con tarjetas bancarias temáticas, tarjeta 3D animada, validación Luhn y billeteras Google/Apple/Samsung Pay — todo en modo claro/oscuro sin parpadeo al cargar.",
+    image: "/Banners/nebula.png",
+    colors: { primary: "#1ebe91", secondary: "#41cff0" },
+    type: "Web Application",
+  },
+  {
     id: "trinium",
     title: "Trinium (Sitio Corporativo Para La Startup Trinium)",
     tagline: "Landing moderna que convierte visitantes en clientes para una empresa de software a la medida.",
